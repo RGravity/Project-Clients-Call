@@ -4,6 +4,7 @@ using System.Collections;
 public class RaceScipt : MonoBehaviour {
 
 
+    public GameObject Bullet;
 	// Use this for initialization
 	void Start () {
         GameObject.FindObjectOfType<RaceScipt>();
@@ -11,9 +12,13 @@ public class RaceScipt : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetAxis("Horizontal") == -1)
+        if (Input.GetKey(KeyCode.W))
         {
-
+            
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Instantiate(Bullet);
         }
 	}
 }
