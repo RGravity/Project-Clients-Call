@@ -13,17 +13,16 @@ public class Player2LevelScript : MonoBehaviour {
     {
         MoveWorld();
         ResolveCollision();
-
     }
 
     private void MoveWorld()
     {
         if (!Input.GetKey(KeyCode.Space))
         {
-            _speed += 0.01f;
+            _speed += 0.05f;
             gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
-            Debug.Log("Current Speed: " + _speed);
         }
+
     }
 
     private void ResolveCollision()
