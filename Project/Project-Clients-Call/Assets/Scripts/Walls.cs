@@ -12,16 +12,4 @@ public class Walls : MonoBehaviour {
 	void Update () {
 	
 	}
-    
-    void OnColissionEnter(Collision other)
-    {
-        if (other.gameObject.name == "car")
-        {
-            
-        }
-        if (other.gameObject.name == "Bullet")
-        {
-            Destroy(this);
-        }
-    }
 }
