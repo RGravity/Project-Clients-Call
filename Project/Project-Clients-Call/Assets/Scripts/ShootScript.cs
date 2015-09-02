@@ -3,7 +3,8 @@ using System.Collections;
 
 public class ShootScript : MonoBehaviour {
 
-    public GameObject bullet;
+    public GameObject bulletPrefab;
+    private Transform _bullet;
 	// Use this for initialization
 	void Start () {
 	
@@ -11,10 +12,18 @@ public class ShootScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && this.name == "Player 1")
         {
-            bullet.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 1);
-            Instantiate(bullet).GetComponent<Transform>();
+            bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 1.3f);
+            _bullet = Instantiate(bulletPrefab).GetComponent<Transform>();
+            _bullet.GetComponent<Bullet>().Player(true);
+        }
+        if (Input.GetKeyDown(KeyCode.M) && this.name == "Player 2")
+        {
+            bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 1.3f);
+            _bullet = Instantiate(bulletPrefab).GetComponent<Transform>();
+            _bullet.GetComponent<Bullet>().Player(false);
+
         }
 	}
 }

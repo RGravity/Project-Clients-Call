@@ -13,7 +13,7 @@ public class Walls : MonoBehaviour {
 	
 	}
     
-    void OnColissionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.name == "car")
         {
@@ -21,7 +21,6 @@ public class Walls : MonoBehaviour {
         }
         if (other.gameObject.name == "Bullet")
         {
-            Destroy(this);
         }
     }
 }
