@@ -6,6 +6,7 @@ public class Player2LevelScript : MonoBehaviour {
     private float _speed = 10f;
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
+    private int _iteration = 0;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
     public bool IncreaseSpeed { get { return _increaseSpeed; } set { _increaseSpeed = value; } }
@@ -37,8 +38,13 @@ public class Player2LevelScript : MonoBehaviour {
         if (_increaseSpeed)
         {
             float boost = _speed - 10;
-            _speed = _speed + (boost *4);
-            _increaseSpeed = false;
+            _speed = _speed + (boost);
+            _iteration++;
+            if (_iteration >= 5)
+            {
+                _increaseSpeed = false;
+                _iteration = 0;
+            }
         }
     }
 }
