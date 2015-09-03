@@ -19,6 +19,7 @@ public class PowerUpScriptP1 : MonoBehaviour {
     public bool PowerUpAvailable { get { return _availablePowerup; } set { _availablePowerup = value; } }
     public Powerup PowerUp { get { return _powerUp; } set { _powerUp = value; } }
     public bool Invulnerable { get { return _inVulnerable; } set { _inVulnerable = value; } }
+    
 	
 	// Update is called once per frame
 	void Update () {
@@ -38,6 +39,7 @@ public class PowerUpScriptP1 : MonoBehaviour {
                         GameObject.FindObjectOfType<Player1LevelScript>().IncreaseSpeed = true;
                         break;
                     case Powerup.Drill:
+                        GameObject.FindObjectOfType<RocketDrill>().RocketDrill = true;
                         break;
                     case Powerup.Invulnerability:
                         _inVulnerable = true;
