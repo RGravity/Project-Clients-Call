@@ -18,10 +18,13 @@ public class RocketDrill : MonoBehaviour {
         get { return _rocketDrillP2; }
         set { _rocketDrillP2 = value; }
     }
+    private GameObject _planeP1;
+    private GameObject _planeP2;
     
 	// Use this for initialization
 	void Start () {
-	
+        _planeP1 = GameObject.FindObjectOfType<Player1LevelScript>().gameObject;
+        _planeP2 = GameObject.FindObjectOfType<Player2LevelScript>().gameObject;
 	}
 	
 	// Update is called once per frame
@@ -29,15 +32,23 @@ public class RocketDrill : MonoBehaviour {
 
         if (_rocketDrillP1)
         {
+            _rocketDrillP1 = false;
             GameObject drill = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            Camera camera = GameObject.FindObjectOfType<Player2LevelScript>().GetComponent<Camera>();
+            Camera camera = GameObject.FindObjectOfType<Player2MoveScript>().GetComponentInChildren<Camera>();
             Vector3 position;
-            position = camera.transform.position + camera.transform.forward + new Vector3(Random.Range(-2, 2), 1, 30);
+            position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 1);
             drill.transform.position = position;
+            drill.transform.parent = _planeP2.transform;
         }
         if (_rocketDrillP2)
         {
-
+            _rocketDrillP2 = false;
+            GameObject drill = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            Camera camera = GameObject.FindObjectOfType<Player1MoveScript>().GetComponentInChildren<Camera>();
+            Vector3 position;
+            position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 1);
+            drill.transform.position = position;
+            drill.transform.parent = _planeP1.transform;
         }
 	
 	}
