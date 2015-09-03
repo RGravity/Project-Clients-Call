@@ -22,7 +22,7 @@ public class HowToPlayScript : MonoBehaviour {
             degrees = degrees - 1;
            
             _camera.transform.rotation = Quaternion.Euler(degrees, 90, 0);
-            _backButton.transform.position = new Vector3(100, 100, 100);
+            //_backButton.transform.position = new Vector3(1223.6f, 1489.6f, -229.8f);
           
             
 
@@ -30,7 +30,7 @@ public class HowToPlayScript : MonoBehaviour {
             {
                 _rotation = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
-                _backButton.transform.position = new Vector3(3.83f, 25, -6.42f);
+              //  _backButton.transform.position = new Vector3(213.6f, 1434, -220);
                 degrees = 0;
             }
 
