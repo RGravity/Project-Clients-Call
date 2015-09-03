@@ -22,13 +22,13 @@ public class BackButtonScript : MonoBehaviour {
         {
             Debug.Log(degrees);
             degrees = degrees + 1;
-            _camera.transform.rotation = Quaternion.Euler(degrees, 0, 0);
+            _camera.transform.rotation = Quaternion.Euler(degrees, 90, 0);
 
 
             if (degrees == 360 )
             {
                 _rotation = false;
-                _camera.transform.rotation = Quaternion.Euler(0, 0, 0);
+                _camera.transform.rotation = Quaternion.Euler(0, 90, 0);
                 degrees = 270;
             }
 
