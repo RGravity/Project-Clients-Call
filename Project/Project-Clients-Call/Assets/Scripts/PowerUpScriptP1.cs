@@ -11,7 +11,7 @@ public class PowerUpScriptP1 : MonoBehaviour {
         Invulnerability
     }
 
-    private bool _availablePowerup = true;
+    private bool _availablePowerup = false;
     private Powerup _powerUp = Powerup.Empty;
     private bool _inVulnerable = false;
     private int _timer = 500;
