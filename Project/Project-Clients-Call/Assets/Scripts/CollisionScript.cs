@@ -15,11 +15,11 @@ public class CollisionScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
+        if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
         {
             GameObject.FindObjectOfType<Player1LevelScript>().SlowSpeed = true;
         }
-        if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
+        if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
         {
             GameObject.FindObjectOfType<Player2LevelScript>().SlowSpeed = true;
         }
