@@ -5,7 +5,6 @@ public class CameraRotation : MonoBehaviour {
 
 	// Use this for initialization
     private GameObject _camera;
-    float timer = 0;
     private bool _rotation = false;
     float degrees = 0;
 	void Start () 
@@ -20,13 +19,13 @@ public class CameraRotation : MonoBehaviour {
         {
            
                 degrees = degrees - 1;
-                _camera.transform.rotation = Quaternion.Euler (degrees, 0, 0);
+                _camera.transform.rotation = Quaternion.Euler (degrees, 90, 0);
 
 
             if (degrees <=-90)
             {
                 _rotation = false;
-                _camera.transform.rotation = Quaternion.Euler(270, 0, 0);
+                _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
                 degrees = 0;
             }
    

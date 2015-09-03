@@ -65,11 +65,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BackButtonScript.cs" />
     <Compile Include="Assets\Scripts\BoostScript.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
-    <Compile Include="Assets\Scripts\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\CollisionScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\BackButtonScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\CameraRotation.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\CreditScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\HowToPlayScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\OptionsScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\QuitGameScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\StartGameScript.cs" />
     <Compile Include="Assets\Scripts\Player1LevelScript.cs" />
     <Compile Include="Assets\Scripts\Player1MoveScript.cs" />
     <Compile Include="Assets\Scripts\Player2LevelScript.cs" />
