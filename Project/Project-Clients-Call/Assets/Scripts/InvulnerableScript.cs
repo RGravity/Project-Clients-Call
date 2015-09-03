@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BoostScript : MonoBehaviour {
+public class InvulnerableScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +14,7 @@ public class BoostScript : MonoBehaviour {
         {
             if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
             {
-                GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
                 GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
             }
             Destroy(gameObject);
@@ -23,7 +23,7 @@ public class BoostScript : MonoBehaviour {
         {
             if (!GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable)
             {
-                GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp = PowerUpScriptP2.Powerup.Boost;
+                GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp = PowerUpScriptP2.Powerup.Invulnerability;
                 GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
             }
             Destroy(gameObject);
