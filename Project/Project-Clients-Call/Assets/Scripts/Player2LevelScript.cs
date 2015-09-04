@@ -27,7 +27,7 @@ public class Player2LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) || _finished == false)
+        if (!Input.GetKey(KeyCode.Space) && _finished == false)
         {
             _speed += 0.05f;
             _originalSpeed += 0.05f;
@@ -60,7 +60,7 @@ public class Player2LevelScript : MonoBehaviour {
             float oldSpeed = _speed;
             _speed = stopSpeed;
 
-            if (Time.time > (_oldTime + 3))
+            if (Time.time > (_oldTime + 7))
             {
                 _speed = oldSpeed / 2;
                 _stopSpeed = false;

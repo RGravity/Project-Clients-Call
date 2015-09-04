@@ -39,11 +39,11 @@ public class Bullet : MonoBehaviour {
                 Collider[] hit;
                 do
                 {
-                    position = _playerCameraP2.transform.position + _playerCameraP2.transform.forward + new Vector3(Random.Range(-2, 2), 1, 30);
+                    position = _playerCameraP2.transform.position + _playerCameraP2.transform.forward + new Vector3(0, 1, 30);
                     hit = Physics.OverlapSphere(position, otherCube.transform.localScale.x * 2);
                 }
                 while (hit.Length == 1);
-                otherCube.transform.localScale = new Vector3(1, 1, 1);
+                otherCube.transform.localScale = new Vector3(3.33f, 1, 1);
                 otherCube.transform.position = position;
                 otherCube.transform.rotation = new Quaternion(0.0f, _playerCameraP2.transform.rotation.y, 0.0f, _playerCameraP2.transform.rotation.w);
                 //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
@@ -58,11 +58,11 @@ public class Bullet : MonoBehaviour {
                 Collider[] hit;
                 do
                 {
-                    position = _playerCameraP1.transform.position + _playerCameraP1.transform.forward + new Vector3(Random.Range(-2,2), -1, 30);
+                    position = _playerCameraP1.transform.position + _playerCameraP1.transform.forward + new Vector3(0, -1, 30);
                     hit = Physics.OverlapSphere(position, otherCube.transform.localScale.x * 2);
                 }
                 while (hit.Length == 1);
-                otherCube.transform.localScale = new Vector3(1, 1, 1);
+                otherCube.transform.localScale = new Vector3(3.33f, 1, 1);
                 otherCube.transform.position = position;
                 otherCube.transform.rotation = new Quaternion(0.0f, _playerCameraP1.transform.rotation.y, 0.0f, _playerCameraP1.transform.rotation.w);
                 //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
