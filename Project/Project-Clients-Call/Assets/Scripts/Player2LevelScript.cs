@@ -50,7 +50,6 @@ public class Player2LevelScript : MonoBehaviour {
             _iteration++;
             if (_iteration >= 5)
             {
-                _speed = _originalSpeed;
                 _increaseSpeed = false;
                 _iteration = 0;
             }
