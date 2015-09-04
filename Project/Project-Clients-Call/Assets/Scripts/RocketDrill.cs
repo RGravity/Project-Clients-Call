@@ -38,7 +38,7 @@ public class RocketDrill : MonoBehaviour {
             GameObject drill = Instantiate(_rocketPrefab);
             Camera camera = GameObject.FindObjectOfType<Player2MoveScript>().GetComponentInChildren<Camera>();
             Vector3 position;
-            position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 1);
+            position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 4);
             drill.transform.position = position;
             drill.transform.parent = _planeP2.transform;
         }
@@ -49,25 +49,12 @@ public class RocketDrill : MonoBehaviour {
             GameObject drill = Instantiate(_rocketPrefab);
             Camera camera = GameObject.FindObjectOfType<Player1MoveScript>().GetComponentInChildren<Camera>();
             Vector3 position;
-            position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 1);
+            position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 4);
             drill.transform.position = position;
             drill.transform.parent = _planeP1.transform;
         }
 	
 	}
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "RocketDrill")
-        {
-            if (_rocketDrillP1)
-            {
-                //GameObject.FindObjectOfType<Player2LevelScript>().StopSpeed = true;
-            }
-            else if (_rocketDrillP2)
-            {
-                //GameObject.FindObjectOfType<Player1LevelScript>().StopSpeed = true;
-            }
-        }
-    }
+   
 }

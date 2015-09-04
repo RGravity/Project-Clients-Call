@@ -8,9 +8,15 @@ public class Player2LevelScript : MonoBehaviour {
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
     private int _iteration = 0;
+    private bool _stopSpeed = false;
+    private float _oldTime = 0;
+    private bool _finished = false;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
+
+    public bool StopSpeed { get { return _stopSpeed; } set { _stopSpeed = value; } }
     public bool IncreaseSpeed { get { return _increaseSpeed; } set { _increaseSpeed = value; } }
+    public bool Finsihed { get { return _finished; } set { _finished = value; } }
 
     // Update is called once per frame
     void Update()
@@ -21,7 +27,7 @@ public class Player2LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space))
+        if (!Input.GetKey(KeyCode.Space) || _finished == false)
         {
             _speed += 0.05f;
             _originalSpeed += 0.05f;
@@ -47,6 +53,18 @@ public class Player2LevelScript : MonoBehaviour {
                 _speed = _originalSpeed;
                 _increaseSpeed = false;
                 _iteration = 0;
+            }
+        }
+        if (_stopSpeed)
+        {
+            float stopSpeed = 0;
+            float oldSpeed = _speed;
+            _speed = stopSpeed;
+
+            if (Time.time > (_oldTime + 3))
+            {
+                _speed = oldSpeed / 2;
+                _stopSpeed = false;
             }
         }
     }

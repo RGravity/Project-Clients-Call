@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\PowerUpScriptP1.cs" />
     <Compile Include="Assets\Scripts\PowerUpScriptP2.cs" />
     <Compile Include="Assets\Scripts\RocketDrill.cs" />
+    <Compile Include="Assets\Scripts\RocketHit.cs" />
     <Compile Include="Assets\Scripts\ShootScript.cs" />
     <Compile Include="Assets\Scripts\Walls.cs" />
   </ItemGroup>
