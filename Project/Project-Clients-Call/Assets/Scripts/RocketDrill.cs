@@ -4,6 +4,7 @@ using System.Collections;
 public class RocketDrill : MonoBehaviour {
 
     private bool _rocketDrillP1 = false;
+    public GameObject _rocketPrefab;
 
     public bool RocketDrillP1
     {
@@ -16,7 +17,7 @@ public class RocketDrill : MonoBehaviour {
     public bool RocketDrillP2
     {
         get { return _rocketDrillP2; }
-        set { _rocketDrillP2 = value; }
+          set { _rocketDrillP2 = value; }
     }
     private GameObject _planeP1;
     private GameObject _planeP2;
@@ -33,7 +34,8 @@ public class RocketDrill : MonoBehaviour {
         if (_rocketDrillP1)
         {
             _rocketDrillP1 = false;
-            GameObject drill = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            //GameObject drill = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            GameObject drill = Instantiate(_rocketPrefab);
             Camera camera = GameObject.FindObjectOfType<Player2MoveScript>().GetComponentInChildren<Camera>();
             Vector3 position;
             position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 1);
@@ -43,7 +45,8 @@ public class RocketDrill : MonoBehaviour {
         if (_rocketDrillP2)
         {
             _rocketDrillP2 = false;
-            GameObject drill = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            //GameObject drill = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            GameObject drill = Instantiate(_rocketPrefab);
             Camera camera = GameObject.FindObjectOfType<Player1MoveScript>().GetComponentInChildren<Camera>();
             Vector3 position;
             position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 1);
@@ -52,4 +55,19 @@ public class RocketDrill : MonoBehaviour {
         }
 	
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "RocketDrill")
+        {
+            if (_rocketDrillP1)
+            {
+                //GameObject.FindObjectOfType<Player2LevelScript>().StopSpeed = true;
+            }
+            else if (_rocketDrillP2)
+            {
+                //GameObject.FindObjectOfType<Player1LevelScript>().StopSpeed = true;
+            }
+        }
+    }
 }

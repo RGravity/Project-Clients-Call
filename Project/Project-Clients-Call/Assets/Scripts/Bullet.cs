@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour {
         _body.velocity = new Vector3(0, 0, 50);
 
 	}
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name.Contains("Cube"))
         {
