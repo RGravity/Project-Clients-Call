@@ -4,15 +4,30 @@ using System.Collections.Generic;
 
 public class TrackBuildScript : MonoBehaviour {
 
-    private GameObject TrackBlock;
-    private List<Object> TrackBlocksList;
-    private int TrackBlocksCounter;
+    private GameObject _trackBlock;
+    private List<Object> _trackBlocksList;
+    private int _trackBlocksCounter;
+
+    private int _firstBlocksZCoords = 20;
+    private int _zCounter = 0;
+    public int FirstBlocksZCoords { get { return _firstBlocksZCoords; } }
 
 	// Use this for initialization
 	void Start () {
-        TrackBlocksCounter = 0;
-        TrackBlock = (GameObject)Resources.Load("TrackBlock/TrackBlock");
-        SpawnTrackBlock(new Vector3(0, 0, 0));
+        _trackBlocksCounter = 0;
+        _trackBlock = (GameObject)Resources.Load("TrackBlock/TrackBlock");
+        
+        //spawn the first 100 blocks far
+        for (int z = 0; z < _firstBlocksZCoords; z++)
+        {
+            //spawn the 5 blocks wide
+            for (int x = 0; x < 5; x++)
+            {
+                
+                SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 3.65f)+2));
+            }
+            _zCounter++;
+        }
 	
 	}
 	
@@ -23,10 +38,15 @@ public class TrackBuildScript : MonoBehaviour {
 
     private void SpawnTrackBlock(Vector3 pPosition)
     {
-        GameObject GO = (GameObject)Instantiate(TrackBlock, pPosition, Quaternion.identity);
+        //instantiate the actual block
+        GameObject GO = (GameObject)Instantiate(_trackBlock, pPosition, Quaternion.identity);
+        //change the parent of the block
         GO.transform.parent = this.gameObject.transform;
-        GO.name = "TrackBlock" + TrackBlocksCounter;
+        //change the name of the block + the unique number of the block
+        GO.name = "TrackBlock" + _trackBlocksCounter;
+        //rotate the block 90 degrees
         GO.transform.localEulerAngles = new Vector3(0, 90, 0);
-        TrackBlocksCounter++;
+        //increase the unique number counter
+        _trackBlocksCounter++;
     }
 }
