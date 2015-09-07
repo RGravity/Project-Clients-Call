@@ -4,12 +4,17 @@ using System.Collections;
 public class CreditScript : MonoBehaviour {
 
     private GameObject _camera;
+    private GameObject _backButton;
+    private GameObject _creditScreen;
     private bool _rotation = false;
     float degrees = 0;
     void Start()
     {
         _camera = GameObject.FindGameObjectWithTag("MainCamera");
-    }
+        _backButton = GameObject.FindGameObjectWithTag("BackButton");
+        _creditScreen = GameObject.FindGameObjectWithTag("CreditScreen");
+	}
+    
 
     // Update is called once per frame
     void Update()
@@ -20,6 +25,12 @@ public class CreditScript : MonoBehaviour {
             degrees = degrees - 1;
             _camera.transform.rotation = Quaternion.Euler(degrees, 90, 0);
 
+            if (degrees == -45)
+            {
+                _creditScreen.transform.position = new Vector3(0, 1426, 0);
+                _backButton.gameObject.transform.position = new Vector3(206, 1386, -489);
+            
+            }
 
             if (degrees <= -90)
             {

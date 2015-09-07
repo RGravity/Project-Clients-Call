@@ -22,15 +22,18 @@ public class HowToPlayScript : MonoBehaviour {
             degrees = degrees - 1;
            
             _camera.transform.rotation = Quaternion.Euler(degrees, 90, 0);
-            //_backButton.transform.position = new Vector3(1223.6f, 1489.6f, -229.8f);
-          
+
+
+            if (degrees == -45)
+            {
+                _backButton.gameObject.transform.position = new Vector3(206, 1386, -489);
             
+            }
 
             if (degrees <= -90)
             {
                 _rotation = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
-              //  _backButton.transform.position = new Vector3(213.6f, 1434, -220);
                 degrees = 0;
             }
 
