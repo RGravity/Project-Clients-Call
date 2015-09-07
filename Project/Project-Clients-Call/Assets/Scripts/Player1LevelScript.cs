@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player1LevelScript : MonoBehaviour {
 
-    private float _speed = 10f;
+    private float _speed = 1f;
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
     private int _iteration = 0;
@@ -27,8 +27,8 @@ public class Player1LevelScript : MonoBehaviour {
     {
         if (!Input.GetKey(KeyCode.Space) && _finished == false)
         {
-            _speed += 0.05f;
-            gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
+            //_speed += 0.05f;
+            //gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
         }
     }
 

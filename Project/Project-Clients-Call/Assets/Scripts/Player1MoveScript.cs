@@ -13,8 +13,8 @@ public class Player1MoveScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Vector3 moveDir = Vector3.zero;
-        moveDir.x = Input.GetAxis("Horizontal P1") * 4; // get result of AD keys in X
-        moveDir.z = Input.GetAxis("Vertical P1") * 4;
+        moveDir.x = Input.GetAxis("Horizontal P1") * 12; // get result of AD keys in X
+        moveDir.z = Input.GetAxis("Vertical P1") * 12;
         transform.position += moveDir * Time.deltaTime;
 
         if (transform.position.x > (_startPosition.x + 4f))
