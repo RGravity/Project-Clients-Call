@@ -8,7 +8,7 @@ public class TrackBuildScript : MonoBehaviour {
     private List<Object> _trackBlocksList;
     private int _trackBlocksCounter;
 
-    private int _firstBlocksZCoords = 20;
+    private int _firstBlocksZCoords = 100;
     private int _zCounter = 0;
     public int FirstBlocksZCoords { get { return _firstBlocksZCoords; } }
 
@@ -23,8 +23,9 @@ public class TrackBuildScript : MonoBehaviour {
             //spawn the 5 blocks wide
             for (int x = 0; x < 5; x++)
             {
-                
-                SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 3.65f)+2));
+
+                SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)));
+                //SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 3.65f)+2));
             }
             _zCounter++;
         }

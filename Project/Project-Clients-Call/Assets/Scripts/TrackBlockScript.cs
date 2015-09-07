@@ -35,9 +35,9 @@ public class TrackBlockScript : MonoBehaviour {
         {
             Vector3 position = this.transform.position;
             int ZBlocks = GameObject.FindObjectOfType<TrackBuildScript>().FirstBlocksZCoords;
-            _finalSpot = new Vector3(position.x, position.y, position.z + (ZBlocks * 3.65f));
-            this.transform.position = new Vector3(position.x, position.y + Random.Range(10, 30), position.z + (ZBlocks * 3.65f));
-            //this.transform.position = new Vector3(position.x, position.y, position.z + (ZBlocks * 3.65f));
+            //_finalSpot = new Vector3(position.x, position.y, position.z + (ZBlocks * 3.65f));
+            //this.transform.position = new Vector3(position.x, position.y + Random.Range(10, 30), position.z + (ZBlocks * 3.65f));
+            this.transform.position = new Vector3(position.x, position.y, position.z + (ZBlocks * 0.7f));
             _moving = true;
         }
         
