@@ -27,8 +27,8 @@ public class Player1LevelScript : MonoBehaviour {
     {
         if (!Input.GetKey(KeyCode.Space) && _finished == false)
         {
-            //_speed += 0.05f;
-            //gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
+            _speed += 0.05f;
+            gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
         }
     }
 
