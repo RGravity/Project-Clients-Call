@@ -3,13 +3,13 @@ using System.Collections;
 
 public class StartGameScript : MonoBehaviour {
 
-    private GameObject _camera;
-    private bool _rotation = false;
-    float degrees = 0;
-    void Start()
-    {
-        _camera = GameObject.FindGameObjectWithTag("MainCamera");
-    }
+//    private GameObject _camera;
+//    private bool _rotation = false;
+//   float degrees = 0;
+//    void Start()
+//    {
+//        _camera = GameObject.FindGameObjectWithTag("MainCamera");
+//    }
 
     // Update is called once per frame
     void Update()

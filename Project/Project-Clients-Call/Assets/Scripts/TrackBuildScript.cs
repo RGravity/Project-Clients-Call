@@ -49,5 +49,6 @@ public class TrackBuildScript : MonoBehaviour {
         GO.transform.localEulerAngles = new Vector3(0, 90, 0);
         //increase the unique number counter
         _trackBlocksCounter++;
+        //sync stuff
     }
 }
