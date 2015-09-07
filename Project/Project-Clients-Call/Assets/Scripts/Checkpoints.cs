@@ -27,6 +27,7 @@ public class Checkpoints : MonoBehaviour {
                 {
                     Player1LevelScript p1 = GameObject.FindObjectOfType<Player1LevelScript>();
                     p1.StopSpeed = true;
+                    p1.StopTime = Time.time;
                 }
             }
         }
@@ -38,6 +39,7 @@ public class Checkpoints : MonoBehaviour {
                 {
                     Player2LevelScript p2 = GameObject.FindObjectOfType<Player2LevelScript>();
                     p2.StopSpeed = true;
+                    p2.StopTime = Time.time;
                 }
             }
         }
