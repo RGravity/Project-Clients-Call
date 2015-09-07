@@ -13,5 +13,6 @@ public class BankingP1Script : MonoBehaviour {
         Vector3 moveRot = Vector3.zero;
         moveRot.y = -(Input.GetAxis("Horizontal P1") * 12);
         gameObject.transform.localEulerAngles = moveRot * 3;
+        //Sync stuff
 	}
 }
