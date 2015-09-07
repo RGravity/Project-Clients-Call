@@ -27,7 +27,7 @@ public class Player2LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false)
+        if (!Input.GetKey(KeyCode.Space) && _finished == false && _stopSpeed == false)
         {
             _speed += 0.05f;
             _originalSpeed += 0.05f;
