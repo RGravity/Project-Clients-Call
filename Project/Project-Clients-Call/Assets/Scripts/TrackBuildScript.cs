@@ -5,11 +5,9 @@ using System.Collections.Generic;
 public class TrackBuildScript : MonoBehaviour {
 
     private GameObject _trackBlock;
-    private List<Object> _trackBlocksList;
     private int _trackBlocksCounter;
 
-    private int _firstBlocks = 20;
-    private int _zCounter = 0;
+    private int _firstBlocks = 50;
     public int FirstBlocks { get { return _firstBlocks; } }
 
 	// Use this for initialization
@@ -27,7 +25,6 @@ public class TrackBuildScript : MonoBehaviour {
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)));
                 //SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 3.65f)+2));
             }
-            _zCounter++;
         }
 	
 	}
