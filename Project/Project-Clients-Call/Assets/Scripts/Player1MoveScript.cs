@@ -9,7 +9,6 @@ public class Player1MoveScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _startPosition = transform.position;
-        _startCamera = transform.GetChild(1).localPosition;
 	}
 	
 	// Update is called once per frame
@@ -18,7 +17,6 @@ public class Player1MoveScript : MonoBehaviour {
         moveDir.x = Input.GetAxis("Horizontal P1") * 12; // get result of AD keys in X
         moveDir.z = Input.GetAxis("Vertical P1") * 12;
         transform.position += moveDir * Time.deltaTime;
-        transform.GetChild(1).localPosition = _startCamera + new Vector3(0, 0, GameObject.FindObjectOfType<Player1LevelScript>().Speed * .02f);
 
         if (transform.position.x > (_startPosition.x + 4f))
         {
