@@ -38,7 +38,7 @@ public class TrackBlockScript : MonoBehaviour {
             Vector3 LocalPosition = this.transform.localPosition;
             Vector3 GlobalPosition = this.transform.position;
 
-            int ZBlocks = 50;//GameObject.FindObjectOfType<TrackBuildScript>().FirstBlocks;
+            int ZBlocks = GameObject.FindObjectOfType<TrackBuildScript>().FirstBlocks;
 
             //Final LOCAL position
             _localFinalSpot = new Vector3(LocalPosition.x, LocalPosition.y, LocalPosition.z + (ZBlocks * 0.7f));
