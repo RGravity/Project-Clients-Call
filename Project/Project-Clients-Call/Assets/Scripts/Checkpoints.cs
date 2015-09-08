@@ -26,7 +26,8 @@ public class Checkpoints : MonoBehaviour {
                 if (this.gameObject.name == checkpoint.gameObject.name)
                 {
                     Player1LevelScript p1 = GameObject.FindObjectOfType<Player1LevelScript>();
-                    this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    this.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    this.gameObject.GetComponent<MeshRenderer>().enabled = false;
                     p1.StopSpeed = true;
                     p1.StopTime = Time.time;
                 }
@@ -39,7 +40,8 @@ public class Checkpoints : MonoBehaviour {
                 if (this.gameObject.name == checkpoint.gameObject.name)
                 {
                     Player2LevelScript p2 = GameObject.FindObjectOfType<Player2LevelScript>();
-                    this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                    this.gameObject.GetComponent<BoxCollider>().enabled = false;
+                    this.gameObject.GetComponent<MeshRenderer>().enabled = false;
                     p2.StopSpeed = true;
                     p2.StopTime = Time.time;
                 }
