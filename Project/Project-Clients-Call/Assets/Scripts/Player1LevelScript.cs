@@ -43,7 +43,12 @@ public class Player1LevelScript : MonoBehaviour {
         {
             float slowDown = _speed - 10;
             _speed = _speed - (slowDown/2);
-            _slowSpeed = false;
+            _iteration++;
+            if (_iteration >= 5)
+            {
+                _slowSpeed = false;
+                _iteration = 0;
+            }
         }
         if (_increaseSpeed)
         {
