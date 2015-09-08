@@ -6,6 +6,7 @@ public class TrackBlockScript : MonoBehaviour {
     private bool _moving = false;
     private Vector3 _localFinalSpot;
     private Vector3 _globalFinalSpot;
+    private int _wallOverlapCounter = 0;
 
 
 	// Use this for initialization
@@ -54,6 +55,20 @@ public class TrackBlockScript : MonoBehaviour {
             // ----- Set next position directly -----
             //this.transform.position = new Vector3(position.x, position.y, position.z + (ZBlocks * 0.7f));
 
+            if (LocalPosition.z % ZBlocks == 0)
+            {
+                _wallOverlapCounter++;
+                if (_wallOverlapCounter % 5 == 0)
+                {
+                    Vector3 PositionWall = new Vector3((Random.Range(0, 4) * 2), LocalPosition.y + 1.27f, LocalPosition.z + (ZBlocks * 0.7f) - 0.19f);
+
+                    GameObject.FindObjectOfType<TrackBuildScript>().SpawnWall(PositionWall);
+                }
+
+                
+
+                
+            }
             
         }
         
