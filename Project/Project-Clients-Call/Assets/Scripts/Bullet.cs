@@ -64,7 +64,7 @@ public class Bullet : MonoBehaviour {
                 do
                 {
                     //position = _playerCameraP1.transform.position + _playerCameraP1.transform.forward + new Vector3(0, -1, 30);
-                    position = new Vector3(_pointBlock.transform.position.x + spawnPoints[Random.Range(0, spawnPoints.Count)], _planeP2.transform.position.y-1, _playerCameraP2.transform.forward.z + 30);
+                    position = new Vector3(_pointBlock.transform.position.x + spawnPoints[Random.Range(0, spawnPoints.Count)], _planeP2.transform.position.y+0.6f, _playerCameraP2.transform.forward.z + 30);
                     hit = Physics.OverlapSphere(position, otherCube.transform.localScale.x * 2);
                 }
                 while (hit.Length == 1);

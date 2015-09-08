@@ -11,12 +11,17 @@ public class Player2LevelScript : MonoBehaviour {
     private bool _stopSpeed = false;
     private float _oldTime = 0;
     private bool _finished = false;
+    private float _stopTime = 0;
+    private bool _stopDrill = false;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
 
     public bool StopSpeed { get { return _stopSpeed; } set { _stopSpeed = value; } }
+    public float StopTime { get { return _stopTime; } set { _stopTime = value; } }
+    public bool StopDrill { get { return _stopDrill; } set { _stopDrill = value; } }
     public bool IncreaseSpeed { get { return _increaseSpeed; } set { _increaseSpeed = value; } }
     public bool Finsihed { get { return _finished; } set { _finished = value; } }
+    public float Speed { get { return _speed; } }
 
     // Update is called once per frame
     void Update()
@@ -27,7 +32,7 @@ public class Player2LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false)
+        if (!Input.GetKey(KeyCode.Space) && _finished == false && _stopSpeed == false)
         {
             _speed += 0.05f;
             _originalSpeed += 0.05f;
@@ -60,10 +65,38 @@ public class Player2LevelScript : MonoBehaviour {
             float oldSpeed = _speed;
             _speed = stopSpeed;
 
-            if (Time.time > (_oldTime + 7))
+            if (Time.time > (_stopTime + 7))
             {
+                _oldTime = Time.time;
                 _speed = oldSpeed / 2;
                 _stopSpeed = false;
+            }
+        }
+
+        if (_stopSpeed)
+        {
+            float stopSpeed = 0;
+            float oldSpeed = _speed;
+            _speed = stopSpeed;
+
+            if (Time.time > (_stopTime + 7))
+            {
+                _oldTime = Time.time;
+                _speed = oldSpeed / 2;
+                _stopSpeed = false;
+            }
+        }
+        if (_stopDrill)
+        {
+            float stopDrill = 0;
+            float oldSpeed = _speed;
+            _speed = stopDrill;
+
+            if (Time.time > (_stopTime + 3))
+            {
+                _oldTime = Time.time;
+                _speed = oldSpeed / 2;
+                _stopDrill = false;
             }
         }
     }

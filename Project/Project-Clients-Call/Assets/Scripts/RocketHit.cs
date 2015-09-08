@@ -26,7 +26,8 @@ public class RocketHit : MonoBehaviour {
             if (Time.time > (_oldTime + 1.5f) && _isPlayer1 == true)
             {
                 _oldTime = Time.time;
-                GameObject.FindObjectOfType<Player1LevelScript>().StopSpeed = true;
+                GameObject.FindObjectOfType<Player1LevelScript>().StopDrill = true;
+                GameObject.FindObjectOfType<Player1LevelScript>().StopTime = Time.time;
                 _isPlayer1 = false;
                 _hitted = false;
                 _timerSet = false;
@@ -36,7 +37,8 @@ public class RocketHit : MonoBehaviour {
             {
                 _oldTime = Time.time;
                 _isPlayer1 = false;
-                GameObject.FindObjectOfType<Player2LevelScript>().StopSpeed = true;
+                GameObject.FindObjectOfType<Player2LevelScript>().StopDrill = true;
+                GameObject.FindObjectOfType<Player2LevelScript>().StopTime = Time.time;
                 _hitted = false;
                 _timerSet = false;
                 Destroy(this.gameObject);
