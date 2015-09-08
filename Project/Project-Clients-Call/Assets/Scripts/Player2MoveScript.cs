@@ -4,11 +4,13 @@ using System.Collections;
 public class Player2MoveScript : MonoBehaviour {
 
     private Vector3 _startPosition;
+    private Animator _animator;
 
 
 	// Use this for initialization
 	void Start () {
         _startPosition = transform.position;
+        _animator = this.GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame

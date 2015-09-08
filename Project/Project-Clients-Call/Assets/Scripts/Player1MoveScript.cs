@@ -5,10 +5,12 @@ public class Player1MoveScript : MonoBehaviour {
 
     private Vector3 _startPosition;
     private Vector3 _startCamera;
+    private Animator _animator;
 
 	// Use this for initialization
 	void Start () {
         _startPosition = transform.position;
+        _animator = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -50,5 +52,11 @@ public class Player1MoveScript : MonoBehaviour {
             newPos.z = _startPosition.z - 4f;
             transform.position = newPos;
         }
+        Animation();
 	}
+
+    void Animation()
+    {
+
+    }
 }
