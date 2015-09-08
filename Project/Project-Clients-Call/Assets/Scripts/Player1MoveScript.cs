@@ -57,6 +57,42 @@ public class Player1MoveScript : MonoBehaviour {
 
     void Animation()
     {
+        if (Input.GetAxis("Vertical P1") > 0)
+        {
+            if (GameObject.FindObjectOfType<Player1LevelScript>().Speed == 0)
+            {
+                _animator.Play("idle");
+            }
+            else if (transform.position.z > (_startPosition.z + 3.9f))
+            {
+                _animator.Play("speed 1 L");
+            }
+            else
+            {
+                _animator.Play("speed 1 S");
+            }
+        }
+        if (GameObject.FindObjectOfType<Player1LevelScript>().Speed == 0)
+        {
+            _animator.Play("idle");
+        }
+        else if (Input.GetAxis("Vertical P1") == 0)
+        {
+            _animator.Play("speed 1 L");
 
+        }
+        else if (Input.GetAxis("Vertical P1") < 0)
+        {
+            Debug.Log(transform.position.z);
+            _animator.Play("stop");
+            if (_startPosition.z < -3.9f)
+            {
+                _animator.Play("stop");
+            }
+            else if (transform.position.z < (_startPosition.z - 4.0f))
+            {
+                _animator.Play("speed 1 L");
+            }
+        }
     }
 }
