@@ -3,9 +3,11 @@ using System.Collections;
 
 public class BankingP2Script : MonoBehaviour {
 
+    Vector3 CameraPosition;
+
 	// Use this for initialization
 	void Start () {
-	
+        CameraPosition = GameObject.Find("P2 Camera").GetComponent<Camera>().transform.localEulerAngles;
 	}
 	
 	// Update is called once per frame
@@ -13,6 +15,8 @@ public class BankingP2Script : MonoBehaviour {
         Vector3 moveRot = Vector3.zero;
         moveRot.y = -(Input.GetAxis("Horizontal P2") * 12);
         gameObject.transform.localEulerAngles = moveRot * 3;
+
+        GameObject.Find("P2 Camera").GetComponent<Camera>().transform.localEulerAngles = CameraPosition + moveRot;
         //Sync stuff
 	}
 }
