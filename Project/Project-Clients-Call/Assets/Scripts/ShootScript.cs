@@ -23,7 +23,6 @@ public class ShootScript : MonoBehaviour {
             bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, 1.3f);
             _bullet = Instantiate(bulletPrefab).GetComponent<Transform>();
             _bullet.GetComponent<Bullet>().Player(false);
-
         }
 	}
 }
