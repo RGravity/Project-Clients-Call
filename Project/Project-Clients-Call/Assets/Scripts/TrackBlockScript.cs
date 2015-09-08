@@ -16,13 +16,13 @@ public class TrackBlockScript : MonoBehaviour {
 	void Update () {
         if (_moving)
         {
-            Vector3 Distance = this.transform.position - _finalSpot;
+            Vector3 Distance = this.transform.localPosition - _finalSpot;
             Distance.Normalize();
             this.transform.position -= (Distance * Time.deltaTime);
             if (Distance.magnitude < 1)
             {
                 _moving = false;
-                this.transform.position = _finalSpot;
+                this.transform.localPosition = _finalSpot;
             }
         }
         
@@ -33,13 +33,12 @@ public class TrackBlockScript : MonoBehaviour {
     {
         if (!_moving)
         {
-            Vector3 position = this.transform.position;
-            int ZBlocks = GameObject.FindObjectOfType<TrackBuildScript>().FirstBlocksZCoords;
-            _finalSpot = new Vector3(position.x, position.y, position.z + (ZBlocks * 3.65f));
+            Vector3 position = this.transform.localPosition;
+            int ZBlocks = GameObject.FindObjectOfType<TrackBuildScript>().FirstBlocks;
+            _finalSpot = new Vector3(position.x, position.y, position.z + (ZBlocks * 0.7f));
             this.transform.position = new Vector3(position.x, position.y + Random.Range(10, 30), position.z + (ZBlocks * 0.7f));
             //this.transform.position = new Vector3(position.x, position.y, position.z + (ZBlocks * 0.7f));
             _moving = true;
-            //sync stuff
         }
         
     }

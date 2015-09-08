@@ -8,9 +8,9 @@ public class TrackBuildScript : MonoBehaviour {
     private List<Object> _trackBlocksList;
     private int _trackBlocksCounter;
 
-    private int _firstBlocksZCoords = 100;
+    private int _firstBlocks = 20;
     private int _zCounter = 0;
-    public int FirstBlocksZCoords { get { return _firstBlocksZCoords; } }
+    public int FirstBlocks { get { return _firstBlocks; } }
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,7 @@ public class TrackBuildScript : MonoBehaviour {
         _trackBlock = (GameObject)Resources.Load("TrackBlock/TrackBlock");
         
         //spawn the first 100 blocks far
-        for (int z = 0; z < _firstBlocksZCoords; z++)
+        for (int z = 0; z < _firstBlocks; z++)
         {
             //spawn the 5 blocks wide
             for (int x = 0; x < 5; x++)
