@@ -34,11 +34,13 @@ public class Bullet : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("Cube"))
+        if (other.gameObject.name.Contains("TrackWall"))
         {
             if (_isPlayer1)
             {
                 GameObject otherCube = Instantiate(other.gameObject);
+                Vector3 oldScale = other.gameObject.transform.localScale;
+                Vector3 hitScale = other.GetComponent<BoxCollider>().size;
                 Vector3 position;
                 Collider[] hit;
                 do
