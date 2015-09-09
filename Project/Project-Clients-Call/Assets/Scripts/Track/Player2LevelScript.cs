@@ -70,7 +70,7 @@ public class Player2LevelScript : MonoBehaviour {
             float oldSpeed = _speed;
             _speed = stopSpeed;
 
-            if (Time.time > (_stopTime + 7))
+            if (Time.time > (_stopTime + 3))
             {
                 _oldTime = Time.time;
                 _speed = oldSpeed / 2;

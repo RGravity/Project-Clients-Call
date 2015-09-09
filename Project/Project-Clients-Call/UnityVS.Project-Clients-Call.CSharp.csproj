@@ -96,10 +96,10 @@
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\ShootScript.cs" />
     <Compile Include="Assets\Scripts\Track\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\Track\CollisionScript.cs" />
+    <Compile Include="Assets\Scripts\Track\Player1LevelScript.cs" />
     <Compile Include="Assets\Scripts\Track\Player2LevelScript.cs" />
     <Compile Include="Assets\Scripts\Track\TrackBlockScript.cs" />
     <Compile Include="Assets\Scripts\Track\TrackBuildScript.cs" />
-    <Compile Include="Assets\Scripts\TutorialScript\Player1LevelScript.cs" />
     <Compile Include="Assets\Scripts\TutorialScript\TutorialScript.cs" />
   </ItemGroup>
   <ItemGroup>
