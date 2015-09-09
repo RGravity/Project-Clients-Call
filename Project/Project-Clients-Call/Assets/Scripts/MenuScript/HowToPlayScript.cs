@@ -6,7 +6,7 @@ public class HowToPlayScript : MonoBehaviour {
     private GameObject _camera;
     private GameObject _backButton;
     private bool _rotation = false;
-    float degrees = 0;
+    private float _degrees = 0;
     void Start()
     {
         _camera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -19,22 +19,21 @@ public class HowToPlayScript : MonoBehaviour {
         if (_rotation == true)
         {
 
-            degrees = degrees - 1;
+            _degrees = _degrees - 1;
            
-            _camera.transform.rotation = Quaternion.Euler(degrees, 90, 0);
+            _camera.transform.rotation = Quaternion.Euler(_degrees, 90, 0);
 
 
-            if (degrees == -45)
+            if (_degrees == -45)
             {
-                _backButton.gameObject.transform.position = new Vector3(206, 1386, -489);
-            
+                _backButton.transform.position = new Vector3(206, 1386, -489);
             }
 
-            if (degrees <= -90)
+            if (_degrees <= -90)
             {
                 _rotation = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
-                degrees = 0;
+                _degrees = 0;
             }
 
         }
