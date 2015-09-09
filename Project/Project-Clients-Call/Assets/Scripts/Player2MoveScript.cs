@@ -17,7 +17,7 @@ public class Player2MoveScript : MonoBehaviour {
 	void Update () {
         Vector3 moveDir = Vector3.zero;
         moveDir.x = Input.GetAxis("Horizontal P2") * 12; // get result of AD keys in X
-        moveDir.z = Input.GetAxis("Vertical P2") * 12; // get result of WS keys in Z
+        moveDir.z = -Input.GetAxis("Vertical P2") * 12; // get result of WS keys in Z
         transform.position -= moveDir * Time.deltaTime;
 
         if (transform.position.x > (_startPosition.x + 4f))
