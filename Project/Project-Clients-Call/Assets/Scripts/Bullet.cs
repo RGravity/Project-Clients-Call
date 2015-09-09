@@ -34,13 +34,15 @@ public class Bullet : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("TrackWall"))
+        if (other.gameObject.name.Contains("Cube") || other.gameObject.name.Contains("TrackWall"))
         {
             if (_isPlayer1)
             {
                 GameObject otherCube = Instantiate(other.gameObject);
-                Vector3 oldScale = other.gameObject.transform.localScale;
-                Vector3 hitScale = other.GetComponent<BoxCollider>().size;
+                //Vector3 oldScale = other.gameObject.transform.localScale;
+                //Vector3 hitScale = other.GetComponent<BoxCollider>().size;
+                //otherCube.GetComponent<BoxCollider>().size = hitScale;
+                //otherCube.gameObject.transform.localScale = oldScale;
                 Vector3 position;
                 Collider[] hit;
                 do
@@ -50,7 +52,7 @@ public class Bullet : MonoBehaviour {
                     hit = Physics.OverlapSphere(position, otherCube.transform.localScale.x * 2);
                 }
                 while (hit.Length == 1);
-                otherCube.transform.localScale = new Vector3(2, 1, 1);
+                //otherCube.transform.localScale = new Vector3(2, 1, 1);
                 otherCube.transform.position = position;
                 otherCube.transform.rotation = new Quaternion(0.0f, _playerCameraP2.transform.rotation.y, 0.0f, _playerCameraP2.transform.rotation.w);
                 //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
@@ -61,6 +63,8 @@ public class Bullet : MonoBehaviour {
             else if (_isPlayer1 == false)
             {
                 GameObject otherCube = Instantiate(other.gameObject);
+                Vector3 oldScale = other.gameObject.transform.localScale;
+                Vector3 hitScale = other.GetComponent<BoxCollider>().size;
                 Vector3 position;
                 Collider[] hit;
                 do
