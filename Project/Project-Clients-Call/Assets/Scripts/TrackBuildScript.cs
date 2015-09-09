@@ -8,6 +8,7 @@ public class TrackBuildScript : MonoBehaviour {
     private GameObject _trackWall;
     private int _trackBlocksCounter;
     private int _trackWallsCounter;
+    private int _wallCounter;
 
     private int _firstBlocks = 50;
     public int FirstBlocks { get { return _firstBlocks; } }
@@ -54,16 +55,22 @@ public class TrackBuildScript : MonoBehaviour {
 
     public void SpawnWall(Vector3 pPosition)
     {
-        //instantiate the actual block
-        GameObject GO = (GameObject)Instantiate(_trackWall, pPosition, Quaternion.identity);
-        //change the parent of the block
-        GO.transform.parent = this.gameObject.transform;
-        //change the name of the block + the unique number of the block
-        GO.name = "Wall" + _trackWallsCounter;
-        //rotate the block 90 degrees
-        GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+        _wallCounter++;
+        if (_wallCounter % 5 == 0 )
+        {
+            
+            //instantiate the actual block
+            GameObject GO = (GameObject)Instantiate(_trackWall, pPosition, Quaternion.identity);
+            //change the parent of the block
+            GO.transform.parent = this.gameObject.transform;
+            //change the name of the block + the unique number of the block
+            GO.name = "Wall" + _trackWallsCounter;
+            //rotate the block 90 degrees
+            GO.transform.localEulerAngles = new Vector3(0, 90, 0);
 
-        //increase the unique number counter
-        _trackWallsCounter++;
+            //increase the unique number counter
+            _trackWallsCounter++;
+        }
+        
     }
 }
