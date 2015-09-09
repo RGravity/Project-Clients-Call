@@ -13,6 +13,7 @@ public class Skybox : MonoBehaviour {
     {
         rend = GetComponent<Renderer>();
         textures = Resources.LoadAll("Background") as Texture[];
+        Debug.Log(textures.Length);
     }
 
     void Update()
