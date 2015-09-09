@@ -5,23 +5,27 @@ public class TutorialScript : MonoBehaviour {
 
     private GameObject _tutorialTextOne;
     private GameObject _tutorialTextTwo;
-    private GameObject _tutorialTextThree;
-    private GameObject _tutorialTextFour;
-    private GameObject _tutorialTextFive;
+    private Player1LevelScript _p1 = GameObject.FindObjectOfType<Player1LevelScript>();
 
 	// Use this for initialization
 	void Start () 
     {
         _tutorialTextOne = GameObject.FindGameObjectWithTag("TutorialOne");
-
+        _tutorialTextTwo = GameObject.FindGameObjectWithTag("TutorialTwo");
+        _p1 = GameObject.FindObjectOfType<Player1LevelScript>();
 	}
 	
 	// Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == _tutorialTextOne.GetComponent<Rigidbody> ())
+        if (other.gameObject == _tutorialTextOne)
         {
-            Debug.Log(true);
+            _p1.StopSpeed = true;
+        }
+
+        if (other.gameObject == _tutorialTextTwo)
+        {
+            _p1.StopSpeed = true;
         }
     }
 }
