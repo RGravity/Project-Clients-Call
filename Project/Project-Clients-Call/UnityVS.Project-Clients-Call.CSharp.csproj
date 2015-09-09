@@ -102,6 +102,7 @@
     <Compile Include="Assets\Scripts\Skybox.cs" />
     <Compile Include="Assets\Scripts\TrackBlockScript.cs" />
     <Compile Include="Assets\Scripts\TrackBuildScript.cs" />
+    <Compile Include="Assets\Scripts\TutorialScript\TutorialScript.cs" />
     <Compile Include="Assets\Scripts\Walls.cs" />
   </ItemGroup>
   <ItemGroup>
