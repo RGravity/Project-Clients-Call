@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Skybox : MonoBehaviour {
     
-    public Texture[] textures;
+    public Texture2D[] textures;
     public Renderer rend;
     int index = 0;
     Vector3 rotation;
@@ -12,7 +12,6 @@ public class Skybox : MonoBehaviour {
     void Start()
     {
         rend = GetComponent<Renderer>();
-        textures = Resources.LoadAll("Background") as Texture[];
         Debug.Log(textures.Length);
     }
 
