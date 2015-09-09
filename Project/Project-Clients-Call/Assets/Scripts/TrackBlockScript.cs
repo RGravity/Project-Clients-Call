@@ -4,7 +4,9 @@ using System.Collections;
 public class TrackBlockScript : MonoBehaviour {
 
     private bool _moving = false;
-    private Vector3 _finalSpot;
+    private Vector3 _localFinalSpot;
+    private Vector3 _globalFinalSpot;
+    private int _wallOverlapCounter = 0;
 
 
 	// Use this for initialization
@@ -16,13 +18,14 @@ public class TrackBlockScript : MonoBehaviour {
 	void Update () {
         if (_moving)
         {
-            Vector3 Distance = this.transform.position - _finalSpot;
-            Distance.Normalize();
-            this.transform.position -= (Distance * Time.deltaTime);
+            Vector3 Distance = this.transform.position - _globalFinalSpot;
+            Vector3 NormalizedDistance = Distance;
+            NormalizedDistance.Normalize();
+            this.transform.position -= (NormalizedDistance * 2);
             if (Distance.magnitude < 1)
             {
                 _moving = false;
-                this.transform.position = _finalSpot;
+                this.transform.localPosition = _localFinalSpot;
             }
         }
         
@@ -33,13 +36,40 @@ public class TrackBlockScript : MonoBehaviour {
     {
         if (!_moving)
         {
-            Vector3 position = this.transform.position;
-            int ZBlocks = GameObject.FindObjectOfType<TrackBuildScript>().FirstBlocksZCoords;
-            _finalSpot = new Vector3(position.x, position.y, position.z + (ZBlocks * 3.65f));
-            this.transform.position = new Vector3(position.x, position.y + Random.Range(10, 30), position.z + (ZBlocks * 0.7f));
-            //this.transform.position = new Vector3(position.x, position.y, position.z + (ZBlocks * 0.7f));
+            Vector3 LocalPosition = this.transform.localPosition;
+            Vector3 GlobalPosition = this.transform.position;
+
+            int ZBlocks = GameObject.FindObjectOfType<TrackBuildScript>().FirstBlocks;
+
+            //Final LOCAL position
+            _localFinalSpot = new Vector3(LocalPosition.x, LocalPosition.y, LocalPosition.z + (ZBlocks * 0.7f));
+
+            //Final GLOBAL position
+            _globalFinalSpot = new Vector3(GlobalPosition.x, GlobalPosition.y, GlobalPosition.z + (ZBlocks * 0.7f));
+
+            //set next position in the air
+            this.transform.position = new Vector3(GlobalPosition.x + Random.Range(-30, 30), GlobalPosition.y + Random.Range(-30, 30), GlobalPosition.z + (ZBlocks * 0.7f));
+
             _moving = true;
-            //sync stuff
+
+            // ----- Set next position directly -----
+            //this.transform.position = new Vector3(position.x, position.y, position.z + (ZBlocks * 0.7f));
+
+            if (LocalPosition.z % ZBlocks == 0)
+            {
+                _wallOverlapCounter++;
+                if (_wallOverlapCounter % 5 == 0)
+                {
+                    Vector3 PositionWall = new Vector3((Random.Range(0, 4) * 2), LocalPosition.y + 1.27f, LocalPosition.z + (ZBlocks * 0.7f) - 0.19f);
+
+                    GameObject.FindObjectOfType<TrackBuildScript>().SpawnWall(PositionWall);
+                }
+
+                
+
+                
+            }
+            
         }
         
     }
