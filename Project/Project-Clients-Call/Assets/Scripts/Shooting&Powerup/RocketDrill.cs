@@ -38,7 +38,7 @@ public class RocketDrill : MonoBehaviour {
             GameObject drill = Instantiate(_rocketPrefab);
             Camera camera = GameObject.FindObjectOfType<Player2MoveScript>().GetComponentInChildren<Camera>();
             Vector3 position;
-            position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 4);
+            position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 2);
             drill.transform.position = position;
             drill.transform.parent = _planeP2.transform;
         }
@@ -49,7 +49,7 @@ public class RocketDrill : MonoBehaviour {
             GameObject drill = Instantiate(_rocketPrefab);
             Camera camera = GameObject.FindObjectOfType<Player1MoveScript>().GetComponentInChildren<Camera>();
             Vector3 position;
-            position = camera.transform.position + camera.transform.forward + new Vector3(0, -1, 4);
+            position = camera.transform.position + camera.transform.forward + new Vector3(0, -1, 2);
             drill.transform.position = position;
             drill.transform.parent = _planeP1.transform;
         }
