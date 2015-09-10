@@ -4,17 +4,31 @@ using System.Collections.Generic;
 
 public class TrackBuildScript : MonoBehaviour {
 
+    /*
+     * 0 - straight     - 1  blocks long
+     * 1 - curve right  - 20 blocks long
+     * 2 - curve left   - 20 blocks long
+     * 3 - slope up     - 10 blocks long
+     * 4 - slope down   - 10 blocks long
+     * 
+     * after these numbers is the x-position located where these begin
+     */
+
+    private List<string> _trackList = new List<string>() { "00", "350", "060", "4100", "0110" };
+
     private GameObject _trackBlock;
     private GameObject _trackWall;
     private int _trackBlocksCounter;
     private int _trackWallsCounter;
     private int _wallCounter;
 
+    [SerializeField]
     private int _firstBlocks = 50;
     public int FirstBlocks { get { return _firstBlocks; } }
 
 	// Use this for initialization
 	void Start () {
+
         _trackBlocksCounter = 0;
         _trackWallsCounter = 0;
         _trackBlock = (GameObject)Resources.Load("TrackBlock/TrackBlock");
@@ -49,6 +63,9 @@ public class TrackBuildScript : MonoBehaviour {
         GO.name = "TrackBlock" + _trackBlocksCounter;
         //rotate the block 90 degrees
         GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+        //set variables to the script of the block
+        GO.GetComponent<TrackBlockScript>().TrackList = _trackList;
+        GO.GetComponent<TrackBlockScript>().ZBlocks = _firstBlocks;
         //increase the unique number counter
         _trackBlocksCounter++;
     }
@@ -71,6 +88,5 @@ public class TrackBuildScript : MonoBehaviour {
             //increase the unique number counter
             _trackWallsCounter++;
         }
-        
     }
 }
