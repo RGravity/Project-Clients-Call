@@ -12,7 +12,6 @@ public class Skybox : MonoBehaviour {
     void Start()
     {
         rend = GetComponent<Renderer>();
-        Debug.Log(textures.Length);
     }
 
     void Update()

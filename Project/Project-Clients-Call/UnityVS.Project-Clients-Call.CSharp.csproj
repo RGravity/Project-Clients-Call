@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Movement\Player1MoveScript.cs" />
     <Compile Include="Assets\Scripts\Movement\Player2MoveScript.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Shooting&amp;Powerup\CoinScript.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\DrillScript.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\InvulnerableScript.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PowerUpScriptP1.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\Scripts\Track\CollisionScript.cs" />
     <Compile Include="Assets\Scripts\Track\Player1LevelScript.cs" />
     <Compile Include="Assets\Scripts\Track\Player2LevelScript.cs" />
+    <Compile Include="Assets\Scripts\Track\ScoreScript.cs" />
     <Compile Include="Assets\Scripts\Track\TrackBlockScript.cs" />
     <Compile Include="Assets\Scripts\Track\TrackBuildScript.cs" />
     <Compile Include="Assets\Scripts\TutorialScript\TutorialScript.cs" />
