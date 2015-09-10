@@ -7,6 +7,8 @@ public class ScoreScript : MonoBehaviour {
     {
         None,
         Coin,
+        Wall,
+        Checkpoint,
     }
     private int _p1Score = 0;
     private int _p2Score = 0;
@@ -39,21 +41,44 @@ public class ScoreScript : MonoBehaviour {
                 _p1Score += 50;
                 _p1ScoreType = ScoreType.None;
                 break;
+            case ScoreType.Wall:
+                _p1Score -= 100;
+                _p1ScoreType = ScoreType.None;
+                break;
+            case ScoreType.Checkpoint:
+                _p1Score += 200;
+                _p1ScoreType = ScoreType.None;
+                break;
+        }
+        if (_p1Score < 0)
+        {
+            _p1Score = 0;
         }
         switch (_p2ScoreType)
         {
             case ScoreType.None:
                 break;
             case ScoreType.Coin:
-                _p2Score += 50;
+                _p2Score += 250;
                 _p2ScoreType = ScoreType.None;
                 break;
+            case ScoreType.Wall:
+                _p2Score -= 300;
+                _p2ScoreType = ScoreType.None;
+                break;
+            case ScoreType.Checkpoint:
+                _p2Score += 200;
+                _p2ScoreType = ScoreType.None;
+                break;
+        }
+        if (_p2Score < 0)
+        {
+            _p2Score = 0;
         }
     }
 
     private void NormalScoring()
     {
         _p1Score += (int)GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6;
-        Debug.Log(_p1Score);
     }
 }

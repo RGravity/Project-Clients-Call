@@ -25,6 +25,7 @@ public class Checkpoints : MonoBehaviour
     {
         if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().gameObject.name)
         {
+            GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Checkpoint;
             foreach (Checkpoints checkpoint in checkpoints)
             {
                 if (this.gameObject.name == checkpoint.gameObject.name)
@@ -56,6 +57,7 @@ public class Checkpoints : MonoBehaviour
         }
         if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().gameObject.name)
         {
+            GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Checkpoint;
             foreach (Checkpoints checkpoint in checkpoints)
             {
                 if (this.gameObject.name == checkpoint.gameObject.name)
