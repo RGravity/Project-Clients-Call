@@ -25,10 +25,11 @@ public class ScoreScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        IncreaseScore();
+        ExternalScoring();
+        NormalScoring();
 	}
 
-    private void IncreaseScore()
+    private void ExternalScoring()
     {
         switch (_p1ScoreType)
         {
@@ -49,5 +50,10 @@ public class ScoreScript : MonoBehaviour {
                 _p2ScoreType = ScoreType.None;
                 break;
         }
+    }
+
+    private void NormalScoring()
+    {
+
     }
 }
