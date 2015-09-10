@@ -38,7 +38,6 @@ public class ScoreScript : MonoBehaviour {
             case ScoreType.Coin:
                 _p1Score += 50;
                 _p1ScoreType = ScoreType.None;
-                Debug.Log(_p1Score);
                 break;
         }
         switch (_p2ScoreType)
@@ -54,6 +53,7 @@ public class ScoreScript : MonoBehaviour {
 
     private void NormalScoring()
     {
-
+        _p1Score += (int)GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6;
+        Debug.Log(_p1Score);
     }
 }
