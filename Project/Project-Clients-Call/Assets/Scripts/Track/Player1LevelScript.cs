@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 public class Player1LevelScript : MonoBehaviour {
 
@@ -20,6 +23,7 @@ public class Player1LevelScript : MonoBehaviour {
     public bool IncreaseSpeed { get { return _increaseSpeed; } set { _increaseSpeed = value; } }
     public bool Finsihed { get { return _finished; } set { _finished = value; } }
     public float Speed { get { return _speed; } }
+
 
     // Update is called once per frame
     void Update()
@@ -63,16 +67,24 @@ public class Player1LevelScript : MonoBehaviour {
         }
         if (_stopSpeed)
         {
-            float stopSpeed = 0;
-            float oldSpeed = _speed;
-            _speed = stopSpeed;
-
-            if (Time.time > (_stopTime + 3))
+            float slowDown = _speed - 1;
+            _speed = _speed - (slowDown / 2);
+            _iteration++;
+            if (_iteration >= 10)
             {
-                _oldTime = Time.time;
-                _speed = oldSpeed / 2;
                 _stopSpeed = false;
+                _iteration = 0;
             }
+            //float stopSpeed = 0;
+            //float oldSpeed = _speed;
+            //_speed = stopSpeed;
+
+            //if (Time.time > (_stopTime + 3))
+            //{
+            //    _oldTime = Time.time;
+            //    _speed = oldSpeed / 2;
+            //    _stopSpeed = false;
+            //}
         }
         if (_stopDrill)
         {

@@ -66,16 +66,26 @@ public class Player2LevelScript : MonoBehaviour {
         }
         if (_stopSpeed)
         {
-            float stopSpeed = 0;
-            float oldSpeed = _speed;
-            _speed = stopSpeed;
+            //float stopSpeed = 0;
+            //float oldSpeed = _speed;
+            //_speed = stopSpeed;
 
-            if (Time.time > (_stopTime + 3))
+            //if (Time.time > (_stopTime + 3))
+            //{
+            //    _oldTime = Time.time;
+            //    _speed = oldSpeed / 2;
+            //    _stopSpeed = false;
+            //}
+
+            float slowDown = _speed - 1;
+            _speed = _speed - (slowDown / 2);
+            _iteration++;
+            if (_iteration >= 10)
             {
-                _oldTime = Time.time;
-                _speed = oldSpeed / 2;
                 _stopSpeed = false;
+                _iteration = 0;
             }
+
         }
         if (_stopDrill)
         {
