@@ -9,7 +9,6 @@ public class Checkpoints : MonoBehaviour
 {
 
     List<Checkpoints> checkpoints;
-    int _checkpointNumber = 1;
     // Use this for initialization
     void Start()
     {
@@ -43,7 +42,7 @@ public class Checkpoints : MonoBehaviour
                     //    checkpoints.Remove(checkpoints.Where(c => c.name.Contains("P2")).FirstOrDefault());
 
                     //}
-
+                    string _checkpointNumber = checkpoint.name.Substring(checkpoint.name.Length - 3, 1);
                     List<Checkpoints> checkpointsChecked = checkpoints.Where(c => c.name.Contains(""+_checkpointNumber+"P")).ToList();
                     for (int i = 0; i < checkpointsChecked.Count; i++)
                     {
@@ -51,7 +50,6 @@ public class Checkpoints : MonoBehaviour
                     }
                     GameObject.Find("CheckPoint" + _checkpointNumber + "P2").GetComponent<Checkpoints>().enabled = false;
                     GameObject.Find("CheckPoint" + _checkpointNumber + "P2").GetComponent<BoxCollider>().enabled = false;
-                    _checkpointNumber++;
                     break;
                 }
             }
@@ -77,6 +75,7 @@ public class Checkpoints : MonoBehaviour
                     //    checkpoints.Remove(checkpoints.Where(c => c.name.Contains("P1")).FirstOrDefault());
 
                     //}
+                    string _checkpointNumber = checkpoint.name.Substring(checkpoint.name.Length - 3, 1);
 
                     List<Checkpoints> checkpointsChecked = checkpoints.Where(c => c.name.Contains("" + _checkpointNumber + "P")).ToList();
                     for (int i = 0; i < checkpointsChecked.Count; i++)
@@ -85,7 +84,6 @@ public class Checkpoints : MonoBehaviour
                     }
                     GameObject.Find("CheckPoint" + _checkpointNumber + "P1").GetComponent<Checkpoints>().enabled = false;
                     GameObject.Find("CheckPoint" + _checkpointNumber + "P1").GetComponent<BoxCollider>().enabled = false;
-                    _checkpointNumber++;
                     break;
                     //checkpoints.Remove(checkpoints.Where(c => c.name.Contains("" + _checkpointNumber + "P")).FirstOrDefault());
                 }
