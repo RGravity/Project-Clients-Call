@@ -14,7 +14,7 @@ public class TrackBuildScript : MonoBehaviour {
      * after these numbers is the x-position located where these begin
      */
 
-    private List<string> _trackList = new List<string>() { "00", "350", "060", "4100", "0110" };
+    private List<GameObject> TrackBlockList = new List<GameObject>();
 
     private GameObject _trackBlock;
     private GameObject _trackWall;
@@ -23,7 +23,7 @@ public class TrackBuildScript : MonoBehaviour {
     private int _wallCounter;
 
     [SerializeField]
-    private int _firstBlocks = 50;
+    private int _firstBlocks = 500;
     public int FirstBlocks { get { return _firstBlocks; } }
 
 	// Use this for initialization
@@ -34,17 +34,40 @@ public class TrackBuildScript : MonoBehaviour {
         _trackBlock = (GameObject)Resources.Load("TrackBlock/TrackBlock");
         _trackWall = (GameObject)Resources.Load("TrackBlock/TrackWall");
         
-        //spawn the first 100 blocks far
+        //spawn the first XXX blocks far
         for (int z = 0; z < _firstBlocks; z++)
         {
-            //spawn the 5 blocks wide
-            for (int x = 0; x < 5; x++)
+            //spawn the XXX blocks wide
+            for (int x = 0; x < 10; x++)
             {
 
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)));
+                
                 //SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 3.65f)+2));
             }
         }
+
+        //GameObject GO = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        //GO.transform.position = TrackBlockList[Random.Range(0, TrackBlockList.Count - 1)].transform.position;
+        //GO.transform.localScale += new Vector3(5, 5, 5);
+        //GO.AddComponent<Rigidbody>();
+        //GO.GetComponent<Rigidbody>().useGravity = false;
+        //GO.AddComponent<DestroyGOafter3sec>();
+        //GO.tag = "Sphere";
+        
+
+        //Collider[] hitColliders = Physics.OverlapSphere(TrackBlockList[Random.Range(0, TrackBlockList.Count-1)].transform.position, 0.0001f);
+
+        //Debug.Log(hitColliders.Length);
+
+        //foreach (Collider col in hitColliders)
+        //{
+        //    if (col.gameObject.GetComponent<TrackBlockScript>())
+        //    {
+        //        Destroy(col.gameObject);
+        //    }
+            
+        //}
 	
 	}
 	
@@ -55,6 +78,7 @@ public class TrackBuildScript : MonoBehaviour {
 
     private void SpawnTrackBlock(Vector3 pPosition)
     {
+        
         //instantiate the actual block
         GameObject GO = (GameObject)Instantiate(_trackBlock, pPosition, Quaternion.identity);
         //change the parent of the block
@@ -64,8 +88,9 @@ public class TrackBuildScript : MonoBehaviour {
         //rotate the block 90 degrees
         GO.transform.localEulerAngles = new Vector3(0, 90, 0);
         //set variables to the script of the block
-        GO.GetComponent<TrackBlockScript>().TrackList = _trackList;
         GO.GetComponent<TrackBlockScript>().ZBlocks = _firstBlocks;
+
+        TrackBlockList.Add(GO);
         //increase the unique number counter
         _trackBlocksCounter++;
     }
