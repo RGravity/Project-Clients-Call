@@ -1,0 +1,348 @@
+fileFormatVersion: 2
+guid: 056b3dbd361363343a337df8a1ac2061
+timeCreated: 1441717211
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: cube_shape
+    100002: cube_shape1
+    100004: I_Shape
+    100006: Large_Edge_Shape
+    100008: polySurface10
+    100010: polySurface11
+    100012: polySurface12
+    100014: polySurface19
+    100016: polySurface20
+    100018: polySurface21
+    100020: polySurface22
+    100022: polySurface23
+    100024: polySurface24
+    100026: polySurface29
+    100028: polySurface30
+    100030: polySurface32
+    100032: polySurface35
+    100034: polySurface37
+    100036: polySurface39
+    100038: polySurface40
+    100040: polySurface54
+    100042: polySurface58
+    100044: polySurface59
+    100046: polySurface6
+    100048: polySurface60
+    100050: polySurface61
+    100052: polySurface62
+    100054: polySurface8
+    100056: //RootNode
+    100058: sL_Shape
+    100060: sL_shape
+    100062: transform13
+    100064: transform14
+    100066: transform15
+    100068: transform16
+    100070: transform17
+    100072: transform36
+    100074: transform37
+    100076: transform38
+    100078: transform39
+    100080: transform40
+    100082: transform41
+    100084: transform42
+    100086: transform43
+    100088: transform44
+    100090: transform45
+    100092: transform46
+    100094: transform47
+    100096: transform48
+    100098: transform49
+    100100: transform50
+    100102: transform51
+    100104: transform52
+    100106: transform53
+    100108: transform54
+    100110: transform55
+    100112: transform56
+    100114: transform57
+    100116: transform58
+    100118: transform59
+    100120: transform60
+    100122: U_Shape
+    400000: cube_shape
+    400002: cube_shape1
+    400004: I_Shape
+    400006: Large_Edge_Shape
+    400008: polySurface10
+    400010: polySurface11
+    400012: polySurface12
+    400014: polySurface19
+    400016: polySurface20
+    400018: polySurface21
+    400020: polySurface22
+    400022: polySurface23
+    400024: polySurface24
+    400026: polySurface29
+    400028: polySurface30
+    400030: polySurface32
+    400032: polySurface35
+    400034: polySurface37
+    400036: polySurface39
+    400038: polySurface40
+    400040: polySurface54
+    400042: polySurface58
+    400044: polySurface59
+    400046: polySurface6
+    400048: polySurface60
+    400050: polySurface61
+    400052: polySurface62
+    400054: polySurface8
+    400056: //RootNode
+    400058: sL_Shape
+    400060: sL_shape
+    400062: transform13
+    400064: transform14
+    400066: transform15
+    400068: transform16
+    400070: transform17
+    400072: transform36
+    400074: transform37
+    400076: transform38
+    400078: transform39
+    400080: transform40
+    400082: transform41
+    400084: transform42
+    400086: transform43
+    400088: transform44
+    400090: transform45
+    400092: transform46
+    400094: transform47
+    400096: transform48
+    400098: transform49
+    400100: transform50
+    400102: transform51
+    400104: transform52
+    400106: transform53
+    400108: transform54
+    400110: transform55
+    400112: transform56
+    400114: transform57
+    400116: transform58
+    400118: transform59
+    400120: transform60
+    400122: U_Shape
+    2300000: cube_shape1
+    3300000: cube_shape1
+    4300000: cube_shape1
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: cube_shape
+        weight: 1
+      - path: cube_shape/transform60
+        weight: 1
+      - path: cube_shape1
+        weight: 1
+      - path: I_Shape
+        weight: 1
+      - path: I_Shape/transform58
+        weight: 1
+      - path: Large_Edge_Shape
+        weight: 1
+      - path: Large_Edge_Shape/transform55
+        weight: 1
+      - path: polySurface6
+        weight: 1
+      - path: polySurface6/transform44
+        weight: 1
+      - path: polySurface8
+        weight: 1
+      - path: polySurface8/transform46
+        weight: 1
+      - path: polySurface10
+        weight: 1
+      - path: polySurface10/transform45
+        weight: 1
+      - path: polySurface11
+        weight: 1
+      - path: polySurface11/transform17
+        weight: 1
+      - path: polySurface12
+        weight: 1
+      - path: polySurface12/transform13
+        weight: 1
+      - path: polySurface19
+        weight: 1
+      - path: polySurface19/transform38
+        weight: 1
+      - path: polySurface20
+        weight: 1
+      - path: polySurface20/transform39
+        weight: 1
+      - path: polySurface21
+        weight: 1
+      - path: polySurface21/transform40
+        weight: 1
+      - path: polySurface22
+        weight: 1
+      - path: polySurface22/transform50
+        weight: 1
+      - path: polySurface23
+        weight: 1
+      - path: polySurface23/transform14
+        weight: 1
+      - path: polySurface24
+        weight: 1
+      - path: polySurface24/transform43
+        weight: 1
+      - path: polySurface29
+        weight: 1
+      - path: polySurface29/transform16
+        weight: 1
+      - path: polySurface30
+        weight: 1
+      - path: polySurface30/transform15
+        weight: 1
+      - path: polySurface32
+        weight: 1
+      - path: polySurface32/transform42
+        weight: 1
+      - path: polySurface35
+        weight: 1
+      - path: polySurface35/transform41
+        weight: 1
+      - path: polySurface37
+        weight: 1
+      - path: polySurface37/transform48
+        weight: 1
+      - path: polySurface39
+        weight: 1
+      - path: polySurface39/transform36
+        weight: 1
+      - path: polySurface40
+        weight: 1
+      - path: polySurface40/transform37
+        weight: 1
+      - path: polySurface54
+        weight: 1
+      - path: polySurface54/polySurface59
+        weight: 1
+      - path: polySurface54/polySurface59/transform54
+        weight: 1
+      - path: polySurface54/polySurface60
+        weight: 1
+      - path: polySurface54/polySurface60/transform53
+        weight: 1
+      - path: polySurface54/polySurface61
+        weight: 1
+      - path: polySurface54/polySurface61/transform52
+        weight: 1
+      - path: polySurface54/polySurface62
+        weight: 1
+      - path: polySurface54/polySurface62/transform51
+        weight: 1
+      - path: polySurface54/transform47
+        weight: 1
+      - path: polySurface58
+        weight: 1
+      - path: polySurface58/transform49
+        weight: 1
+      - path: sL_Shape
+        weight: 1
+      - path: sL_Shape/transform57
+        weight: 1
+      - path: sL_shape
+        weight: 1
+      - path: sL_shape/transform56
+        weight: 1
+      - path: U_Shape
+        weight: 1
+      - path: U_Shape/transform59
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
