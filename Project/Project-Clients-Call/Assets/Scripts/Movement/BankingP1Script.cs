@@ -140,7 +140,7 @@ public class BankingP1Script : MonoBehaviour {
             //    GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles = GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles = new Vector3(GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles.x, 180, GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles.z); //+ moveRot;
             //}
 
-            Debug.Log(GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles.y);
+            //Debug.Log(GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles.y);
             //GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles = CameraPosition + moveRot;
             //GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localRotation = new Quaternion(CameraPosition.x,CameraPosition.y+1,CameraPosition.z,0);
             //GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localRotation.SetLookRotation(new Vector3(gameObject.transform.rotation.x,gameObject.transform.rotation.y,gameObject.transform.rotation.z));
