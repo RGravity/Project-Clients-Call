@@ -29,44 +29,68 @@ public class BankingP2Script : MonoBehaviour {
         //GameObject.Find("P2 Camera").GetComponent<Camera>().transform.localEulerAngles = CameraPosition + moveRot;
         ////Sync stuff
 
-        if (Input.GetAxis("Horizontal P2") > 0.1f)
+        if (GameObject.FindObjectOfType<Player2LevelScript>().LevelStarted)
         {
-            //moveRot.y = -(Input.GetAxis("Horizontal P1") * 12);
-            moveRot.y = -counter;
-            if (Time.time > (timer + 0.01f))
+            if (Input.GetAxis("Horizontal P2") > 0.1f)
             {
-                timer = Time.time;
-                if (counter >= 12)
+                //moveRot.y = -(Input.GetAxis("Horizontal P1") * 12);
+                moveRot.y = -counter;
+                if (Time.time > (timer + 0.01f))
                 {
-                    counter = 12;
+                    timer = Time.time;
+                    if (counter >= 12)
+                    {
+                        counter = 12;
+                    }
+                    else
+                    {
+                        counter++;
+                    }
                 }
-                else
-                {
-                    counter++;
-                }
+                gameObject.transform.localEulerAngles = PlayerPosition + moveRot * 3;
+                //gameObject.transform.localEulerAngles = gameObject.transform.localEulerAngles + new Vector3(gameObject.transform.localEulerAngles.x, gameObject.transform.localEulerAngles.y + 1, gameObject.transform.localEulerAngles.z);
             }
-            gameObject.transform.localEulerAngles = PlayerPosition + moveRot * 3;
-            //gameObject.transform.localEulerAngles = gameObject.transform.localEulerAngles + new Vector3(gameObject.transform.localEulerAngles.x, gameObject.transform.localEulerAngles.y + 1, gameObject.transform.localEulerAngles.z);
-        }
-        if (Input.GetAxis("Horizontal P2") < -0.1f)
-        {
-            //moveRot.y = -(Input.GetAxis("Horizontal P1") * 12);
-            moveRot.y = counter;
-            if (Time.time > (timer + 0.01f))
+            else if (Input.GetAxis("Horizontal P2") < -0.1f)
             {
-                timer = Time.time;
-                if (counter <= -12)
+                //moveRot.y = -(Input.GetAxis("Horizontal P1") * 12);
+                moveRot.y = counter;
+                if (Time.time > (timer + 0.01f))
                 {
-                    counter = -12;
+                    timer = Time.time;
+                    if (counter <= -12)
+                    {
+                        counter = -12;
+                    }
+                    else
+                    {
+                        counter--;
+                    }
                 }
-                else
-                {
-                    counter--;
-                }
-            }
-            gameObject.transform.localEulerAngles = PlayerPosition - moveRot * 3;
-            //gameObject.transform.localEulerAngles = gameObject.transform.localEulerAngles + new Vector3(gameObject.transform.localEulerAngles.x, gameObject.transform.localEulerAngles.y + 1, gameObject.transform.localEulerAngles.z);
+                gameObject.transform.localEulerAngles = PlayerPosition - moveRot * 3;
+                //gameObject.transform.localEulerAngles = gameObject.transform.localEulerAngles + new Vector3(gameObject.transform.localEulerAngles.x, gameObject.transform.localEulerAngles.y + 1, gameObject.transform.localEulerAngles.z);
 
+            }
+            else if (Input.GetAxis("Horizontal P2") == 0)
+            {
+                moveRot.y = counter;
+                if (Time.time > (timer + 0.01f))
+                {
+                    timer = Time.time;
+                    if (counter > 0)
+                    {
+                        counter--;
+                    }
+                    if (counter < 0)
+                    {
+                        counter++;
+                    }
+                    if (counter == 0)
+                    {
+                        counter = 0;
+                    }
+                }
+                gameObject.transform.localEulerAngles = PlayerPosition - moveRot * 3;
+            } 
         }
 
         //GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles = CameraPosition + moveRot;
