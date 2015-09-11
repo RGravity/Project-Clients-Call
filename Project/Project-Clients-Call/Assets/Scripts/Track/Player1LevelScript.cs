@@ -15,6 +15,7 @@ public class Player1LevelScript : MonoBehaviour {
     private bool _finished = false;
     private float _stopTime = 0;
     private bool _stopDrill = false;
+    private bool _levelStarted = false;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
     public bool StopSpeed { get { return _stopSpeed; } set { _stopSpeed = value; } }
@@ -23,6 +24,7 @@ public class Player1LevelScript : MonoBehaviour {
     public bool IncreaseSpeed { get { return _increaseSpeed; } set { _increaseSpeed = value; } }
     public bool Finsihed { get { return _finished; } set { _finished = value; } }
     public float Speed { get { return _speed; } }
+    public bool LevelStarted { get { return _levelStarted; } }
 
 
     // Update is called once per frame
@@ -34,10 +36,18 @@ public class Player1LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false && _stopSpeed == false)
+        if (!Input.GetKey(KeyCode.Space) && _finished == false && _stopSpeed == false && _levelStarted)
         {
             _speed += 0.05f;
             gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
+        }
+        else if (!_levelStarted)
+        {
+            if (Time.time > (_stopTime + 3))
+            {
+                _oldTime = Time.time;
+                _levelStarted = true;
+            }
         }
     }
 
