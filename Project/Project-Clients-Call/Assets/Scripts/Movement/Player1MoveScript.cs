@@ -86,7 +86,7 @@ public class Player1MoveScript : MonoBehaviour {
         }
         else if (Input.GetAxis("Vertical P1") < 0)
         {
-            Debug.Log(transform.position.z);
+//            Debug.Log(transform.position.z);
             _animator.Play("stop");
             if (_startPosition.z < -3.9f)
             {
