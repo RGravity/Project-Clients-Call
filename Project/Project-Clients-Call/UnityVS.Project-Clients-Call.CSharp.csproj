@@ -76,10 +76,16 @@
     <Compile Include="Assets\Scripts\BoostScript.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Checkpoints.cs" />
+    <Compile Include="Assets\Scripts\ChoosingPlayer1.cs" />
+    <Compile Include="Assets\Scripts\ChoosingPlayer2.cs" />
     <Compile Include="Assets\Scripts\CollisionScript.cs" />
     <Compile Include="Assets\Scripts\DrillScript.cs" />
     <Compile Include="Assets\Scripts\InvulnerableScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\ArrowMoveScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\ArrowScripts\ArrowLeftScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\ArrowScripts\ArrowLeftScript2.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\ArrowScripts\ArrowRightScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\ArrowScripts\ArrowRightScript2.cs" />
     <Compile Include="Assets\Scripts\MenuScript\BackButtonScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\MenuScript\CreditScript.cs" />
@@ -89,6 +95,10 @@
     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\ControlsScripts.cs" />
     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SoundsScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\QuitGameScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\RotationScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\SelectionScripts\ConfirmScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\SelectionScripts\SelectionScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\SelectionScripts\SelectionScript2.cs" />
     <Compile Include="Assets\Scripts\MenuScript\StartGameScript.cs" />
     <Compile Include="Assets\Scripts\Player1LevelScript.cs" />
     <Compile Include="Assets\Scripts\Player1MoveScript.cs" />

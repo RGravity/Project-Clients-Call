@@ -12,6 +12,7 @@ public class Player1LevelScript : MonoBehaviour {
     private bool _finished = false;
     private float _stopTime = 0;
     private bool _stopDrill = false;
+    private bool _stopSpeedTutorial = false;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
     public bool StopSpeed { get { return _stopSpeed; } set { _stopSpeed = value; } }
@@ -20,8 +21,8 @@ public class Player1LevelScript : MonoBehaviour {
     public bool IncreaseSpeed { get { return _increaseSpeed; } set { _increaseSpeed = value; } }
     public bool Finsihed { get { return _finished; } set { _finished = value; } }
     public float Speed { get { return _speed; } }
+    public bool StopSpeedTutorial { get { return _stopSpeedTutorial; } }
 
-    // Update is called once per frame
     void Update()
     {
         MoveWorld();
@@ -72,6 +73,17 @@ public class Player1LevelScript : MonoBehaviour {
                 _oldTime = Time.time;
                 _speed = oldSpeed / 2;
                 _stopSpeed = false;
+            }
+        }
+        if (_stopSpeedTutorial)
+        {
+            float stopSpeed = 0;
+            float oldSpeed = _speed;
+            _speed = stopSpeed;
+
+            if (_stopSpeedTutorial == false)
+            {
+                _speed = oldSpeed / 2;
             }
         }
         if (_stopDrill)
