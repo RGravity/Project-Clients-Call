@@ -44,10 +44,14 @@ public class TrackBuildScript : MonoBehaviour {
             //spawn the XXX blocks wide
             for (int x = 0; x < 10; x++)
             {
-                if (x == 0 || x == 9)
+                if (z % 35 == 0)
                 {
-                    SpawnTrackBarrier(new Vector3((x * 2) - 4.25f, -0.1f, (z * 0.7f)));
-                    SpawnTrackBarrier(new Vector3((x * 2) - 4.25f, -3.4f, (z * 0.7f)));
+                    if (x == 0 || x == 9)
+                    {
+                        SpawnTrackBarrier(new Vector3((x * 2) - 4.25f, -0.1f, (z * 0.7f)));
+                        SpawnTrackBarrier(new Vector3((x * 2) - 4.25f, -3.4f, (z * 0.7f)));
+                    }
+                    
                 }
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)));
                 
@@ -101,7 +105,7 @@ public class TrackBuildScript : MonoBehaviour {
         //set variables to the script of the block
         GO.GetComponent<TrackBlockScript>().ZBlocks = _firstBlocks;
 
-        TrackBlockList.Add(GO);
+        //TrackBlockList.Add(GO);
         //increase the unique number counter
         _trackBlocksCounter++;
     }
@@ -120,7 +124,7 @@ public class TrackBuildScript : MonoBehaviour {
         //set variables to the script of the block
         GO.GetComponent<TrackBarrierScript>().ZBlocks = _firstBlocks;
 
-        TrackBlockList.Add(GO);
+        //TrackBlockList.Add(GO);
         //increase the unique number counter
         _trackBarrierCounter++;
     }
