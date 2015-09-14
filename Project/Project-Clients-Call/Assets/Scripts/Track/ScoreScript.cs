@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ScoreScript : MonoBehaviour {
@@ -29,6 +30,7 @@ public class ScoreScript : MonoBehaviour {
 	void Update () {
         ExternalScoring();
         NormalScoring();
+        UpdateHUD();
 	}
 
     private void ExternalScoring()
@@ -38,11 +40,11 @@ public class ScoreScript : MonoBehaviour {
             case ScoreType.None:
                 break;
             case ScoreType.Coin:
-                _p1Score += 50;
+                _p1Score += 250;
                 _p1ScoreType = ScoreType.None;
                 break;
             case ScoreType.Wall:
-                _p1Score -= 100;
+                _p1Score -= 300;
                 _p1ScoreType = ScoreType.None;
                 break;
             case ScoreType.Checkpoint:
@@ -80,5 +82,12 @@ public class ScoreScript : MonoBehaviour {
     private void NormalScoring()
     {
         _p1Score += (int)GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6;
+        _p2Score += (int)GameObject.FindObjectOfType<Player2LevelScript>().Speed / 6;
+    }
+
+    private void UpdateHUD()
+    {
+        GameObject.Find("P1 Text").GetComponent<Text>().text = _p1Score.ToString();
+        GameObject.Find("P2 Text").GetComponent<Text>().text = _p2Score.ToString();
     }
 }
