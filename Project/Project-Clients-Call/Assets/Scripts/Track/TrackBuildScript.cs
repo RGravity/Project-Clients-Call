@@ -47,13 +47,13 @@ public class TrackBuildScript : MonoBehaviour {
             }
         }
 
-        //GameObject GO = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //GO.transform.position = TrackBlockList[Random.Range(0, TrackBlockList.Count - 1)].transform.position;
-        //GO.transform.localScale += new Vector3(5, 5, 5);
-        //GO.AddComponent<Rigidbody>();
-        //GO.GetComponent<Rigidbody>().useGravity = false;
-        //GO.AddComponent<DestroyGOafter3sec>();
-        //GO.tag = "Sphere";
+        GameObject GO = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        GO.transform.position = TrackBlockList[Random.Range(0, TrackBlockList.Count - 1)].transform.position;
+        GO.transform.localScale += new Vector3(5, 5, 5);
+        GO.AddComponent<Rigidbody>();
+        GO.GetComponent<Rigidbody>().useGravity = false;
+        GO.AddComponent<DestroyGOafter3sec>();
+        GO.tag = "Sphere";
         
 
         //Collider[] hitColliders = Physics.OverlapSphere(TrackBlockList[Random.Range(0, TrackBlockList.Count-1)].transform.position, 0.0001f);
