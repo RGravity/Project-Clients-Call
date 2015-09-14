@@ -9,12 +9,7 @@ public class TrackBlockScript : MonoBehaviour {
     private Vector3 _globalFinalSpot;
 
     private int _zBlocks;
-    private List<string> _trackList = new List<string>();
-    private int _trackPart = 0;
-    private int _listCounter = 0;
-    private int _zListPart = 0;
 
-    public List<string> TrackList { set { _trackList = value; } }
     public int ZBlocks { set { _zBlocks = value; } }
 
 
