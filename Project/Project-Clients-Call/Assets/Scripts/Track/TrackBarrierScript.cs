@@ -1,26 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using System;
+using System.Collections;
 
-public class TrackBlockScript : MonoBehaviour {
+public class TrackBarrierScript : MonoBehaviour {
 
-    private bool _moving = false;
+    public int ZBlocks { set { _zBlocks = value; } }
     private Vector3 _localFinalSpot;
     private Vector3 _globalFinalSpot;
-
+    private bool _moving = false;
     private int _zBlocks;
-    private List<string> _trackList = new List<string>();
-    private int _trackPart = 0;
-    private int _listCounter = 0;
-    private int _zListPart = 0;
-
-    public List<string> TrackList { set { _trackList = value; } }
-    public int ZBlocks { set { _zBlocks = value; } }
-
 
 	// Use this for initialization
 	void Start () {
-        //resetVisibility();
+	
 	}
 	
 	// Update is called once per frame
@@ -37,21 +28,7 @@ public class TrackBlockScript : MonoBehaviour {
                 this.transform.localPosition = _localFinalSpot;
             }
         }
-        
 	}
-
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.name == "Sphere")
-        {
-            Renderer[] childsRend = this.gameObject.GetComponentsInChildren<Renderer>();
-
-            foreach (Renderer rend in childsRend)
-            {
-                rend.enabled = false;
-            }
-        }
-    }
 
     public void OnBecameInvisible()
     {
@@ -80,15 +57,6 @@ public class TrackBlockScript : MonoBehaviour {
 
             //resetVisibility();
 
-        }
-    }
-
-    private void resetVisibility(){
-        Renderer[] childsRend = this.gameObject.GetComponentsInChildren<Renderer>();
-
-        foreach (Renderer rend in childsRend)
-        {
-            rend.enabled = true;
         }
     }
 }
