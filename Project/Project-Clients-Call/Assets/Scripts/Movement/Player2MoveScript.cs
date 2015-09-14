@@ -5,6 +5,7 @@ public class Player2MoveScript : MonoBehaviour {
 
     private Vector3 _startPosition;
     private Animator _animator;
+    private float _fireAnimation = 0;
 
 
 	// Use this for initialization
@@ -78,11 +79,6 @@ public class Player2MoveScript : MonoBehaviour {
         {
             _animator.Play("idle");
         }
-        else if (Input.GetAxis("Vertical P2") == 0)
-        {
-            _animator.Play("speed 1 L");
-
-        }
         else if (Input.GetAxis("Vertical P2") > 0)
         {
             Debug.Log(transform.position.z);
@@ -95,6 +91,16 @@ public class Player2MoveScript : MonoBehaviour {
             {
                 _animator.Play("speed 1 L");
             }
+        }
+
+        if (Input.GetButtonDown("Fire2P2"))
+        {
+            _animator.Play("fire");
+            _fireAnimation = Time.time + 1.5f;
+        }
+        else if (Input.GetAxis("Vertical P2") == 0 && _fireAnimation < Time.time)
+        {
+            _animator.Play("speed 1 L");
         }
     }
 }
