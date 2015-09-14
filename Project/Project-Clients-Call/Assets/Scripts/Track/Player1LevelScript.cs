@@ -33,6 +33,10 @@ public class Player1LevelScript : MonoBehaviour {
         MoveWorld();
         ResolveCollision();
     }
+    void Start()
+    {
+        _stopTime = Time.time;
+    }
 
     private void MoveWorld()
     {
@@ -45,7 +49,7 @@ public class Player1LevelScript : MonoBehaviour {
         {
             if (Time.time > (_stopTime + 3))
             {
-                _oldTime = Time.time;
+                _stopTime = Time.time;
                 _levelStarted = true;
             }
         }
@@ -80,7 +84,7 @@ public class Player1LevelScript : MonoBehaviour {
             float slowDown = _speed - 1;
             _speed = _speed - (slowDown / 2);
             _iteration++;
-            if (_iteration >= 10)
+            if (_iteration >= 6)
             {
                 _stopSpeed = false;
                 _iteration = 0;

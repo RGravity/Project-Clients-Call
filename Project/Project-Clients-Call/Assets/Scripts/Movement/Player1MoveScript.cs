@@ -6,6 +6,8 @@ public class Player1MoveScript : MonoBehaviour {
     private Vector3 _startPosition;
     private Vector3 _startCamera;
     private Animator _animator;
+    private Animation _fire;
+    private float _fireAnimation=0;
 
 	// Use this for initialization
 	void Start () {
@@ -54,11 +56,11 @@ public class Player1MoveScript : MonoBehaviour {
                 newPos.z = _startPosition.z - 4f;
                 transform.position = newPos;
             }
-            Animation(); 
+            AnimationPlayer(); 
         }
 	}
 
-    void Animation()
+    void AnimationPlayer()
     {
         if (Input.GetAxis("Vertical P1") > 0)
         {
@@ -79,14 +81,9 @@ public class Player1MoveScript : MonoBehaviour {
         {
             _animator.Play("idle");
         }
-        else if (Input.GetAxis("Vertical P1") == 0)
-        {
-            _animator.Play("speed 1 L");
-
-        }
         else if (Input.GetAxis("Vertical P1") < 0)
         {
-//            Debug.Log(transform.position.z);
+            //Debug.Log(transform.position.z);
             _animator.Play("stop");
             if (_startPosition.z < -3.9f)
             {
@@ -97,5 +94,18 @@ public class Player1MoveScript : MonoBehaviour {
                 _animator.Play("speed 1 L");
             }
         }
+
+        if (Input.GetButtonDown("Fire2P1"))
+        {
+            _animator.Play("fire");
+            _fireAnimation = Time.time+1.5f;
+        }
+        else if (Input.GetAxis("Vertical P1") == 0 && _fireAnimation < Time.time)
+        {
+            _animator.Play("speed 1 L");
+        }
     }
+
+
+
 }

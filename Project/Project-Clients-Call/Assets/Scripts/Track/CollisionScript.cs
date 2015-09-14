@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CollisionScript : MonoBehaviour {
 
+    bool P1Finished = false;
+    bool P2Finished = false;
 	// Use this for initialization
 	void Start () {
 	}
@@ -28,13 +30,27 @@ public class CollisionScript : MonoBehaviour {
         }
         if (this.gameObject.name == "Finish" && other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
         {
+            P1Finished = true;
             GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-            GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+            if (P2Finished)
+            {
+                if (P1Finished)
+                {
+                    GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+                }   
+            }
         }
         if (this.gameObject.name == "Finish" && other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
         {
-            GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
+            P2Finished = true;
             GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+            if (P1Finished)
+            {
+                if (P2Finished)
+                {
+                    GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
+                }
+            }
         }
     }
 }

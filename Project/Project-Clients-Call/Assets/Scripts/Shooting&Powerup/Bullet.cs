@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        _body.velocity = new Vector3(0, 0, 50);
+        _body.velocity = new Vector3(0, 0, 40);
 
 	}
     void OnTriggerEnter(Collider other)
