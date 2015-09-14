@@ -3,11 +3,14 @@ using System.Collections;
 
 public class TrackBarrierScript : MonoBehaviour {
 
-    public int ZBlocks { set { _zBlocks = value; } }
+    
     private Vector3 _localFinalSpot;
     private Vector3 _globalFinalSpot;
     private bool _moving = false;
     private int _zBlocks;
+
+    public int ZBlocks { set { _zBlocks = value; } }
+    public bool Moving { set { _moving = value; } }
 
 	// Use this for initialization
 	void Start () {

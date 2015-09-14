@@ -38,13 +38,18 @@ public class TrackBuildScript : MonoBehaviour {
         _trackWall = (GameObject)Resources.Load("TrackBlock/TrackWall");
         _trackBarrier = (GameObject)Resources.Load("TrackBlock/TrackBarrier");
         
+        
         //spawn the first XXX blocks far
         for (int z = 0; z < _firstBlocks; z++)
         {
+            if (z % 10 == 0 && z != 0)
+            {
+                SpawnWallsOnZ(z);
+            }
             //spawn the XXX blocks wide
             for (int x = 0; x < 10; x++)
             {
-                if (z % 35 == 0)
+                if (z % 33 == 0)
                 {
                     if (x == 0 || x == 9)
                     {
@@ -91,6 +96,24 @@ public class TrackBuildScript : MonoBehaviour {
 	    
 	}
 
+    private void SpawnWallsOnZ(float Z)
+    {
+        int rndAmountOfWalls = 3;//Random.Range(1, 6);
+        List<int> LastPlaces = new List<int>();
+
+        for (int i = 0; i < rndAmountOfWalls; i++)
+        {
+            int rndPlace;
+            do
+            {
+                rndPlace = Random.Range(1, 8);
+            } while (LastPlaces.Contains(rndPlace));
+
+            SpawnWall(new Vector3((rndPlace * 2) - 4.25f, 1, (Z * 0.7f)));
+            LastPlaces.Add(rndPlace);
+        }
+    }
+
     private void SpawnTrackBlock(Vector3 pPosition)
     {
         
@@ -110,7 +133,7 @@ public class TrackBuildScript : MonoBehaviour {
         _trackBlocksCounter++;
     }
 
-    private void SpawnTrackBarrier(Vector3 pPosition)
+    public void SpawnTrackBarrier(Vector3 pPosition)
     {
 
         //instantiate the actual block
@@ -131,9 +154,7 @@ public class TrackBuildScript : MonoBehaviour {
 
     public void SpawnWall(Vector3 pPosition)
     {
-        _wallCounter++;
-        if (_wallCounter % 5 == 0 )
-        {
+        
             
             //instantiate the actual block
             GameObject GO = (GameObject)Instantiate(_trackWall, pPosition, Quaternion.identity);
@@ -143,9 +164,10 @@ public class TrackBuildScript : MonoBehaviour {
             GO.name = "Wall" + _trackWallsCounter;
             //rotate the block 90 degrees
             GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+            //set variables to the script of the block
+            GO.GetComponent<TrackBlockScript>().ZBlocks = _firstBlocks;
 
             //increase the unique number counter
             _trackWallsCounter++;
-        }
     }
 }
