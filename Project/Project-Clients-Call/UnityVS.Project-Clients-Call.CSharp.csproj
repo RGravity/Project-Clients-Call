@@ -113,6 +113,7 @@
     <Compile Include="Assets\Scripts\Track\Player1LevelScript.cs" />
     <Compile Include="Assets\Scripts\Track\Player2LevelScript.cs" />
     <Compile Include="Assets\Scripts\Track\ScoreScript.cs" />
+    <Compile Include="Assets\Scripts\Track\TrackBarrierScript.cs" />
     <Compile Include="Assets\Scripts\Track\TrackBlockScript.cs" />
     <Compile Include="Assets\Scripts\Track\TrackBuildScript.cs" />
     <Compile Include="Assets\Scripts\TutorialScript\TutorialScript.cs" />
