@@ -6,7 +6,7 @@ using System;
 
 public class Player1LevelScript : MonoBehaviour {
 
-    private float _speed = 1f;
+    private float _speed = 10f;
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
     private int _iteration = 0;
