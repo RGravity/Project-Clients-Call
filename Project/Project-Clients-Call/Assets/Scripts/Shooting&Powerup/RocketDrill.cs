@@ -5,6 +5,10 @@ public class RocketDrill : MonoBehaviour {
 
     private bool _rocketDrillP1 = false;
     public GameObject _rocketPrefab;
+    [SerializeField]
+    private GameObject _portal;
+    [SerializeField]
+    private GameObject _bulletPrefab;
 
     public bool RocketDrillP1
     {
@@ -41,6 +45,16 @@ public class RocketDrill : MonoBehaviour {
             position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 2);
             drill.transform.position = position;
             drill.transform.parent = _planeP2.transform;
+
+            _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, 3f, 10);
+
+            //_bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 3);
+            //Instantiate(_bulletPrefab).GetComponent<Transform>();
+
+            Instantiate(_portal);
+
+            _portal.GetComponent<ParticleSystem>().Play();
+            _portal.GetComponent<ParticleSystem>().loop = false;
         }
         if (_rocketDrillP2)
         {
@@ -52,6 +66,15 @@ public class RocketDrill : MonoBehaviour {
             position = camera.transform.position + camera.transform.forward + new Vector3(0, -1, 2);
             drill.transform.position = position;
             drill.transform.parent = _planeP1.transform;
+
+            _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, -3f, 10);
+
+            //_bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 3);
+            //Instantiate(_bulletPrefab).GetComponent<Transform>();
+
+            Instantiate(_portal);
+            _portal.GetComponent<ParticleSystem>().Play();
+            _portal.GetComponent<ParticleSystem>().loop = false;
         }
 	
 	}
