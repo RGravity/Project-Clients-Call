@@ -28,6 +28,8 @@ public class ArrowMoveScript : MonoBehaviour {
     private GameObject _player;
     private GameObject _player2;
     private GameObject _startGame;
+    private GameObject _musicSlider;
+    private GameObject _sfxSlider;
     
 
     private bool _moving = false;
@@ -72,6 +74,9 @@ public class ArrowMoveScript : MonoBehaviour {
         _rightArrow2 = GameObject.FindGameObjectWithTag("ArrowRight2");
         _platform2 = GameObject.FindGameObjectWithTag("Platform2");
         _startGame = GameObject.FindGameObjectWithTag("StartGame");
+        _musicSlider = GameObject.FindGameObjectWithTag("MusicSlider");
+        _sfxSlider = GameObject.FindGameObjectWithTag("SFXSlider");
+       
     }
     void Update()
     {
@@ -220,12 +225,14 @@ public class ArrowMoveScript : MonoBehaviour {
 
             if (_degrees == -45)
             {
-                _controls.transform.position = new Vector3(-34, 1300, 0);
-                _sounds.transform.position = new Vector3(39, 1300, 0);
+                _controls.transform.position = new Vector3(-34, 1300, 200);
+                _sounds.transform.position = new Vector3(39, 1300, 200);
+                _sfxSlider.transform.position = new Vector3(-10,1200,0);
+                _musicSlider.transform.position = new Vector3(-75,1200,0);
                 _backButton.transform.position = new Vector3(107, 1300, 0);
                 _backButton.transform.rotation = Quaternion.Euler(275, 90, 0);
-                _cubeOne.transform.position = new Vector3(122, 1178, -289);
-                _cubeTwo.transform.position = new Vector3(-198, 1243, 238);
+                _cubeOne.transform.position = new Vector3(-67, 1217, -435);
+                _cubeTwo.transform.position = new Vector3(103, 1203, -192);
                 _cubeThree.transform.position = new Vector3(121, 805, 215);
                 _cubeOne.transform.rotation = Quaternion.Euler(275, 90, 0);
                 _cubeTwo.transform.rotation = Quaternion.Euler(50, 60, 0);
@@ -342,20 +349,27 @@ public class ArrowMoveScript : MonoBehaviour {
         if (_movingToOptions == true)
         {
             if (this.gameObject.transform.position == new Vector3(-34, 1300, 0))
-            { 
-                _controls.transform.position = new Vector3 (-34, 1200, 0);
-                _sounds.transform.position = new Vector3(39, 1300, 0);
+            {
+                _controls.transform.position = new Vector3(-34, 1300, 180);
+                _sounds.transform.position = new Vector3(39, 1300, 200);
+                GameObject.FindObjectOfType<SliderScript1>().Music = true;
+                GameObject.FindObjectOfType<SliderScript2>().Sound = false;
             }
             if (this.gameObject.transform.position == new Vector3(39, 1300, 0))
             {
-                _controls.transform.position = new Vector3(-34, 1300, 0);
-                _sounds.transform.position = new Vector3(39, 1200, 0);
+                _controls.transform.position = new Vector3(-34, 1300, 200);
+                _sounds.transform.position = new Vector3(39, 1300, 180);
                 _backButton.transform.position = new Vector3(107, 1300, 0);
+                GameObject.FindObjectOfType<SliderScript1>().Music = false;
+                GameObject.FindObjectOfType<SliderScript2>().Sound = true;
             }
             if (this.gameObject.transform.position == new Vector3(112, 1300, 0))
             {
-                _sounds.transform.position = new Vector3(39, 1300, 0);
+                
+                _sounds.transform.position = new Vector3(39, 1300, 200);
                 _backButton.transform.position = new Vector3(107, 1200, 0);
+                GameObject.FindObjectOfType<SliderScript1>().Music = false;
+                GameObject.FindObjectOfType<SliderScript2>().Sound = false;
             }
         }
         if (_movingToHowTo == true)
@@ -633,6 +647,8 @@ public class ArrowMoveScript : MonoBehaviour {
                 _platform2.transform.position = new Vector3(200, 3000, 0);
                 _platform2.transform.rotation = Quaternion.Euler(0, 180, 270);
                 _startGame.transform.position = new Vector3(150,3000, -457);
+                _sfxSlider.transform.position = new Vector3(-16, 5000, 0);
+                _musicSlider.transform.position = new Vector3(-90, 5000, 0);
                 _player.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
                 _player.GetComponent<Transform>().GetChild(2).gameObject.SetActive(false);
                 _player.GetComponent<Transform>().GetChild(3).gameObject.SetActive(false);

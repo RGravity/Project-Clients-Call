@@ -62,6 +62,9 @@
      <Compile Include="Assets\Scripts\MenuScript\HowToPlayScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript\OptionsScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\ControlsScripts.cs" />
+     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\MusicScript.cs" />
+     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SliderScript1.cs" />
+     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SliderScript2.cs" />
      <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SoundsScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript\QuitGameScript.cs" />
      <Compile Include="Assets\Scripts\MenuScript\RotationScript.cs" />
@@ -86,6 +89,7 @@
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\ShootScript.cs" />
      <Compile Include="Assets\Scripts\Track\Checkpoints.cs" />
      <Compile Include="Assets\Scripts\Track\CollisionScript.cs" />
+     <Compile Include="Assets\Scripts\Track\DestroyGOafter3sec.cs" />
      <Compile Include="Assets\Scripts\Track\Player1LevelScript.cs" />
      <Compile Include="Assets\Scripts\Track\Player2LevelScript.cs" />
      <Compile Include="Assets\Scripts\Track\ScoreScript.cs" />

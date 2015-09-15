@@ -60,12 +60,6 @@
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -87,17 +81,22 @@
     <Compile Include="Assets\Scripts\MenuScript\ArrowScripts\ArrowRightScript2.cs" />
     <Compile Include="Assets\Scripts\MenuScript\BackButtonScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\CameraRotation.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\ControllerScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\CreditScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\CreditsScripts.cs" />
     <Compile Include="Assets\Scripts\MenuScript\HowToPlayScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\OptionsScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\ControlsScripts.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\MusicScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SliderScript1.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SliderScript2.cs" />
     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SoundsScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\RotationScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\SelectionScripts\ConfirmScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\SelectionScripts\SelectionScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\SelectionScripts\SelectionScript2.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\SoundManagerScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\StartGameScript.cs" />
     <Compile Include="Assets\Scripts\Movement\BankingP1Script.cs" />
     <Compile Include="Assets\Scripts\Movement\BankingP2Script.cs" />
