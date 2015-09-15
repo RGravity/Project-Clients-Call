@@ -24,18 +24,18 @@ public class Player1MoveScript : MonoBehaviour {
             moveDir.z = Input.GetAxis("Vertical P1") * 12;
             transform.position += moveDir * Time.deltaTime;
 
-            if (transform.position.x > (_startPosition.x + 8f))
+            if (transform.position.x > (_startPosition.x + 7.5f))
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
-                newPos.x = _startPosition.x + 8f;
+                newPos.x = _startPosition.x + 7.5f;
                 newPos.y = transform.position.y;
                 newPos.z = transform.position.z;
                 transform.position = newPos;
             }
-            else if (transform.position.x < (_startPosition.x - 8))
+            else if (transform.position.x < (_startPosition.x - 7.5f))
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
-                newPos.x = _startPosition.x - 8f;
+                newPos.x = _startPosition.x - 7.5f;
                 newPos.y = transform.position.y;
                 newPos.z = transform.position.z;
                 transform.position = newPos;
