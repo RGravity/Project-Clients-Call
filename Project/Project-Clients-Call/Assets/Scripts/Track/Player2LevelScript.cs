@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Player2LevelScript : MonoBehaviour {
 
-    private float _speed = 1f;
-    private float _originalSpeed = 1f;
+    private float _speed = 10f;
+    private float _originalSpeed = 10f;
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
     private int _iteration = 0;

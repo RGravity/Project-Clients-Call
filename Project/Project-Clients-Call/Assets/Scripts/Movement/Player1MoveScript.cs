@@ -40,20 +40,20 @@ public class Player1MoveScript : MonoBehaviour {
                 newPos.z = transform.position.z;
                 transform.position = newPos;
             }
-            if (transform.position.z > (_startPosition.z + 8f))
+            if (transform.position.z > (_startPosition.z + 4f))
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
                 newPos.x = transform.position.x;
                 newPos.y = transform.position.y;
-                newPos.z = _startPosition.z + 8f;
+                newPos.z = _startPosition.z + 4f;
                 transform.position = newPos;
             }
-            else if (transform.position.z < (_startPosition.z - 8f))
+            else if (transform.position.z < (_startPosition.z - 4f))
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
                 newPos.x = transform.position.x;
                 newPos.y = transform.position.y;
-                newPos.z = _startPosition.z - 8f;
+                newPos.z = _startPosition.z - 4f;
                 transform.position = newPos;
             }
             AnimationPlayer(); 
