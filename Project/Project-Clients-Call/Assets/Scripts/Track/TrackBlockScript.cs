@@ -35,18 +35,18 @@ public class TrackBlockScript : MonoBehaviour {
         
 	}
 
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.name == "Sphere")
-        {
-            Renderer[] childsRend = this.gameObject.GetComponentsInChildren<Renderer>();
+    //void OnCollisionEnter(Collision other)
+    //{
+    //    if (other.gameObject.name == "Sphere")
+    //    {
+    //        Renderer[] childsRend = this.gameObject.GetComponentsInChildren<Renderer>();
 
-            foreach (Renderer rend in childsRend)
-            {
-                rend.enabled = false;
-            }
-        }
-    }
+    //        foreach (Renderer rend in childsRend)
+    //        {
+    //            rend.enabled = false;
+    //        }
+    //    }
+    //}
 
     public void OnBecameInvisible()
     {
@@ -75,7 +75,10 @@ public class TrackBlockScript : MonoBehaviour {
 
             //resetVisibility();
 
+
+
         }
+        //this.transform.position = new Vector3(NextXPositionLocal, NextYPositionLocal, NextZPositionLocal);
     }
 
     private void resetVisibility(){
