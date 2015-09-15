@@ -8,6 +8,8 @@ public class RocketHit : MonoBehaviour {
     private bool _isPlayer1 = false;
     private float _hittedTime = 0;
     private bool _timerSet = false;
+    [SerializeField]
+    private GameObject _breakdrill;
 	// Use this for initialization
 	void Start () {
 	
