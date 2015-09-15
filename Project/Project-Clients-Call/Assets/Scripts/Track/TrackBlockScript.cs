@@ -9,18 +9,13 @@ public class TrackBlockScript : MonoBehaviour {
     private Vector3 _globalFinalSpot;
 
     private int _zBlocks;
-    private List<string> _trackList = new List<string>();
-    private int _trackPart = 0;
-    private int _listCounter = 0;
-    private int _zListPart = 0;
 
-    public List<string> TrackList { set { _trackList = value; } }
     public int ZBlocks { set { _zBlocks = value; } }
 
 
 	// Use this for initialization
 	void Start () {
-	    
+        //resetVisibility();
 	}
 	
 	// Update is called once per frame
@@ -40,13 +35,18 @@ public class TrackBlockScript : MonoBehaviour {
         
 	}
 
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.name == "Sphere")
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    //void OnCollisionEnter(Collision other)
+    //{
+    //    if (other.gameObject.name == "Sphere")
+    //    {
+    //        Renderer[] childsRend = this.gameObject.GetComponentsInChildren<Renderer>();
+
+    //        foreach (Renderer rend in childsRend)
+    //        {
+    //            rend.enabled = false;
+    //        }
+    //    }
+    //}
 
     public void OnBecameInvisible()
     {
@@ -73,6 +73,20 @@ public class TrackBlockScript : MonoBehaviour {
             //set next position in the air
             this.transform.position = new Vector3(NextXPositionGlobal + UnityEngine.Random.Range(-30, 30), NextYPositionGlobal + UnityEngine.Random.Range(-30, 30), NextZPositionGlobal);
 
+            //resetVisibility();
+
+
+
+        }
+        //this.transform.position = new Vector3(NextXPositionLocal, NextYPositionLocal, NextZPositionLocal);
+    }
+
+    private void resetVisibility(){
+        Renderer[] childsRend = this.gameObject.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer rend in childsRend)
+        {
+            rend.enabled = true;
         }
     }
 }

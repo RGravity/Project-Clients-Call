@@ -129,7 +129,7 @@ public class ArrowMoveScript : MonoBehaviour {
         }
         if (this.gameObject.transform.position == new Vector3(150,1294,-457) && Input.GetButton ("FireP1"))
         {
-            Application.LoadLevel(1);
+            Application.LoadLevel(3);
         }
     
     }
