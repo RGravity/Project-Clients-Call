@@ -13,7 +13,7 @@ public class LogoSaxionFunieFit : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > (screenTime + 5f))
+        if (Time.time > (screenTime + 2.5f))
         {
             Application.LoadLevel(1);
         }

@@ -71,6 +71,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Prefabs\Breakeble wall\explosionsScript.cs" />
     <Compile Include="Assets\Scripts\ChoosingPlayer1.cs" />
     <Compile Include="Assets\Scripts\ChoosingPlayer2.cs" />
     <Compile Include="Assets\Scripts\Environment\Skybox.cs" />

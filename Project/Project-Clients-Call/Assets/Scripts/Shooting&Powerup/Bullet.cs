@@ -87,6 +87,11 @@ public class Bullet : MonoBehaviour {
             Destroy(other.transform.gameObject);
             Destroy(this.transform.gameObject);
         }
+        if (other.gameObject.name.Contains("Particle System"))
+        {
+            Destroy(this);
+            Destroy(other.gameObject);
+        }
     }
 
     public void Player (bool isPlayer1)

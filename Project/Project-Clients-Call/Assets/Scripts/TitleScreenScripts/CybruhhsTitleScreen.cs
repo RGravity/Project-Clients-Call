@@ -14,7 +14,8 @@ public class CybruhhsTitleScreen : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > (screenTime + 2.5f))
+
+        if (Time.time > (screenTime + 7.3f))
         {
             Application.LoadLevel(2);
         }
