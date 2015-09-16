@@ -5,6 +5,21 @@ public class SoundsScript : MonoBehaviour
 {
     private AudioSource[] _music;
     private GameObject _volume;
+
+    private static GameObject _instance;
+
+    void Awake()
+    {
+        //if we don't have an [_instance] set yet
+        if (!_instance)
+            _instance = this.gameObject;
+        //otherwise, if we do, kill this thing
+        else
+            Destroy(this.gameObject);
+
+
+        DontDestroyOnLoad(this.gameObject);
+    }
     
 
     
@@ -12,19 +27,20 @@ public class SoundsScript : MonoBehaviour
     {
         _music = gameObject.GetComponentsInChildren<AudioSource>();
         _volume = GameObject.FindGameObjectWithTag("SFXSlidersSlider");
+        
     }
     void Update()
     {
+       
         Volume();
     }
 
     void Volume()
     {
-
+       
         for (int i = 0; i < _music.Length; i++)
         {
             _music[i].volume = ((-_volume.transform.position.z + 75) / 150);
-
         }
 
     }

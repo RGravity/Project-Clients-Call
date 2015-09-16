@@ -7,7 +7,8 @@ public class Player1MoveScript : MonoBehaviour {
     private Vector3 _startCamera;
     private Animator _animator;
     private Animation _fire;
-    private float _fireAnimation=0;
+    private float _fireAnimation = 0;
+    private float _maxTrackWidth = 6;
 
 	// Use this for initialization
 	void Start () {
@@ -24,18 +25,18 @@ public class Player1MoveScript : MonoBehaviour {
             moveDir.z = Input.GetAxis("Vertical P1") * 12;
             transform.position += moveDir * Time.deltaTime;
 
-            if (transform.position.x > (_startPosition.x + 7.5f))
+            if (transform.position.x > (_startPosition.x + _maxTrackWidth))
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
-                newPos.x = _startPosition.x + 7.5f;
+                newPos.x = _startPosition.x + _maxTrackWidth;
                 newPos.y = transform.position.y;
                 newPos.z = transform.position.z;
                 transform.position = newPos;
             }
-            else if (transform.position.x < (_startPosition.x - 7.5f))
+            else if (transform.position.x < (_startPosition.x - _maxTrackWidth))
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
-                newPos.x = _startPosition.x - 7.5f;
+                newPos.x = _startPosition.x - _maxTrackWidth;
                 newPos.y = transform.position.y;
                 newPos.z = transform.position.z;
                 transform.position = newPos;

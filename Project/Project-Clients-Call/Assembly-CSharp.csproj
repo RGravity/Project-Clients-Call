@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Prefabs\Breakeble wall\explosionsScript.cs" />
      <Compile Include="Assets\Scripts\ChoosingPlayer1.cs" />
      <Compile Include="Assets\Scripts\ChoosingPlayer2.cs" />
      <Compile Include="Assets\Scripts\Environment\Skybox.cs" />
@@ -75,9 +76,9 @@
      <Compile Include="Assets\Scripts\MenuScript\StartGameScript.cs" />
      <Compile Include="Assets\Scripts\Movement\BankingP1Script.cs" />
      <Compile Include="Assets\Scripts\Movement\BankingP2Script.cs" />
-     <Compile Include="Assets\Scripts\Movement\BoostScript.cs" />
      <Compile Include="Assets\Scripts\Movement\Player1MoveScript.cs" />
      <Compile Include="Assets\Scripts\Movement\Player2MoveScript.cs" />
+     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\BoostScript.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\Bullet.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\CoinScript.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\DrillScript.cs" />
@@ -87,12 +88,15 @@
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\RocketDrill.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\RocketHit.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\ShootScript.cs" />
+     <Compile Include="Assets\Scripts\TitleScreenScripts\CybruhhsTitleScreen.cs" />
+     <Compile Include="Assets\Scripts\TitleScreenScripts\LogoSaxionFunieFit.cs" />
      <Compile Include="Assets\Scripts\Track\Checkpoints.cs" />
      <Compile Include="Assets\Scripts\Track\CollisionScript.cs" />
      <Compile Include="Assets\Scripts\Track\DestroyGOafter3sec.cs" />
      <Compile Include="Assets\Scripts\Track\Player1LevelScript.cs" />
      <Compile Include="Assets\Scripts\Track\Player2LevelScript.cs" />
      <Compile Include="Assets\Scripts\Track\ScoreScript.cs" />
+     <Compile Include="Assets\Scripts\Track\TrackBarrierScript.cs" />
      <Compile Include="Assets\Scripts\Track\TrackBlockScript.cs" />
      <Compile Include="Assets\Scripts\Track\TrackBuildScript.cs" />
      <Compile Include="Assets\Scripts\TutorialScript\TutorialScript.cs" />

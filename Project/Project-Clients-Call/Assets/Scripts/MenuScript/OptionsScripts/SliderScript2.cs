@@ -6,7 +6,7 @@ public class SliderScript2 : MonoBehaviour
     private bool _sound = false;
 
     public bool Sound { get { return _sound; } set { _sound = value; } }
-    // Update is called once per frame
+
     void Update()
     {
         if (_sound == true)
