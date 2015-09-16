@@ -27,6 +27,7 @@ public class BoostScript : MonoBehaviour {
                 GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
                 GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
             }
+            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
         if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP2>().name)
@@ -36,6 +37,7 @@ public class BoostScript : MonoBehaviour {
                 GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp = PowerUpScriptP2.Powerup.Boost;
                 GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
             }
+            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
             Destroy(gameObject);
         }
     }

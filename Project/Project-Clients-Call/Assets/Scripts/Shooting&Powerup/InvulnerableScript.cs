@@ -18,6 +18,7 @@ public class InvulnerableScript : MonoBehaviour {
                 GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
             }
             Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
         }
         if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP2>().name)
         {
@@ -27,6 +28,7 @@ public class InvulnerableScript : MonoBehaviour {
                 GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
             }
             Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
         }
     }
 }

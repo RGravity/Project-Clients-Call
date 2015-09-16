@@ -6,7 +6,13 @@ public class SoundsScript : MonoBehaviour
     private AudioSource[] _music;
     private GameObject _volume;
 
+    private bool _play = false;
+
+    public bool Play { get { return _play; } set { _play = value; } }
+
     private static GameObject _instance;
+
+
 
     void Awake()
     {
@@ -33,6 +39,7 @@ public class SoundsScript : MonoBehaviour
     {
        
         Volume();
+        StartCountDown();
     }
 
     void Volume()
@@ -43,5 +50,15 @@ public class SoundsScript : MonoBehaviour
             _music[i].volume = ((-_volume.transform.position.z + 75) / 150);
         }
 
+    }
+
+    void StartCountDown()
+    {
+        if (_play == true)
+        { 
+            _music[4].Play ();
+            _play = false;
+        }
+    
     }
 }
