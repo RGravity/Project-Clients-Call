@@ -45,6 +45,11 @@ public class Player1LevelScript : MonoBehaviour {
         if (!Input.GetKey(KeyCode.Space) && _finished == false && _stopSpeed == false && _levelStarted)
         {
             _speed += 0.05f;
+            Debug.Log(_speed);
+            if (_speed >= 35)
+            {
+                _speed = 35;
+            }
             gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
             if (Time.time > (_stopTime + 4))
             {
