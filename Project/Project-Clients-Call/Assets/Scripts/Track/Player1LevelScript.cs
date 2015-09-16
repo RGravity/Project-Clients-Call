@@ -70,7 +70,6 @@ public class Player1LevelScript : MonoBehaviour {
             if (Time.time > (_stopTime + 3))
             {
                 GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[3];
-                //_stopTime = Time.time;
                 _levelStarted = true;
             }
         }
