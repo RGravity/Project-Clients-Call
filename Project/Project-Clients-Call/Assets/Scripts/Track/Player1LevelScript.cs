@@ -46,6 +46,10 @@ public class Player1LevelScript : MonoBehaviour {
         {
             _speed += 0.05f;
             gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
+            if (Time.time > (_stopTime + 4))
+            {
+                GameObject.Find("Countdown").GetComponent<Image>().enabled = false;
+            }
         }
         else if (!_levelStarted)
         {
