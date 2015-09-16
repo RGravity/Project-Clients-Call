@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ public class Player1LevelScript : MonoBehaviour {
     private float _stopTime = 0;
     private bool _stopDrill = false;
     private bool _levelStarted = false;
+    public Sprite[] _Countdown;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
     public bool StopSpeed { get { return _stopSpeed; } set { _stopSpeed = value; } }
@@ -47,9 +49,22 @@ public class Player1LevelScript : MonoBehaviour {
         }
         else if (!_levelStarted)
         {
+            if (Time.time > (_stopTime + 0))
+            {
+                GameObject.Find("Countdown").GetComponent<Image>().enabled = true;
+                GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[0];
+            }
+            if (Time.time > (_stopTime + 1))
+            {
+                GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[1];
+            }
+            if (Time.time > (_stopTime + 2))
+            {
+                GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[2];
+            }
             if (Time.time > (_stopTime + 3))
             {
-                _stopTime = Time.time;
+                GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[3];
                 _levelStarted = true;
             }
         }
