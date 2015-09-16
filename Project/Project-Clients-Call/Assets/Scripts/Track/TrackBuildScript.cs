@@ -62,11 +62,18 @@ public class TrackBuildScript : MonoBehaviour {
             {
                 if (z % 33 == 0)
                 {
-                    if (x == 0 || x == 6)
+
+                    if (x == 0)
                     {
-                        if(x == 0) SpawnTrackBarrier(new Vector3((x * 2) - 6.25f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                        //if(x == 6) SpawnTrackBarrier(new Vector3((x * 2) + 4, -3.4f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                        SpawnTrackBarrier(new Vector3((x * 2) - 6.255f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        SpawnTrackBarrier(new Vector3((x * 2) - 6.255f, -4.2f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
                     }
+                    if (x == 6)
+                    {
+                        SpawnTrackBarrier(new Vector3((x * 2) - 2.28f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        SpawnTrackBarrier(new Vector3((x * 2) - 2.28f, -4.2f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                    }
+                    
                     
                 }
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));

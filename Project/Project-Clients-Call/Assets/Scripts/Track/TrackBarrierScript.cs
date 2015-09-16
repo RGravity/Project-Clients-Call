@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TrackBarrierScript : MonoBehaviour {
 
-    
+    private GameObject _barrier;
     private Vector3 _localFinalSpot;
     private Vector3 _globalFinalSpot;
     private bool _moving = false;
@@ -14,7 +14,7 @@ public class TrackBarrierScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        _barrier = (GameObject)Resources.Load("TrackBlock/TrackBarrier");
 	}
 	
 	// Update is called once per frame
