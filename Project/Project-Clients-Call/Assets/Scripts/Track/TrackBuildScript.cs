@@ -21,6 +21,8 @@ public class TrackBuildScript : MonoBehaviour {
     private GameObject _trackBarrier;
     private GameObject _speedBoostPowerup;
     private GameObject _shieldPowerup;
+    private GameObject _coinPowerup;
+    private GameObject _drillPowerup;
     private int _trackBlocksCounter;
     private int _trackWallsCounter;
     private int _trackBarrierCounter;
@@ -28,6 +30,7 @@ public class TrackBuildScript : MonoBehaviour {
     private int _speedCounter = 0;
     private int _shieldCounter = 0;
     private int _drillCounter = 0;
+    private int _coinCounter = 0;
 
     [SerializeField]
     private int _firstBlocks = 500;
@@ -44,7 +47,8 @@ public class TrackBuildScript : MonoBehaviour {
         _trackBarrier = (GameObject)Resources.Load("TrackBlock/TrackBarrier");
         _speedBoostPowerup = (GameObject)Resources.Load("Powerups/speedboost Prefab");
         _shieldPowerup = (GameObject)Resources.Load("Powerups/Invulnerability Powerup");
-        
+        _coinPowerup = (GameObject)Resources.Load("Powerups/Coin");
+        _drillPowerup = (GameObject)Resources.Load("Powerups/RocketDrill");
         
         //spawn the first XXX blocks far
         for (int z = 0; z < _firstBlocks; z++)
@@ -190,7 +194,7 @@ public class TrackBuildScript : MonoBehaviour {
 
     private void SpawnPowerup(Vector3 pPosition)
     {
-        int randomIndex = Random.Range(0, 3);
+        int randomIndex = Random.Range(0, 4);
         GameObject GO;
         switch (randomIndex)
         {
@@ -212,6 +216,18 @@ public class TrackBuildScript : MonoBehaviour {
                 break;
             //Drill Powerup
             case 2:
+                GO = (GameObject)Instantiate(_drillPowerup, pPosition, Quaternion.identity);
+                GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+                GO.transform.parent = this.gameObject.transform;
+                GO.name = "Drill" + _drillCounter;
+                _drillCounter++;
+                break;
+            case 3:
+                GO = (GameObject)Instantiate(_coinPowerup, pPosition, Quaternion.identity);
+                GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+                GO.transform.parent = this.gameObject.transform;
+                GO.name = "Coin" + _coinCounter;
+                _coinCounter++;
                 break;
         }
     }
