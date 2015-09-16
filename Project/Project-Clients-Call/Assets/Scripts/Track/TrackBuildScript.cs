@@ -64,22 +64,22 @@ public class TrackBuildScript : MonoBehaviour {
             //spawn the XXX blocks wide
             for (int x = 0; x < 7; x++)
             {
-                if (z % 33 == 0)
-                {
+                //if (z % 33 == 0)
+                //{
 
-                    if (x == 0)
-                    {
-                        SpawnTrackBarrier(new Vector3((x * 2) - 6.255f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                        SpawnTrackBarrier(new Vector3((x * 2) - 6.255f, -4.2f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
-                    }
-                    if (x == 6)
-                    {
-                        SpawnTrackBarrier(new Vector3((x * 2) - 2.28f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                        SpawnTrackBarrier(new Vector3((x * 2) - 2.28f, -4.2f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
-                    }
+                //    if (x == 0)
+                //    {
+                //        SpawnTrackBarrier(new Vector3((x * 2) - 6.255f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                //        SpawnTrackBarrier(new Vector3((x * 2) - 6.255f, -4.2f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                //    }
+                //    if (x == 6)
+                //    {
+                //        SpawnTrackBarrier(new Vector3((x * 2) - 2.28f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                //        SpawnTrackBarrier(new Vector3((x * 2) - 2.28f, -4.2f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                //    }
                     
                     
-                }
+                //}
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
             }
@@ -95,20 +95,6 @@ public class TrackBuildScript : MonoBehaviour {
         //GO.AddComponent<DestroyGOafter3sec>();
         ////GO.GetComponent<Renderer>().enabled = false;
         #endregion
-
-
-        //Collider[] hitColliders = Physics.OverlapSphere(TrackBlockList[Random.Range(0, TrackBlockList.Count-1)].transform.position, 0.0001f);
-
-        //Debug.Log(hitColliders.Length);
-
-        //foreach (Collider col in hitColliders)
-        //{
-        //    if (col.gameObject.GetComponent<TrackBlockScript>())
-        //    {
-        //        Destroy(col.gameObject);
-        //    }
-            
-        //}
 	
 	}
 	
@@ -209,7 +195,7 @@ public class TrackBuildScript : MonoBehaviour {
             //Shield Powerup
             case 1:
                 GO = (GameObject)Instantiate(_shieldPowerup, pPosition, Quaternion.identity);
-                GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+                GO.transform.localEulerAngles = new Vector3(0, -45, 0);
                 GO.transform.parent = this.gameObject.transform;
                 GO.name = "Shield" + _shieldCounter;
                 _shieldCounter++;
@@ -224,7 +210,6 @@ public class TrackBuildScript : MonoBehaviour {
                 break;
             case 3:
                 GO = (GameObject)Instantiate(_coinPowerup, pPosition, Quaternion.identity);
-                GO.transform.localEulerAngles = new Vector3(0, 90, 0);
                 GO.transform.parent = this.gameObject.transform;
                 GO.name = "Coin" + _coinCounter;
                 _coinCounter++;

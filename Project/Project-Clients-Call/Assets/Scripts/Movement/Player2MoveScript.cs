@@ -6,6 +6,7 @@ public class Player2MoveScript : MonoBehaviour {
     private Vector3 _startPosition;
     private Animator _animator;
     private float _fireAnimation = 0;
+    private float _maxTrackWidth = 6;
 
 
 	// Use this for initialization
@@ -23,18 +24,18 @@ public class Player2MoveScript : MonoBehaviour {
             moveDir.z = Input.GetAxis("Vertical P2") * 12; // get result of WS keys in Z
             transform.position -= moveDir * Time.deltaTime;
 
-            if (transform.position.x > (_startPosition.x + 7.5f))
+            if (transform.position.x > (_startPosition.x + _maxTrackWidth))
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
-                newPos.x = _startPosition.x + 7.5f;
+                newPos.x = _startPosition.x + _maxTrackWidth;
                 newPos.y = transform.position.y;
                 newPos.z = transform.position.z;
                 transform.position = newPos;
             }
-            else if (transform.position.x < (_startPosition.x - 7.5f))
+            else if (transform.position.x < (_startPosition.x - _maxTrackWidth))
             {
                 Vector3 newPos = new Vector3(0, 0, 0);
-                newPos.x = _startPosition.x - 7.5f;
+                newPos.x = _startPosition.x - _maxTrackWidth;
                 newPos.y = transform.position.y;
                 newPos.z = transform.position.z;
                 transform.position = newPos;
