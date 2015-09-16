@@ -62,10 +62,10 @@ public class TrackBuildScript : MonoBehaviour {
             {
                 if (z % 33 == 0)
                 {
-                    if (x == 0 || x == 9)
+                    if (x == 0 || x == 6)
                     {
-                        //SpawnTrackBarrier(new Vector3((x * 2) - 4.25f, -0.1f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                        //SpawnTrackBarrier(new Vector3((x * 2) - 4.25f, -3.4f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                        if(x == 0) SpawnTrackBarrier(new Vector3((x * 2) - 6.25f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        //if(x == 6) SpawnTrackBarrier(new Vector3((x * 2) + 4, -3.4f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
                     }
                     
                 }
@@ -116,18 +116,18 @@ public class TrackBuildScript : MonoBehaviour {
             int rndPlace;
             do
             {
-                rndPlace = Random.Range(1, 8);
+                rndPlace = Random.Range(0, 7);
             } while (LastPlaces.Contains(rndPlace));
 
-            SpawnWall(new Vector3((rndPlace * 2) - 4.25f, 0.6f, (Z * 0.7f)), GameObject.Find("TrackBlocks1"));
-            SpawnWall(new Vector3(((9 - rndPlace) * 2) - 4.25f, -3.1f, (Z * 0.7f)), GameObject.Find("TrackBlocks2"));
+            SpawnWall(new Vector3((rndPlace * 2) - 4.6f, 0.6f, (Z * 0.7f)), GameObject.Find("TrackBlocks1"));
+            SpawnWall(new Vector3(((6 - rndPlace) * 2) - 4.6f, -3.1f, (Z * 0.7f)), GameObject.Find("TrackBlocks2"));
             LastPlaces.Add(rndPlace);
         }
     }
 
     private void SpawnPowerupsOnZ(float Z)
     {
-        int rndPowerups = Random.Range(1, 8);
+        int rndPowerups = Random.Range(0, 7);
 
         SpawnPowerup(new Vector3((rndPowerups * 2) - 4.25f, 2, (Z * 0.7f)));
     }

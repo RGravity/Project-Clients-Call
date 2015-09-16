@@ -25,8 +25,13 @@ public class RocketHit : MonoBehaviour {
                 _oldTime = Time.time;
                 _timerSet = true;
             }
-            if (Time.time > (_oldTime + 1.5f) && _isPlayer1 == true)
+            if (Time.time > (_oldTime + 1.2f) && _isPlayer1 == true)
             {
+                //Collider[] colliders;
+                //if ((colliders = Physics.OverlapSphere(transform.position, 1f /* Radius */)).Length > 1)
+                //{
+
+                //}
                 _oldTime = Time.time;
                 GameObject.FindObjectOfType<Player1LevelScript>().StopDrill = true;
                 GameObject.FindObjectOfType<Player1LevelScript>().StopTime = Time.time;
