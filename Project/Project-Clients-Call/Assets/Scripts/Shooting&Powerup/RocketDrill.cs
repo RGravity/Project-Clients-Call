@@ -46,7 +46,7 @@ public class RocketDrill : MonoBehaviour {
             drill.transform.position = position;
             drill.transform.parent = _planeP2.transform;
 
-            _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, 3f, 10);
+            _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, 6f, 10);
 
             //_bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 3);
             //Instantiate(_bulletPrefab).GetComponent<Transform>();
@@ -67,7 +67,8 @@ public class RocketDrill : MonoBehaviour {
             drill.transform.position = position;
             drill.transform.parent = _planeP1.transform;
 
-            _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, -3f, 10);
+            _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, -6f, 10);
+            _portal.gameObject.transform.localRotation = new Quaternion(90, _portal.gameObject.transform.rotation.y, _portal.gameObject.transform.rotation.z, _portal.gameObject.transform.rotation.w);
 
             //_bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 3);
             //Instantiate(_bulletPrefab).GetComponent<Transform>();
