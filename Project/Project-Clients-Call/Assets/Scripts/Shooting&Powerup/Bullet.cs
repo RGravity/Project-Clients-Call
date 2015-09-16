@@ -97,7 +97,7 @@ public class Bullet : MonoBehaviour {
     public void Player (bool isPlayer1)
     {
         _isPlayer1 = isPlayer1;
-        Debug.Log(isPlayer1);
+        //Debug.Log(isPlayer1);
     }
 
 }
