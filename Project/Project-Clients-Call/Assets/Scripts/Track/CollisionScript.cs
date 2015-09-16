@@ -68,7 +68,7 @@ public class CollisionScript : MonoBehaviour
         {
             GameObject.FindObjectOfType<Player1LevelScript>().SlowSpeed = true;
             GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Wall;
-            GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
+            //GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
             Instantiate(_replacedPrefab);
             _replacedPrefab.gameObject.transform.position = other.gameObject.transform.position;
             _replacedPrefab.gameObject.transform.rotation = other.gameObject.transform.rotation;
@@ -78,7 +78,7 @@ public class CollisionScript : MonoBehaviour
         {
             GameObject.FindObjectOfType<Player2LevelScript>().SlowSpeed = true;
             GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Wall;
-            GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
+//            GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
             Instantiate(_replacedPrefab);
 
             _replacedPrefab.gameObject.transform.position = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y - 0.5f, other.gameObject.transform.rotation.z);
