@@ -5,11 +5,13 @@ public class CollisionScript : MonoBehaviour {
 
     bool P1Finished = false;
     bool P2Finished = false;
+    bool startTimer = false;
 
     int round = 0;
 
     float timer = 0;
-    float secondsLeft = 5;
+    float secondsLeftP1 = 1;
+    float secondsLeftP2 = 1;
 
     [SerializeField]
     private GameObject _replacedPrefab;
@@ -21,7 +23,40 @@ public class CollisionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	     
+        if (P1Finished)
+        {
+            if (Time.time > (timer + 1))
+            {
+                timer = Time.time;
+                secondsLeftP2--;
+            }
+        }
+        if (P2Finished)
+        {
+            if (Time.time > (timer + 1))
+            {
+                timer = Time.time;
+                secondsLeftP1--;
+            }
+        }
+        if (P1Finished && P2Finished)
+        {
+                //GameObject.FindObjectOfType<ConfirmScript>().round++;
+                //Application.LoadLevel(3);
+                Application.LoadLevel(Application.loadedLevel);
+        }
+        if (secondsLeftP1 < 0)
+        {
+            //P1 lost
+            GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
+            P1Finished = true;
+        }
+        if (secondsLeftP2 < 0)
+        {
+            //P2 lost
+            GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+            P2Finished = true;
+        }
 	}
 
     void OnTriggerEnter(Collider other)
@@ -49,50 +84,70 @@ public class CollisionScript : MonoBehaviour {
         {
             P1Finished = true;
             GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-            if (P2Finished)
-            {
-                //P2 won
-                if (Time.time > (timer +1))
-                {
-                    timer = Time.time;
-                    secondsLeft--;
-                }
-                if (P1Finished && P2Finished)
-                {
-                    GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
-                }   
-            }
+            //startTimer = true;
+            //if (GameObject.FindObjectOfType<Player2LevelScript>().Finsihed)
+            //{
+            //    //P2 won
+            //    P2Finished = true;
+            //    if (P1Finished && P2Finished)
+            //    {
+            //        GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+            //    }   
+            //}
         }
-        else if(secondsLeft < 0)
-        {
-            //P1 not finshed in time
-            P1Finished = true;
-            GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-        }
+        //if (!GameObject.FindObjectOfType<Player2LevelScript>().Finsihed && GameObject.FindObjectOfType<Player1LevelScript>().Finsihed)
+        //{
+           
+        //}
+        //if(secondsLeft < 0)
+        //{
+        //    //P2 not finshed in time
+        //    P2Finished = true;
+        //    GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+        //}
         if (this.gameObject.name == "Finish" && other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
         {
             P2Finished = true;
             GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
-            if (P1Finished)
-            {
-                //P1 won
-                if (P2Finished && P1Finished)
-                {
-                    GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-                }
-            }
+            //startTimer = true;
+            //if (GameObject.FindObjectOfType<Player1LevelScript>().Finsihed)
+            //{
+            //    P1Finished = true;
+            //    //P1 won
+            //    if (P2Finished && P1Finished)
+            //    {
+            //        GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
+            //    }
+            //}
         }
-        else if (secondsLeft < 0)
+        if (GameObject.FindObjectOfType<Player2LevelScript>().Finsihed)
         {
-            //P2 not finished in time
             P2Finished = true;
-            GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
         }
-
-        if (P2Finished && P1Finished)
+        if (GameObject.FindObjectOfType<Player1LevelScript>().Finsihed)
         {
-            GameObject.FindObjectOfType<ConfirmScript>().round++;
-            Application.LoadLevel(3);
+            P1Finished = true;
         }
+        //if (!GameObject.FindObjectOfType<Player1LevelScript>().Finsihed && GameObject.FindObjectOfType<Player2LevelScript>().Finsihed)
+        //{
+        //    if (Time.time > (timer + 1))
+        //    {
+        //        timer = Time.time;
+        //        secondsLeft--;
+        //    }
+        //}
+        //if (secondsLeft < 0)
+        //{
+        //    //P1 not finished in time
+        //    P1Finished = true;
+        //    GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
+        //}
+
+        //if (P2Finished && P1Finished)
+        //{
+        //    //GameObject.FindObjectOfType<ConfirmScript>().round++;
+        //    //Application.LoadLevel(3);
+        //    Application.LoadLevel(Application.loadedLevel);
+        //}
     }
 }
