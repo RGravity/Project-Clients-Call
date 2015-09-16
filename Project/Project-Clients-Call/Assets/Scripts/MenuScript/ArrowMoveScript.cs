@@ -130,6 +130,7 @@ public class ArrowMoveScript : MonoBehaviour {
         if (this.gameObject.transform.position == new Vector3(150,1294,-457) && Input.GetButton ("FireP1"))
         {
             Application.LoadLevel(3);
+            GameObject.FindObjectOfType<MusicScript>().Play = true;
         }
     
     }
@@ -379,11 +380,13 @@ public class ArrowMoveScript : MonoBehaviour {
 
                 _tutorialButton.transform.position = new Vector3(140, 1200, 0);
                 _backButton.transform.position = new Vector3(220, 1300, 0);
+                
             }
             if (this.gameObject.transform.position == new Vector3(220, 1300, 0))
             {
                 _tutorialButton.transform.position = new Vector3(150, 1300, 0);
                 _backButton.transform.position = new Vector3(200, 1200, 0);
+               
             }
         }
     }
@@ -395,11 +398,15 @@ public class ArrowMoveScript : MonoBehaviour {
             if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && this.gameObject.transform.position.x < 250)
             {
                 this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(100, 0, 0);
+                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+               
             }
 
             if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && this.gameObject.transform.position.x > 150)
             {
                 this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(100, 0, 0);
+                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+                
             }
             if (this.gameObject.transform.position == new Vector3(150, 1294, -457))
             {
@@ -439,11 +446,14 @@ public class ArrowMoveScript : MonoBehaviour {
             if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && this.gameObject.transform.position.x < 220)
             {
                 this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(70, 0, 0);
+                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
             }
 
             if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && this.gameObject.transform.position.x > 150)
             {
                 this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(70, 0, 0);
+                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+               
             }
             if (this.gameObject.transform.position == new Vector3(150, 1300, 0))
             {
@@ -484,11 +494,13 @@ public class ArrowMoveScript : MonoBehaviour {
             if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && this.gameObject.transform.position.x < 112)
             {
                 this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(73, 0, 0);
+                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
             }
 
             if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && this.gameObject.transform.position.x > -34 )
             {
                 this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(73, 0, 0);
+                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
             }
             if (this.gameObject.transform.position == new Vector3(-34, 1300, 0))
             {
@@ -541,11 +553,13 @@ public class ArrowMoveScript : MonoBehaviour {
             if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && this.gameObject.transform.position.y > -187)
             {
                 this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(0, 54, 0);
+                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
             }
 
             if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && this.gameObject.transform.position.y < 29)
             {
                 this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0, 54, 0);
+                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
             }
 
             if (this.gameObject.transform.position == new Vector3(1298, -25, 0))
