@@ -5,7 +5,8 @@ using System.Collections;
 public class PauseScript : MonoBehaviour {
 
 	public bool pauseGame = false;
-    private bool _moving = false;
+
+    private bool _backToMenu = false;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +43,8 @@ public class PauseScript : MonoBehaviour {
             pauseGame = false;
 		}
         Selection();
+        Choice();
+        BackToMenu();
     }
 
     void Selection ()
@@ -56,6 +59,7 @@ public class PauseScript : MonoBehaviour {
 
         if (pauseGame && Input.GetAxis("Vertical P1") > 0.5f || pauseGame && Input.GetAxis("Vertical P2") > 0.5f)
         {
+            
             GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
             GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = true;
             GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
@@ -65,15 +69,26 @@ public class PauseScript : MonoBehaviour {
 
     void Choice()
     {
-        if (pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton ("FireP1") ||
-            pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton("FireP2"))
+        if (pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() != enabled && Input.GetButton("FireP1") ||
+           pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() != enabled && Input.GetButton("FireP2"))
         {
             pauseGame = false;
+            Time.timeScale = 1;
+            _backToMenu = true;
 
         }
-
         if (pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton("FireP1") ||
             pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton("FireP2"))
+        {
+            _backToMenu = true;
+            Time.timeScale = 1;
+        }
+
+    }
+
+    void BackToMenu()
+    {
+        if (_backToMenu == true)
         {
             Application.LoadLevel(2);
             GameObject.FindObjectOfType<MusicScript>().Play2 = true;
@@ -81,6 +96,8 @@ public class PauseScript : MonoBehaviour {
             GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 = 0;
             GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score = 0;
             GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = 0;
+            _backToMenu = false;
         }
+       
     }
 }
