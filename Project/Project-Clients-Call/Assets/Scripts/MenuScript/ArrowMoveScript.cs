@@ -139,8 +139,7 @@ public class ArrowMoveScript : MonoBehaviour {
         {
             Application.LoadLevel(3);
             GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
-            GameObject.FindObjectOfType<MusicScript>().Play = true;
-            GameObject.FindObjectOfType<SoundsScript>().Play = true;
+
         }
     
     }

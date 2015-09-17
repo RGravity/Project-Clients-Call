@@ -8,6 +8,7 @@ public class MusicScript : MonoBehaviour {
     private bool _play = false;
     private bool _play2 = false;
     public bool Play { get { return _play; } set { _play = value; } }
+    public bool Play2 { get { return _play2; } set { _play2 = value; } }
 
     private static GameObject _instance;
 
@@ -38,10 +39,6 @@ public class MusicScript : MonoBehaviour {
     {
         Volume();
         PlayNextMusic();
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            _play2 = true;
-        }
         BackToMenu();
     }
 
@@ -69,7 +66,6 @@ public class MusicScript : MonoBehaviour {
     { 
         if (_play2 == true)
         {
-            
             Application.LoadLevel(2);
             _music[0].Play ();
             _music[1].Stop ();

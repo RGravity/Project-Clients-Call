@@ -16,6 +16,8 @@ public class LoadingScreen : MonoBehaviour {
         if (Time.time > (screenTime + 4f))
         {
             Application.LoadLevel(4);
+            GameObject.FindObjectOfType<MusicScript>().Play = true;
+            GameObject.FindObjectOfType<SoundsScript>().Play = true;
         }
     }
 }

@@ -5,18 +5,21 @@ using System.Collections;
 public class CollisionScript : MonoBehaviour
 {
 
-    bool P1Finished = false;
-    bool P2Finished = false;
+    public bool P1Finished = false;
+    public bool P2Finished = false;
     bool startTimer = false;
 
     int round = 0;
 
     float timer = 0;
-    float secondsLeftP1 = 1;
-    float secondsLeftP2 = 1;
+    float secondsLeftP1 = 5;
+    float secondsLeftP2 = 5;
     bool isActivated = false;
     float shootingWallTimer = 0;
     int shootingWallCount = 0;
+
+    float reloadTime = 0;
+    bool showTime = true;
 
     [SerializeField]
     private GameObject _replacedPrefab;
@@ -34,11 +37,11 @@ public class CollisionScript : MonoBehaviour
         {
             if (secondsLeftP1 > 0)
             {
-                GameObject.Find("FinishP1").GetComponent<Image>().enabled = true; 
+                //GameObject.Find("FinishP1").GetComponent<Image>().enabled = true; 
             }
             if (Time.time > (timer + 1))
             {
-                GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
+                //GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
                 timer = Time.time;
                 secondsLeftP2--;
             }
@@ -47,11 +50,11 @@ public class CollisionScript : MonoBehaviour
         {
             if (secondsLeftP2 > 0)
             {
-                GameObject.Find("FinishP2").GetComponent<Image>().enabled = true; 
+                //GameObject.Find("FinishP2").GetComponent<Image>().enabled = true; 
             }
             else
             {
-                GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
+               // GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
             }
             if (Time.time > (timer + 1))
             {
@@ -69,6 +72,21 @@ public class CollisionScript : MonoBehaviour
             }
             else
             {
+                if (showTime == true)
+                {
+                    reloadTime = Time.time;
+                    showTime = false;
+                }
+                if (Time.time > (reloadTime + 3))
+                {
+                    GameObject.FindObjectOfType<MusicScript>().Play2 = true;
+                    GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 0;
+                    GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 = 0;
+                    GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score = 0;
+                    GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = 0;
+                    Application.LoadLevel("MenuEliasMichiel");
+                }
+                reloadTime = Time.time;
                 GameObject.Find("dnfP2").GetComponent<Image>().enabled = false;
                 GameObject.Find("dnfP1").GetComponent<Image>().enabled = false;
                 GameObject.Find("FinishP1").GetComponent<Image>().enabled = false;
@@ -88,14 +106,50 @@ public class CollisionScript : MonoBehaviour
         if (secondsLeftP1 < 0)
         {
             //P1 lost
-            GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-            P1Finished = true;
+            if (showTime == true)
+            {
+                reloadTime = Time.time;
+                if (Time.time > (reloadTime +3))
+                {
+                    showTime = false;
+                }
+                else
+                {
+                    GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
+                    GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
+                    P1Finished = true;
+                }
+            }
+            else
+            {
+                //GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
+               // P1Finished = true;
+            }
+
         }
         if (secondsLeftP2 < 0)
         {
             //P2 lost
-            GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
-            P2Finished = true;
+
+            if (showTime == true)
+            {
+                reloadTime = Time.time;
+                if (Time.time > (reloadTime + 3))
+                {
+                    showTime = false;
+                }
+                else
+                {
+                    GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
+                    GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+                    P2Finished = true;
+                }
+            }
+            else
+            {
+                //GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+                //P2Finished = true;
+            }
         }
         WallAnimation(isActivated);
     }

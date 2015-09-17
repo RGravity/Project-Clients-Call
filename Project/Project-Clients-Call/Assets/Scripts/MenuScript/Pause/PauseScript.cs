@@ -4,7 +4,10 @@ using System.Collections;
 
 public class PauseScript : MonoBehaviour {
 
-	private bool pauseGame = false;
+	public bool pauseGame = false;
+    private bool _moving = false;
+    private float _speedP1 = 0;
+    private float _speedP2 = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -24,21 +27,74 @@ public class PauseScript : MonoBehaviour {
 			
 			if (pauseGame == true)
 			{
+                _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
+                _speedP2 = GameObject.FindObjectOfType<Player2LevelScript>().Speed;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
+                GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
                 GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
                 GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = true;
                 GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
 				Time.timeScale = 0;
 				pauseGame = true;
 			}
+            if (pauseGame == false)
+            {
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
+                GameObject.FindObjectOfType<Player2LevelScript>().Speed = _speedP2;
+                GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
+                GameObject.Find("Canvas").GetComponent<Image>().enabled = false;
+                GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = false;
+                Time.timeScale = 1;
+                pauseGame = false;
+            }
 		}
-		
-		if (pauseGame == false)
-		{
-            GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
-            GameObject.Find("Canvas").GetComponent<Image>().enabled = false;
+        if (pauseGame == true)
+        {
+            GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
+            GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
+        }
+
+        Selection();
+        Choice();
+    }
+
+    void Selection ()
+    {
+        if (pauseGame && Input.GetAxis("Vertical P1") < -0.5f || pauseGame && Input.GetAxis("Vertical P2") < -0.5f)
+        {
+            GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
             GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = false;
-			Time.timeScale = 1;
+            GameObject.Find("QuitArrows").GetComponent<Image>().enabled = true;
+        
+        }
+
+        if (pauseGame && Input.GetAxis("Vertical P1") > 0.5f || pauseGame && Input.GetAxis("Vertical P2") > 0.5f)
+        {
+            GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
+            GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = true;
+            GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
+        }
+
+    }
+
+    void Choice()
+    {
+        if (pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton ("FireP1") ||
+            pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton("FireP2"))
+        {
             pauseGame = false;
-		}
+
+        }
+
+        if (pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton("FireP1") ||
+            pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton("FireP2"))
+        {
+            Application.LoadLevel(2);
+            GameObject.FindObjectOfType<MusicScript>().Play2 = true;
+            GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 0;
+            GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 = 0;
+            GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score = 0;
+            GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = 0;
+        }
     }
 }
