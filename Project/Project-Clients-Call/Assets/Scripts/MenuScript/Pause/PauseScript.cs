@@ -5,6 +5,9 @@ using System.Collections;
 public class PauseScript : MonoBehaviour {
 
 	public bool pauseGame = false;
+    private bool _moving = false;
+    private float _speedP1 = 0;
+    private float _speedP2 = 0;
 
     private bool _backToMenu = false;
 
@@ -26,22 +29,33 @@ public class PauseScript : MonoBehaviour {
 			
 			if (pauseGame == true)
 			{
+                _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
+                _speedP2 = GameObject.FindObjectOfType<Player2LevelScript>().Speed;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
+                GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
                 GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
                 GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = true;
                 GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
 				Time.timeScale = 0;
 				pauseGame = true;
 			}
-		}
-		
 		if (pauseGame == false)
 		{
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
+                GameObject.FindObjectOfType<Player2LevelScript>().Speed = _speedP2;
             GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
             GameObject.Find("Canvas").GetComponent<Image>().enabled = false;
             GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = false;
 			Time.timeScale = 1;
             pauseGame = false;
 		}
+		}
+        if (pauseGame == true)
+        {
+            GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
+            GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
+        }
+
         Selection();
         Choice();
         BackToMenu();

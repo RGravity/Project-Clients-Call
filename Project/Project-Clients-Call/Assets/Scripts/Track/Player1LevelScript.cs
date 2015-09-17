@@ -25,7 +25,7 @@ public class Player1LevelScript : MonoBehaviour {
     public bool StopDrill { get { return _stopDrill; } set { _stopDrill = value; } }
     public bool IncreaseSpeed { get { return _increaseSpeed; } set { _increaseSpeed = value; } }
     public bool Finsihed { get { return _finished; } set { _finished = value; } }
-    public float Speed { get { return _speed; } }
+    public float Speed { get { return _speed; } set { _speed = value; } }
     public bool LevelStarted { get { return _levelStarted; } }
 
 
