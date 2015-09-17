@@ -41,47 +41,47 @@ public class Bullet : MonoBehaviour {
 
     void WallAnimation()
     {
-        if (hitted != null)
-        {
-            if (Time.time > (shootingWallTimer + 1f))
-            {
-                shootingWallTimer = Time.time;
-                shootingWallCount++;
-            }
-            if (hitted.gameObject.GetComponent<MeshRenderer>().enabled == true)
-            {
-                hitted.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            }
-            else if (hitted.gameObject.GetComponent<MeshRenderer>().enabled == false)
-            {
-                hitted.gameObject.GetComponent<MeshRenderer>().enabled = true;
-            }
-            else
-            {
-                //shootingWallCount = 0;
-            }
+        //if (hitted != null)
+        //{
+        //    if (Time.time > (shootingWallTimer + 1f))
+        //    {
+        //        shootingWallTimer = Time.time;
+        //        shootingWallCount++;
+        //    }
+        //    if (hitted.gameObject.GetComponent<MeshRenderer>().enabled == true)
+        //    {
+        //        hitted.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        //    }
+        //    else if (hitted.gameObject.GetComponent<MeshRenderer>().enabled == false)
+        //    {
+        //        hitted.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        //    }
+        //    else
+        //    {
+        //        //shootingWallCount = 0;
+        //    }
 
-        }
-        if (otherCube != null)
-        {
-            if (Time.time > (shootingWallTimer + 1f))
-            {
-                shootingWallTimer = Time.time;
-                shootingWallCount++;
-            }
-            if (otherCube.gameObject.GetComponent<MeshRenderer>().enabled == true)
-            {
-                otherCube.gameObject.GetComponent<MeshRenderer>().enabled = false;
-            }
-            else if (otherCube.gameObject.GetComponent<MeshRenderer>().enabled == false)
-            {
-                otherCube.gameObject.GetComponent<MeshRenderer>().enabled = true;
-            }
-            else
-            {
-                //shootingWallCount = 0;
-            }
-        }
+        //}
+        //if (otherCube != null)
+        //{
+        //    if (Time.time > (shootingWallTimer + 1f))
+        //    {
+        //        shootingWallTimer = Time.time;
+        //        shootingWallCount++;
+        //    }
+        //    if (otherCube.gameObject.GetComponent<MeshRenderer>().enabled == true)
+        //    {
+        //        otherCube.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        //    }
+        //    else if (otherCube.gameObject.GetComponent<MeshRenderer>().enabled == false)
+        //    {
+        //        otherCube.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        //    }
+        //    else
+        //    {
+        //        //shootingWallCount = 0;
+        //    }
+        //}
     }
     void OnTriggerEnter(Collider other)
     {
@@ -90,7 +90,7 @@ public class Bullet : MonoBehaviour {
             if (_isPlayer1)
             {
                 hitted = other.gameObject;
-                WallAnimation();
+                //WallAnimation();
                 Vector3 position;
                 Collider[] hit;
                 do
@@ -116,8 +116,8 @@ public class Bullet : MonoBehaviour {
                 //otherCube.transform.position = new Vector3(100, 100, 100);
                 otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
-
-                WallAnimation();
+                other.gameObject.GetComponent<CollisionScript>().WallAnimation(true);
+               // WallAnimation();
 
                
             }
@@ -129,7 +129,7 @@ public class Bullet : MonoBehaviour {
                 Vector3 oldScale = other.gameObject.transform.localScale;
                 Vector3 hitScale = other.GetComponent<BoxCollider>().size;
 
-                WallAnimation();
+                //WallAnimation();
                 Vector3 position;
                 Collider[] hit;
                 do
@@ -146,13 +146,13 @@ public class Bullet : MonoBehaviour {
                 otherCube.transform.parent = GameObject.Find("TrackBlocks12").gameObject.transform;
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
 
-                WallAnimation();
+                //WallAnimation();
             }
             //GameObject otherCube = Instantiate(other.gameObject);
             //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
             //otherCube.transform.parent = _plane.transform;
 
-            Destroy(other.transform.gameObject);
+            //Destroy(other.transform.gameObject);
             Destroy(this.transform.gameObject);
         }
         if (other.gameObject.name.Contains("Particle System"))
