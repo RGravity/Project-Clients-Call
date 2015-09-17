@@ -37,11 +37,14 @@ public class CollisionScript : MonoBehaviour
         {
             if (secondsLeftP1 > 0)
             {
-                //GameObject.Find("FinishP1").GetComponent<Image>().enabled = true; 
+                GameObject.Find("FinishP1").GetComponent<Image>().enabled = true; 
+            }
+            else
+            {
+                GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
             }
             if (Time.time > (timer + 1))
             {
-                //GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
                 timer = Time.time;
                 secondsLeftP2--;
             }
@@ -50,11 +53,11 @@ public class CollisionScript : MonoBehaviour
         {
             if (secondsLeftP2 > 0)
             {
-                //GameObject.Find("FinishP2").GetComponent<Image>().enabled = true; 
+                GameObject.Find("FinishP2").GetComponent<Image>().enabled = true; 
             }
             else
             {
-               // GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
+                GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
             }
             if (Time.time > (timer + 1))
             {
@@ -64,14 +67,14 @@ public class CollisionScript : MonoBehaviour
         }
         if (P1Finished && P2Finished)
         {
-            GameObject.FindObjectOfType<ConfirmScript>().round++;
             //Application.LoadLevel(3);
-            if (GameObject.FindObjectOfType<ConfirmScript>().round < 3)
+            if (GameObject.FindObjectOfType<ConfirmScript>().round < 4)
             {
-                Application.LoadLevel(Application.loadedLevel); 
+                Application.LoadLevel(3); 
             }
             else
             {
+                GameObject.FindObjectOfType<ConfirmScript>().round++;
                 if (showTime == true)
                 {
                     reloadTime = Time.time;
@@ -116,6 +119,7 @@ public class CollisionScript : MonoBehaviour
                 else
                 {
                     GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
+                    GameObject.FindObjectOfType<ConfirmScript>().round++;
                     GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
                     P1Finished = true;
                 }
@@ -141,6 +145,7 @@ public class CollisionScript : MonoBehaviour
                 else
                 {
                     GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
+                    GameObject.FindObjectOfType<ConfirmScript>().round++;
                     GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
                     P2Finished = true;
                 }
