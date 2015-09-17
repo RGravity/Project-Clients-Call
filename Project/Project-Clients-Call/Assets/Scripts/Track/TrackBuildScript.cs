@@ -203,6 +203,7 @@ public class TrackBuildScript : MonoBehaviour {
             //Drill Powerup
             case 2:
                 GO = (GameObject)Instantiate(_drillPowerup, pPosition, Quaternion.identity);
+                GO.transform.position = new Vector3(pPosition.x, 1, pPosition.z);
                 GO.transform.localEulerAngles = new Vector3(0, 90, 0);
                 GO.transform.parent = this.gameObject.transform;
                 GO.name = "Drill" + _drillCounter;

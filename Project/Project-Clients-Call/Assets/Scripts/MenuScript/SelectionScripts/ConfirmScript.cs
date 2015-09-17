@@ -6,8 +6,14 @@ public class ConfirmScript : MonoBehaviour {
     public int bodyPlayer1 = 0;
     public int bodyPlayer2 = 0;
 
+    private int _p1Score = 0;
+    private int _p2Score = 0;
+
     public int round = 1;
     private static GameObject _instance;
+
+    public int SavedP1Score { get { return _p1Score; } set { _p1Score = value; } }
+    public int SavedP2Score { get { return _p2Score; } set { _p2Score = value; } }
 
     void Awake()
     {

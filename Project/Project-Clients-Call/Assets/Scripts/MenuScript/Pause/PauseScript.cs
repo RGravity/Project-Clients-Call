@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PauseScript : MonoBehaviour {
@@ -23,6 +24,9 @@ public class PauseScript : MonoBehaviour {
 			
 			if (pauseGame == true)
 			{
+                GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
+                GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = true;
+                GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
 				Time.timeScale = 0;
 				pauseGame = true;
 			}
@@ -30,6 +34,9 @@ public class PauseScript : MonoBehaviour {
 		
 		if (pauseGame == false)
 		{
+            GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
+            GameObject.Find("Canvas").GetComponent<Image>().enabled = false;
+            GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = false;
 			Time.timeScale = 1;
             pauseGame = false;
 		}
