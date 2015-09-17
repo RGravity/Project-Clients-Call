@@ -98,6 +98,7 @@ public class ArrowMoveScript : MonoBehaviour {
             _rotationToSelection = true;
             _movingToSelection = true;
             GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+           
         }
         if (this.gameObject.transform.position == new Vector3(1298, -25, 0) && Input.GetButtonDown("FireP1"))
         {
@@ -186,6 +187,7 @@ public class ArrowMoveScript : MonoBehaviour {
             if (_degrees <= -90)
             {
                 this.gameObject.transform.position = new Vector3(150, 1294, -457);
+                GameObject.FindObjectOfType<ArrowRightScript2>().PlaySound = true;
                 _rotationToSelection = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
                 _degrees = 270;
@@ -682,6 +684,7 @@ public class ArrowMoveScript : MonoBehaviour {
                 _movingToOptions = false;
                 _movingToHowTo = false;
                 _movingToSelection = false;
+                GameObject.FindObjectOfType<ArrowRightScript2>().PlaySound = false;
 
             }
             if (_degrees == 360)

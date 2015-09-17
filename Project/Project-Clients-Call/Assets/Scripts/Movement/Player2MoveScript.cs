@@ -8,6 +8,9 @@ public class Player2MoveScript : MonoBehaviour {
     private float _fireAnimation = 0;
     private float _maxTrackWidth = 6;
 
+    private bool _moveVertical = false;
+    private bool _moveHorizontal = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -56,9 +59,41 @@ public class Player2MoveScript : MonoBehaviour {
                 newPos.z = _startPosition.z - 4f;
                 transform.position = newPos;
             }
-            Animation(); 
+            Animation();
+            PlayerSound();
         }
 	}
+    void PlayerSound()
+    {
+
+        if (Input.GetAxisRaw("Vertical P2") != 0)
+        {
+            if (_moveVertical == false)
+            {
+                // Call your event function here.
+                _moveVertical = true;
+                GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>().Play();
+            }
+        }
+        if (Input.GetAxisRaw("Vertical P2") == 0)
+        {
+            _moveVertical = false;
+        }
+
+        if (Input.GetAxisRaw("Horizontal P2") != 0)
+        {
+            if (_moveHorizontal == false)
+            {
+                // Call your event function here.
+                _moveHorizontal = true;
+                GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>().Play();
+            }
+        }
+        if (Input.GetAxisRaw("Horizontal P2") == 0)
+        {
+            _moveHorizontal = false;
+        }
+    }
     void Animation()
     {
         if (Input.GetAxis("Vertical P2") < 0)
