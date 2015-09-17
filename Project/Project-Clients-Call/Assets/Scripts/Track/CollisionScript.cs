@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CollisionScript : MonoBehaviour
@@ -31,14 +32,27 @@ public class CollisionScript : MonoBehaviour
     {
         if (P1Finished)
         {
+            if (secondsLeftP1 > 0)
+            {
+                GameObject.Find("FinishP1").GetComponent<Image>().enabled = true; 
+            }
             if (Time.time > (timer + 1))
             {
+                GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
                 timer = Time.time;
                 secondsLeftP2--;
             }
         }
         if (P2Finished)
         {
+            if (secondsLeftP2 > 0)
+            {
+                GameObject.Find("FinishP2").GetComponent<Image>().enabled = true; 
+            }
+            else
+            {
+                GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
+            }
             if (Time.time > (timer + 1))
             {
                 timer = Time.time;
@@ -49,7 +63,27 @@ public class CollisionScript : MonoBehaviour
         {
             GameObject.FindObjectOfType<ConfirmScript>().round++;
             //Application.LoadLevel(3);
-            Application.LoadLevel(Application.loadedLevel);
+            if (GameObject.FindObjectOfType<ConfirmScript>().round < 3)
+            {
+                Application.LoadLevel(Application.loadedLevel); 
+            }
+            else
+            {
+                GameObject.Find("dnfP2").GetComponent<Image>().enabled = false;
+                GameObject.Find("dnfP1").GetComponent<Image>().enabled = false;
+                GameObject.Find("FinishP1").GetComponent<Image>().enabled = false;
+                GameObject.Find("FinishP2").GetComponent<Image>().enabled = false;
+                if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score)
+                {
+                    GameObject.Find("WinnaarP1").GetComponent<Image>().enabled = true;
+                    GameObject.Find("WinnaarP2").GetComponent<Image>().enabled = false;
+                }
+                else if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score)
+                {
+                    GameObject.Find("WinnaarP2").GetComponent<Image>().enabled = true;
+                    GameObject.Find("WinnaarP1").GetComponent<Image>().enabled = false;
+                }
+            }
         }
         if (secondsLeftP1 < 0)
         {
