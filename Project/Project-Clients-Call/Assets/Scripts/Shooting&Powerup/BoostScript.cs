@@ -62,7 +62,7 @@ public class BoostScript : MonoBehaviour {
     void OnBecameInvisible()
     {
         respawn = true;
-        Destroy(gameObject);
+        Destroy(this.gameObject);
         
     }
 }

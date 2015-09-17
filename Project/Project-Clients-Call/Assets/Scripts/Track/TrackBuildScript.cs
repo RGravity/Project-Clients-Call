@@ -187,40 +187,100 @@ public class TrackBuildScript : MonoBehaviour {
         {
             //Speed Powerup
             case 0:
-                GO = (GameObject)Instantiate(_speedBoostPowerup, pPosition, Quaternion.identity);
-                GO.transform.localEulerAngles = new Vector3(0, 90, 0);
-                GO.transform.parent = pParent.transform;
-                GO.name = "Speed" + _speedCounter;
-                GO.GetComponent<BoostScript>().ZBlocks = _firstBlocks;
+                if (pParent.transform.name == "TrackBlocks1")
+                {
+                    GO = (GameObject)Instantiate(_speedBoostPowerup, pPosition, Quaternion.identity);
+                    GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+                    GO.transform.parent = pParent.transform;
+                    GO.name = "Speed" + _speedCounter;
+                    GO.GetComponent<BoostScript>().ZBlocks = _firstBlocks;
+                }
+                else if (pParent.transform.name == "TrackBlocks2")
+                {
+                    Vector3 newPosition = pPosition;
+                    newPosition.y = -3.2f;
+                    GO = (GameObject)Instantiate(_speedBoostPowerup, newPosition, Quaternion.identity);
+                    GO.transform.localEulerAngles = new Vector3(0, 90, 180);
+                    GO.transform.parent = pParent.transform;
+                    GO.name = "Speed" + _speedCounter;
+                    GO.GetComponent<BoostScript>().ZBlocks = _firstBlocks;
+                }
 
                 _speedCounter++;
                 break;
             //Shield Powerup
             case 1:
-                GO = (GameObject)Instantiate(_shieldPowerup, pPosition, Quaternion.identity);
-                GO.transform.localEulerAngles = new Vector3(0, -45, 0);
-                GO.transform.parent = pParent.transform;
-                GO.name = "Shield" + _shieldCounter;
-                GO.GetComponent<InvulnerableScript>().ZBlocks = _firstBlocks;
-                _shieldCounter++;
+                if (pParent.transform.name == "TrackBlocks1")
+                {
+                    GO = (GameObject)Instantiate(_shieldPowerup, pPosition, Quaternion.identity);
+                    GO.transform.localEulerAngles = new Vector3(0, -45, 0);
+                    GO.transform.parent = pParent.transform;
+                    GO.name = "Shield" + _shieldCounter;
+                    GO.GetComponent<InvulnerableScript>().ZBlocks = _firstBlocks;
+                    _shieldCounter++;
+                }
+                else if (pParent.transform.name == "TrackBlocks2")
+                {
+                    Vector3 newPosition = pPosition;
+                    newPosition.y = -2f;
+                    GO = (GameObject)Instantiate(_shieldPowerup, newPosition, Quaternion.identity);
+                    GO.transform.localEulerAngles = new Vector3(0, -45, 0);
+                    GO.transform.parent = pParent.transform;
+                    GO.name = "Shield" + _shieldCounter;
+                    GO.GetComponent<InvulnerableScript>().ZBlocks = _firstBlocks;
+                    _shieldCounter++;
+                }
                 break;
             //Drill Powerup
             case 2:
-                GO = (GameObject)Instantiate(_drillPowerup, pPosition, Quaternion.identity);
-                GO.transform.position = new Vector3(pPosition.x, 1, pPosition.z);
-                GO.transform.localEulerAngles = new Vector3(0, 90, 0);
-                GO.transform.parent = pParent.transform;
-                GO.name = "Drill" + _drillCounter;
-                GO.GetComponent<DrillScript>().ZBlocks = _firstBlocks;
-                _drillCounter++;
+                if (pParent.transform.name == "TrackBlocks1")
+                {
+                    Vector3 newPosition = pPosition;
+                    newPosition.y = 1f;
+                    GO = (GameObject)Instantiate(_drillPowerup, newPosition, Quaternion.identity);
+                    GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+                    GO.transform.parent = pParent.transform;
+                    GO.name = "Drill" + _drillCounter;
+                    GO.GetComponent<DrillScript>().ZBlocks = _firstBlocks;
+                    _drillCounter++;
+                }
+                else if (pParent.transform.name == "TrackBlocks2")
+                {
+                    Vector3 newPosition = pPosition;
+                    newPosition.y = -2.3f;
+                    GO = (GameObject)Instantiate(_drillPowerup, newPosition, Quaternion.identity);
+                    GO.transform.localEulerAngles = new Vector3(0, 90, 180);
+                    GO.transform.parent = pParent.transform;
+                    GO.name = "Drill" + _drillCounter;
+                    GO.GetComponent<DrillScript>().ZBlocks = _firstBlocks;
+                    _drillCounter++;
+                }
                 break;
             //Coin
             case 3:
-                GO = (GameObject)Instantiate(_coinPowerup, pPosition, Quaternion.identity);
-                GO.transform.parent = pParent.transform;
-                GO.name = "Coin" + _coinCounter;
-                GO.GetComponent<CoinScript>().ZBlocks = _firstBlocks;
-                _coinCounter++;
+                if (pParent.transform.name == "TrackBlocks1")
+                {
+                    Vector3 newPosition = pPosition;
+                    newPosition.y = 1f;
+                    GO = (GameObject)Instantiate(_coinPowerup, newPosition, Quaternion.identity);
+                    GO.transform.parent = pParent.transform;
+                    GO.name = "Coin" + _coinCounter;
+                    GO.GetComponent<CoinScript>().ZBlocks = _firstBlocks;
+                    _coinCounter++;
+                
+                }
+                else if (pParent.transform.name == "TrackBlocks2")
+                {
+                    Vector3 newPosition = pPosition;
+                    newPosition.y = -2.1f;
+                    GO = (GameObject)Instantiate(_coinPowerup, newPosition, Quaternion.identity);
+                    GO.transform.localEulerAngles = new Vector3(0, 0, 180);
+                    GO.transform.parent = pParent.transform;
+                    GO.name = "Coin" + _coinCounter;
+                    GO.GetComponent<CoinScript>().ZBlocks = _firstBlocks;
+                    _coinCounter++;
+
+                }
                 break;
         }
     }

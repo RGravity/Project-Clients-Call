@@ -48,6 +48,6 @@ public class CoinScript : MonoBehaviour {
     void OnBecameInvisible()
     {
         respawn = true;
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

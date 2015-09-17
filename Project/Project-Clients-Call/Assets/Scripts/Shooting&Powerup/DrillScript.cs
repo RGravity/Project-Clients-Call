@@ -52,6 +52,6 @@ public class DrillScript : MonoBehaviour {
     void OnBecameInvisible()
     {
         respawn = true;
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }

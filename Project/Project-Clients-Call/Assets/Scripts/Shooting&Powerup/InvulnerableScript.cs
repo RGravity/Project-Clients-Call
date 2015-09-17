@@ -51,6 +51,6 @@ public class InvulnerableScript : MonoBehaviour {
     void OnBecameInvisible()
     {
         respawn = true;
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }
