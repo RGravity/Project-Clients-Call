@@ -26,8 +26,11 @@ public class ScoreScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        _p1Score = GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score;
-        _p2Score = GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score;
+        if (GameObject.FindObjectOfType<ConfirmScript>())
+        {
+            _p1Score = GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score;
+            _p2Score = GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score;
+        }
 	}
 	
 	// Update is called once per frame
@@ -93,7 +96,10 @@ public class ScoreScript : MonoBehaviour {
     {
         GameObject.Find("P1 Text").GetComponent<Text>().text = _p1Score.ToString();
         GameObject.Find("P2 Text").GetComponent<Text>().text = _p2Score.ToString();
-        GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score = _p1Score;
-        GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = _p2Score;
+        if (GameObject.FindObjectOfType<ConfirmScript>())
+        {
+            GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score = _p1Score;
+            GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = _p2Score; 
+        }
     }
 }
