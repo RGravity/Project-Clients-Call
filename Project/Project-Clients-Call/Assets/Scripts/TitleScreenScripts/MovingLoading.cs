@@ -22,6 +22,7 @@ public class MovingLoading : MonoBehaviour {
         if (index >= Sprites.Length)
         {
             indexChanger = 0;
+            index = 0;
         }
         GetComponent<Image>().sprite = Sprites[index];
     }
