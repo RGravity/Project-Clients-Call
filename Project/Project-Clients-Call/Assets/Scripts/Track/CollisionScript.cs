@@ -13,6 +13,9 @@ public class CollisionScript : MonoBehaviour
     float timer = 0;
     float secondsLeftP1 = 1;
     float secondsLeftP2 = 1;
+    bool isActivated = false;
+    float shootingWallTimer = 0;
+    int shootingWallCount = 0;
 
     [SerializeField]
     private GameObject _replacedPrefab;
@@ -20,7 +23,7 @@ public class CollisionScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //        round = GameObject.FindObjectOfType<ConfirmScript>().round;
+                round = GameObject.FindObjectOfType<ConfirmScript>().round;
     }
 
     // Update is called once per frame
@@ -44,7 +47,7 @@ public class CollisionScript : MonoBehaviour
         }
         if (P1Finished && P2Finished)
         {
-            //GameObject.FindObjectOfType<ConfirmScript>().round++;
+            GameObject.FindObjectOfType<ConfirmScript>().round++;
             //Application.LoadLevel(3);
             Application.LoadLevel(Application.loadedLevel);
         }
@@ -60,6 +63,7 @@ public class CollisionScript : MonoBehaviour
             GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
             P2Finished = true;
         }
+        WallAnimation(isActivated);
     }
 
     void OnTriggerEnter(Collider other)
@@ -68,22 +72,30 @@ public class CollisionScript : MonoBehaviour
         {
             GameObject.FindObjectOfType<Player1LevelScript>().SlowSpeed = true;
             GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Wall;
-            //GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
+            GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
             Instantiate(_replacedPrefab);
             _replacedPrefab.gameObject.transform.position = other.gameObject.transform.position;
             _replacedPrefab.gameObject.transform.rotation = other.gameObject.transform.rotation;
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            if (this.gameObject.name != "Finish")
+            {
+                GetComponent<TrackBlockScript>().OnBecameInvisible();
+            }
         }
         if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
         {
             GameObject.FindObjectOfType<Player2LevelScript>().SlowSpeed = true;
             GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Wall;
-//            GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
+            GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
             Instantiate(_replacedPrefab);
 
             _replacedPrefab.gameObject.transform.position = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y - 0.5f, other.gameObject.transform.rotation.z);
             _replacedPrefab.gameObject.transform.rotation = other.gameObject.transform.rotation;
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            if (this.gameObject.name != "Finish")
+            {
+                GetComponent<TrackBlockScript>().OnBecameInvisible();
+            }
         }
         if (this.gameObject.name == "Finish" && other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
         {
@@ -156,5 +168,30 @@ public class CollisionScript : MonoBehaviour
         //    //Application.LoadLevel(3);
         //    Application.LoadLevel(Application.loadedLevel);
         //}
+    }
+
+    public void WallAnimation(bool activate = false)
+    {
+        if(activate)
+        {
+            isActivated = true;
+            if (Time.time > (shootingWallTimer + 0.5f))
+            {
+                shootingWallTimer = Time.time;
+                shootingWallCount++;
+                if (this.gameObject.GetComponent<MeshRenderer>().enabled == true)
+                {
+                    this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                }
+                else if (this.gameObject.GetComponent<MeshRenderer>().enabled == false)
+                {
+                    this.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+            }
+            if (shootingWallCount == 4)
+            {
+                isActivated = false;
+            }
+        }
     }
 }
