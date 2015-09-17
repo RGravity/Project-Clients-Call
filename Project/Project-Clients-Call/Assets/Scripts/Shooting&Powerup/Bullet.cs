@@ -33,8 +33,16 @@ public class Bullet : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         _body.velocity = new Vector3(0, 0, 40);
+        WallAnimation();
+    }
+
+    void WallAnimation()
+    {
+        if (hitted != null)
+        {
             if (Time.time > (shootingWallTimer + 1f))
             {
                 shootingWallTimer = Time.time;
@@ -50,8 +58,12 @@ public class Bullet : MonoBehaviour {
             }
             else
             {
-                shootingWallCount = 0;
+                //shootingWallCount = 0;
             }
+
+        }
+        if (otherCube != null)
+        {
             if (Time.time > (shootingWallTimer + 1f))
             {
                 shootingWallTimer = Time.time;
@@ -67,9 +79,10 @@ public class Bullet : MonoBehaviour {
             }
             else
             {
-                shootingWallCount = 0;
+                //shootingWallCount = 0;
             }
         }
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name.Contains("Cube") || other.gameObject.name.Contains("Wall"))
@@ -77,6 +90,7 @@ public class Bullet : MonoBehaviour {
             if (_isPlayer1)
             {
                 hitted = other.gameObject;
+                WallAnimation();
                 Vector3 position;
                 Collider[] hit;
                 do
@@ -103,6 +117,8 @@ public class Bullet : MonoBehaviour {
                 otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
 
+                WallAnimation();
+
                
             }
             else if (_isPlayer1 == false)
@@ -113,6 +129,7 @@ public class Bullet : MonoBehaviour {
                 Vector3 oldScale = other.gameObject.transform.localScale;
                 Vector3 hitScale = other.GetComponent<BoxCollider>().size;
 
+                WallAnimation();
                 Vector3 position;
                 Collider[] hit;
                 do
@@ -128,6 +145,8 @@ public class Bullet : MonoBehaviour {
                 //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
                 otherCube.transform.parent = GameObject.Find("TrackBlocks12").gameObject.transform;
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
+
+                WallAnimation();
             }
             //GameObject otherCube = Instantiate(other.gameObject);
             //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
