@@ -44,6 +44,10 @@ public class Player2LevelScript : MonoBehaviour {
         if (!Input.GetKey(KeyCode.Space) && _finished == false && _stopSpeed == false && _levelStarted)
         {
             _speed += 0.05f;
+            if (_speed >= 35)
+            {
+                _speed = 35;
+            }
             _originalSpeed += 0.05f;
             gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
         }
@@ -111,7 +115,7 @@ public class Player2LevelScript : MonoBehaviour {
             float oldSpeed = _speed;
             _speed = stopDrill;
 
-            if (Time.time > (_stopTime + 3))
+            if (Time.time > (_stopTime + 1.5f))
             {
                 _oldTime = Time.time;
                 _speed = oldSpeed / 2;

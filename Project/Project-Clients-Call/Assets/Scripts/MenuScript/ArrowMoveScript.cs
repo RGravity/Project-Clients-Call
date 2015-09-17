@@ -93,44 +93,54 @@ public class ArrowMoveScript : MonoBehaviour {
 
     void GoToSelectedScene()
     {
-        if (this.gameObject.transform.position == new Vector3(1298, 29, 0) && Input.GetButton ("FireP1"))
+        if (this.gameObject.transform.position == new Vector3(1298, 29, 0) && Input.GetButtonDown("FireP1"))
         {
             _rotationToSelection = true;
-            _movingToSelection = true;  
+            _movingToSelection = true;
+            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+           
         }
-        if (this.gameObject.transform.position == new Vector3(1298, -25, 0) && Input.GetButton("FireP1"))
+        if (this.gameObject.transform.position == new Vector3(1298, -25, 0) && Input.GetButtonDown("FireP1"))
         {
             _movingToHowTo = true;
             _rotationHowto = true;
+            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
         }
-        if (this.gameObject.transform.position == new Vector3(1298, -79, 0) && Input.GetButton("FireP1"))
+        if (this.gameObject.transform.position == new Vector3(1298, -79, 0) && Input.GetButtonDown("FireP1"))
         {
             _movingToOptions = true;
             _rotationOptions = true;
+            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
             
         }
-        if (this.gameObject.transform.position == new Vector3(1298, -133, 0) && Input.GetButton ("FireP1"))
+        if (this.gameObject.transform.position == new Vector3(1298, -133, 0) && Input.GetButtonDown("FireP1"))
         {
             _movingToCredits = true;
             _rotationCredits = true;
+            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
         }
-        if (this.gameObject.transform.position == new Vector3(1298, -187, 0) && Input.GetButton("FireP1"))
+        if (this.gameObject.transform.position == new Vector3(1298, -187, 0) && Input.GetButtonDown("FireP1"))
         {
             Application.Quit();
+            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
         }
 
-        if ((this.gameObject.transform.position == new Vector3(266, 1294, -457) && Input.GetButton("FireP1")) ||(this.gameObject.transform.position == new Vector3(250, 1294, -457) && Input.GetButton("FireP1"))  || (_movingToOptions == true && Input.GetButton("FireP1") && this.gameObject.transform.position == new Vector3(112, 1300, 0)) || (this.gameObject.transform.position == new Vector3(220, 1300, 0) && _movingToHowTo == true && Input.GetButton("FireP1")))
+        if ((this.gameObject.transform.position == new Vector3(266, 1294, -457) && Input.GetButtonDown("FireP1")) || (this.gameObject.transform.position == new Vector3(250, 1294, -457) && Input.GetButtonDown("FireP1")) || (_movingToOptions == true && Input.GetButtonDown("FireP1") && this.gameObject.transform.position == new Vector3(112, 1300, 0)) || (this.gameObject.transform.position == new Vector3(220, 1300, 0) && _movingToHowTo == true && Input.GetButtonDown("FireP1")))
         {
             _rotateBack = true;
+            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
         }
-        if ((this.gameObject.transform.position == new Vector3(150, 1300, 0) && Input.GetButton("FireP1") && _movingToHowTo == true))
+        if ((this.gameObject.transform.position == new Vector3(150, 1300, 0) && Input.GetButtonDown("FireP1") && _movingToHowTo == true))
         {
             //Application.LoadLevel(2);
+            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
         }
-        if (this.gameObject.transform.position == new Vector3(150,1294,-457) && Input.GetButton ("FireP1"))
+        if (this.gameObject.transform.position == new Vector3(150,1294,-457) && Input.GetButtonDown ("FireP1"))
         {
             Application.LoadLevel(3);
+            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
             GameObject.FindObjectOfType<MusicScript>().Play = true;
+            GameObject.FindObjectOfType<SoundsScript>().Play = true;
         }
     
     }
@@ -177,6 +187,7 @@ public class ArrowMoveScript : MonoBehaviour {
             if (_degrees <= -90)
             {
                 this.gameObject.transform.position = new Vector3(150, 1294, -457);
+                GameObject.FindObjectOfType<ArrowRightScript2>().PlaySound = true;
                 _rotationToSelection = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
                 _degrees = 270;
@@ -673,6 +684,7 @@ public class ArrowMoveScript : MonoBehaviour {
                 _movingToOptions = false;
                 _movingToHowTo = false;
                 _movingToSelection = false;
+                GameObject.FindObjectOfType<ArrowRightScript2>().PlaySound = false;
 
             }
             if (_degrees == 360)

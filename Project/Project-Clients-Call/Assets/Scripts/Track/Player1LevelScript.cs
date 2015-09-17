@@ -45,7 +45,7 @@ public class Player1LevelScript : MonoBehaviour {
         if (!Input.GetKey(KeyCode.Space) && _finished == false && _stopSpeed == false && _levelStarted)
         {
             _speed += 0.05f;
-            Debug.Log(_speed);
+            //Debug.Log(_speed);
             if (_speed >= 35)
             {
                 _speed = 35;
@@ -130,7 +130,7 @@ public class Player1LevelScript : MonoBehaviour {
             float oldSpeed = _speed;
             _speed = stopDrill;
 
-            if (Time.time > (_stopTime + 3))
+            if (Time.time > (_stopTime + 1.5f))
             {
                 _oldTime = Time.time;
                 _speed = oldSpeed / 2;

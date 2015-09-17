@@ -36,12 +36,15 @@ public class PowerUpScriptP2 : MonoBehaviour {
                 {
                     case Powerup.Boost:
                         GameObject.FindObjectOfType<Player2LevelScript>().IncreaseSpeed = true;
+                        GameObject.FindGameObjectWithTag("SpeedUp").GetComponent<AudioSource>().Play();
                         break;
                     case Powerup.Drill:
                         GameObject.FindObjectOfType<RocketDrill>().RocketDrillP2 = true;
+                        GameObject.FindGameObjectWithTag("DrillExplosion").GetComponent<AudioSource>().Play();
                         break;
                     case Powerup.Invulnerability:
-                        _inVulnerable = true;
+                        _inVulnerable = true; 
+                        GameObject.FindGameObjectWithTag("Shield").GetComponent<AudioSource>().Play();
                         break;
                 }
                 _powerUp = Powerup.Empty;

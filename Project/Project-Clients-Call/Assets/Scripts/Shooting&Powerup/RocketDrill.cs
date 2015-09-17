@@ -25,11 +25,15 @@ public class RocketDrill : MonoBehaviour {
     }
     private GameObject _planeP1;
     private GameObject _planeP2;
+    private GameObject _PlayerP1;
+    private GameObject _PlayerP2;
     
 	// Use this for initialization
 	void Start () {
         _planeP1 = GameObject.FindObjectOfType<Player1LevelScript>().gameObject;
         _planeP2 = GameObject.FindObjectOfType<Player2LevelScript>().gameObject;
+        _PlayerP1 = GameObject.FindObjectOfType<Player1MoveScript>().gameObject;
+        _PlayerP2 = GameObject.FindObjectOfType<Player2MoveScript>().gameObject;
 	}
 	
 	// Update is called once per frame
@@ -46,13 +50,14 @@ public class RocketDrill : MonoBehaviour {
             drill.transform.position = position;
             drill.transform.parent = _planeP2.transform;
 
-            _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, 6f, 10);
+           // _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, 6f, 10);
 
             //_bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 3);
             //Instantiate(_bulletPrefab).GetComponent<Transform>();
-
-            Instantiate(_portal);
-
+            Vector3 fireWallPos = _PlayerP2.transform.position;
+            _portal = (GameObject)Instantiate(_portal,fireWallPos, Quaternion.identity);
+            _portal.transform.localEulerAngles = new Vector3(90, 0, 0);
+            //_portal.transform.localEulerAngles = new Vector3(0, 90, 0);
             _portal.GetComponent<ParticleSystem>().Play();
             _portal.GetComponent<ParticleSystem>().loop = false;
         }
@@ -67,13 +72,14 @@ public class RocketDrill : MonoBehaviour {
             drill.transform.position = position;
             drill.transform.parent = _planeP1.transform;
 
-            _portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, -6f, 10);
+            //_portal.gameObject.transform.position = camera.transform.position + camera.transform.forward + new Vector3(0, -6f, 10);
             _portal.gameObject.transform.localRotation = new Quaternion(90, _portal.gameObject.transform.rotation.y, _portal.gameObject.transform.rotation.z, _portal.gameObject.transform.rotation.w);
 
             //_bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 3);
             //Instantiate(_bulletPrefab).GetComponent<Transform>();
-
-            Instantiate(_portal);
+            Vector3 fireWallPos = _PlayerP1.transform.position;
+            _portal = (GameObject)Instantiate(_portal, fireWallPos, Quaternion.identity);
+            _portal.transform.localEulerAngles = new Vector3(270, 0, 0);
             _portal.GetComponent<ParticleSystem>().Play();
             _portal.GetComponent<ParticleSystem>().loop = false;
         }

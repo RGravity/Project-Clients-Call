@@ -18,13 +18,13 @@ public class CoinScript : MonoBehaviour {
         if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
         {
             GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Coin;
-            
+            GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
         }
         else if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
         {
             GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Coin;
-
+            GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
         }
     }
