@@ -98,6 +98,8 @@ public class ArrowMoveScript : MonoBehaviour {
             _rotationToSelection = true;
             _movingToSelection = true;
             GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+            GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 0;
+            GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 = 0;
            
         }
         if (this.gameObject.transform.position == new Vector3(1298, -25, 0) && Input.GetButtonDown("FireP1"))
@@ -154,7 +156,7 @@ public class ArrowMoveScript : MonoBehaviour {
 
             if (_degrees == -45)
             {
-                _backButton.transform.position = new Vector3(250, 1294, -457);
+                _backButton.transform.position = new Vector3(250, 1294, -357);
                 _backButton.transform.rotation = Quaternion.Euler(274.6854f, 90.00016f, 359.6443f);
                 _player.transform.position = new Vector3(15,197,30);
                 _player.transform.rotation = Quaternion.Euler(90, 270,0);
@@ -164,22 +166,21 @@ public class ArrowMoveScript : MonoBehaviour {
                 _player2.GetComponent<Transform>().GetChild(0).gameObject.SetActiveRecursively(true);
                 _leftArrow.transform.position = new Vector3(14, 1322, 309);
                 _rightArrow.transform.position = new Vector3(14, 1322, 69);
-                _selectScreen.transform.position = new Vector3(-141, 1155, 336);
+                _selectScreen.transform.position = new Vector3(-141, 1155, 236);
                 _platform.transform.position = new Vector3(143, 1400, 189);
                 _platform.transform.rotation = Quaternion.Euler(0,180, 270);
                 _platform2.transform.position = new Vector3(143, 1400, -199);
                 _platform2.transform.rotation = Quaternion.Euler(0, 180, 270);
                 _leftArrow2.transform.position = new Vector3(14, 1322, -79);
                 _rightArrow2.transform.position = new Vector3(14, 1322, -319);
-                _cubeOne.transform.position = new Vector3(-151, 1026, -441);
-                _cubeTwo.transform.position = new Vector3(-177, 1379, -2);
-                _cubeThree.transform.position = new Vector3(175, 1165, 419);
+                _cubeOne.transform.position = new Vector3(-201, 1113, -370);
+                _cubeTwo.transform.position = new Vector3(-1, 1126, 341);
+                _cubeThree.transform.position = new Vector3(171, 1045, 276);
                 _cubeTwo.transform.rotation = Quaternion.Euler(275, 90, 0);
                 _cubeOne.transform.rotation = Quaternion.Euler(50, 60, 0);
                 _cubeThree.transform.rotation = Quaternion.Euler(90, 90, -180);
-                _startGame.transform.position = new Vector3(150,1294,-457);
+                _startGame.transform.position = new Vector3(150, 1294, -357);
               
-
 
             }
 
@@ -203,7 +204,7 @@ public class ArrowMoveScript : MonoBehaviour {
 
             if (_degrees == -45)
             {
-                _backButton.transform.position = new Vector3(266, 1294, -457);
+                _backButton.transform.position = new Vector3(266, 1294, -357);
                 _backButton.transform.rotation = Quaternion.Euler(274.6854f, 90.00016f, 359.6443f);
                 _cubeOne.transform.position = new Vector3(84, 1233, 323);
                 _cubeTwo.transform.position = new Vector3(52, 996, -321);
@@ -347,13 +348,13 @@ public class ArrowMoveScript : MonoBehaviour {
         {
             if (this.gameObject.transform.position == new Vector3(150, 1294, -457))
             {
-                _startGame.transform.position = new Vector3(140, 1194, -425);
-                _backButton.transform.position = new Vector3(250, 1294, -457);
+                _startGame.transform.position = new Vector3(140, 1194, -325);
+                _backButton.transform.position = new Vector3(250, 1294, -357);
             }
             if (this.gameObject.transform.position == new Vector3(250, 1294, -457))
             {
-                _startGame.transform.position = new Vector3(150, 1294, -457);
-                _backButton.transform.position = new Vector3(230, 1194, -425);
+                _startGame.transform.position = new Vector3(150, 1294, -357);
+                _backButton.transform.position = new Vector3(230, 1194, -325);
             }
 
         }
