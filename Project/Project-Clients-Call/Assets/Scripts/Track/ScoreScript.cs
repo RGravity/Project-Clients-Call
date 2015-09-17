@@ -88,11 +88,11 @@ public class ScoreScript : MonoBehaviour {
 
     private void NormalScoring()
     {
-        if (!GameObject.FindObjectOfType<CollisionScript>().P1Finished)
+        if (!GameObject.FindObjectOfType<CollisionScript>().P1Finished || GameObject.FindObjectOfType<PauseScript>().pauseGame == false)
         {
             _p1Score += (int)GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6;
         }
-        if (!GameObject.FindObjectOfType<CollisionScript>().P2Finished)
+        if (!GameObject.FindObjectOfType<CollisionScript>().P2Finished || GameObject.FindObjectOfType<PauseScript>().pauseGame == false)
         {
             _p2Score += (int)GameObject.FindObjectOfType<Player2LevelScript>().Speed / 6;
         }
