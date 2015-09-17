@@ -51,7 +51,7 @@ public class ScoreScript : MonoBehaviour {
                 _p1ScoreType = ScoreType.None;
                 break;
             case ScoreType.Wall:
-                _p1Score -= 300;
+                _p1Score -= 50;
                 _p1ScoreType = ScoreType.None;
                 break;
             case ScoreType.Checkpoint:
@@ -72,7 +72,7 @@ public class ScoreScript : MonoBehaviour {
                 _p2ScoreType = ScoreType.None;
                 break;
             case ScoreType.Wall:
-                _p2Score -= 300;
+                _p2Score -= 50;
                 _p2ScoreType = ScoreType.None;
                 break;
             case ScoreType.Checkpoint:
@@ -88,8 +88,14 @@ public class ScoreScript : MonoBehaviour {
 
     private void NormalScoring()
     {
-        _p1Score += (int)GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6;
-        _p2Score += (int)GameObject.FindObjectOfType<Player2LevelScript>().Speed / 6;
+        if (!GameObject.FindObjectOfType<CollisionScript>().P1Finished)
+        {
+            _p1Score += (int)GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6;
+        }
+        if (!GameObject.FindObjectOfType<CollisionScript>().P2Finished)
+        {
+            _p2Score += (int)GameObject.FindObjectOfType<Player2LevelScript>().Speed / 6;
+        }
     }
 
     private void UpdateHUD()
