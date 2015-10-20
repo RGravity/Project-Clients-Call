@@ -34,9 +34,9 @@ public class Checkpoints : MonoBehaviour
                     Player1LevelScript p1 = GameObject.FindObjectOfType<Player1LevelScript>();
                     this.gameObject.GetComponent<BoxCollider>().enabled = false;
                     this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                    p1.StopSpeed = true;
+                    p1.CheckPoint = true;
                     //p1.SlowSpeed = true;
-                    p1.StopTime = Time.time;
+                   // p1.StopTime = Time.time;
                     //checkpoints.Remove(checkpoints.Where(c => c.name == checkpoint.gameObject.name).FirstOrDefault());
 
                     //if (checkpoint.gameObject.name.Substring(name.Length - 3, 1) == "1")
@@ -67,9 +67,9 @@ public class Checkpoints : MonoBehaviour
                     Player2LevelScript p2 = GameObject.FindObjectOfType<Player2LevelScript>();
                     this.gameObject.GetComponent<BoxCollider>().enabled = false;
                     this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                    p2.StopSpeed = true;
+                    p2.CheckPoint = true;
                     //p2.SlowSpeed = true;
-                    p2.StopTime = Time.time;
+                   // p2.StopTime = Time.time;
 
 
                     //checkpoints.Remove(checkpoints.Where(c => c.name == checkpoint.gameObject.name).FirstOrDefault());
