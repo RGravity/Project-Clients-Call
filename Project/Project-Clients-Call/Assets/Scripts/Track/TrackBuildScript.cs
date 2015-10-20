@@ -44,7 +44,6 @@ public class TrackBuildScript : MonoBehaviour {
         _trackBarrierCounter = 0;
         _trackBlock = (GameObject)Resources.Load("TrackBlock/TrackBlock");
         _trackWall = (GameObject)Resources.Load("TrackBlock/TrackWall");
-        //_trackBarrier = (GameObject)Resources.Load("TrackBlock/TrackBarrier");
         _speedBoostPowerup = (GameObject)Resources.Load("Powerups/speedboost Prefab");
         _shieldPowerup = (GameObject)Resources.Load("Powerups/Invulnerability Powerup");
         _coinPowerup = (GameObject)Resources.Load("Powerups/Coin");
@@ -64,22 +63,6 @@ public class TrackBuildScript : MonoBehaviour {
             //spawn the XXX blocks wide
             for (int x = 0; x < 7; x++)
             {
-                //if (z % 33 == 0)
-                //{
-
-                //    if (x == 0)
-                //    {
-                //        SpawnTrackBarrier(new Vector3((x * 2) - 6.255f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                //        SpawnTrackBarrier(new Vector3((x * 2) - 6.255f, -4.2f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
-                //    }
-                //    if (x == 6)
-                //    {
-                //        SpawnTrackBarrier(new Vector3((x * 2) - 2.28f, -1.7f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                //        SpawnTrackBarrier(new Vector3((x * 2) - 2.28f, -4.2f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
-                //    }
-                    
-                    
-                //}
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
             }
@@ -146,22 +129,6 @@ public class TrackBuildScript : MonoBehaviour {
         //increase the unique number counter
         _trackBlocksCounter++;
     }
-
-    //public void SpawnTrackBarrier(Vector3 pPosition, GameObject pParent)
-    //{
-    //    //instantiate the actual block
-    //    GameObject GO = (GameObject)Instantiate(_trackBarrier, pPosition, Quaternion.identity);
-    //    //change the parent of the block
-    //    GO.transform.parent = pParent.transform;
-    //    //change the name of the block + the unique number of the block
-    //    GO.name = "TrackBarrier" + _trackBarrierCounter;
-    //    //rotate the block 90 degrees
-    //    //GO.transform.localEulerAngles = new Vector3(0, 90, 0);
-    //    //set variables to the script of the block
-    //    GO.GetComponent<TrackBarrierScript>().ZBlocks = _firstBlocks;
-    //    //increase the unique number counter
-    //    _trackBarrierCounter++;
-    //}
 
     public void SpawnWall(Vector3 pPosition, GameObject pParent)
     {  
