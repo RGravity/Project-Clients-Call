@@ -11,16 +11,18 @@ public class Player1LevelScript : MonoBehaviour {
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
     private int _iteration = 0;
-    private bool _stopSpeed = false;
+    private bool _checkpointSpeed = false;
     private float _oldTime = 0;
     private bool _finished = false;
     private float _stopTime = 0;
     private bool _stopDrill = false;
     private bool _levelStarted = false;
     public Sprite[] _Countdown;
+    private float _checkpointSlowTimer = 0;
+    private float _checkpointSlowCounter = 3;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
-    public bool StopSpeed { get { return _stopSpeed; } set { _stopSpeed = value; } }
+    public bool CheckPoint { get { return _checkpointSpeed; } set { _checkpointSpeed = value; } }
     public float StopTime { get { return _stopTime; } set { _stopTime = value; } }
     public bool StopDrill { get { return _stopDrill; } set { _stopDrill = value; } }
     public bool IncreaseSpeed { get { return _increaseSpeed; } set { _increaseSpeed = value; } }
@@ -42,7 +44,7 @@ public class Player1LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false && _stopSpeed == false && _levelStarted)
+        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted)
         {
             _speed += 0.05f;
             //Debug.Log(_speed);
@@ -103,16 +105,33 @@ public class Player1LevelScript : MonoBehaviour {
                 _iteration = 0;
             }
         }
-        if (_stopSpeed)
+        if (_checkpointSpeed)
         {
-            float slowDown = _speed - 1;
-            _speed = _speed - (slowDown / 2);
-            _iteration++;
-            if (_iteration >= 6)
+            //old
+            //float slowDown = _speed - 1;
+            //_speed = _speed - (slowDown / 2);
+            //_iteration++;
+            //if (_iteration >= 5)
+            //{
+            //    _checkpointSpeed = false;
+            //    _iteration = 0;
+            //}
+
+            if (_checkpointSlowCounter != 0)
             {
-                _stopSpeed = false;
-                _iteration = 0;
+                if (Time.time > (_checkpointSlowTimer + 0.2))
+                {
+                    _checkpointSlowTimer = Time.time;
+                    _checkpointSlowCounter--;
+
+                    _speed = _speed - (_speed / 1.5f);
+                }
             }
+            else
+            {
+                _checkpointSpeed = false;
+            }
+
             //float stopSpeed = 0;
             //float oldSpeed = _speed;
             //_speed = stopSpeed;
