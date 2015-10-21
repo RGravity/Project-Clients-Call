@@ -124,12 +124,24 @@ public class Player1LevelScript : MonoBehaviour {
                     _checkpointSlowTimer = Time.time;
                     _checkpointSlowCounter--;
 
-                    _speed = _speed - (_speed / 1.5f);
+                    if (_checkpointSlowCounter < 3)
+                    {
+                        _speed = _speed - (_speed / 1.5f);
+                    }
+                    else if (_checkpointSlowCounter < 5)
+                    {
+                        _speed = _speed - (_speed / 1.3f);
+                    }
+                    else if (_checkpointSlowCounter < 8)
+                    {
+                        _speed = _speed - (_speed / 1.1f);
+                    }
                 }
             }
             else
             {
                 _checkpointSpeed = false;
+                _checkpointSlowCounter = 3;
             }
 
             //float stopSpeed = 0;
