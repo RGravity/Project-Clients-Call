@@ -15,7 +15,7 @@ public class Player2LevelScript : MonoBehaviour {
     private bool _stopDrill = false;
     private bool _levelStarted = false;
     private float _checkpointSlowTimer = 0;
-    private float _checkpointSlowCounter = 7;
+    private float _checkpointSlowCounter = 3;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
 
@@ -97,12 +97,24 @@ public class Player2LevelScript : MonoBehaviour {
                     _checkpointSlowTimer = Time.time;
                     _checkpointSlowCounter--;
 
-                    _speed = _speed - (_speed / 1.5f);
+                    if (_checkpointSlowCounter < 3)
+                    {
+                        _speed = _speed - (_speed / 1.5f);
+                    }
+                    else if (_checkpointSlowCounter < 5)
+                    {
+                        _speed = _speed - (_speed / 1.3f);
+                    }
+                    else if (_checkpointSlowCounter < 8)
+                    {
+                        _speed = _speed - (_speed / 1.1f);
+                    }
                 }
             }
             else
             {
                 _checkpointSpeed = false;
+                _checkpointSlowCounter = 3;
             }
 
 

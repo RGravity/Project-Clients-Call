@@ -116,7 +116,7 @@ public class Bullet : MonoBehaviour {
                 //otherCube.transform.position = new Vector3(100, 100, 100);
                 otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
-                other.gameObject.GetComponent<CollisionScript>().WallAnimation(true);
+                other.gameObject.GetComponent<Finish>().WallAnimation(true);
                // WallAnimation();
 
                
@@ -147,7 +147,7 @@ public class Bullet : MonoBehaviour {
                 //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
                 otherCube.transform.parent = GameObject.Find("TrackBlocks1").gameObject.transform;
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
-                other.gameObject.GetComponent<CollisionScript>().WallAnimation(true);
+                other.gameObject.GetComponent<Finish>().WallAnimation(true);
 
                 //WallAnimation();
             }
