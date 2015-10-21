@@ -98,6 +98,8 @@
      <Compile Include="Assets\Scripts\Track\Checkpoints.cs" />
      <Compile Include="Assets\Scripts\Track\CollisionScript.cs" />
      <Compile Include="Assets\Scripts\Track\DestroyGOafter3sec.cs" />
+     <Compile Include="Assets\Scripts\Track\Finish.cs" />
+     <Compile Include="Assets\Scripts\Track\HUD\RoundScript.cs" />
      <Compile Include="Assets\Scripts\Track\Player1LevelScript.cs" />
      <Compile Include="Assets\Scripts\Track\Player2LevelScript.cs" />
      <Compile Include="Assets\Scripts\Track\ScoreScript.cs" />

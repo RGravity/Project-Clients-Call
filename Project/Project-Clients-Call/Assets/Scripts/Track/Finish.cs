@@ -90,19 +90,19 @@ public class Finish : MonoBehaviour {
                 GameObject.Find("dnfP1").GetComponent<Image>().enabled = false;
                 GameObject.Find("FinishP1").GetComponent<Image>().enabled = false;
                 GameObject.Find("FinishP2").GetComponent<Image>().enabled = false;
-                if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().round >= 6)
+                if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().round > 6)
                 {
                     GameObject.Find("WinnaarP1").GetComponent<Image>().enabled = true;
                     GameObject.Find("WinnaarP2").GetComponent<Image>().enabled = false;
                 }
-                else if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().round >= 6)
+                else if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().round > 6)
                 {
                     GameObject.Find("WinnaarP2").GetComponent<Image>().enabled = true;
                     GameObject.Find("WinnaarP1").GetComponent<Image>().enabled = false;
                 }
             }
         }
-        if (secondsLeftP1 < 0 && round >= 6)
+        if (secondsLeftP1 < 0 && round > 6)
         {
             //P1 lost
             if (showTime == true)
@@ -126,7 +126,7 @@ public class Finish : MonoBehaviour {
             }
 
         }
-        if (secondsLeftP2 < 0 && round >= 6)
+        if (secondsLeftP2 < 0 && round > 6)
         {
             //P2 lost
 
