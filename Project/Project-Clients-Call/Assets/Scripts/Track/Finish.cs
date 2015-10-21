@@ -8,7 +8,7 @@ public class Finish : MonoBehaviour {
     public bool P2Finished = false;
     bool startTimer = false;
 
-    int round = 0;
+    int round = 2;
 
     float timer = 0;
     float secondsLeftP1 = 5;

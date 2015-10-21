@@ -20,6 +20,7 @@ public class RoundScript : MonoBehaviour {
 
     void UpdateImage()
     {
+        Debug.Log(GameObject.FindObjectOfType<ConfirmScript>().round / 2);
         if (GameObject.FindObjectOfType<ConfirmScript>().round/2 == 1)
         {
             this.GetComponent<Image>().sprite = Round1Sprite;
