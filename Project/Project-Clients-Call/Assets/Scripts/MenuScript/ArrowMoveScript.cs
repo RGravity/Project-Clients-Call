@@ -156,7 +156,7 @@ public class ArrowMoveScript : MonoBehaviour {
 
             if (_degrees == -45)
             {
-                _backButton.transform.position = new Vector3(250, 1294, -357);
+                _backButton.transform.position = new Vector3(260, 1294, 0);
                 _backButton.transform.rotation = Quaternion.Euler(274.6854f, 90.00016f, 359.6443f);
                 _player.transform.position = new Vector3(15,197,30);
                 _player.transform.rotation = Quaternion.Euler(90, 270,0);
@@ -179,7 +179,7 @@ public class ArrowMoveScript : MonoBehaviour {
                 _cubeTwo.transform.rotation = Quaternion.Euler(275, 90, 0);
                 _cubeOne.transform.rotation = Quaternion.Euler(50, 60, 0);
                 _cubeThree.transform.rotation = Quaternion.Euler(90, 90, -180);
-                _startGame.transform.position = new Vector3(150, 1294, -357);
+                _startGame.transform.position = new Vector3(200, 1294, 0);
               
 
             }
@@ -308,36 +308,36 @@ public class ArrowMoveScript : MonoBehaviour {
         {
             if (this.gameObject.transform.position == new Vector3(1298, 29, 0))
             {
-                _startButton.transform.position = new Vector3(1183, 0, 0);
-                _howToPlayButton.transform.position = new Vector3(1260, -55, 0);
-                _creditsButton.transform.position = new Vector3(1260, -165, 0);
-                _optionsButton.transform.position = new Vector3(1260, -110, 0);
-                _exitButton.transform.position = new Vector3(1260, -220, 0);
+                _startButton.transform.position = new Vector3(1183, 0, 243);
+                _howToPlayButton.transform.position = new Vector3(1220, -55, 250);
+                _creditsButton.transform.position = new Vector3(1220, -165, 250);
+                _optionsButton.transform.position = new Vector3(1220, -110, 250);
+                _exitButton.transform.position = new Vector3(1220, -220, 250);
 
             }
             if (this.gameObject.transform.position == new Vector3(1298, -25, 0))
             {
-                _startButton.transform.position = new Vector3(1260, 0, 0);
-                _howToPlayButton.transform.position = new Vector3(1183, -55, 0);
-                _optionsButton.transform.position = new Vector3(1260, -110, 0);
+                _startButton.transform.position = new Vector3(1220, 0, 250);
+                _howToPlayButton.transform.position = new Vector3(1183, -55, 243);
+                _optionsButton.transform.position = new Vector3(1220, -110, 250);
 
             }
             if (this.gameObject.transform.position == new Vector3(1298, -79, 0))
             {
-                _howToPlayButton.transform.position = new Vector3(1260, -55, 0);
-                _optionsButton.transform.position = new Vector3(1188, -105, 0);
-                _creditsButton.transform.position = new Vector3(1260, -165, 0);
+                _howToPlayButton.transform.position = new Vector3(1220, -55, 250);
+                _optionsButton.transform.position = new Vector3(1183, -110, 243);
+                _creditsButton.transform.position = new Vector3(1220, -165, 250);
             }
             if (this.gameObject.transform.position == new Vector3(1298, -133, 0))
             {
-                _optionsButton.transform.position = new Vector3(1260, -110, 0);
-                _creditsButton.transform.position = new Vector3(1188, -158, 0);
-                _exitButton.transform.position = new Vector3(1260, -220, 0);
+                _optionsButton.transform.position = new Vector3(1220, -110, 250);
+                _creditsButton.transform.position = new Vector3(1183, -160, 243);
+                _exitButton.transform.position = new Vector3(1220, -220, 250);
             }
             if (this.gameObject.transform.position == new Vector3(1298, -187, 0))
             {
-                _creditsButton.transform.position = new Vector3(1260, -165, 0);
-                _exitButton.transform.position = new Vector3(1188, -210, 0);
+                _creditsButton.transform.position = new Vector3(1220, -165, 250);
+                _exitButton.transform.position = new Vector3(1183, -217, 243);
             }
         }
     }
@@ -348,13 +348,13 @@ public class ArrowMoveScript : MonoBehaviour {
         {
             if (this.gameObject.transform.position == new Vector3(150, 1294, -457))
             {
-                _startGame.transform.position = new Vector3(140, 1194, -325);
-                _backButton.transform.position = new Vector3(250, 1294, -357);
+                _startGame.transform.position = new Vector3(190, 1194, 0);
+                _backButton.transform.position = new Vector3(260, 1294, 0);
             }
             if (this.gameObject.transform.position == new Vector3(250, 1294, -457))
             {
-                _startGame.transform.position = new Vector3(150, 1294, -357);
-                _backButton.transform.position = new Vector3(230, 1194, -325);
+                _startGame.transform.position = new Vector3(200, 1294, 0);
+                _backButton.transform.position = new Vector3(240, 1194, 0);
             }
 
         }

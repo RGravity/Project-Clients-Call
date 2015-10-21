@@ -95,6 +95,10 @@
     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SliderScript2.cs" />
     <Compile Include="Assets\Scripts\MenuScript\OptionsScripts\SoundsScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\Pause\PauseScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\PlayerMovement\PlayerBounceScript.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\PlayerMovement\PlayerBounceScript2.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\PlayerMovement\PlayerBounceScript3.cs" />
+    <Compile Include="Assets\Scripts\MenuScript\PlayerMovement\PlayerBounceScript4.cs" />
     <Compile Include="Assets\Scripts\MenuScript\QuitGameScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\RotationScript.cs" />
     <Compile Include="Assets\Scripts\MenuScript\SelectionScripts\ConfirmScript.cs" />
