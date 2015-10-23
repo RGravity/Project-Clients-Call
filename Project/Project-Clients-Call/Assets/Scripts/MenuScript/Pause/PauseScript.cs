@@ -10,14 +10,8 @@ public class PauseScript : MonoBehaviour {
     private float _speedP2 = 0;
 
     private bool _backToMenu = false;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         CheckPause();
 	}
 
@@ -39,21 +33,19 @@ public class PauseScript : MonoBehaviour {
 				Time.timeScale = 0;
 				pauseGame = true;
 			}
-		if (pauseGame == false)
-		{
+            if (pauseGame == false)
+            {
                 GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
                 GameObject.FindObjectOfType<Player2LevelScript>().Speed = _speedP2;
-            GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
-            GameObject.Find("Canvas").GetComponent<Image>().enabled = false;
-            GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = false;
-			Time.timeScale = 1;
-            pauseGame = false;
-		}
-		}
-        if (pauseGame == true)
-        {
-            GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
-            GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
+                NotShowMenu();
+                Time.timeScale = 1;
+                pauseGame = false;
+            }
+            if (pauseGame == true)
+            {
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
+                GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
+            }
         }
 
         Selection();
@@ -68,9 +60,7 @@ public class PauseScript : MonoBehaviour {
             GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
             GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = false;
             GameObject.Find("QuitArrows").GetComponent<Image>().enabled = true;
-        
         }
-
         if (pauseGame && Input.GetAxis("Vertical P1") > 0.5f || pauseGame && Input.GetAxis("Vertical P2") > 0.5f)
         {
             
@@ -83,21 +73,25 @@ public class PauseScript : MonoBehaviour {
 
     void Choice()
     {
-        if (pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() != enabled && Input.GetButton("FireP1") ||
-           pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() != enabled && Input.GetButton("FireP2"))
+        if (pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>().enabled == true && Input.GetButton("FireP1") ||
+            pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>().enabled == true && Input.GetButton("FireP2"))
         {
             pauseGame = false;
+            NotShowMenu();
             Time.timeScale = 1;
-            _backToMenu = true;
-
         }
-        if (pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton("FireP1") ||
-            pauseGame && GameObject.Find("ResumeArrows").GetComponent<Image>() == enabled && Input.GetButton("FireP2"))
+        if (pauseGame && GameObject.Find("QuitArrows").GetComponent<Image>().enabled == true && Input.GetButton("FireP1") ||
+            pauseGame && GameObject.Find("QuitArrows").GetComponent<Image>().enabled == true && Input.GetButton("FireP2"))
         {
             _backToMenu = true;
             Time.timeScale = 1;
         }
-
+    }
+    void NotShowMenu()
+    {
+        GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
+        GameObject.Find("Canvas").GetComponent<Image>().enabled = false;
+        GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = false;
     }
 
     void BackToMenu()
@@ -112,6 +106,5 @@ public class PauseScript : MonoBehaviour {
             GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = 0;
             _backToMenu = false;
         }
-       
     }
 }
