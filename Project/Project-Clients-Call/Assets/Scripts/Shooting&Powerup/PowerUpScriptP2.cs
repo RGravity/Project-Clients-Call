@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PowerUpScriptP2 : MonoBehaviour {
 
@@ -15,10 +16,12 @@ public class PowerUpScriptP2 : MonoBehaviour {
     private Powerup _powerUp = Powerup.Empty;
     private bool _inVulnerable = false;
     private int _timer = 500;
+    private List<string> _pickedUpP2 = new List<string>(); 
 
     public bool PowerUpAvailable { get { return _availablePowerup; } set { _availablePowerup = value; } }
     public Powerup PowerUp { get { return _powerUp; } set { _powerUp = value; } }
     public bool Invulnerable { get { return _inVulnerable; } set { _inVulnerable = value; } }
+    public List<string> PickedUpP2 { get { return _pickedUpP2; } set { _pickedUpP2 = value; } }
 	
 	// Update is called once per frame
 	void Update () {
