@@ -15,6 +15,36 @@ public class TrackBuildScript : MonoBehaviour {
      */
 
     private List<GameObject> TrackBlockList = new List<GameObject>();
+    
+    private List<string> _puzzleWord = new List<string>();
+    #region letter variables
+    private GameObject _letterA;
+    private GameObject _letterB;
+    private GameObject _letterC;
+    private GameObject _letterD;
+    private GameObject _letterE;
+    private GameObject _letterF;
+    private GameObject _letterG;
+    private GameObject _letterH;
+    private GameObject _letterI;
+    private GameObject _letterJ;
+    private GameObject _letterK;
+    private GameObject _letterL;
+    private GameObject _letterM;
+    private GameObject _letterN;
+    private GameObject _letterO;
+    private GameObject _letterP;
+    private GameObject _letterQ;
+    private GameObject _letterR;
+    private GameObject _letterS;
+    private GameObject _letterT;
+    private GameObject _letterU;
+    private GameObject _letterV;
+    private GameObject _letterW;
+    private GameObject _letterX;
+    private GameObject _letterY;
+    private GameObject _letterZ;
+    #endregion
 
     private GameObject _trackBlock;
     private GameObject _trackWall;
@@ -34,9 +64,11 @@ public class TrackBuildScript : MonoBehaviour {
     private int _coinCounter = 0;
     private int _powerupCounter = 0;
 
+
     [SerializeField]
     private int _firstBlocks = 500;
     public int FirstBlocks { get { return _firstBlocks; } }
+    public List<string> PuzzleWord { set { _puzzleWord = value; } }
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +83,49 @@ public class TrackBuildScript : MonoBehaviour {
         _coinPowerup = (GameObject)Resources.Load("Powerups/Coin");
         _drillPowerup = (GameObject)Resources.Load("Powerups/RocketDrill");
         _powerupBox = (GameObject)Resources.Load("Powerups/PowerUpCube");
-        
+
+        #region Loading Letters
+        _letterA = (GameObject)Resources.Load("Letters/A");
+        _letterB = (GameObject)Resources.Load("Letters/B");
+        _letterC = (GameObject)Resources.Load("Letters/C");
+        _letterD = (GameObject)Resources.Load("Letters/D");
+        _letterE = (GameObject)Resources.Load("Letters/E");
+        _letterF = (GameObject)Resources.Load("Letters/F");
+        _letterG = (GameObject)Resources.Load("Letters/G");
+        _letterH = (GameObject)Resources.Load("Letters/H");
+        _letterI = (GameObject)Resources.Load("Letters/I");
+        _letterJ = (GameObject)Resources.Load("Letters/J");
+        _letterK = (GameObject)Resources.Load("Letters/K");
+        _letterL = (GameObject)Resources.Load("Letters/L");
+        _letterM = (GameObject)Resources.Load("Letters/M");
+        _letterN = (GameObject)Resources.Load("Letters/N");
+        _letterO = (GameObject)Resources.Load("Letters/O");
+        _letterP = (GameObject)Resources.Load("Letters/P");
+        _letterQ = (GameObject)Resources.Load("Letters/Q");
+        _letterR = (GameObject)Resources.Load("Letters/R");
+        _letterS = (GameObject)Resources.Load("Letters/S");
+        _letterT = (GameObject)Resources.Load("Letters/T");
+        _letterU = (GameObject)Resources.Load("Letters/U");
+        _letterV = (GameObject)Resources.Load("Letters/V");
+        _letterW = (GameObject)Resources.Load("Letters/W");
+        _letterX = (GameObject)Resources.Load("Letters/X");
+        _letterY = (GameObject)Resources.Load("Letters/Y");
+        _letterZ = (GameObject)Resources.Load("Letters/Z");
+        #endregion
+
+        Vector3 PlayerPosition = GameObject.FindObjectOfType<Player1MoveScript>().transform.position;
+        Vector3 FinishPosition = GameObject.FindObjectOfType<Finish>().transform.position;
+        Vector3 Distance = FinishPosition - PlayerPosition;
+        float Length = Distance.magnitude;
+        int AmountofPlaces = _puzzleWord.Count + 2;
+        float LengthBetweenLetters = Length / AmountofPlaces;
+        float currentZcoords = LengthBetweenLetters;
+
+        foreach (string letter in _puzzleWord)
+        {
+            
+        }
+
         //spawn the first XXX blocks far
         for (int z = 0; z < _firstBlocks; z++)
         {

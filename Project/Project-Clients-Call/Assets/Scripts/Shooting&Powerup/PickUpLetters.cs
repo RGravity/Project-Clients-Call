@@ -30,7 +30,7 @@ public class PickUpLetters : MonoBehaviour {
                     _pickups = _pickUpLettersUltimate;
                     break;
                 case 2:
-                    _pickups = _pickUpLettersUltimate;
+                    _pickups = _pickUpLettersVi;
                     break;
                 default:
                     break;
@@ -62,6 +62,8 @@ public class PickUpLetters : MonoBehaviour {
             //        }
             //    }
             //}
+
+            GameObject.FindObjectOfType<TrackBuildScript>().PuzzleWord = _pickups;
 	}
 	
 	// Update is called once per frame
