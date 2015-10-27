@@ -8,6 +8,7 @@ using System;
 public class Player1LevelScript : MonoBehaviour {
 
     private float _speed = 10f;
+    private float _acceleration = 0.025f;
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
     private int _iteration = 0;
@@ -46,7 +47,7 @@ public class Player1LevelScript : MonoBehaviour {
     {
         if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted)
         {
-            _speed += 0.05f;
+            _speed += _acceleration;
             //Debug.Log(_speed);
             if (_speed >= 35)
             {
