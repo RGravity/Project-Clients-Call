@@ -116,6 +116,7 @@
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PickUpLetters.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PowerUpScriptP1.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PowerUpScriptP2.cs" />
+    <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PowerupScript.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\RocketDrill.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\RocketHit.cs" />
     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\ShootScript.cs" />
