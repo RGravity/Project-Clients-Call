@@ -98,6 +98,7 @@ public class PowerupPickup : MonoBehaviour {
         {
             Vector3 newPosition = this.transform.position;
             newPosition.z += _zBlocks;
+            newPosition.x = (Random.Range(0, 7) * 2) - 4.25f;
             GameObject.FindObjectOfType<TrackBuildScript>().SpawnPowerup(newPosition, this.gameObject.transform.parent.gameObject);
         }
     }
