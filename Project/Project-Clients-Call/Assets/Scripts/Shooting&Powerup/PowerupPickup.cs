@@ -29,7 +29,28 @@ public class PowerupPickup : MonoBehaviour {
         {
             if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
             {
-                GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                int Powerup = Random.Range(1, 5);
+                switch (Powerup)
+                {
+                    //Boost
+                    case 1:
+                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                        break;
+                    //Invulnerable
+                    case 2:
+                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
+                        break;
+                    //Powerdown
+                    case 3:
+                        //Powerdown
+                        break;
+                    //Firewall
+                    case 4:
+                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
+                        break;
+                    default:
+                        break;
+                }
                 GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
             }
             GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
@@ -40,7 +61,28 @@ public class PowerupPickup : MonoBehaviour {
         {
             if (!GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable)
             {
-                GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp = PowerUpScriptP2.Powerup.Boost;
+                int Powerup = Random.Range(1, 5);
+                switch (Powerup)
+                {
+                    //Boost
+                    case 1:
+                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                        break;
+                    //Invulnerable
+                    case 2:
+                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
+                        break;
+                    //Powerdown
+                    case 3:
+                        //Powerdown
+                        break;
+                    //Firewall
+                    case 4:
+                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
+                        break;
+                    default:
+                        break;
+                }
                 GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
             }
             GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();

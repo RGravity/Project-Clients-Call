@@ -85,8 +85,11 @@
      <Compile Include="Assets\Scripts\Movement\BankingP2Script.cs" />
      <Compile Include="Assets\Scripts\Movement\Player1MoveScript.cs" />
      <Compile Include="Assets\Scripts\Movement\Player2MoveScript.cs" />
+     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\BoostScript.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\Bullet.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\CoinScript.cs" />
+     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\DrillScript.cs" />
+     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\InvulnerableScript.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PickUpLetters.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PowerUpScriptP1.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PowerUpScriptP2.cs" />
