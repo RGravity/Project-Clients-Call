@@ -26,8 +26,8 @@ public class MinimapScript : MonoBehaviour {
         // get level distance by subtracting start and end
         _totalDist = _levelDifference.z;
         _barWidth = 1820;
-        _startPositionIconP1 = GameObject.Find("Player1MinimapIcon").GetComponent<RectTransform>().position.x;
-        _startPositionIconP2 = GameObject.Find("Player2MinimapIcon").GetComponent<RectTransform>().position.x;
+        _startPositionIconP1 = GameObject.Find("Player1MinimapIcon").GetComponent<Transform>().position.x;
+        _startPositionIconP2 = GameObject.Find("Player2MinimapIcon").GetComponent<Transform>().position.x;
 	}
 	
 	// Update is called once per frame
@@ -68,7 +68,7 @@ public class MinimapScript : MonoBehaviour {
 
         xToShow = _startPositionIconP2 + _barP2Progress;
 
-        GameObject.Find("Player2MinimapIcon").GetComponent<RectTransform>().position = new Vector3(xToShow, this.transform.position.y, this.transform.position.z);
+        GameObject.Find("Player2MinimapIcon").GetComponent<Transform>().position = new Vector3(xToShow, this.transform.position.y, this.transform.position.z);
         #endregion
     }
 }

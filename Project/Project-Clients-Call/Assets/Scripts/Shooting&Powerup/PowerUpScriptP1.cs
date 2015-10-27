@@ -9,7 +9,8 @@ public class PowerUpScriptP1 : MonoBehaviour {
         Empty,
         Boost,
         Drill,
-        Invulnerability
+        Invulnerability,
+        PowerDown,
     }
 
 
