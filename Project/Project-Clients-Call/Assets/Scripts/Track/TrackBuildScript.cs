@@ -156,7 +156,7 @@ public class TrackBuildScript : MonoBehaviour {
         GO.transform.parent = pParent.transform;
         GO.name = "Powerup" + _powerupCounter;
         GO.transform.localEulerAngles = new Vector3(0, 0, 0);
-        GO.GetComponent<________>().ZBlocks = _firstBlocks;
+        GO.GetComponent<PowerupPickup>().ZBlocks = _firstBlocks;
         _powerupCounter++;
 
     }
