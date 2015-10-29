@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ShootScript : MonoBehaviour {
@@ -19,8 +20,13 @@ public class ShootScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
-    {
+	void Update () {
+
+        if (timeStampP1 < Time.time)
+        {
+            GameObject.Find("ShootAllowIconP1").GetComponent<Image>().enabled = true;
+            GameObject.Find("ShootDenyIconP1").GetComponent<Image>().enabled = false;
+        }
         if (Input.GetButtonDown("Fire2P1") && this.name == "Player 1" && timeStampP1 <= Time.time || fireStartedP1)
         {
             fireStartedP1 = true;
@@ -39,7 +45,14 @@ public class ShootScript : MonoBehaviour {
             else
             {
                 timeStampP1 = Time.time + coolDownPeriodInSeconds;
+                GameObject.Find("ShootAllowIconP1").GetComponent<Image>().enabled = false;
+                GameObject.Find("ShootDenyIconP1").GetComponent<Image>().enabled = true;
             }
+            }
+        if (timeStampP2 < Time.time)
+        {
+            GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = true;
+            GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = false;
         }
         if (Input.GetButtonDown("Fire2P2") && this.name == "Player 2" && timeStampP2 <= Time.time || fireStartedP2)
         {
@@ -59,6 +72,8 @@ public class ShootScript : MonoBehaviour {
             else
             {
                 timeStampP2 = Time.time + coolDownPeriodInSeconds;
+                GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = false;
+                GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = true;
             }
         }
 

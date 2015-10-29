@@ -4,6 +4,7 @@ using System.Collections;
 public class Player2LevelScript : MonoBehaviour {
 
     private float _speed = 10f;
+    private float _acceleration = 0.025f;
     private float _originalSpeed = 10f;
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
@@ -45,12 +46,12 @@ public class Player2LevelScript : MonoBehaviour {
     {
         if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted)
         {
-            _speed += 0.05f;
+            _speed += _acceleration;
             if (_speed >= 35)
             {
                 _speed = 35;
             }
-            _originalSpeed += 0.05f;
+            _originalSpeed += _acceleration;
             gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
         }
         else if (!_levelStarted)
