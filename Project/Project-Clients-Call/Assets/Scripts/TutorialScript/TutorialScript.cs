@@ -21,6 +21,7 @@ public class TutorialScript : MonoBehaviour
     private bool _minimap = false;
     private bool _inventory = false;
     private bool _powerUp = false;
+    private bool _letter = false;
 
    
 
@@ -36,6 +37,7 @@ public class TutorialScript : MonoBehaviour
     public bool Twister { get { return _twister; } set { _twister = value; } }
     public bool End { get { return _end; } set { _end = value; } }
     public bool PowerUp { get { return _powerUp; } set { _powerUp = value; } }
+    public bool Letter { get { return _letter; } set { _powerUp = value; } }
 
     
 	// Use this for initialization
