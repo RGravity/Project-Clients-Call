@@ -21,15 +21,6 @@ public class PickUpLetters : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        if (this.gameObject.transform.name == GameObject.FindObjectOfType<Player1MoveScript>().transform.name)
-        {
-            _cameraP1 = GetComponentInChildren<Camera>();
-        }
-        else if (this.gameObject.transform.name == GameObject.FindObjectOfType<Player2MoveScript>().transform.name)
-        {
-            _cameraP2 = GetComponentInChildren<Camera>();
-        }
-
             int randomPick = Random.Range(0, 3);
             randomPick = 0;
             switch (randomPick)
