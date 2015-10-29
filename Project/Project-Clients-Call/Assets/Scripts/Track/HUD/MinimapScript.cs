@@ -6,7 +6,7 @@ public class MinimapScript : MonoBehaviour {
 
     private float _currentSpeedP1;
     private float _currentSpeedP2;
-    private float _scale = 2.7f;
+    private float _scale = 2.55f;
 
 	// Use this for initialization
 	void Start () {
