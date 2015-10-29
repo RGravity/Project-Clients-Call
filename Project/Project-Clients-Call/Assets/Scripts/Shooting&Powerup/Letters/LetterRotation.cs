@@ -10,6 +10,6 @@ public class LetterRotation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.gameObject.transform.Rotate(0, 1, 0);
+        this.gameObject.transform.Rotate(0, 3, 0);
 	}
 }
