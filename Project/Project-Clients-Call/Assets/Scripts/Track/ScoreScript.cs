@@ -88,11 +88,11 @@ public class ScoreScript : MonoBehaviour {
 
     private void NormalScoring()
     {
-        if (!GameObject.FindObjectOfType<Finish>().P1Finished)
+        if (!GameObject.FindObjectOfType<Finish>().P1Finished && !GameObject.FindObjectOfType<PauseScript>().pauseGame)
         {
             _p1Score += (int)GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6;
         }
-        if (!GameObject.FindObjectOfType<Finish>().P2Finished)
+        if (!GameObject.FindObjectOfType<Finish>().P2Finished && !GameObject.FindObjectOfType<PauseScript>().pauseGame)
         {
             _p2Score += (int)GameObject.FindObjectOfType<Player2LevelScript>().Speed / 6;
         }

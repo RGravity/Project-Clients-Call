@@ -90,6 +90,7 @@
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\CoinScript.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\DrillScript.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\InvulnerableScript.cs" />
+     <Compile Include="Assets\Scripts\Shooting&amp;Powerup\Letters\LetterRotation.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PickUpLetters.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PowerUpScriptP1.cs" />
      <Compile Include="Assets\Scripts\Shooting&amp;Powerup\PowerUpScriptP2.cs" />
