@@ -123,7 +123,10 @@ public class TrackBuildScript : MonoBehaviour {
 
         foreach (string letter in _puzzleWord)
         {
-            
+            int x = Random.Range(0,7);
+            SpawnLetter(new Vector3((x * 2) - 4.25f, 0, (currentZcoords * 0.7f)), letter, GameObject.Find("TrackBlocks1"));
+            SpawnLetter(new Vector3((x * 2) - 4.25f, 0, (currentZcoords * 0.7f)), letter, GameObject.Find("TrackBlocks1"));
+            currentZcoords += LengthBetweenLetters;
         }
 
         //spawn the first XXX blocks far
@@ -144,7 +147,7 @@ public class TrackBuildScript : MonoBehaviour {
             for (int x = 0; x < 7; x++)
             {
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                SpawnTrackBlock(new Vector3(((6 - x) * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
             }
         }
 
@@ -165,6 +168,110 @@ public class TrackBuildScript : MonoBehaviour {
 	void Update () {
 	    
 	}
+
+    private void SpawnLetter(Vector3 pPosition, string pLetter, GameObject pParent){
+        GameObject GO = new GameObject();
+
+        #region Switch pLetter
+        switch(pLetter){
+            case "A":
+                GO = (GameObject)Instantiate(_letterA, pPosition, Quaternion.identity);
+                break;
+            case "B":
+                GO = (GameObject)Instantiate(_letterB, pPosition, Quaternion.identity);
+                break;
+            case "C":
+                GO = (GameObject)Instantiate(_letterC, pPosition, Quaternion.identity);
+                break;
+            case "D":
+                GO = (GameObject)Instantiate(_letterD, pPosition, Quaternion.identity);
+                break;
+            case "E":
+                GO = (GameObject)Instantiate(_letterE, pPosition, Quaternion.identity);
+                break;
+            case "F":
+                GO = (GameObject)Instantiate(_letterF, pPosition, Quaternion.identity);
+                break;
+            case "G":
+                GO = (GameObject)Instantiate(_letterG, pPosition, Quaternion.identity);
+                break;
+            case "H":
+                GO = (GameObject)Instantiate(_letterH, pPosition, Quaternion.identity);
+                break;
+            case "I":
+                GO = (GameObject)Instantiate(_letterI, pPosition, Quaternion.identity);
+                break;
+            case "J":
+                GO = (GameObject)Instantiate(_letterJ, pPosition, Quaternion.identity);
+                break;
+            case "K":
+                GO = (GameObject)Instantiate(_letterK, pPosition, Quaternion.identity);
+                break;
+            case "L":
+                GO = (GameObject)Instantiate(_letterL, pPosition, Quaternion.identity);
+                break;
+            case "M":
+                GO = (GameObject)Instantiate(_letterM, pPosition, Quaternion.identity);
+                break;
+            case "N":
+                GO = (GameObject)Instantiate(_letterN, pPosition, Quaternion.identity);
+                break;
+            case "O":
+                GO = (GameObject)Instantiate(_letterO, pPosition, Quaternion.identity);
+                break;
+            case "P":
+                GO = (GameObject)Instantiate(_letterP, pPosition, Quaternion.identity);
+                break;
+            case "Q":
+                GO = (GameObject)Instantiate(_letterQ, pPosition, Quaternion.identity);
+                break;
+            case "R":
+                GO = (GameObject)Instantiate(_letterR, pPosition, Quaternion.identity);
+                break;
+            case "S":
+                GO = (GameObject)Instantiate(_letterS, pPosition, Quaternion.identity);
+                break;
+            case "T":
+                GO = (GameObject)Instantiate(_letterT, pPosition, Quaternion.identity);
+                break;
+            case "U":
+                GO = (GameObject)Instantiate(_letterU, pPosition, Quaternion.identity);
+                break;
+            case "V":
+                GO = (GameObject)Instantiate(_letterV, pPosition, Quaternion.identity);
+                break;
+            case "W":
+                GO = (GameObject)Instantiate(_letterW, pPosition, Quaternion.identity);
+                break;
+            case "X":
+                GO = (GameObject)Instantiate(_letterX, pPosition, Quaternion.identity);
+                break;
+            case "Y":
+                GO = (GameObject)Instantiate(_letterY, pPosition, Quaternion.identity);
+                break;
+            case "Z":
+                GO = (GameObject)Instantiate(_letterZ, pPosition, Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+        #endregion
+
+        GO.transform.parent = pParent.transform;
+        GO.name = "Letter" + pLetter;
+
+        if (pParent.name == "TrackBlocks1")
+        {
+            GO.transform.localEulerAngles = new Vector3(0, 180, 0);
+        }
+        else if (pParent.name == "TrackBlocks2")
+        {
+            GO.transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        
+
+        
+    }
 
     private void SpawnWallsOnZ(float Z)
     {
