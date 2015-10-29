@@ -10,6 +10,8 @@ public class PickUpLetters : MonoBehaviour {
     private List<string> _pickUpLettersUltimate = new List<string>() { "U", "L", "T", "I", "M", "A", "T", "E" };
     private List<string> _pickUpLettersVi = new List<string>() { "V", "I", "R", "A", "C", "E", "R" };
     private List<string> _pickups;
+    private Camera _cameraP1;
+    private Camera _cameraP2;
 
     public List<string> PickUp
     {
@@ -19,6 +21,15 @@ public class PickUpLetters : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
+        if (this.gameObject.transform.name == GameObject.FindObjectOfType<Player1MoveScript>().transform.name)
+        {
+            _cameraP1 = GetComponentInChildren<Camera>();
+        }
+        else if (this.gameObject.transform.name == GameObject.FindObjectOfType<Player2MoveScript>().transform.name)
+        {
+            _cameraP2 = GetComponentInChildren<Camera>();
+        }
+
             int randomPick = Random.Range(0, 3);
             randomPick = 0;
             switch (randomPick)
