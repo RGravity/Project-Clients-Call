@@ -19,19 +19,33 @@ public class CoinScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
-            GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Coin;
-            GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
-            respawn = true;
-            Destroy(this.gameObject);
+            if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
+            {
+                GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Coin;
+                GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
+                respawn = true;
+                Destroy(this.gameObject);
+            }
+            else if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
+            {
+                GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Coin;
+                GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
+                respawn = true;
+                Destroy(this.gameObject);
+            }
         }
-        else if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
+        else
         {
-            GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Coin;
-            GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
-            respawn = true;
-            Destroy(this.gameObject);
+            if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
+            {
+                //GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Coin;
+                GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
+                //respawn = true;
+                GameObject.FindObjectOfType<TutorialScript>().Coin = true;
+                Destroy(this.gameObject);
+            }
         }
     }
 

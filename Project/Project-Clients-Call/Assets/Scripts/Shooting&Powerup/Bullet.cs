@@ -24,10 +24,19 @@ public class Bullet : MonoBehaviour {
         _body = GetComponent<Rigidbody>();
         _body.position = transform.position;
 
-        _planeP1 = GameObject.FindObjectOfType<Player1LevelScript>().gameObject;
-        _planeP2 = GameObject.FindObjectOfType<Player2LevelScript>().gameObject;
-        _playerCameraP1 = GameObject.FindObjectOfType<Player1MoveScript>().GetComponentInChildren<Camera>();
-        _playerCameraP2 = GameObject.FindObjectOfType<Player2MoveScript>().GetComponentInChildren<Camera>();
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            _planeP1 = GameObject.FindObjectOfType<Player1LevelScript>().gameObject;
+            _planeP2 = GameObject.FindObjectOfType<Player2LevelScript>().gameObject;
+            _playerCameraP1 = GameObject.FindObjectOfType<Player1MoveScript>().GetComponentInChildren<Camera>();
+            _playerCameraP2 = GameObject.FindObjectOfType<Player2MoveScript>().GetComponentInChildren<Camera>();
+        }
+        else
+        {
+            _planeP1 = GameObject.FindObjectOfType<Player1LevelScript>().gameObject;
+            _playerCameraP1 = GameObject.FindObjectOfType<Player1MoveScript>().GetComponentInChildren<Camera>();
+        }
+       
 
         _pointBlock = GameObject.Find("PointBlock");
 	}
@@ -105,18 +114,26 @@ public class Bullet : MonoBehaviour {
                 //otherCube.gameObject.transform.localPosition = other.gameObject.transform.localPosition;
                 //otherCube.gameObject.transform.localPosition = new Vector3(other.gameObject.transform.localPosition.x, other.gameObject.transform.localPosition.y - 6, other.gameObject.transform.localPosition.z);
                 //otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
+                if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+                {
                 Vector3 oldScale = other.gameObject.transform.localScale;
                 Vector3 hitScale = other.GetComponent<BoxCollider>().size;
 
                 //otherCube.transform.localScale = new Vector3(2, 1, 1);
-                otherCube.transform.position = position;
-                otherCube.transform.rotation = new Quaternion(0.0f, _playerCameraP2.transform.rotation.y, 0.0f, _playerCameraP2.transform.rotation.w);
-                //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
-                //otherCube.transform.rotation = new Quaternion(other.transform.rotation.x, 180, other.transform.rotation.z, 1);
-                //otherCube.transform.position = new Vector3(100, 100, 100);
-                otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
-                otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
-                other.gameObject.GetComponent<Finish>().WallAnimation(true);
+                
+                    otherCube.transform.position = position;
+                    otherCube.transform.rotation = new Quaternion(0.0f, _playerCameraP2.transform.rotation.y, 0.0f, _playerCameraP2.transform.rotation.w);
+                    //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
+                    //otherCube.transform.rotation = new Quaternion(other.transform.rotation.x, 180, other.transform.rotation.z, 1);
+                    //otherCube.transform.position = new Vector3(100, 100, 100);
+                    otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
+                    otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
+                    other.gameObject.GetComponent<Finish>().WallAnimation(true);
+                }
+                else
+                {
+                    Destroy(other.gameObject);
+                }
                // WallAnimation();
 
                

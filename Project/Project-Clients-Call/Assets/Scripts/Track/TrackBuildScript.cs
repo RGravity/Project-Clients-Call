@@ -52,13 +52,16 @@ public class TrackBuildScript : MonoBehaviour {
         //spawn the first XXX blocks far
         for (int z = 0; z < _firstBlocks; z++)
         {
-            if (z % 10 == 0 && z != 0)
+            if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
             {
-                SpawnWallsOnZ(z);
-            }
-            if (z % 16 == 0 && z != 0)
-            {
-                SpawnPowerupsOnZ(z);
+                if (z % 10 == 0 && z != 0)
+                {
+                    SpawnWallsOnZ(z);
+                }
+                if (z % 16 == 0 && z != 0)
+                {
+                    SpawnPowerupsOnZ(z);
+                }
             }
             //spawn the XXX blocks wide
             for (int x = 0; x < 7; x++)

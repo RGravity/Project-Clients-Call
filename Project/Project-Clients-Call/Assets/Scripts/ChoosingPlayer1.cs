@@ -8,6 +8,7 @@ public class ChoosingPlayer1 : MonoBehaviour {
     {
         if (GameObject.FindObjectOfType<ConfirmScript>() != null)
         {
+           
             if (GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 == 0)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActiveRecursively(true);

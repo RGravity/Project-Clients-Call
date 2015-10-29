@@ -134,13 +134,16 @@ public class ArrowMoveScript : MonoBehaviour {
         }
         if ((this.gameObject.transform.position == new Vector3(150, 1300, 0) && Input.GetButtonDown("FireP1") && _movingToHowTo == true))
         {
-            //Application.LoadLevel(2);
+            Application.LoadLevel(3);
             GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+            GameObject.FindObjectOfType<ConfirmScript>().Tutorial = true;
+           
         }
         if (this.gameObject.transform.position == new Vector3(150,1294,-457) && Input.GetButtonDown ("FireP1"))
         {
             Application.LoadLevel(3);
             GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+            GameObject.FindObjectOfType<ConfirmScript>().Tutorial = false;
 
         }
     

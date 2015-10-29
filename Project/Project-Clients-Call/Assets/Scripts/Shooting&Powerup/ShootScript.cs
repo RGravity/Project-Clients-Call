@@ -19,7 +19,8 @@ public class ShootScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         if (Input.GetButtonDown("Fire2P1") && this.name == "Player 1" && timeStampP1 <= Time.time || fireStartedP1)
         {
             fireStartedP1 = true;
@@ -33,7 +34,7 @@ public class ShootScript : MonoBehaviour {
                 _bullet = Instantiate(bulletPrefab).GetComponent<Transform>();
                 _bullet.GetComponent<Bullet>().Player(true);
                 fireStartedP1 = false;
-                GameObject.FindGameObjectWithTag("Shoot").GetComponent<AudioSource>().Play();
+//                GameObject.FindGameObjectWithTag("Shoot").GetComponent<AudioSource>().Play();
             }
             else
             {

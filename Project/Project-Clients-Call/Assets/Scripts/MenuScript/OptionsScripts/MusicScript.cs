@@ -54,6 +54,7 @@ public class MusicScript : MonoBehaviour {
     {
         if (_play == true)
         {
+            StopCoroutine("PlayNextInGameMusic");
             StartCoroutine("PlayNextInGameMusic", 0.1f);
             _music[0].Stop();
             _music[1].Play();

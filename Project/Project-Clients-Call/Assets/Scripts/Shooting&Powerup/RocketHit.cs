@@ -55,17 +55,31 @@ public class RocketHit : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
-            _isPlayer1 = true;
-            _hitted = true;
-            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
+            {
+                _isPlayer1 = true;
+                _hitted = true;
+                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+            if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
+            {
+                _isPlayer1 = false;
+                _hitted = true;
+                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
         }
-        if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
+
+        else
         {
-            _isPlayer1 = false;
-            _hitted = true;
-            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
+            {
+                _isPlayer1 = true;
+                _hitted = true;
+                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+        
         }
     }
 }

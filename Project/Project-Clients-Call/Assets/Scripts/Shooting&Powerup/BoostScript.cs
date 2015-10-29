@@ -24,28 +24,47 @@ public class BoostScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
-            if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
             {
-                GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
-                GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
+                if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
+                {
+                    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
+                }
+                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+                respawn = true;
+                Destroy(gameObject);
             }
-            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
-            respawn = true;
-            Destroy(gameObject);
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP2>().name)
+            {
+                if (!GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable)
+                {
+                    GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp = PowerUpScriptP2.Powerup.Boost;
+                    GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
+                }
+                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+                respawn = true;
+                Destroy(gameObject);
+
+            }
         }
-        if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP2>().name)
+        else
         {
-            if (!GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable)
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
             {
-                GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp = PowerUpScriptP2.Powerup.Boost;
-                GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
+                //if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
+                //{
+                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
+                //}
+                GameObject.FindObjectOfType<TutorialScript>().Speedup = true;
+                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+                //respawn = true;
+                Destroy(gameObject);
             }
-            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
-            respawn = true;
-            Destroy(gameObject);
-            
+        
         }
     }
 

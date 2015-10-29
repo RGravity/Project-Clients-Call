@@ -11,7 +11,9 @@ public class ConfirmScript : MonoBehaviour {
 
     public int round = 2;
     private static GameObject _instance;
+    private bool _tutorial = false;
 
+    public bool Tutorial { get { return _tutorial; } set { _tutorial = value; } }
     public int SavedP1Score { get { return _p1Score; } set { _p1Score = value; } }
     public int SavedP2Score { get { return _p2Score; } set { _p2Score = value; } }
 

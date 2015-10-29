@@ -30,10 +30,19 @@ public class RocketDrill : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        _planeP1 = GameObject.FindObjectOfType<Player1LevelScript>().gameObject;
-        _planeP2 = GameObject.FindObjectOfType<Player2LevelScript>().gameObject;
-        _PlayerP1 = GameObject.FindObjectOfType<Player1MoveScript>().gameObject;
-        _PlayerP2 = GameObject.FindObjectOfType<Player2MoveScript>().gameObject;
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            _planeP1 = GameObject.FindObjectOfType<Player1LevelScript>().gameObject;
+            _planeP2 = GameObject.FindObjectOfType<Player2LevelScript>().gameObject;
+            _PlayerP1 = GameObject.FindObjectOfType<Player1MoveScript>().gameObject;
+            _PlayerP2 = GameObject.FindObjectOfType<Player2MoveScript>().gameObject;
+        }
+        else
+        {
+            _planeP1 = GameObject.FindObjectOfType<Player1LevelScript>().gameObject;
+            _PlayerP1 = GameObject.FindObjectOfType<Player1MoveScript>().gameObject;
+        
+        }
 	}
 	
 	// Update is called once per frame
@@ -41,9 +50,12 @@ public class RocketDrill : MonoBehaviour {
 
         if (_rocketDrillP1)
         {
+            if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+            {
             _rocketDrillP1 = false;
             //GameObject drill = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             GameObject drill = Instantiate(_rocketPrefab);
+
             Camera camera = GameObject.FindObjectOfType<Player2MoveScript>().GetComponentInChildren<Camera>();
             Vector3 position;
             position = camera.transform.position + camera.transform.forward + new Vector3(0, 1, 2);
@@ -60,6 +72,11 @@ public class RocketDrill : MonoBehaviour {
             //_portal.transform.localEulerAngles = new Vector3(0, 90, 0);
             _portal.GetComponent<ParticleSystem>().Play();
             _portal.GetComponent<ParticleSystem>().loop = false;
+            }
+            else 
+            {
+            
+            }
         }
         if (_rocketDrillP2)
         {

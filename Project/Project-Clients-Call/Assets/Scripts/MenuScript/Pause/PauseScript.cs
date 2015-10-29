@@ -10,6 +10,8 @@ public class PauseScript : MonoBehaviour {
     private float _speedP2 = 0;
 
     private bool _backToMenu = false;
+
+    public bool backToMenu { get { return _backToMenu; } set { _backToMenu = value; } }
 	void Update ()
     {
         CheckPause();
@@ -25,8 +27,6 @@ public class PauseScript : MonoBehaviour {
 			{
                 _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
                 _speedP2 = GameObject.FindObjectOfType<Player2LevelScript>().Speed;
-                GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
-                GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
                 GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
                 GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = true;
                 GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
@@ -40,11 +40,6 @@ public class PauseScript : MonoBehaviour {
                 NotShowMenu();
                 Time.timeScale = 1;
                 pauseGame = false;
-            }
-            if (pauseGame == true)
-            {
-                GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
-                GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
             }
         }
 
@@ -63,7 +58,6 @@ public class PauseScript : MonoBehaviour {
         }
         if (pauseGame && Input.GetAxis("Vertical P1") > 0.5f || pauseGame && Input.GetAxis("Vertical P2") > 0.5f)
         {
-            
             GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
             GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = true;
             GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;

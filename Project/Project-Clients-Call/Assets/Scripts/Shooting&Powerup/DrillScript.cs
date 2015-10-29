@@ -14,28 +14,47 @@ public class DrillScript : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
-            if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
             {
-                GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
-                GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
-            }
-            respawn = true;
-            Destroy(this.gameObject);
-            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+                if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
+                {
+                    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
+                    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
+                }
+                respawn = true;
+                Destroy(this.gameObject);
+                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
 
-        }
-        if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP2>().name)
-        {
-            if (!GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable)
-            {
-                GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp = PowerUpScriptP2.Powerup.Drill;
-                GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
             }
-            respawn = true;
-            Destroy(this.gameObject);
-            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP2>().name)
+            {
+                if (!GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable)
+                {
+                    GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp = PowerUpScriptP2.Powerup.Drill;
+                    GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
+                }
+                respawn = true;
+                Destroy(this.gameObject);
+                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+            }
+        }
+        else
+        {
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
+            {
+                //if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
+                //{
+                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
+                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
+                //}
+                GameObject.FindObjectOfType<TutorialScript>().Firewall = true;
+                //respawn = true;
+                Destroy(this.gameObject);
+                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+
+            }
         }
     }
 
