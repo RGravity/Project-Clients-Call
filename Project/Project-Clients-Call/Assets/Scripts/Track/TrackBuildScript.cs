@@ -124,8 +124,8 @@ public class TrackBuildScript : MonoBehaviour {
         foreach (string letter in _puzzleWord)
         {
             int x = Random.Range(0,7);
-            SpawnLetter(new Vector3((x * 2) - 4.25f, 0, (currentZcoords * 0.7f)), letter, GameObject.Find("TrackBlocks1"));
-            SpawnLetter(new Vector3((x * 2) - 4.25f, 0, (currentZcoords * 0.7f)), letter, GameObject.Find("TrackBlocks1"));
+            SpawnLetter(new Vector3((x * 2) - 4.25f, 2, (currentZcoords * 0.7f)), letter, GameObject.Find("TrackBlocks1"));
+            SpawnLetter(new Vector3(((6 - x) * 2) - 4.25f, -3, (currentZcoords * 0.7f)), letter, GameObject.Find("TrackBlocks2"));
             currentZcoords += LengthBetweenLetters;
         }
 
@@ -147,7 +147,7 @@ public class TrackBuildScript : MonoBehaviour {
             for (int x = 0; x < 7; x++)
             {
                 SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                SpawnTrackBlock(new Vector3(((6 - x) * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
             }
         }
 
@@ -262,11 +262,11 @@ public class TrackBuildScript : MonoBehaviour {
 
         if (pParent.name == "TrackBlocks1")
         {
-            GO.transform.localEulerAngles = new Vector3(0, 180, 0);
+            GO.transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         else if (pParent.name == "TrackBlocks2")
         {
-            GO.transform.localEulerAngles = new Vector3(0, 0, 0);
+            GO.transform.localEulerAngles = new Vector3(0, 0, 180);
         }
         
 
