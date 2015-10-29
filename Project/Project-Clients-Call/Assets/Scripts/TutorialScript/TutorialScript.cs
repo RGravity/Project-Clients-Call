@@ -58,7 +58,7 @@ public class TutorialScript : MonoBehaviour
     void Tutorial()
     {
 
-        if (_intro == true && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1)))
+        if (_intro == true && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0)))
         {
             GameObject.Find("Intro").GetComponent<Image>().enabled = false;
             Time.timeScale = 1;
@@ -70,7 +70,7 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Minimap").GetComponent<Image>().enabled = false;
 
-            if (_minimap == true && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1)))
+            if (_minimap == true && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0)))
             {
                 GameObject.Find("Minimap").GetComponent<Image>().enabled = false;
                 _minimap = false;
@@ -83,7 +83,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find ("PowerUp").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("PowerUp").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -97,7 +97,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Fire").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Fire").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -110,7 +110,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Wall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Wall").GetComponent<Image>().enabled = false;
                 _wall = false;
@@ -124,7 +124,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("SuperWall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("SuperWall").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -137,7 +137,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Coin").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Coin").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -151,7 +151,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Firewall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Firewall").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -164,7 +164,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Checkpoint").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Checkpoint").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -177,7 +177,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("ShieldUp").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("ShieldUp").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -190,7 +190,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Twister").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Twister").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -203,7 +203,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Speedup").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Speedup").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -216,7 +216,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Ramp").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Ramp").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -229,7 +229,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("End").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("End").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
