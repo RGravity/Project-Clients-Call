@@ -61,7 +61,12 @@ public class CoinScript : MonoBehaviour {
 
     void OnBecameInvisible()
     {
-        respawn = true;
-        Destroy(this.gameObject);
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            respawn = true;
+        }
+            Destroy(this.gameObject);
+        
+      
     }
 }

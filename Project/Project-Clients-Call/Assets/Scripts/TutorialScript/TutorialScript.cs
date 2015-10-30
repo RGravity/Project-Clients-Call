@@ -22,6 +22,7 @@ public class TutorialScript : MonoBehaviour
     private bool _inventory = false;
     private bool _powerUp = false;
     private bool _letter = false;
+    private bool _coolDown = false;
 
    
 
@@ -37,7 +38,7 @@ public class TutorialScript : MonoBehaviour
     public bool Twister { get { return _twister; } set { _twister = value; } }
     public bool End { get { return _end; } set { _end = value; } }
     public bool PowerUp { get { return _powerUp; } set { _powerUp = value; } }
-    public bool Letter { get { return _letter; } set { _powerUp = value; } }
+    public bool Letter { get { return _letter; } set { _letter = value; } }
 
     
 	// Use this for initialization
@@ -58,36 +59,51 @@ public class TutorialScript : MonoBehaviour
     void Tutorial()
     {
 
-        if (_intro == true && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1)))
+        if (_intro == true && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0)))
         {
             GameObject.Find("Intro").GetComponent<Image>().enabled = false;
-            Time.timeScale = 1;
             _intro = false;
-            _minimap = true;
+            Time.timeScale = 1;
         }
 
         if (_minimap == true)
         {
-            GameObject.Find("Minimap").GetComponent<Image>().enabled = false;
 
-            if (_minimap == true && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1)))
+            GameObject.Find("Minimap").GetComponent<Image>().enabled = true;
+            Time.timeScale = 0;
+            
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Minimap").GetComponent<Image>().enabled = false;
                 _minimap = false;
-                _inventory = true;
+                Time.timeScale = 1;
+            }
+        }
+
+        if (_inventory == true)
+        {
+
+            GameObject.Find("Inventory").GetComponent<Image>().enabled = true;
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                GameObject.Find("Inventory").GetComponent<Image>().enabled = false;
+                Time.timeScale = 1;
+                _inventory = false;
+               
             }
         }
 
         if (_powerUp == true)
         {
-            GameObject.Find ("PowerUp").GetComponent<Image>().enabled = true;
+            GameObject.Find ("Powerup").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
-                GameObject.Find("PowerUp").GetComponent<Image>().enabled = false;
-                Time.timeScale = 1;
+                GameObject.Find("Powerup").GetComponent<Image>().enabled = false;
                 _powerUp = false;
+                _inventory = true;
             }
         }
         
@@ -97,11 +113,12 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Fire").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Fire").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _fire = false;
+                _coolDown = true;
             }
         }
         
@@ -110,7 +127,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Wall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Wall").GetComponent<Image>().enabled = false;
                 _wall = false;
@@ -124,7 +141,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("SuperWall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("SuperWall").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -137,7 +154,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Coin").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Coin").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -151,7 +168,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Firewall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Firewall").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -164,11 +181,11 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Checkpoint").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Checkpoint").GetComponent<Image>().enabled = false;
-                Time.timeScale = 1;
                 _checkpoint = false;
+                _minimap = true;
             }
         }
 
@@ -177,7 +194,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("ShieldUp").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("ShieldUp").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -190,7 +207,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Twister").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Twister").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -203,7 +220,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Speedup").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Speedup").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -216,7 +233,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Ramp").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Ramp").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
@@ -224,12 +241,37 @@ public class TutorialScript : MonoBehaviour
             }
         }
 
+        if (_letter == true)
+        {
+            GameObject.Find("Letter").GetComponent<Image>().enabled = true;
+            Time.timeScale = 0;
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                GameObject.Find("Letter").GetComponent<Image>().enabled = false;
+                Time.timeScale = 1;
+                _letter = false;
+            }
+        }
+        if (_coolDown == true)
+        {
+            GameObject.Find("Cooldown").GetComponent<Image>().enabled = true;
+            Time.timeScale = 0;
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                GameObject.Find("Cooldown").GetComponent<Image>().enabled = false;
+                Time.timeScale = 1;
+                _coolDown = false;
+            }
+
+        }
+
         if (_end == true)
         {
             GameObject.Find("End").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
 
-            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("End").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;

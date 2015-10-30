@@ -54,10 +54,13 @@ public class SoundsScript : MonoBehaviour
 
     void StartCountDown()
     {
-        if (_play == true)
-        { 
-            _music[4].Play ();
-            _play = false;
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            if (_play == true)
+            {
+                _music[4].Play();
+                _play = false;
+            }
         }
     
     }

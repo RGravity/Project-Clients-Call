@@ -25,70 +25,82 @@ public class PowerupPickup : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
-            if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
             {
-                int Powerup = Random.Range(1, 5);
-                switch (Powerup)
+                if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
                 {
-                    //Boost
-                    case 1:
-                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
-                        break;
-                    //Invulnerable
-                    case 2:
-                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
-                        break;
-                    //Powerdown
-                    case 3:
+                    int Powerup = Random.Range(1, 5);
+                    switch (Powerup)
+                    {
+                        //Boost
+                        case 1:
+                            GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                            break;
+                        //Invulnerable
+                        case 2:
+                            GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
+                            break;
                         //Powerdown
-                        break;
-                    //Firewall
-                    case 4:
-                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
-                        break;
-                    default:
-                        break;
+                        case 3:
+                            //Powerdown
+                            break;
+                        //Firewall
+                        case 4:
+                            GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
+                            break;
+                        default:
+                            break;
+                    }
+                    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
                 }
-                GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
+                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+                respawn = true;
+                Destroy(gameObject);
             }
-            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
-            respawn = true;
-            Destroy(gameObject);
-        }
-        if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP2>().name)
-        {
-            if (!GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable)
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP2>().name)
             {
-                int Powerup = Random.Range(1, 5);
-                switch (Powerup)
+                if (!GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable)
                 {
-                    //Boost
-                    case 1:
-                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
-                        break;
-                    //Invulnerable
-                    case 2:
-                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
-                        break;
-                    //Powerdown
-                    case 3:
+                    int Powerup = Random.Range(1, 5);
+                    switch (Powerup)
+                    {
+                        //Boost
+                        case 1:
+                            GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                            break;
+                        //Invulnerable
+                        case 2:
+                            GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
+                            break;
                         //Powerdown
-                        break;
-                    //Firewall
-                    case 4:
-                        GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
-                        break;
-                    default:
-                        break;
+                        case 3:
+                            //Powerdown
+                            break;
+                        //Firewall
+                        case 4:
+                            GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
+                            break;
+                        default:
+                            break;
+                    }
+                    GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
                 }
-                GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
-            }
-            GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
-            respawn = true;
-            Destroy(gameObject);
+                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
+                respawn = true;
+                Destroy(gameObject);
 
+            }
+        }
+        else
+        {
+            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
+            {
+                GameObject.FindObjectOfType<TutorialScript>().PowerUp = true;
+                Destroy(gameObject);
+            }
+        
         }
     }
 
@@ -105,7 +117,10 @@ public class PowerupPickup : MonoBehaviour {
 
     void OnBecameInvisible()
     {
-        respawn = true;
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            respawn = false;
+        }
         Destroy(this.gameObject);
 
     }
