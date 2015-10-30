@@ -47,7 +47,7 @@ public class Player1LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted && _superWallHit)
+        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted && _superWallHit == false)
         {
             _speed += _acceleration;
             //Debug.Log(_speed);
