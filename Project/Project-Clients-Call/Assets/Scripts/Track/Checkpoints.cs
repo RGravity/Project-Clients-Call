@@ -7,6 +7,11 @@ using System.Collections.ObjectModel;
 
 public class Checkpoints : MonoBehaviour
 {
+    private bool _checkpointP1Hit = false;
+    private bool _checkpointP2Hit = false;
+
+    public bool CheckPointP1Hit { get { return _checkpointP1Hit; } set { _checkpointP1Hit = value; } }
+    public bool CheckPointP2Hit { get { return _checkpointP2Hit; } set { _checkpointP2Hit = value; } }
 
     List<Checkpoints> checkpoints;
     // Use this for initialization
@@ -50,6 +55,7 @@ public class Checkpoints : MonoBehaviour
                     {
                         checkpoints.Remove(checkpointsChecked[i]);
                     }
+                    _checkpointP1Hit = true;
                     GameObject.Find("CheckPoint" + _checkpointNumber + "P2").GetComponent<Checkpoints>().enabled = false;
                     GameObject.Find("CheckPoint" + _checkpointNumber + "P2").GetComponent<BoxCollider>().enabled = false;
                     break;
@@ -86,6 +92,7 @@ public class Checkpoints : MonoBehaviour
                     {
                         checkpoints.Remove(checkpointsChecked[i]);
                     }
+                    _checkpointP2Hit = true;
                     GameObject.Find("CheckPoint" + _checkpointNumber + "P1").GetComponent<Checkpoints>().enabled = false;
                     GameObject.Find("CheckPoint" + _checkpointNumber + "P1").GetComponent<BoxCollider>().enabled = false;
                     break;
