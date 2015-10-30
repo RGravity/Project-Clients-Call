@@ -27,6 +27,11 @@ public class ShootScript : MonoBehaviour {
             GameObject.Find("ShootAllowIconP1").GetComponent<Image>().enabled = true;
             GameObject.Find("ShootDenyIconP1").GetComponent<Image>().enabled = false;
         }
+        else if (timeStampP1 > Time.time)
+        {
+            GameObject.Find("ShootAllowIconP1").GetComponent<Image>().enabled = false;
+            GameObject.Find("ShootDenyIconP1").GetComponent<Image>().enabled = true;
+        }
         if (Input.GetButtonDown("Fire2P1") && this.name == "Player 1" && timeStampP1 <= Time.time || fireStartedP1)
         {
             fireStartedP1 = true;
@@ -45,37 +50,78 @@ public class ShootScript : MonoBehaviour {
             else
             {
                 timeStampP1 = Time.time + coolDownPeriodInSeconds;
-                GameObject.Find("ShootAllowIconP1").GetComponent<Image>().enabled = false;
-                GameObject.Find("ShootDenyIconP1").GetComponent<Image>().enabled = true;
+                //GameObject.Find("ShootAllowIconP1").GetComponent<Image>().enabled = false;
+               // GameObject.Find("ShootDenyIconP1").GetComponent<Image>().enabled = true;
             }
-            }
+        }
+
+
+
+
         if (timeStampP2 < Time.time)
         {
             GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = true;
             GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = false;
         }
+        else if (timeStampP2 > Time.time)
+        {
+            GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = false;
+            GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = true;
+        }
         if (Input.GetButtonDown("Fire2P2") && this.name == "Player 2" && timeStampP2 <= Time.time || fireStartedP2)
         {
-            fireStartedP2 = true;  
+            fireStartedP2 = true;
             if (Input.GetButtonDown("Fire2P2"))
-	        {
+            {
                 timeShotP2 = Time.time + 1.2f;
-	        }
+            }
             if (timeShotP2 < Time.time)
             {
                 bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.4f, this.transform.position.z + 1f);
                 _bullet = Instantiate(bulletPrefab).GetComponent<Transform>();
                 _bullet.GetComponent<Bullet>().Player(false);
                 fireStartedP2 = false;
-                GameObject.FindGameObjectWithTag("Shoot").GetComponent<AudioSource>().Play();
+                //                GameObject.FindGameObjectWithTag("Shoot").GetComponent<AudioSource>().Play();
             }
             else
             {
                 timeStampP2 = Time.time + coolDownPeriodInSeconds;
-                GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = true;
+                //GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = false;
+                // GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = true;
             }
         }
+        //if (timeStampP2 < Time.time)
+        //{
+        //    GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = true;
+        //    GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = false;
+        //}
+        //else
+        //{
+        //    GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = false;
+        //    GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = true;
+        //}
+        //if (Input.GetButtonDown("Fire2P2") && this.name == "Player 2" && timeStampP2 <= Time.time || fireStartedP2)
+        //{
+        //    fireStartedP2 = true;  
+        //    if (Input.GetButtonDown("Fire2P2"))
+        //    {
+        //        timeShotP2 = Time.time + 1.2f;
+        //    }
+        //    if (timeShotP2 < Time.time)
+        //    {
+        //        bulletPrefab.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.4f, this.transform.position.z + 1f);
+        //        _bullet = Instantiate(bulletPrefab).GetComponent<Transform>();
+        //        _bullet.GetComponent<Bullet>().Player(false);
+        //        fireStartedP2 = false;
+        //        GameObject.FindGameObjectWithTag("Shoot").GetComponent<AudioSource>().Play();
+        //    }
+        //    else
+        //    {
+        //        timeStampP2 = Time.time + coolDownPeriodInSeconds;
+        //       // GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = false;
+        //        //GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = true;
+        //    }
+        //}
 
 	}
 }
