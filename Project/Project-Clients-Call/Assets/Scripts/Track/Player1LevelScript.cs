@@ -21,6 +21,7 @@ public class Player1LevelScript : MonoBehaviour {
     public Sprite[] _Countdown;
     private float _checkpointSlowTimer = 0;
     private float _checkpointSlowCounter = 3;
+    private bool _superWallHit = false;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
     public bool CheckPoint { get { return _checkpointSpeed; } set { _checkpointSpeed = value; } }
@@ -30,6 +31,7 @@ public class Player1LevelScript : MonoBehaviour {
     public bool Finsihed { get { return _finished; } set { _finished = value; } }
     public float Speed { get { return _speed; } set { _speed = value; } }
     public bool LevelStarted { get { return _levelStarted; } }
+    public bool SuperWallHit { get { return _superWallHit; } set { _superWallHit = value; } }
 
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class Player1LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted)
+        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted && _superWallHit == false)
         {
             _speed += _acceleration;
             //Debug.Log(_speed);
