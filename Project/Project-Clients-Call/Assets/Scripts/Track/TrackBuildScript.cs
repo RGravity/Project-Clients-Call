@@ -281,7 +281,7 @@ public class TrackBuildScript : MonoBehaviour {
         #endregion
 
         GO.transform.parent = pParent.transform;
-        GO.name = "Letter" + pLetter;
+        GO.name = pLetter;
 
         if (pParent.name == "TrackBlocks1")
         {
