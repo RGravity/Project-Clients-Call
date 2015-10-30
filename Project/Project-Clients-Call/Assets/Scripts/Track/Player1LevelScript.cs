@@ -61,22 +61,29 @@ public class Player1LevelScript : MonoBehaviour {
         }
         else if (!_levelStarted)
         {
-            if (Time.time > (_stopTime + 0))
+            if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
             {
-                GameObject.Find("Countdown").GetComponent<Image>().enabled = true;
-                GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[0];
+                if (Time.time > (_stopTime + 0))
+                {
+                    GameObject.Find("Countdown").GetComponent<Image>().enabled = true;
+                    GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[0];
+                }
+                if (Time.time > (_stopTime + 1))
+                {
+                    GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[1];
+                }
+                if (Time.time > (_stopTime + 2))
+                {
+                    GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[2];
+                }
+                if (Time.time > (_stopTime + 3))
+                {
+                    GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[3];
+                    _levelStarted = true;
+                }
             }
-            if (Time.time > (_stopTime + 1))
+            else
             {
-                GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[1];
-            }
-            if (Time.time > (_stopTime + 2))
-            {
-                GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[2];
-            }
-            if (Time.time > (_stopTime + 3))
-            {
-                GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[3];
                 _levelStarted = true;
             }
         }

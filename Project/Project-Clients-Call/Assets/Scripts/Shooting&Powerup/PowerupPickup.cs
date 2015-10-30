@@ -97,7 +97,7 @@ public class PowerupPickup : MonoBehaviour {
         {
             if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
             {
-                //GameObject.FindObjectOfType<TutorialScript>().PowerUp = true;
+                GameObject.FindObjectOfType<TutorialScript>().PowerUp = true;
                 Destroy(gameObject);
             }
         
@@ -117,7 +117,10 @@ public class PowerupPickup : MonoBehaviour {
 
     void OnBecameInvisible()
     {
-        respawn = true;
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            respawn = false;
+        }
         Destroy(this.gameObject);
 
     }

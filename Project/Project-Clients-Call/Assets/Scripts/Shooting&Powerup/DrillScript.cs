@@ -49,7 +49,7 @@ public class DrillScript : MonoBehaviour {
                 //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
                 //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
                 //}
-                GameObject.FindObjectOfType<TutorialScript>().Firewall = true;
+                GameObject.FindObjectOfType<TutorialScript>().Twister = true;
                 //respawn = true;
                 Destroy(this.gameObject);
                 GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
@@ -70,7 +70,10 @@ public class DrillScript : MonoBehaviour {
 
     void OnBecameInvisible()
     {
-        respawn = true;
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            respawn = true;
+        }
         Destroy(this.gameObject);
     }
 }

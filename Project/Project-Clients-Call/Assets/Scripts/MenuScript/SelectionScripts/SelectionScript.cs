@@ -24,7 +24,7 @@ public class SelectionScript : MonoBehaviour {
     {
         if (_movingRight == true)
         {
-            if (this.transform.position.z <= 50 && this.transform.position.z >= 10)
+            if (this.transform.position.z <= 48 && this.transform.position.z >= 8)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActiveRecursively(true);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
@@ -32,7 +32,7 @@ public class SelectionScript : MonoBehaviour {
                 this.gameObject.GetComponent<Transform>().GetChild(3).gameObject.SetActive(false);
                 
             }
-            if (this.transform.position.z >= 50)
+            if (this.transform.position.z >= 48)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActive(false);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActiveRecursively(true);
@@ -40,7 +40,7 @@ public class SelectionScript : MonoBehaviour {
                 this.gameObject.GetComponent<Transform>().GetChild(3).gameObject.SetActive(false);
                 
             }
-            if (this.transform.position.z >= 90)
+            if (this.transform.position.z >= 88)
             {
 
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActive(false);
@@ -49,7 +49,7 @@ public class SelectionScript : MonoBehaviour {
                 this.gameObject.GetComponent<Transform>().GetChild(3).gameObject.SetActive(false);
                 
             }
-            if (this.transform.position.z >= 130)
+            if (this.transform.position.z >= 128)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActive(false);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
@@ -62,7 +62,7 @@ public class SelectionScript : MonoBehaviour {
         }
         if (_movingLeft == true)
         {
-            if (this.transform.position.z <= 50 && this.transform.position.z >= 10)
+            if (this.transform.position.z <= 48 && this.transform.position.z >= 8)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActiveRecursively(true);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
@@ -71,7 +71,7 @@ public class SelectionScript : MonoBehaviour {
                 
             }
            
-            if (this.transform.position.z >= 50)
+            if (this.transform.position.z >= 48)
             {
                 this.gameObject.GetComponent <Transform>().GetChild (0).gameObject.SetActive (false);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActiveRecursively(true);
@@ -79,7 +79,7 @@ public class SelectionScript : MonoBehaviour {
                 this.gameObject.GetComponent<Transform>().GetChild(3).gameObject.SetActive(false);
                 
             }
-            if (this.transform.position.z >= 90)
+            if (this.transform.position.z >= 88)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActive(false);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
@@ -87,7 +87,7 @@ public class SelectionScript : MonoBehaviour {
                 this.gameObject.GetComponent<Transform>().GetChild(3).gameObject.SetActive(false);
                
             }
-            if (this.transform.position.z >= 130)
+            if (this.transform.position.z >= 128)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActive(false);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
@@ -103,7 +103,7 @@ public class SelectionScript : MonoBehaviour {
 
     void Selection()
     {
-        if (this.transform.position == new Vector3(15, 197, 30) || this.transform.position.z == 41)
+        if (this.transform.position == new Vector3(15, 197, 28) || this.transform.position.z == 41)
         {
             _moving = true;
         }
@@ -132,7 +132,7 @@ public class SelectionScript : MonoBehaviour {
         {
             this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0, 0, 1);
 
-            if (this.gameObject.transform.position == new Vector3 (15,197,70) || this.gameObject.transform.position.z == 0)
+            if (this.gameObject.transform.position == new Vector3 (15,197,68) || this.gameObject.transform.position.z == 0)
             {
                 GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 1;
                 
@@ -142,7 +142,7 @@ public class SelectionScript : MonoBehaviour {
 
             }
 
-            else if (this.gameObject.transform.position == new Vector3(15, 197, 110) || this.gameObject.transform.position.z == 0)
+            else if (this.gameObject.transform.position == new Vector3(15, 197, 108) || this.gameObject.transform.position.z == 0)
             {
                 GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 2;
                 
@@ -151,7 +151,7 @@ public class SelectionScript : MonoBehaviour {
                 _movingLeft = false;
             }
 
-            else if (this.gameObject.transform.position == new Vector3(15, 197, 150) || this.gameObject.transform.position.z == 0)
+            else if (this.gameObject.transform.position == new Vector3(15, 197, 148) || this.gameObject.transform.position.z == 0)
             {
                 GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 3;
                 
@@ -159,12 +159,12 @@ public class SelectionScript : MonoBehaviour {
                 _moving = true;
                 _movingLeft = false;
             }
-            else if (this.gameObject.transform.position.z > 170)
+            else if (this.gameObject.transform.position.z > 168)
             {
-                this.gameObject.transform.position = new Vector3(15, 197, 10);
+                this.gameObject.transform.position = new Vector3(15, 197, 8);
              
             }
-            else if (this.gameObject.transform.position == new Vector3(15, 197, 30))
+            else if (this.gameObject.transform.position == new Vector3(15, 197, 28))
             {
                 GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 0;
                
@@ -181,7 +181,7 @@ public class SelectionScript : MonoBehaviour {
             this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(0, 0, 1);
 
          
-            if (this.gameObject.transform.position == new Vector3(15, 197, 110) || this.gameObject.transform.position.z == 0)
+            if (this.gameObject.transform.position == new Vector3(15, 197, 108) || this.gameObject.transform.position.z == 0)
             {
                 GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 2;
                 
@@ -189,7 +189,7 @@ public class SelectionScript : MonoBehaviour {
                 _movingRight = false;
             }
 
-            else if (this.gameObject.transform.position == new Vector3(15, 197, 70) || this.gameObject.transform.position.z == 0)
+            else if (this.gameObject.transform.position == new Vector3(15, 197, 68) || this.gameObject.transform.position.z == 0)
             {
 
                 GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 2;
@@ -200,11 +200,11 @@ public class SelectionScript : MonoBehaviour {
 
                
             }
-            else if (this.gameObject.transform.position.z < 10)
+            else if (this.gameObject.transform.position.z < 8)
             {
-                this.gameObject.transform.position = new Vector3(15, 197, 170);
+                this.gameObject.transform.position = new Vector3(15, 197, 168);
             }
-            else  if (this.gameObject.transform.position == new Vector3(15, 197, 150))
+            else  if (this.gameObject.transform.position == new Vector3(15, 197, 148))
             {
                 GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 3;
                 
@@ -214,7 +214,7 @@ public class SelectionScript : MonoBehaviour {
 
                 
             }
-            else if (this.gameObject.transform.position == new Vector3(15, 197, 30))
+            else if (this.gameObject.transform.position == new Vector3(15, 197, 28))
             {
                 GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 0;
                

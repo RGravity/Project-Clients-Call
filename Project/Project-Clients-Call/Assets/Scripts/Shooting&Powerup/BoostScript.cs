@@ -80,7 +80,10 @@ public class BoostScript : MonoBehaviour {
 
     void OnBecameInvisible()
     {
-        respawn = true;
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            respawn = true;
+        }
         Destroy(this.gameObject);
         
     }

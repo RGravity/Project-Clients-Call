@@ -161,7 +161,7 @@ public class ArrowMoveScript : MonoBehaviour {
             {
                 _backButton.transform.position = new Vector3(260, 1294, 0);
                 _backButton.transform.rotation = Quaternion.Euler(274.6854f, 90.00016f, 359.6443f);
-                _player.transform.position = new Vector3(15,197,30);
+                _player.transform.position = new Vector3(15,197,28);
                 _player.transform.rotation = Quaternion.Euler(90, 270,0);
                 _player2.transform.position = new Vector3(15, 197, -30);
                 _player2.transform.rotation = Quaternion.Euler(90, 270, 0);
@@ -283,12 +283,12 @@ public class ArrowMoveScript : MonoBehaviour {
                 _backButton.transform.rotation = Quaternion.Euler(274.6854f, 90.00016f, 359.6443f);
                 _tutorialButton.transform.position = new Vector3(150, 1300, 0);
                 _tutorialButton.transform.rotation = Quaternion.Euler(274.6854f, 90.00016f, 359.6443f);
-                _tutorialText.transform.position = new Vector3(-306, 1868, 417);
+                _tutorialText.transform.position = new Vector3(-306, 1868, 425);
                 _cubeOne.transform.position = new Vector3(73, 1014, -396);
                 _cubeTwo.transform.position = new Vector3(96, 1256, 279);
                 _cubeThree.transform.position = new Vector3(-109, 1072, 369);
                 _cubeOne.transform.rotation = Quaternion.Euler(60, 20, 3);
-                _cubeTwo.transform.rotation = Quaternion.Euler(125, 90, 6);
+                _cubeTwo.transform.rotation = Quaternion.Euler(300, 120, 100);
                 _cubeThree.transform.rotation = Quaternion.Euler(67, 15, -180);
             }
 
@@ -655,9 +655,9 @@ public class ArrowMoveScript : MonoBehaviour {
                 _tutorialText.transform.position = new Vector3(-306, 2568, 417);
                 _tutorialButton.transform.position = new Vector3(206, 2846, -489);
                 this.gameObject.transform.position = new Vector3(1298, 29, 0);
-                _cubeOne.transform.position = new Vector3 (1228.689f, 61.34322f, 289.4009f);
-                _cubeTwo.transform.position = new Vector3(1256.42f, -10.22047f, -304.5272f);
-                _cubeThree.transform.position = new Vector3(1273.795f, -244.655f, 181.6628f);
+                _cubeOne.transform.position = new Vector3(1679, -315, -475);
+                _cubeTwo.transform.position = new Vector3(1256.42f, 0, 0);
+                _cubeThree.transform.position = new Vector3(1312.2f, -214.1f, 463.7f);
                 _cubeOne.transform.rotation = Quaternion.Euler(342.8109f, 0.5965576f, 338.0217f);
                 _cubeTwo.transform.rotation = Quaternion.Euler(30.00685f, 0, 0);
                 _cubeThree.transform.rotation = Quaternion.Euler(20.16795f, 9.03801f, 29.89008f);
