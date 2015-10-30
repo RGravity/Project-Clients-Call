@@ -86,6 +86,7 @@ public class PickUpLetters : MonoBehaviour {
                     GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score =+ 200;
                 }
             }
+            Destroy(other.gameObject);
         }
         if (_pickups.Contains(other.name) && this.gameObject.transform.name == GameObject.FindObjectOfType<PowerUpScriptP2>().transform.name)
         {
@@ -100,6 +101,7 @@ public class PickUpLetters : MonoBehaviour {
                     GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = +200;
                 }
             }
+            Destroy(other.gameObject);
         }
     }
    

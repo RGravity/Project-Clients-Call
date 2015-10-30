@@ -128,7 +128,7 @@ public class Bullet : MonoBehaviour {
                     //otherCube.transform.position = new Vector3(100, 100, 100);
                     otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
                     otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
-                    other.gameObject.GetComponent<Finish>().WallAnimation(true);
+//                    other.gameObject.GetComponent<Finish>().WallAnimation(true);
                 }
                 else
                 {
