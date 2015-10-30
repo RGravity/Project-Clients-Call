@@ -47,6 +47,8 @@ public class TrackBuildScript : MonoBehaviour {
     #endregion
 
     private GameObject _trackBlock;
+    private GameObject _trackBlockRed;
+    private GameObject _trackRamp;
     private GameObject _trackWall;
     //private GameObject _trackBarrier;
     private GameObject _speedBoostPowerup;
@@ -77,12 +79,15 @@ public class TrackBuildScript : MonoBehaviour {
         _trackWallsCounter = 0;
         _trackBarrierCounter = 0;
         _trackBlock = (GameObject)Resources.Load("TrackBlock/TrackBlock");
+        _trackBlockRed = (GameObject)Resources.Load("TrackBlock/TrackBlockRed");
+        _trackRamp = (GameObject)Resources.Load("TrackBlock/Ramp");
         _trackWall = (GameObject)Resources.Load("TrackBlock/TrackWall");
         _speedBoostPowerup = (GameObject)Resources.Load("Powerups/speedboost Prefab");
         _shieldPowerup = (GameObject)Resources.Load("Powerups/Invulnerability Powerup");
         _coinPowerup = (GameObject)Resources.Load("Powerups/Coin");
         _drillPowerup = (GameObject)Resources.Load("Powerups/RocketDrill");
         _powerupBox = (GameObject)Resources.Load("Powerups/PowerUpCube");
+
         
         #region Loading Letters
         _letterA = (GameObject)Resources.Load("Letters/A");
@@ -134,20 +139,38 @@ public class TrackBuildScript : MonoBehaviour {
         {
             if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
             {
-            if (z % 10 == 0 && z != 0)
-            {
-                SpawnWallsOnZ(z);
-            }
-            if (z % 23 == 0 && z != 0)
-            {
-                SpawnPowerupsOnZ(z);
-            }
+                if (z % 10 == 0 && z != 0)
+                {
+                    SpawnWallsOnZ(z);
+                }
+                if (z % 23 == 0 && z != 0)
+                {
+                    SpawnPowerupsOnZ(z);
+                }
             }
             //spawn the XXX blocks wide
             for (int x = 0; x < 7; x++)
             {
-                SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                if (z != 0)
+                {
+                    if (z % 35 == 0 && x == 3)
+                    {
+                        SpawnRamp(new Vector3((x * 2) - 4.25f, 0.5f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        SpawnRamp(new Vector3((x * 2) - 4.25f, -1.75f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                        SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                    }
+                    else if (z % 37 == 0 || z % 38 == 0 || z % 39 == 0)
+                    {
+                        SpawnTrackBlockRed(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        SpawnTrackBlockRed(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                    }
+                    else
+                    {
+                        SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                    }
+                }
             }
         }
 
@@ -313,6 +336,47 @@ public class TrackBuildScript : MonoBehaviour {
         GO.transform.localEulerAngles = new Vector3(0, 90, 0);
         //set variables to the script of the block
         GO.GetComponent<TrackBlockScript>().ZBlocks = _firstBlocks;
+        //increase the unique number counter
+        _trackBlocksCounter++;
+    }
+
+    private void SpawnTrackBlockRed(Vector3 pPosition, GameObject pParent)
+    {
+
+        //instantiate the actual block
+        GameObject GO = (GameObject)Instantiate(_trackBlockRed, pPosition, Quaternion.identity);
+        //change the parent of the block
+        GO.transform.parent = pParent.transform;
+        //change the name of the block + the unique number of the block
+        GO.name = "TrackBlockRed" + _trackBlocksCounter;
+        //rotate the block 90 degrees
+        GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+        //set variables to the script of the block
+        GO.GetComponent<TrackBlockScript>().ZBlocks = _firstBlocks;
+        //increase the unique number counter
+        _trackBlocksCounter++;
+    }
+
+    private void SpawnRamp(Vector3 pPosition, GameObject pParent)
+    {
+
+        //instantiate the actual block
+        GameObject GO = (GameObject)Instantiate(_trackRamp, pPosition, Quaternion.identity);
+        //change the parent of the block
+        GO.transform.parent = pParent.transform;
+        //change the name of the block + the unique number of the block
+        GO.name = "TrackRamp" + _trackBlocksCounter;
+        //rotate the block 90 degrees
+        if (pParent.name == "TrackBlocks1")
+        {
+            GO.transform.localEulerAngles = new Vector3(0, 90, 0);
+        }
+        else if (pParent.name == "TrackBlocks2")
+        {
+            GO.transform.localEulerAngles = new Vector3(180, 90, 0);
+        }
+        //set variables to the script of the block
+        GO.GetComponent<TrackRampScript>().ZBlocks = _firstBlocks;
         //increase the unique number counter
         _trackBlocksCounter++;
     }
