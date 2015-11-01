@@ -153,7 +153,7 @@ public class Finish : MonoBehaviour {
                 }
             }
         }
-        WallAnimation(isActivated);
+        //WallAnimation(isActivated);
 	}
     void OnTriggerExit(Collider other)
     {
@@ -231,28 +231,28 @@ public class Finish : MonoBehaviour {
         //}
     }
 
-    public void WallAnimation(bool activate = false)
-    {
-        if (activate)
-        {
-            isActivated = true;
-            if (Time.time > (shootingWallTimer + 0.5f))
-            {
-                shootingWallTimer = Time.time;
-                shootingWallCount++;
-                if (this.gameObject.GetComponent<MeshRenderer>().enabled == true)
-                {
-                    this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                }
-                else if (this.gameObject.GetComponent<MeshRenderer>().enabled == false)
-                {
-                    this.gameObject.GetComponent<MeshRenderer>().enabled = true;
-                }
-            }
-            if (shootingWallCount == 4)
-            {
-                isActivated = false;
-            }
-        }
-    }
+    //public void WallAnimation(bool activate = false)
+    //{
+    //    if (activate)
+    //    {
+    //        isActivated = true;
+    //        if (Time.time > (shootingWallTimer + 0.5f))
+    //        {
+    //            shootingWallTimer = Time.time;
+    //            shootingWallCount++;
+    //            if (this.gameObject.GetComponent<MeshRenderer>().enabled == true)
+    //            {
+    //                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+    //            }
+    //            else if (this.gameObject.GetComponent<MeshRenderer>().enabled == false)
+    //            {
+    //                this.gameObject.GetComponent<MeshRenderer>().enabled = true;
+    //            }
+    //        }
+    //        if (shootingWallCount == 4)
+    //        {
+    //            isActivated = false;
+    //        }
+    //    }
+    //}
 }
