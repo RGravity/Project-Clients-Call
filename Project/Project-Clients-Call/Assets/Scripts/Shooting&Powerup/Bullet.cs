@@ -19,6 +19,8 @@ public class Bullet : MonoBehaviour {
     private GameObject otherCube;
     private GameObject hitted;
 
+    public bool IsPlayer1 { get { return _isPlayer1; } }
+
 	// Use this for initialization
 	void Start () {
         _body = GetComponent<Rigidbody>();
@@ -128,7 +130,11 @@ public class Bullet : MonoBehaviour {
                     //otherCube.transform.position = new Vector3(100, 100, 100);
                     otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
                     otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
-//                    other.gameObject.GetComponent<Finish>().WallAnimation(true);
+                    //                    other.gameObject.GetComponent<Finish>().WallAnimation(true);
+
+                    GameObject newWallParticleObject = otherCube.GetComponent<CollisionScript>().DisappearWall;
+                    newWallParticleObject.GetComponent<ParticleSystem>().gravityModifier = 1.44f;
+                    Instantiate(newWallParticleObject, otherCube.transform.position, Quaternion.identity);
                     other.GetComponent<TrackBlockScript>().OnBecameInvisible();
                     //GameObject.FindObjectOfType<TrackBlockScript>().OnBecameInvisible();
                 }
@@ -168,8 +174,10 @@ public class Bullet : MonoBehaviour {
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
                 //other.gameObject.GetComponent<Finish>().WallAnimation(true);
 
+                GameObject newWallParticleObject = otherCube.GetComponent<CollisionScript>().DisappearWall;
+                newWallParticleObject.GetComponent<ParticleSystem>().gravityModifier = -1.44f;
+                Instantiate(newWallParticleObject, otherCube.transform.position, Quaternion.identity);
                 other.GetComponent<TrackBlockScript>().OnBecameInvisible();
-
                 //WallAnimation();
             }
             //GameObject otherCube = Instantiate(other.gameObject);

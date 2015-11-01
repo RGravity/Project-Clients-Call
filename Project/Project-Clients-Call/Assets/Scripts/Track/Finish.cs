@@ -104,7 +104,7 @@ public class Finish : MonoBehaviour {
                     }
                 }
             }
-            if (secondsLeftP1 < 0 && round > 6)
+            if (secondsLeftP1 < 0 && round < 6)
             {
                 //P1 lost
                 if (showTime == true)
@@ -128,7 +128,7 @@ public class Finish : MonoBehaviour {
                 }
 
             }
-            if (secondsLeftP2 < 0 && round > 6)
+            if (secondsLeftP2 < 0 && round < 6)
             {
                 //P2 lost
 

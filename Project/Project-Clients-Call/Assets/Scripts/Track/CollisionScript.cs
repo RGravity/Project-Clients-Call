@@ -20,6 +20,10 @@ public class CollisionScript : MonoBehaviour
 
     [SerializeField]
     private GameObject _replacedPrefab;
+    [SerializeField]
+    private GameObject _disappearWall;
+
+    public GameObject DisappearWall { get { return _disappearWall; } }
 
     // Use this for initialization
     void Start()
@@ -34,11 +38,26 @@ public class CollisionScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.name.Contains("Bullet"))
+        {
+            if (other.GetComponent<Bullet>().IsPlayer1)
+            {
+                GameObject disappearWall = (GameObject)GameObject.Instantiate(_disappearWall, this.transform.position, Quaternion.identity);
+                disappearWall.GetComponent<ParticleSystem>().gravityModifier = -1.44f;
+                disappearWall.GetComponent<ParticleSystem>().Play();
+            }
+            if (!other.GetComponent<Bullet>().IsPlayer1)
+            {
+                GameObject disappearWall = (GameObject)GameObject.Instantiate(_disappearWall, this.transform.position, Quaternion.identity);
+                disappearWall.GetComponent<ParticleSystem>().gravityModifier = 1.44f;
+                disappearWall.GetComponent<ParticleSystem>().Play();
+            }
+            //_disappearWall.transform.position = this.transform.position;
+        }
         if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
             if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
