@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour {
 	void Update () 
     {
         _body.velocity = new Vector3(0, 0, 40);
-        WallAnimation();
+        //WallAnimation();
     }
 
     void WallAnimation()
@@ -129,6 +129,8 @@ public class Bullet : MonoBehaviour {
                     otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
                     otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
 //                    other.gameObject.GetComponent<Finish>().WallAnimation(true);
+                    other.GetComponent<TrackBlockScript>().OnBecameInvisible();
+                    //GameObject.FindObjectOfType<TrackBlockScript>().OnBecameInvisible();
                 }
                 else
                 {
@@ -164,7 +166,9 @@ public class Bullet : MonoBehaviour {
                 //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
                 otherCube.transform.parent = GameObject.Find("TrackBlocks1").gameObject.transform;
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
-                other.gameObject.GetComponent<Finish>().WallAnimation(true);
+                //other.gameObject.GetComponent<Finish>().WallAnimation(true);
+
+                other.GetComponent<TrackBlockScript>().OnBecameInvisible();
 
                 //WallAnimation();
             }
