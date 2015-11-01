@@ -55,7 +55,7 @@ public class CoinScript : MonoBehaviour {
         {
             Vector3 newPosition = this.transform.position;
             newPosition.z += _zBlocks;
-            GameObject.FindObjectOfType<TrackBuildScript>().SpawnPowerup(newPosition, this.gameObject.transform.parent.gameObject);
+            GameObject.FindObjectOfType<TrackBuildScript>().SpawnCoin(newPosition, this.gameObject.transform.parent.gameObject);
         }
     }
 
@@ -65,7 +65,7 @@ public class CoinScript : MonoBehaviour {
         {
             respawn = true;
         }
-            Destroy(this.gameObject);
+        Destroy(this.gameObject);
         
       
     }
