@@ -10,6 +10,10 @@ public class ScoreScript : MonoBehaviour {
         Coin,
         Wall,
         Checkpoint,
+        ShootWall,
+        ShootSuperWall,
+        HitSuperWall,
+        PickUp,
     }
     private int _p1Score = 0;
     private int _p2Score = 0;
@@ -47,15 +51,31 @@ public class ScoreScript : MonoBehaviour {
             case ScoreType.None:
                 break;
             case ScoreType.Coin:
-                _p1Score += 250;
+                _p1Score += 2500;
                 _p1ScoreType = ScoreType.None;
                 break;
             case ScoreType.Wall:
-                _p1Score -= 50;
+                _p1Score -= 1000;
                 _p1ScoreType = ScoreType.None;
                 break;
             case ScoreType.Checkpoint:
-                _p1Score += 200;
+                _p1Score += 3000;
+                _p1ScoreType = ScoreType.None;
+                break;
+            case ScoreType.ShootWall:
+                _p1Score += 2500;
+                _p1ScoreType = ScoreType.None;
+                break;
+            case ScoreType.ShootSuperWall:
+                _p1Score += 5000;
+                _p1ScoreType = ScoreType.None;
+                break;
+            case ScoreType.HitSuperWall:
+                _p1Score -= 2500;
+                _p1ScoreType = ScoreType.None;
+                break;
+            case ScoreType.PickUp:
+                _p1Score += 2000;
                 _p1ScoreType = ScoreType.None;
                 break;
         }
@@ -68,15 +88,31 @@ public class ScoreScript : MonoBehaviour {
             case ScoreType.None:
                 break;
             case ScoreType.Coin:
-                _p2Score += 250;
+                _p2Score += 2500;
                 _p2ScoreType = ScoreType.None;
                 break;
             case ScoreType.Wall:
-                _p2Score -= 50;
+                _p2Score -= 1000;
                 _p2ScoreType = ScoreType.None;
                 break;
             case ScoreType.Checkpoint:
-                _p2Score += 200;
+                _p2Score += 3000;
+                _p2ScoreType = ScoreType.None;
+                break;
+            case ScoreType.ShootWall:
+                _p2Score += 2500;
+                _p2ScoreType = ScoreType.None;
+                break;
+            case ScoreType.ShootSuperWall:
+                _p2Score += 5000;
+                _p2ScoreType = ScoreType.None;
+                break;
+            case ScoreType.HitSuperWall:
+                _p2Score -= 2500;
+                _p2ScoreType = ScoreType.None;
+                break;
+            case ScoreType.PickUp:
+                _p2Score += 2000;
                 _p2ScoreType = ScoreType.None;
                 break;
         }
@@ -88,13 +124,16 @@ public class ScoreScript : MonoBehaviour {
 
     private void NormalScoring()
     {
-        if (!GameObject.FindObjectOfType<Finish>().P1Finished && !GameObject.FindObjectOfType<PauseScript>().pauseGame)
+        if (GameObject.FindObjectOfType<Player1LevelScript>().LevelStarted)
         {
-            _p1Score += (int)GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6;
-        }
-        if (!GameObject.FindObjectOfType<Finish>().P2Finished && !GameObject.FindObjectOfType<PauseScript>().pauseGame)
-        {
-            _p2Score += (int)GameObject.FindObjectOfType<Player2LevelScript>().Speed / 6;
+            if (!GameObject.FindObjectOfType<Finish>().P1Finished && !GameObject.FindObjectOfType<PauseScript>().pauseGame)
+            {
+                _p1Score += (int)(GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6) * 100;
+            }
+            if (!GameObject.FindObjectOfType<Finish>().P2Finished && !GameObject.FindObjectOfType<PauseScript>().pauseGame)
+            {
+                _p2Score += ((int)GameObject.FindObjectOfType<Player2LevelScript>().Speed / 6) * 100;
+            }
         }
     }
 
