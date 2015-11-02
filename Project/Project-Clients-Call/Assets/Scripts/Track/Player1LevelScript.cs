@@ -138,11 +138,11 @@ public class Player1LevelScript : MonoBehaviour {
 
                     if (_checkpointSlowCounter < 3)
                     {
-                        _speed = _speed - (_speed / 1.5f);
+                        _speed = _speed - (_speed / 1.1f);
                     }
                     else if (_checkpointSlowCounter < 5)
                     {
-                        _speed = _speed - (_speed / 1.3f);
+                        _speed = _speed - (_speed / 1.1f);
                     }
                     else if (_checkpointSlowCounter < 8)
                     {

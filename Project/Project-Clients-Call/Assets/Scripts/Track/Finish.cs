@@ -110,7 +110,7 @@ public class Finish : MonoBehaviour {
                 if (showTime == true)
                 {
                     reloadTime = Time.time;
-                    if (Time.time > (reloadTime + 3))
+                    if (Time.time > (reloadTime + 5))
                     {
                         showTime = false;
                     }
@@ -135,7 +135,7 @@ public class Finish : MonoBehaviour {
                 if (showTime == true)
                 {
                     reloadTime = Time.time;
-                    if (Time.time > (reloadTime + 3))
+                    if (Time.time > (reloadTime + 5))
                     {
                         showTime = false;
                     }
