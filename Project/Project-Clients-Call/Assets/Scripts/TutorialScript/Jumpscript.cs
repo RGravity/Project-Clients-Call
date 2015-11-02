@@ -24,8 +24,8 @@ public class Jumpscript : MonoBehaviour {
     private Quaternion _player2Rotation;
 
 
-    public bool JumpP1 { set { _jumpP1 = value; } }
-    public bool JumpP2 { set { _jumpP2 = value; } }
+    public bool JumpP1 { set { _jumpP1 = value; } get { return _jumpP1; } }
+    public bool JumpP2 { set { _jumpP2 = value; } get { return _jumpP2; } }
     void Start () 
     {
         _defaultPlayer1Y = GameObject.FindObjectOfType<Player1MoveScript>().transform.position.y;

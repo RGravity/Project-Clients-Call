@@ -90,15 +90,5 @@ public class TrackBlockScript : MonoBehaviour {
         }
     }
 
-    public void OnTriggerEnter(Collider player)
-    {
-        if (player.GetComponent<Player1LevelScript>())
-        {
-            player.GetComponent<Player1LevelScript>().Speed = 2;
-        }
-        else if (player.GetComponent<Player2LevelScript>())
-        {
-            player.GetComponent<Player2LevelScript>().Speed = 2;
-        }
-    }
+    
 }
