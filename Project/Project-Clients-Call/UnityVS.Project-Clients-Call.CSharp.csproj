@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\ChoosingPlayer1.cs" />
     <Compile Include="Assets\Scripts\ChoosingPlayer2.cs" />
     <Compile Include="Assets\Scripts\DisappearWallScript.cs" />
+    <Compile Include="Assets\Scripts\Environment\Circle.cs" />
     <Compile Include="Assets\Scripts\Environment\Octagon.cs" />
     <Compile Include="Assets\Scripts\Environment\Skybox.cs" />
     <Compile Include="Assets\Scripts\Environment\Spiral.cs" />
