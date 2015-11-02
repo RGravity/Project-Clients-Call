@@ -148,11 +148,19 @@ public class TrackBuildScript : MonoBehaviour {
                     SpawnPowerupsOnZ(z);
                 }
             }
+            
+            
             //spawn the XXX blocks wide
+            int rnd = Random.Range(0, 7);
             for (int x = 0; x < 7; x++)
             {
                 if (z != 0)
                 {
+                    if (z == 13 || z == 33)
+                    {
+                        SpawnCoin(new Vector3((rnd * 2) - 4.25f, 0.75f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        SpawnCoin(new Vector3(((6 - rnd) * 2) - 4.25f, -2, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                    }
                     if (z % 35 == 0 && x == 3)
                     {
                         SpawnRamp(new Vector3((x * 2) - 4.25f, 0.5f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
@@ -281,7 +289,7 @@ public class TrackBuildScript : MonoBehaviour {
         #endregion
 
         GO.transform.parent = pParent.transform;
-        GO.name = "Letter" + pLetter;
+        GO.name = pLetter;
 
         if (pParent.name == "TrackBlocks1")
         {
@@ -401,11 +409,28 @@ public class TrackBuildScript : MonoBehaviour {
     {
 
         GameObject GO = (GameObject)Instantiate(_powerupBox, pPosition, Quaternion.identity);
-                    GO.transform.parent = pParent.transform;
+        GO.transform.parent = pParent.transform;
         GO.name = "Powerup" + _powerupCounter;
         GO.transform.localEulerAngles = new Vector3(0, 0, 0);
         GO.GetComponent<PowerupPickup>().ZBlocks = _firstBlocks;
         _powerupCounter++;
 
-                }
+    }
+
+    public void SpawnCoin(Vector3 pPosition, GameObject pParent)
+    {
+        GameObject GO = (GameObject)Instantiate(_coinPowerup, pPosition, Quaternion.identity);
+        GO.transform.parent = pParent.transform;
+        GO.name = "Coin" + _powerupCounter;
+        if (pParent.name == "TrackBlocks1")
+        {
+            GO.transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (pParent.name == "TrackBlocks2")
+        {
+            GO.transform.localEulerAngles = new Vector3(0, 0, 180);
+        }
+        GO.GetComponent<CoinScript>().ZBlocks = _firstBlocks;
+        _powerupCounter++;
+    }
 }

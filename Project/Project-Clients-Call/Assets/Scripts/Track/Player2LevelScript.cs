@@ -5,7 +5,6 @@ public class Player2LevelScript : MonoBehaviour {
 
     private float _speed = 10f;
     private float _acceleration = 0.025f;
-    private float _originalSpeed = 10f;
     private bool _slowSpeed = false;
     private bool _increaseSpeed = false;
     private int _iteration = 0;
@@ -53,7 +52,6 @@ public class Player2LevelScript : MonoBehaviour {
             {
                 _speed = 35;
             }
-            _originalSpeed += _acceleration;
             gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
         }
         else if (!_levelStarted)
@@ -74,7 +72,7 @@ public class Player2LevelScript : MonoBehaviour {
             float slowDown = _speed - 10;
             _speed = _speed - (slowDown/2);
             _iteration++;
-            if (_iteration >= 5)
+            if (_iteration >= 3)
             {
                 _slowSpeed = false;
                 _iteration = 0;
@@ -85,7 +83,7 @@ public class Player2LevelScript : MonoBehaviour {
             float boost = _speed - 10;
             _speed = _speed + (boost);
             _iteration++;
-            if (_iteration >= 5)
+            if (_iteration >= 3)
             {
                 _increaseSpeed = false;
                 _iteration = 0;

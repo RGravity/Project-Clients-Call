@@ -37,6 +37,7 @@ public class PowerupPickup : MonoBehaviour {
                         //Boost
                         case 1:
                             GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
+                            
                             break;
                         //Invulnerable
                         case 2:
@@ -55,6 +56,7 @@ public class PowerupPickup : MonoBehaviour {
                     }
                     GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
                 }
+                GameObject.FindObjectOfType<FeedBackScript>().ShowPowerupFbP1 = true;
                 GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
                 respawn = true;
                 Destroy(gameObject);
@@ -87,6 +89,7 @@ public class PowerupPickup : MonoBehaviour {
                     }
                     GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUpAvailable = true;
                 }
+                GameObject.FindObjectOfType<FeedBackScript>().ShowPowerupFbP2 = true;
                 GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
                 respawn = true;
                 Destroy(gameObject);

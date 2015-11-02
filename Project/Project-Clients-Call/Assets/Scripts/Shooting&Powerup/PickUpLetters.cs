@@ -10,8 +10,6 @@ public class PickUpLetters : MonoBehaviour {
     private List<string> _pickUpLettersUltimate = new List<string>() { "U", "L", "T", "I", "M", "A", "T", "E" };
     private List<string> _pickUpLettersVi = new List<string>() { "V", "I", "R", "A", "C", "E", "R" };
     private List<string> _pickups;
-    private Camera _cameraP1;
-    private Camera _cameraP2;
 
     public List<string> PickUp
     {
@@ -21,8 +19,7 @@ public class PickUpLetters : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-            int randomPick = Random.Range(0, 3);
-            randomPick = 0;
+            int randomPick = Random.Range(0, 2);
             switch (randomPick)
             {
                 case 0:
@@ -86,6 +83,7 @@ public class PickUpLetters : MonoBehaviour {
                     GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score =+ 200;
                 }
             }
+            Destroy(other.gameObject);
         }
         if (_pickups.Contains(other.name) && this.gameObject.transform.name == GameObject.FindObjectOfType<PowerUpScriptP2>().transform.name)
         {
@@ -100,6 +98,7 @@ public class PickUpLetters : MonoBehaviour {
                     GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = +200;
                 }
             }
+            Destroy(other.gameObject);
         }
     }
    

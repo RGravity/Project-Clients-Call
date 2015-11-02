@@ -95,7 +95,7 @@ public class Player1LevelScript : MonoBehaviour {
     {
         if (_slowSpeed)
         {
-            float slowDown = _speed - 10;
+            float slowDown = _speed - 20;
             _speed = _speed - (slowDown/2);
             _iteration++;
             if (_iteration >= 5)
