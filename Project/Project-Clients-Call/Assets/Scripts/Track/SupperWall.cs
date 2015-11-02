@@ -45,10 +45,13 @@ public class SupperWall : MonoBehaviour {
             GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
             GameObject.FindObjectOfType<Player1LevelScript>().SuperWallHit = true;
         }
-        if (other.transform.name == GameObject.FindObjectOfType<Player2MoveScript>().transform.name)
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
-            GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
-            GameObject.FindObjectOfType<Player2LevelScript>().SuperWallHit = true;
+            if (other.transform.name == GameObject.FindObjectOfType<Player2MoveScript>().transform.name)
+            {
+                GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
+                GameObject.FindObjectOfType<Player2LevelScript>().SuperWallHit = true;
+            }
         }
     }
 

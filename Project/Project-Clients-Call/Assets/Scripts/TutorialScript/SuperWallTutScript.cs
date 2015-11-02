@@ -12,7 +12,7 @@ public class SuperWallTutScript : MonoBehaviour {
         {
             GameObject.FindObjectOfType<TutorialScript>().Superwall = true;
             Destroy(this.gameObject);
-
+           
         }
     
     }
