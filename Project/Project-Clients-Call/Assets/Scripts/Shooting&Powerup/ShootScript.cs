@@ -82,8 +82,7 @@ public class ShootScript : MonoBehaviour {
                 _bullet = Instantiate(bulletPrefab).GetComponent<Transform>();
                 _bullet.GetComponent<Bullet>().Player(false);
                 fireStartedP2 = false;
-                GameObject.FindGameObjectWithTag("Shoot").GetComponent<
-                    >().Play();
+                GameObject.FindGameObjectWithTag("Shoot").GetComponent<AudioSource>().Play();
             }
             else
             {
