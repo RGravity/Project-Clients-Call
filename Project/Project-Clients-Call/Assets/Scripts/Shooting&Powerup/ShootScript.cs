@@ -58,12 +58,12 @@ public class ShootScript : MonoBehaviour {
 
 
 
-        if (timeStampP2 < Time.time)
+        if (this.name == "Player 2" && timeStampP2 <= Time.time || fireStartedP2)
         {
             GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = true;
             GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = false;
         }
-        else if (timeStampP2 > Time.time)
+        else if (this.name == "Player 2" && timeStampP2 > Time.time || fireStartedP2)
         {
             GameObject.Find("ShootAllowIconP2").GetComponent<Image>().enabled = false;
             GameObject.Find("ShootDenyIconP2").GetComponent<Image>().enabled = true;
@@ -71,6 +71,7 @@ public class ShootScript : MonoBehaviour {
         if (Input.GetButtonDown("Fire2P2") && this.name == "Player 2" && timeStampP2 <= Time.time || fireStartedP2)
         {
             fireStartedP2 = true;
+
             if (Input.GetButtonDown("Fire2P2"))
             {
                 timeShotP2 = Time.time + 1.2f;
