@@ -21,8 +21,12 @@ public class InventoryScript : MonoBehaviour {
 
     void GetPowerup()
     {
+        
         _p1Powerup = GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp;
-        _p2Powerup = GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp;
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        {
+            _p2Powerup = GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp;
+        }
     }
 
     void ShowRightPowerup()
@@ -56,33 +60,37 @@ public class InventoryScript : MonoBehaviour {
                 break;
         }
 
-        switch (_p2Powerup)
+        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
-            case PowerUpScriptP2.Powerup.Empty:
-                //ShowEmptyImage
-                GameObject.Find("EmptyIconP2").GetComponent<Image>().enabled = true;
-                GameObject.Find("SpeedIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("FireWallIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("ShieldIconP2").GetComponent<Image>().enabled = false;
-                break;
-            case PowerUpScriptP2.Powerup.Boost:
-                GameObject.Find("EmptyIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("SpeedIconP2").GetComponent<Image>().enabled = true;
-                GameObject.Find("FireWallIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("ShieldIconP2").GetComponent<Image>().enabled = false;
-                break;
-            case PowerUpScriptP2.Powerup.Drill:
-                GameObject.Find("EmptyIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("SpeedIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("FireWallIconP2").GetComponent<Image>().enabled = true;
-                GameObject.Find("ShieldIconP2").GetComponent<Image>().enabled = false;
-                break;
-            case PowerUpScriptP2.Powerup.Invulnerability:
-                GameObject.Find("EmptyIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("SpeedIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("FireWallIconP2").GetComponent<Image>().enabled = false;
-                GameObject.Find("ShieldIconP2").GetComponent<Image>().enabled = true;
-                break;
+
+            switch (_p2Powerup)
+            {
+                case PowerUpScriptP2.Powerup.Empty:
+                    //ShowEmptyImage
+                    GameObject.Find("EmptyIconP2").GetComponent<Image>().enabled = true;
+                    GameObject.Find("SpeedIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("FireWallIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("ShieldIconP2").GetComponent<Image>().enabled = false;
+                    break;
+                case PowerUpScriptP2.Powerup.Boost:
+                    GameObject.Find("EmptyIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("SpeedIconP2").GetComponent<Image>().enabled = true;
+                    GameObject.Find("FireWallIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("ShieldIconP2").GetComponent<Image>().enabled = false;
+                    break;
+                case PowerUpScriptP2.Powerup.Drill:
+                    GameObject.Find("EmptyIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("SpeedIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("FireWallIconP2").GetComponent<Image>().enabled = true;
+                    GameObject.Find("ShieldIconP2").GetComponent<Image>().enabled = false;
+                    break;
+                case PowerUpScriptP2.Powerup.Invulnerability:
+                    GameObject.Find("EmptyIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("SpeedIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("FireWallIconP2").GetComponent<Image>().enabled = false;
+                    GameObject.Find("ShieldIconP2").GetComponent<Image>().enabled = true;
+                    break;
+            }
         }
     }
 }
