@@ -11,6 +11,10 @@ public class PickUpLetters : MonoBehaviour {
     private List<string> _pickUpLettersUltimate = new List<string>() { "U", "L", "T", "I", "M", "A", "T", "E" };
     private List<string> _pickUpLettersVi = new List<string>() { "V", "I", "R", "A", "C", "E", "R" };
     private List<string> _pickups;
+    private string _pickFun;
+    private string _pickUltimate;
+    private string _pickVi;
+    private string _pickedWord;
 
     private GameObject[] _p1Letters;
     private GameObject[] _p2Letters;
@@ -23,8 +27,7 @@ public class PickUpLetters : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-            int randomPick = Random.Range(0, 2);
-            randomPick = 2;
+            int randomPick = Random.Range(0, 3);
             switch (randomPick)
             {
                 case 0:
@@ -68,10 +71,19 @@ public class PickUpLetters : MonoBehaviour {
             //}
 
             GameObject.FindObjectOfType<TrackBuildScript>().PuzzleWord = _pickups;
-
+            _pickedWord = string.Join("", _pickups.ToArray());
+            _pickFun = string.Join("", _pickUpLettersFun.ToArray());
+            _pickUltimate = string.Join("", _pickUpLettersUltimate.ToArray());
+            _pickVi = string.Join("", _pickUpLettersVi.ToArray());
             _p1Letters = GameObject.FindGameObjectsWithTag("LettersP1");
             _p2Letters = GameObject.FindGameObjectsWithTag("LettersP2");
-
+            _p1Letters = _p1Letters.OrderBy(c => c.name).ToArray();
+            _p2Letters = _p2Letters.OrderBy(c => c.name).ToArray();
+            if (_pickedWord == _pickVi)
+            {
+                _p1Letters.LastOrDefault().GetComponent<Text>().text = "!";
+                _p2Letters.LastOrDefault().GetComponent<Text>().text = "!";
+            }
 	}
 	
 	// Update is called once per frame
@@ -84,34 +96,54 @@ public class PickUpLetters : MonoBehaviour {
         {
             if (_pickups.Contains(other.name))
             {
-                //if (_pickups ==_pickUpLettersFun )
-                //{
-                //    int i = 0;
-                //    foreach (GameObject text in _p1Letters)
-                //    {
-                //        text.GetComponent<Text>().text = _pickups[i];
-                //        i++;
-                //    }
-                //}
-                //if (_pickups == _pickUpLettersUltimate)
-                //{
-                //    int i = 0;
-                //    foreach (GameObject text in _p1Letters)
-                //    {
-                //        text.GetComponent<Text>().text = _pickups[i];
-                //        i++;
-                //    }
-                //}
-                //if (_pickups == _pickUpLettersVi)
-                //{
-                //    int i = 0;
-                //    foreach (GameObject text in _p1Letters)
-                //    {
-                //        text.GetComponent<Text>().text = _pickups[i];
-                //        i++;
-                //    }
-                //    _p1Letters.LastOrDefault().GetComponent<Text>().text = "!";
-                //}
+                if (_pickedWord == _pickFun)
+                {
+                    char[] charword = _pickedWord.ToCharArray();
+                    for (int i = 0; i < _pickedWord.Length; i++)
+                    {
+                        if (other.name.ToCharArray().FirstOrDefault() == charword[i])
+                        {
+                            if (_p1Letters[i].GetComponent<Text>().text == other.name)
+                            {
+                                continue;
+                            }
+                            _p1Letters[i].GetComponent<Text>().text = other.name;
+                            break;
+                        }
+                    }
+                }
+                if (_pickedWord == _pickUltimate)
+                {
+                    char[] charword = _pickedWord.ToCharArray();
+                    for (int i = 0; i < _pickedWord.Length; i++)
+                    {
+                        if (other.name.ToCharArray().FirstOrDefault() == charword[i])
+                        {
+                            if (_p1Letters[i].GetComponent<Text>().text == other.name)
+                            {
+                                continue;
+                            }
+                            _p1Letters[i].GetComponent<Text>().text = other.name;
+                            break;
+                        }
+                    }
+                }
+                if (_pickedWord == _pickVi)
+                {
+                    char[] charword = _pickedWord.ToCharArray();
+                    for (int i = 0; i < _pickedWord.Length; i++)
+                    {
+                        if (other.name.ToCharArray().FirstOrDefault() == charword[i])
+                        {
+                            if (_p1Letters[i].GetComponent<Text>().text == other.name)
+                            {
+                                continue;
+                            }
+                            _p1Letters[i].GetComponent<Text>().text = other.name;
+                            break;
+                        }
+                    }
+                }
                 GameObject.FindObjectOfType<Player1MoveScript>().GetComponent<PowerUpScriptP1>().PickedUpP1.Add(this.gameObject.name);
                 string needToRemove = _pickups.Where(p => p.ToString() == other.name).FirstOrDefault();
                 _pickups.Remove(needToRemove);
@@ -127,34 +159,54 @@ public class PickUpLetters : MonoBehaviour {
         {
             if (_pickups.Contains(other.name))
             {
-                //if (_pickups == _pickUpLettersFun)
-                //{
-                //    int i = 0;
-                //    foreach (GameObject text in _p1Letters)
-                //    {
-                //        text.GetComponent<Text>().text = _pickups[i];
-                //        i++;
-                //    }
-                //}
-                //if (_pickups == _pickUpLettersUltimate)
-                //{
-                //    int i = 0;
-                //    foreach (GameObject text in _p1Letters)
-                //    {
-                //        text.GetComponent<Text>().text = _pickups[i];
-                //        i++;
-                //    }
-                //}
-                //if (_pickups == _pickUpLettersVi)
-                //{
-                //    int i = 0;
-                //    foreach (GameObject text in _p1Letters)
-                //    {
-                //        text.GetComponent<Text>().text = _pickups[i];
-                //        i++;
-                //    }
-                //    _p1Letters.Last().GetComponent<Text>().text = "!";
-                //}
+                if (_pickedWord == _pickFun)
+                {
+                    char[] charword = _pickedWord.ToCharArray();
+                    for (int i = 0; i < _pickedWord.Length; i++)
+                    {
+                        if (other.name.ToCharArray().FirstOrDefault() == charword[i])
+                        {
+                            if (_p2Letters[i].GetComponent<Text>().text == other.name)
+                            {
+                                continue;
+                            }
+                            _p2Letters[i].GetComponent<Text>().text = other.name;
+                            break;
+                        }
+                    }
+                }
+                if (_pickedWord == _pickUltimate)
+                {
+                    char[] charword = _pickedWord.ToCharArray();
+                    for (int i = 0; i < _pickedWord.Length; i++)
+                    {
+                        if (other.name.ToCharArray().FirstOrDefault() == charword[i])
+                        {
+                            if (_p2Letters[i].GetComponent<Text>().text == other.name)
+                            {
+                                continue;
+                            }
+                            _p2Letters[i].GetComponent<Text>().text = other.name;
+                            break;
+                        }
+                    }
+                }
+                if (_pickedWord == _pickVi)
+                {
+                    char[] charword = _pickedWord.ToCharArray();
+                    for (int i = 0; i < _pickedWord.Length; i++)
+                    {
+                        if (other.name.ToCharArray().FirstOrDefault() == charword[i])
+                        {
+                            if (_p2Letters[i].GetComponent<Text>().text == other.name)
+                            {
+                                continue;
+                            }
+                            _p2Letters[i].GetComponent<Text>().text = other.name;
+                            break;
+                        }
+                    }
+                }
                 GameObject.FindObjectOfType<Player2MoveScript>().GetComponent<PowerUpScriptP2>().PickedUpP2.Add(this.gameObject.name);
                 //_pickups.Remove(other.name);
                 string needToRemove = _pickups.Where(p => p.ToString() == other.name).FirstOrDefault();
