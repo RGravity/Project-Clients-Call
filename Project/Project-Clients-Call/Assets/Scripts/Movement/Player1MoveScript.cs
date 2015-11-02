@@ -76,7 +76,7 @@ public class Player1MoveScript : MonoBehaviour {
             {
                 // Call your event function here.
                 _moveVertical = true;
-  //              GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>().Play();
+                GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>().Play();
             }
         }
         if (Input.GetAxisRaw("Vertical P1") == 0)
@@ -90,7 +90,7 @@ public class Player1MoveScript : MonoBehaviour {
             {
                 // Call your event function here.
                 _moveHorizontal  = true;
- //               GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>().Play();
+                GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>().Play();
             }
         }
         if (Input.GetAxisRaw("Horizontal P1") == 0)

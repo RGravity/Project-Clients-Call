@@ -104,13 +104,13 @@ public class Finish : MonoBehaviour {
                     }
                 }
             }
-            if (secondsLeftP1 < 0 && round < 6)
+            if (secondsLeftP1 < 0 && round < 7)
             {
                 //P1 lost
                 if (showTime == true)
                 {
                     reloadTime = Time.time;
-                    if (Time.time > (reloadTime + 3))
+                    if (Time.time > (reloadTime + 5))
                     {
                         showTime = false;
                     }
@@ -128,14 +128,14 @@ public class Finish : MonoBehaviour {
                 }
 
             }
-            if (secondsLeftP2 < 0 && round < 6)
+            if (secondsLeftP2 < 0 && round < 7)
             {
                 //P2 lost
 
                 if (showTime == true)
                 {
                     reloadTime = Time.time;
-                    if (Time.time > (reloadTime + 3))
+                    if (Time.time > (reloadTime + 5))
                     {
                         showTime = false;
                     }

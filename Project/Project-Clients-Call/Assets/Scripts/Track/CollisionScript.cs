@@ -32,7 +32,7 @@ public class CollisionScript : MonoBehaviour
         {
             round = GameObject.FindObjectOfType<ConfirmScript>().round;
         }
-               
+        
     }
 
     // Update is called once per frame
@@ -63,6 +63,7 @@ public class CollisionScript : MonoBehaviour
             if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
             {
                 GameObject.FindObjectOfType<Player1LevelScript>().SlowSpeed = true;
+                
                 GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Wall;
                 GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
                 Instantiate(_replacedPrefab);

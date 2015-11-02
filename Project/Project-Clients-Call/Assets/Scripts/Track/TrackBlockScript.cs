@@ -89,4 +89,6 @@ public class TrackBlockScript : MonoBehaviour {
             rend.enabled = true;
         }
     }
+
+    
 }
