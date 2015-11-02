@@ -115,8 +115,8 @@ public class Jumpscript : MonoBehaviour {
           
 
             GameObject.FindObjectOfType<Player2MoveScript>().transform.position = new Vector3(PlayerPosition.x, _jumpHeightP2, PlayerPosition.z);
-            GameObject.FindObjectOfType<BankingP2Script>().transform.rotation = Quaternion.Euler(_player2Rotation.x, _rotationP2, _player2Rotation.z);
-            
+            //GameObject.FindObjectOfType<BankingP2Script>().transform.rotation = Quaternion.Euler(_player2Rotation.x, _rotationP2, _player2Rotation.z);
+            GameObject.FindObjectOfType<BankingP2Script>().transform.Rotate(_player2Rotation.x, _rotationP2, _player2Rotation.z);
         }
     
     }
