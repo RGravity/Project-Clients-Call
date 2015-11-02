@@ -45,9 +45,9 @@ public class TutorialScript : MonoBehaviour
 	void Awake ()
     {
         GameObject.Find("Intro").GetComponent<Image>().enabled = true;
-        _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
         Time.timeScale = 0;
         _intro = true;
+        _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
 	}
 
     void Update()
@@ -64,6 +64,7 @@ public class TutorialScript : MonoBehaviour
             GameObject.Find("Intro").GetComponent<Image>().enabled = false;
             _intro = false;
             Time.timeScale = 1;
+            GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
         }
 
         if (_minimap == true)
@@ -71,12 +72,13 @@ public class TutorialScript : MonoBehaviour
 
             GameObject.Find("Minimap").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-            
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Minimap").GetComponent<Image>().enabled = false;
                 _minimap = false;
                 Time.timeScale = 1;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
 
@@ -84,12 +86,14 @@ public class TutorialScript : MonoBehaviour
         {
 
             GameObject.Find("Inventory").GetComponent<Image>().enabled = true;
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Inventory").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _inventory = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
                
             }
         }
@@ -98,12 +102,14 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find ("Powerup").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Powerup").GetComponent<Image>().enabled = false;
                 _powerUp = false;
                 _inventory = true;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
         
@@ -112,13 +118,14 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Fire").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Fire").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _fire = false;
                 _coolDown = true;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
         
@@ -126,12 +133,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Wall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Wall").GetComponent<Image>().enabled = false;
                 _wall = false;
                 _fire = true;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
                 
             }
         }
@@ -140,12 +148,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("SuperWall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("SuperWall").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _superwall = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
         
@@ -153,12 +162,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Coin").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Coin").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _coin = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
         
@@ -167,12 +177,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Firewall").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Firewall").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _fireWall = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
 
@@ -180,12 +191,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Checkpoint").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Checkpoint").GetComponent<Image>().enabled = false;
                 _checkpoint = false;
                 _minimap = true;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
 
@@ -193,12 +205,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("ShieldUp").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("ShieldUp").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _shield = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
 
@@ -206,12 +219,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Twister").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Twister").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _twister = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
 
@@ -219,12 +233,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Speedup").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Speedup").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _speedup = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
 
@@ -232,12 +247,13 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Ramp").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Ramp").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _ramp = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
 
@@ -245,23 +261,27 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("Letter").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Letter").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _letter = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
         }
         if (_coolDown == true)
         {
             GameObject.Find("Cooldown").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
+
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("Cooldown").GetComponent<Image>().enabled = false;
                 Time.timeScale = 1;
                 _coolDown = false;
+                GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
             }
 
         }
@@ -270,7 +290,7 @@ public class TutorialScript : MonoBehaviour
         {
             GameObject.Find("End").GetComponent<Image>().enabled = true;
             Time.timeScale = 0;
-
+            _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0))
             {
                 GameObject.Find("End").GetComponent<Image>().enabled = false;

@@ -17,6 +17,7 @@ public class Player2LevelScript : MonoBehaviour {
     private float _checkpointSlowTimer = 0;
     private float _checkpointSlowCounter = 3;
     private bool _superWallHit = false;
+    private bool _octagonCollision = false;
 
     public bool SlowSpeed { get { return _slowSpeed; } set { _slowSpeed = value; } }
 
@@ -29,6 +30,7 @@ public class Player2LevelScript : MonoBehaviour {
 
     public bool LevelStarted { get { return _levelStarted; } }
     public bool SuperWallHit { get { return _superWallHit; } set { _superWallHit = value; } }
+    public bool OctagonCollision { get { return _octagonCollision; } set { _octagonCollision = value; } }
 
     // Update is called once per frame
     void Update()
@@ -45,7 +47,7 @@ public class Player2LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted && _superWallHit == false)
+        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted && _superWallHit == false && !_octagonCollision)
         {
             _speed += _acceleration;
             if (_speed >= 35)

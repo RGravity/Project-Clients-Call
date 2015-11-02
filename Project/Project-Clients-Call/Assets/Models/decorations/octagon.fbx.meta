@@ -212,7 +212,195 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 298.619995
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: polySurface1/polySurface9 1
+        weight: 1
+      - path: polySurface1/polySurface9 1/transform26
+        weight: 1
+      - path: polySurface1/polySurface10
+        weight: 1
+      - path: polySurface1/polySurface10/transform25
+        weight: 1
+      - path: polySurface1/polySurface11
+        weight: 1
+      - path: polySurface1/polySurface11/transform24
+        weight: 1
+      - path: polySurface1/polySurface12
+        weight: 1
+      - path: polySurface1/polySurface12/transform23
+        weight: 1
+      - path: polySurface1/polySurface13
+        weight: 1
+      - path: polySurface1/polySurface13/transform22
+        weight: 1
+      - path: polySurface1/polySurface14
+        weight: 1
+      - path: polySurface1/polySurface14/transform21
+        weight: 1
+      - path: polySurface1/polySurface15
+        weight: 1
+      - path: polySurface1/polySurface15/transform20
+        weight: 1
+      - path: polySurface1/polySurface16
+        weight: 1
+      - path: polySurface1/polySurface16/transform19
+        weight: 1
+      - path: polySurface1/transform18
+        weight: 1
+      - path: polySurface9
+        weight: 1
+      - path: polySurface9/polySurface17 1
+        weight: 1
+      - path: polySurface9/polySurface17 1/transform35
+        weight: 1
+      - path: polySurface9/polySurface18
+        weight: 1
+      - path: polySurface9/polySurface18/transform34
+        weight: 1
+      - path: polySurface9/polySurface19
+        weight: 1
+      - path: polySurface9/polySurface19/transform33
+        weight: 1
+      - path: polySurface9/polySurface20
+        weight: 1
+      - path: polySurface9/polySurface20/transform32
+        weight: 1
+      - path: polySurface9/polySurface21
+        weight: 1
+      - path: polySurface9/polySurface21/transform31
+        weight: 1
+      - path: polySurface9/polySurface22
+        weight: 1
+      - path: polySurface9/polySurface22/transform30
+        weight: 1
+      - path: polySurface9/polySurface23
+        weight: 1
+      - path: polySurface9/polySurface23/transform29
+        weight: 1
+      - path: polySurface9/polySurface24
+        weight: 1
+      - path: polySurface9/polySurface24/transform28
+        weight: 1
+      - path: polySurface9/transform27
+        weight: 1
+      - path: polySurface17
+        weight: 1
+      - path: polySurface17/polySurface25
+        weight: 1
+      - path: polySurface17/polySurface26
+        weight: 1
+      - path: polySurface17/polySurface27
+        weight: 1
+      - path: polySurface17/polySurface28
+        weight: 1
+      - path: polySurface17/polySurface29
+        weight: 1
+      - path: polySurface17/polySurface30
+        weight: 1
+      - path: polySurface17/polySurface31
+        weight: 1
+      - path: polySurface17/polySurface32
+        weight: 1
+      - path: polySurface17/transform36
+        weight: 1
+      - path: pPlane1
+        weight: 1
+      - path: pPlane1/transform8
+        weight: 1
+      - path: pPlane2
+        weight: 1
+      - path: pPlane2/transform7
+        weight: 1
+      - path: pPlane3
+        weight: 1
+      - path: pPlane3/transform6
+        weight: 1
+      - path: pPlane4
+        weight: 1
+      - path: pPlane4/transform5
+        weight: 1
+      - path: pPlane5
+        weight: 1
+      - path: pPlane5/transform4
+        weight: 1
+      - path: pPlane6
+        weight: 1
+      - path: pPlane6/transform3
+        weight: 1
+      - path: pPlane7
+        weight: 1
+      - path: pPlane7/transform2
+        weight: 1
+      - path: pPlane8
+        weight: 1
+      - path: pPlane8/transform1
+        weight: 1
+      - path: pPlane9
+        weight: 1
+      - path: pPlane9/polySurface1 1
+        weight: 1
+      - path: pPlane9/polySurface1 1/transform17
+        weight: 1
+      - path: pPlane9/polySurface2
+        weight: 1
+      - path: pPlane9/polySurface2/transform16
+        weight: 1
+      - path: pPlane9/polySurface3
+        weight: 1
+      - path: pPlane9/polySurface3/transform15
+        weight: 1
+      - path: pPlane9/polySurface4
+        weight: 1
+      - path: pPlane9/polySurface4/transform14
+        weight: 1
+      - path: pPlane9/polySurface5
+        weight: 1
+      - path: pPlane9/polySurface5/transform13
+        weight: 1
+      - path: pPlane9/polySurface6
+        weight: 1
+      - path: pPlane9/polySurface6/transform12
+        weight: 1
+      - path: pPlane9/polySurface7
+        weight: 1
+      - path: pPlane9/polySurface7/transform11
+        weight: 1
+      - path: pPlane9/polySurface8
+        weight: 1
+      - path: pPlane9/polySurface8/transform10
+        weight: 1
+      - path: pPlane9/transform9
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
