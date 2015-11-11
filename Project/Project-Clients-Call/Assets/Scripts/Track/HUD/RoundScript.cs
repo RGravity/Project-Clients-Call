@@ -20,16 +20,16 @@ public class RoundScript : MonoBehaviour {
 
     void UpdateImage()
     {
-        Debug.Log(GameObject.FindObjectOfType<ConfirmScript>().round / 2);
-        if (GameObject.FindObjectOfType<ConfirmScript>().round/2 == 1)
+        Debug.Log(GameObject.FindObjectOfType<ConfirmScript>().Round / 2);
+        if (GameObject.FindObjectOfType<ConfirmScript>().Round/2 == 1)
         {
             this.GetComponent<Image>().sprite = Round1Sprite;
         }
-        else if (GameObject.FindObjectOfType<ConfirmScript>().round/2 == 2)
+        else if (GameObject.FindObjectOfType<ConfirmScript>().Round/2 == 2)
         {
             this.GetComponent<Image>().sprite = Round2Sprite;
         }
-        else if (GameObject.FindObjectOfType<ConfirmScript>().round/2 == 3)
+        else if (GameObject.FindObjectOfType<ConfirmScript>().Round/2 == 3)
         {
             this.GetComponent<Image>().sprite = Round3Sprite;
         }

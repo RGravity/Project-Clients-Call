@@ -19,21 +19,21 @@ public class TrackBlockScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        if (_moving)
-        {
-            Vector3 Distance = this.transform.position - _globalFinalSpot;
-            Vector3 NormalizedDistance = Distance;
-            NormalizedDistance.Normalize();
-            this.transform.position -= (NormalizedDistance * 2);
-            if (Distance.magnitude < 1)
-            {
-                _moving = false;
-                this.transform.localPosition = _localFinalSpot;
-            }
-        }
+    //void Update () {
+    //    if (_moving)
+    //    {
+    //        Vector3 Distance = this.transform.position - _globalFinalSpot;
+    //        Vector3 NormalizedDistance = Distance;
+    //        NormalizedDistance.Normalize();
+    //        this.transform.position -= (NormalizedDistance * 2);
+    //        if (Distance.magnitude < 1)
+    //        {
+    //            _moving = false;
+    //            this.transform.localPosition = _localFinalSpot;
+    //        }
+    //    }
         
-	}
+    //}
 
     //void OnCollisionEnter(Collision other)
     //{
@@ -50,9 +50,9 @@ public class TrackBlockScript : MonoBehaviour {
 
     public void OnBecameInvisible()
     {
-        if (!_moving)
-        {
-            _moving = true;
+        //if (!_moving)
+        //{
+        //    _moving = true;
 
             // -- actual next position on track
             float NextXPositionLocal = this.transform.localPosition.x;
@@ -60,25 +60,25 @@ public class TrackBlockScript : MonoBehaviour {
             float NextZPositionLocal = this.transform.localPosition.z + (_zBlocks * 0.7f);
 
             //// -- falling 'animation' --
-            float NextXPositionGlobal = this.transform.position.x;
-            float NextYPositionGlobal = this.transform.position.y;
-            float NextZPositionGlobal = this.transform.position.z + (_zBlocks * 0.7f);
+        //    float NextXPositionGlobal = this.transform.position.x;
+        //    float NextYPositionGlobal = this.transform.position.y;
+        //    float NextZPositionGlobal = this.transform.position.z + (_zBlocks * 0.7f);
 
-            //Final LOCAL position
-            _localFinalSpot = new Vector3(NextXPositionLocal, NextYPositionLocal, NextZPositionLocal);
+        //    //Final LOCAL position
+        //    _localFinalSpot = new Vector3(NextXPositionLocal, NextYPositionLocal, NextZPositionLocal);
 
-            //Final GLOBAL position
-            _globalFinalSpot = new Vector3(NextXPositionGlobal, NextYPositionGlobal, NextZPositionGlobal);
+        //    //Final GLOBAL position
+        //    _globalFinalSpot = new Vector3(NextXPositionGlobal, NextYPositionGlobal, NextZPositionGlobal);
 
-            //set next position in the air
-            this.transform.position = new Vector3(NextXPositionGlobal + UnityEngine.Random.Range(-30, 30), NextYPositionGlobal + UnityEngine.Random.Range(-30, 30), NextZPositionGlobal);
+        //    //set next position in the air
+        //    this.transform.position = new Vector3(NextXPositionGlobal + UnityEngine.Random.Range(-30, 30), NextYPositionGlobal + UnityEngine.Random.Range(-30, 30), NextZPositionGlobal);
 
-            //resetVisibility();
+        //    //resetVisibility();
 
 
 
-        }
-        //this.transform.position = new Vector3(NextXPositionLocal, NextYPositionLocal, NextZPositionLocal);
+        //}
+        this.transform.localPosition = new Vector3(NextXPositionLocal, NextYPositionLocal, NextZPositionLocal);
     }
 
     private void resetVisibility(){
