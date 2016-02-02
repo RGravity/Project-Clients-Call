@@ -30,7 +30,7 @@ public class CollisionScript : MonoBehaviour
     {
         if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
         {
-            round = GameObject.FindObjectOfType<ConfirmScript>().round;
+            round = GameObject.FindObjectOfType<ConfirmScript>().Round;
         }
         
     }

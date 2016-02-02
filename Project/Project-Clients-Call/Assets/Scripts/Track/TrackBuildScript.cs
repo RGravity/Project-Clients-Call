@@ -139,10 +139,34 @@ public class TrackBuildScript : MonoBehaviour {
         {
             if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
             {
-                if (z % 10 == 0 && z != 0)
+                int difficulty;
+                int round = GameObject.FindObjectOfType<ConfirmScript>().Round / 2;
+                switch (round)
                 {
-                    SpawnWallsOnZ(z);
+                    case 1: // round 1
+                        difficulty = _firstBlocks / 3;
+                        if (z % difficulty == 0 && z != 0)
+                        {
+                            SpawnWallsOnZ(z, 2);
+                        }
+                        break;
+                    case 2: //round 2
+                        difficulty = _firstBlocks / 4;
+                        if (z % difficulty == 0 && z != 0)
+                        {
+                            SpawnWallsOnZ(z, 3);
+                        }
+                        break;
+                    case 3: //round 3
+                        difficulty = _firstBlocks / 5;
+                        if (z % difficulty == 0 && z != 0)
+                        {
+                            SpawnWallsOnZ(z, 4);
+                        }
+                        break;
                 }
+
+                
                 if (z % 23 == 0 && z != 0)
                 {
                     SpawnPowerupsOnZ(z);
@@ -304,12 +328,12 @@ public class TrackBuildScript : MonoBehaviour {
         
     }
 
-    private void SpawnWallsOnZ(float Z)
+    private void SpawnWallsOnZ(float pZ, int pAmountOfWalls)
     {
-        int rndAmountOfWalls = Random.Range(1, 4);
+        
         List<int> LastPlaces = new List<int>();
 
-        for (int i = 0; i < rndAmountOfWalls; i++)
+        for (int i = 0; i < pAmountOfWalls; i++)
         {
             int rndPlace;
             do
@@ -317,8 +341,8 @@ public class TrackBuildScript : MonoBehaviour {
                 rndPlace = Random.Range(0, 7);
             } while (LastPlaces.Contains(rndPlace));
 
-            SpawnWall(new Vector3((rndPlace * 2) - 4.6f, 0.6f, (Z * 0.7f)), GameObject.Find("TrackBlocks1"));
-            SpawnWall(new Vector3(((6 - rndPlace) * 2) - 4.6f, -3.1f, (Z * 0.7f)), GameObject.Find("TrackBlocks2"));
+            SpawnWall(new Vector3((rndPlace * 2) - 4.6f, 0.6f, (pZ * 0.7f)), GameObject.Find("TrackBlocks1"));
+            SpawnWall(new Vector3(((6 - rndPlace) * 2) - 4.6f, -3.1f, (pZ * 0.7f)), GameObject.Find("TrackBlocks2"));
             LastPlaces.Add(rndPlace);
         }
     }

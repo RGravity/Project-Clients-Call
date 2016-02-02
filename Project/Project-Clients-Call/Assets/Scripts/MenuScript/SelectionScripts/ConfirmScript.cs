@@ -9,13 +9,14 @@ public class ConfirmScript : MonoBehaviour {
     private int _p1Score = 0;
     private int _p2Score = 0;
 
-    public int round = 2;
+    private int _round = 2;
     private static GameObject _instance;
     private bool _tutorial = false;
 
     public bool Tutorial { get { return _tutorial; } set { _tutorial = value; } }
     public int SavedP1Score { get { return _p1Score; } set { _p1Score = value; } }
     public int SavedP2Score { get { return _p2Score; } set { _p2Score = value; } }
+    public int Round { get { return _round; } set { _round = value; } }
 
     void Awake()
     {
