@@ -11,7 +11,7 @@ public class SoundsScript : MonoBehaviour
     public bool Play { get { return _play; } set { _play = value; } }
 
     private static GameObject _instance;
-
+    private ConfirmScript _confirmScript;
 
 
     void Awake()
@@ -33,7 +33,9 @@ public class SoundsScript : MonoBehaviour
     {
         _music = gameObject.GetComponentsInChildren<AudioSource>();
         _volume = GameObject.FindGameObjectWithTag("SFXSlidersSlider");
-        
+        _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
+
+
     }
     void Update()
     {
@@ -54,7 +56,7 @@ public class SoundsScript : MonoBehaviour
 
     void StartCountDown()
     {
-        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        if (_confirmScript.Tutorial == false)
         {
             if (_play == true)
             {
