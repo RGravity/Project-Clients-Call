@@ -64,10 +64,10 @@ public class Finish : MonoBehaviour {
             if (P1Finished && P2Finished)
             {
                 //Application.LoadLevel(3);
-                GameObject.FindObjectOfType<ConfirmScript>().round++;
-                if (GameObject.FindObjectOfType<ConfirmScript>().round < 6)
+                GameObject.FindObjectOfType<ConfirmScript>().Round++;
+                if (GameObject.FindObjectOfType<ConfirmScript>().Round < 6)
                 {
-                    GameObject.FindObjectOfType<ConfirmScript>().round+=2;
+                    GameObject.FindObjectOfType<ConfirmScript>().Round+=2;
                     Application.LoadLevel(3);
                 }
                 else
@@ -87,17 +87,17 @@ public class Finish : MonoBehaviour {
                         Application.LoadLevel("MenuEliasMichiel");
                     }
                     //reloadTime = Time.time;
-                    round = GameObject.FindObjectOfType<ConfirmScript>().round;
+                    round = GameObject.FindObjectOfType<ConfirmScript>().Round;
                     GameObject.Find("dnfP2").GetComponent<Image>().enabled = false;
                     GameObject.Find("dnfP1").GetComponent<Image>().enabled = false;
                     GameObject.Find("FinishP1").GetComponent<Image>().enabled = false;
                     GameObject.Find("FinishP2").GetComponent<Image>().enabled = false;
-                    if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().round > 6)
+                    if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().Round > 6)
                     {
                         GameObject.Find("WinnaarP1").GetComponent<Image>().enabled = true;
                         GameObject.Find("WinnaarP2").GetComponent<Image>().enabled = false;
                     }
-                    else if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().round > 6)
+                    else if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().Round > 6)
                     {
                         GameObject.Find("WinnaarP2").GetComponent<Image>().enabled = true;
                         GameObject.Find("WinnaarP1").GetComponent<Image>().enabled = false;
@@ -225,7 +225,7 @@ public class Finish : MonoBehaviour {
 
         //if (P2Finished && P1Finished)
         //{
-        //    //GameObject.FindObjectOfType<ConfirmScript>().round++;
+        //    //GameObject.FindObjectOfType<ConfirmScript>().Round++;
         //    //Application.LoadLevel(3);
         //    Application.LoadLevel(Application.loadedLevel);
         //}
