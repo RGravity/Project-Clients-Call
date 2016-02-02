@@ -20,24 +20,53 @@ public class Finish : MonoBehaviour {
     float reloadTime = 0;
     bool showTime = true;
     bool endTime = true;
-	// Use this for initialization
-	void Start () {
-	    
-	}
+
+    private ConfirmScript _confirmScript;
+    private GameObject _finishP1;
+    private GameObject _dnfP1;
+    private GameObject _finishP2;
+    private GameObject _dnfp2;
+    private GameObject _winnaarP2;
+    private GameObject _winnaarP1;
+    private ScoreScript _scoreScript;
+    private MusicScript _musicScript;
+    private Player1LevelScript _player1LevelScript;
+    private Player2LevelScript _player2LevelScript;
+    private Player1MoveScript _player1MoveScript;
+    private Player2MoveScript _player2MoveScript;
+    private GameObject _raceEnd;
+
+    // Use this for initialization
+    void Start () {
+        _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
+        _finishP1 = GameObject.Find("FinishP1");
+        _dnfP1 = GameObject.Find("dnfP1");
+        _finishP2 = GameObject.Find("FinishP2");
+        _dnfp2 = GameObject.Find("dnfP2");
+        _winnaarP2 = GameObject.Find("WinnaarP2");
+        _winnaarP1 = GameObject.Find("WinnaarP1");
+        _scoreScript = GameObject.FindObjectOfType<ScoreScript>();
+        _musicScript = GameObject.FindObjectOfType<MusicScript>();
+        _player1LevelScript = GameObject.FindObjectOfType<Player1LevelScript>();
+        _player2LevelScript = GameObject.FindObjectOfType<Player2LevelScript>();
+        _player1MoveScript = GameObject.FindObjectOfType<Player1MoveScript>();
+        _player2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
+        _raceEnd = GameObject.FindGameObjectWithTag("RaceEnd");
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        if (_confirmScript.Tutorial == false)
         {
             if (P1Finished)
             {
                 if (secondsLeftP1 > 0)
                 {
-                    GameObject.Find("FinishP1").GetComponent<Image>().enabled = true;
+                    _finishP1.GetComponent<Image>().enabled = true;
                 }
                 else
                 {
-                    GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
+                    _dnfP1.GetComponent<Image>().enabled = true;
                 }
                 if (Time.time > (timer + 1))
                 {
@@ -49,11 +78,11 @@ public class Finish : MonoBehaviour {
             {
                 if (secondsLeftP2 > 0)
                 {
-                    GameObject.Find("FinishP2").GetComponent<Image>().enabled = true;
+                    _finishP2.GetComponent<Image>().enabled = true;
                 }
                 else
                 {
-                    GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
+                    _dnfp2.GetComponent<Image>().enabled = true;
                 }
                 if (Time.time > (timer + 1))
                 {
@@ -64,42 +93,42 @@ public class Finish : MonoBehaviour {
             if (P1Finished && P2Finished)
             {
                 //Application.LoadLevel(3);
-                if (GameObject.FindObjectOfType<ConfirmScript>().Round < 3)
+                if (_confirmScript.Round < 3)
                 {
-                    GameObject.FindObjectOfType<ConfirmScript>().Round++;
+                    _confirmScript.Round++;
                     Application.LoadLevel(3);
                 }
                 else
                 {
-                    if ((GameObject.Find("WinnaarP2").GetComponent<Image>().enabled == true || GameObject.Find("WinnaarP1").GetComponent<Image>().enabled == true) && endTime == true)
+                    if ((_winnaarP2.GetComponent<Image>().enabled == true || _winnaarP1.GetComponent<Image>().enabled == true) && endTime == true)
                     {
                         reloadTime = Time.time;
                         endTime = false;
                     }
                     if (Time.time > (reloadTime + 3))
                     {
-                        GameObject.FindObjectOfType<MusicScript>().Play2 = true;
-                        GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 0;
-                        GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 = 0;
-                        GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score = 0;
-                        GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = 0;
+                        _musicScript.Play2 = true;
+                        _confirmScript.bodyPlayer1 = 0;
+                        _confirmScript.bodyPlayer2 = 0;
+                        _confirmScript.SavedP1Score = 0;
+                        _confirmScript.SavedP2Score = 0;
                         Application.LoadLevel("MenuEliasMichiel");
                     }
                     //reloadTime = Time.time;
-                    round = GameObject.FindObjectOfType<ConfirmScript>().Round;
-                    GameObject.Find("dnfP2").GetComponent<Image>().enabled = false;
-                    GameObject.Find("dnfP1").GetComponent<Image>().enabled = false;
-                    GameObject.Find("FinishP1").GetComponent<Image>().enabled = false;
-                    GameObject.Find("FinishP2").GetComponent<Image>().enabled = false;
-                    if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().Round > 6)
+                    round = _confirmScript.Round;
+                    _dnfp2.GetComponent<Image>().enabled = false;
+                    _dnfP1.GetComponent<Image>().enabled = false;
+                    _finishP1.GetComponent<Image>().enabled = false;
+                    _finishP2.GetComponent<Image>().enabled = false;
+                    if (_scoreScript.P1Score > _scoreScript.P2Score && _confirmScript.Round > 6)
                     {
-                        GameObject.Find("WinnaarP1").GetComponent<Image>().enabled = true;
-                        GameObject.Find("WinnaarP2").GetComponent<Image>().enabled = false;
+                        _winnaarP1.GetComponent<Image>().enabled = true;
+                        _winnaarP2.GetComponent<Image>().enabled = false;
                     }
-                    else if (GameObject.FindObjectOfType<ScoreScript>().P1Score > GameObject.FindObjectOfType<ScoreScript>().P2Score && GameObject.FindObjectOfType<ConfirmScript>().Round > 6)
+                    else if (_scoreScript.P1Score > _scoreScript.P2Score && _confirmScript.Round > 6)
                     {
-                        GameObject.Find("WinnaarP2").GetComponent<Image>().enabled = true;
-                        GameObject.Find("WinnaarP1").GetComponent<Image>().enabled = false;
+                        _winnaarP2.GetComponent<Image>().enabled = true;
+                        _winnaarP1.GetComponent<Image>().enabled = false;
                     }
                 }
             }
@@ -115,15 +144,10 @@ public class Finish : MonoBehaviour {
                     }
                     else
                     {
-                        GameObject.Find("dnfP1").GetComponent<Image>().enabled = true;
-                        GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
+                        _dnfP1.GetComponent<Image>().enabled = true;
+                        _player1LevelScript.Finsihed = true;
                         P1Finished = true;
                     }
-                }
-                else
-                {
-                    //GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-                    // P1Finished = true;
                 }
 
             }
@@ -140,118 +164,37 @@ public class Finish : MonoBehaviour {
                     }
                     else
                     {
-                        GameObject.Find("dnfP2").GetComponent<Image>().enabled = true;
-                        GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
+                        _dnfp2.GetComponent<Image>().enabled = true;
+                        _player2LevelScript.Finsihed = true;
                         P2Finished = true;
                     }
                 }
-                else
-                {
-                    //GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
-                    //P2Finished = true;
-                }
             }
         }
-        //WallAnimation(isActivated);
 	}
     void OnTriggerExit(Collider other)
     {
        
-        if (this.gameObject.name == "Finish" && other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
+        if (this.gameObject.name == "Finish" && other.gameObject.name == _player1MoveScript.name)
         {
-            GameObject.FindGameObjectWithTag("RaceEnd").GetComponent<AudioSource>().Play();
+            _raceEnd.GetComponent<AudioSource>().Play();
             P1Finished = true;
-            GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-            //startTimer = true;
-            //if (GameObject.FindObjectOfType<Player2LevelScript>().Finsihed)
-            //{
-            //    //P2 won
-            //    P2Finished = true;
-            //    if (P1Finished && P2Finished)
-            //    {
-            //        GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
-            //    }   
-            //}
+            _player1LevelScript.Finsihed = true;
         }
-        //if (!GameObject.FindObjectOfType<Player2LevelScript>().Finsihed && GameObject.FindObjectOfType<Player1LevelScript>().Finsihed)
-        //{
-
-        //}
-        //if(secondsLeft < 0)
-        //{
-        //    //P2 not finshed in time
-        //    P2Finished = true;
-        //    GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
-        //}
-        if (this.gameObject.name == "Finish" && other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
+        if (this.gameObject.name == "Finish" && other.gameObject.name == _player2MoveScript.name)
         {
-            GameObject.FindGameObjectWithTag("RaceEnd").GetComponent<AudioSource>().Play();
+            _raceEnd.GetComponent<AudioSource>().Play();
             P2Finished = true;
-            GameObject.FindObjectOfType<Player2LevelScript>().Finsihed = true;
-            //startTimer = true;
-            //if (GameObject.FindObjectOfType<Player1LevelScript>().Finsihed)
-            //{
-            //    P1Finished = true;
-            //    //P1 won
-            //    if (P2Finished && P1Finished)
-            //    {
-            //        GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-            //    }
-            //}
+            _player2LevelScript.Finsihed = true;
+
         }
-        if (GameObject.FindObjectOfType<Player2LevelScript>().Finsihed)
+        if (_player2LevelScript.Finsihed)
         {
             P2Finished = true;
         }
-        if (GameObject.FindObjectOfType<Player1LevelScript>().Finsihed)
+        if (_player1LevelScript.Finsihed)
         {
             P1Finished = true;
         }
-        //if (!GameObject.FindObjectOfType<Player1LevelScript>().Finsihed && GameObject.FindObjectOfType<Player2LevelScript>().Finsihed)
-        //{
-        //    if (Time.time > (timer + 1))
-        //    {
-        //        timer = Time.time;
-        //        secondsLeft--;
-        //    }
-        //}
-        //if (secondsLeft < 0)
-        //{
-        //    //P1 not finished in time
-        //    P1Finished = true;
-        //    GameObject.FindObjectOfType<Player1LevelScript>().Finsihed = true;
-        //}
-
-        //if (P2Finished && P1Finished)
-        //{
-        //    //GameObject.FindObjectOfType<ConfirmScript>().Round++;
-        //    //Application.LoadLevel(3);
-        //    Application.LoadLevel(Application.loadedLevel);
-        //}
     }
-
-    //public void WallAnimation(bool activate = false)
-    //{
-    //    if (activate)
-    //    {
-    //        isActivated = true;
-    //        if (Time.time > (shootingWallTimer + 0.5f))
-    //        {
-    //            shootingWallTimer = Time.time;
-    //            shootingWallCount++;
-    //            if (this.gameObject.GetComponent<MeshRenderer>().enabled == true)
-    //            {
-    //                this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-    //            }
-    //            else if (this.gameObject.GetComponent<MeshRenderer>().enabled == false)
-    //            {
-    //                this.gameObject.GetComponent<MeshRenderer>().enabled = true;
-    //            }
-    //        }
-    //        if (shootingWallCount == 4)
-    //        {
-    //            isActivated = false;
-    //        }
-    //    }
-    //}
 }
