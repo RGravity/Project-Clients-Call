@@ -31,8 +31,6 @@ public class SupperWall : MonoBehaviour {
         }
         if (other.transform.name.Contains("Bullet"))
         {
-            //this.enabled = false;
-            //this.GetComponentInChildren<MeshRenderer>().enabled = false;
             if (this.transform.parent.name == player1LevelScript.transform.name)
             {
                 player1LevelScript.SuperWallHit = false;
@@ -46,10 +44,6 @@ public class SupperWall : MonoBehaviour {
             Destroy(this.gameObject);
             Destroy(other.gameObject);
         }
-        //if (other.transform.name.Contains("Bullet") && other.transform.name == GameObject.FindObjectOfType<Player2MoveScript>().transform.name)
-        //{
-        //    Destroy(this);
-        //}
         if (other.transform.name == player1MoveScript.transform.name)
         {
             player1LevelScript.Speed = 0;
