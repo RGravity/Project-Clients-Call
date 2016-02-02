@@ -12,12 +12,20 @@ public class Checkpoints : MonoBehaviour
 
     public bool CheckPointP1Hit { get { return _checkpointP1Hit; } set { _checkpointP1Hit = value; } }
     public bool CheckPointP2Hit { get { return _checkpointP2Hit; } set { _checkpointP2Hit = value; } }
+    private AudioSource _checkpointSound;
+    private ScoreScript _scoreScript;
+    private Player1MoveScript _player1MoveScript;
+    private Player2MoveScript _player2MoveScript;
 
     List<Checkpoints> checkpoints;
     // Use this for initialization
     void Start()
     {
         checkpoints = GameObject.FindObjectsOfType<Checkpoints>().ToList();
+        _checkpointSound = GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>();
+        _player1MoveScript = GameObject.FindObjectOfType<Player1MoveScript>();
+        _player2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
+        _scoreScript = GameObject.FindObjectOfType<ScoreScript>();
     }
 
     // Update is called once per frame
@@ -28,27 +36,17 @@ public class Checkpoints : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().gameObject.name)
+        if (other.gameObject.name == _player1MoveScript.gameObject.name)
         {
-            GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>().Play();
-            GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Checkpoint;
+            _checkpointSound.Play();
+            _scoreScript.P1ScoreType = ScoreScript.ScoreType.Checkpoint;
             foreach (Checkpoints checkpoint in checkpoints)
             {
                 if (this.gameObject.name == checkpoint.gameObject.name)
                 {
-                    Player1LevelScript p1 = GameObject.FindObjectOfType<Player1LevelScript>();
                     this.gameObject.GetComponent<BoxCollider>().enabled = false;
                     this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                    p1.CheckPoint = true;
-                    //p1.SlowSpeed = true;
-                   // p1.StopTime = Time.time;
-                    //checkpoints.Remove(checkpoints.Where(c => c.name == checkpoint.gameObject.name).FirstOrDefault());
 
-                    //if (checkpoint.gameObject.name.Substring(name.Length - 3, 1) == "1")
-                    //{
-                    //    checkpoints.Remove(checkpoints.Where(c => c.name.Contains("P2")).FirstOrDefault());
-
-                    //}
                     string _checkpointNumber = checkpoint.name.Substring(checkpoint.name.Length - 3, 1);
                     List<Checkpoints> checkpointsChecked = checkpoints.Where(c => c.name.Contains(""+_checkpointNumber+"P")).ToList();
                     for (int i = 0; i < checkpointsChecked.Count; i++)
@@ -62,29 +60,16 @@ public class Checkpoints : MonoBehaviour
                 }
             }
         }
-        if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().gameObject.name)
+        if (other.gameObject.name == _player2MoveScript.gameObject.name)
         {
-            GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>().Play();
-            GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Checkpoint;
+            _checkpointSound.Play();
+            _scoreScript.P2ScoreType = ScoreScript.ScoreType.Checkpoint;
             foreach (Checkpoints checkpoint in checkpoints)
             {
                 if (this.gameObject.name == checkpoint.gameObject.name)
                 {
-                    Player2LevelScript p2 = GameObject.FindObjectOfType<Player2LevelScript>();
                     this.gameObject.GetComponent<BoxCollider>().enabled = false;
                     this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                    p2.CheckPoint = true;
-                    //p2.SlowSpeed = true;
-                   // p2.StopTime = Time.time;
-
-
-                    //checkpoints.Remove(checkpoints.Where(c => c.name == checkpoint.gameObject.name).FirstOrDefault());
-
-                    //if (checkpoint.gameObject.name.Substring(name.Length - 3, 1) == "1")
-                    //{
-                    //    checkpoints.Remove(checkpoints.Where(c => c.name.Contains("P1")).FirstOrDefault());
-
-                    //}
                     string _checkpointNumber = checkpoint.name.Substring(checkpoint.name.Length - 3, 1);
 
                     List<Checkpoints> checkpointsChecked = checkpoints.Where(c => c.name.Contains("" + _checkpointNumber + "P")).ToList();

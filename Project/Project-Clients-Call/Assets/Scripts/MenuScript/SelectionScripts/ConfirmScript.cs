@@ -9,7 +9,7 @@ public class ConfirmScript : MonoBehaviour {
     private int _p1Score = 0;
     private int _p2Score = 0;
 
-    private int _round = 2;
+    private int _round = 1;
     private static GameObject _instance;
     private bool _tutorial = false;
 
