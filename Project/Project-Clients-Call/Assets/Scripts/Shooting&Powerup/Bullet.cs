@@ -134,7 +134,7 @@ public class Bullet : MonoBehaviour {
 
                     GameObject newWallParticleObject = otherCube.GetComponent<CollisionScript>().DisappearWall;
                     newWallParticleObject.GetComponent<ParticleSystem>().gravityModifier = 1.44f;
-                    Instantiate(newWallParticleObject, otherCube.transform.position, Quaternion.identity);
+                    GameObject GO = (GameObject)Instantiate(newWallParticleObject, otherCube.transform.position, Quaternion.identity);
                     other.GetComponent<TrackBlockScript>().OnBecameInvisible();
                     //GameObject.FindObjectOfType<TrackBlockScript>().OnBecameInvisible();
                 }

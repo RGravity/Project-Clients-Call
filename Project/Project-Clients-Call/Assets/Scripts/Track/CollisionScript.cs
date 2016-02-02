@@ -102,6 +102,7 @@ public class CollisionScript : MonoBehaviour
                 Instantiate(_replacedPrefab);
                 _replacedPrefab.gameObject.transform.position = other.gameObject.transform.position;
                 _replacedPrefab.gameObject.transform.rotation = other.gameObject.transform.rotation;
+
                 //Destroy(this.gameObject);
                 if (this.gameObject.name != "Finish")
                 {
