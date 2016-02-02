@@ -27,13 +27,28 @@ public class ScoreScript : MonoBehaviour {
     public int P1Score { get { return _p1Score; } set { _p1Score = value; } }
     public int P2Score { get { return _p2Score; } set { _p2Score = value; } }
 
+    private Player1LevelScript _levelScript;
+    private Player2LevelScript _levelp2Script;
+    private Finish _finishScript;
+    private PauseScript _pauseScript;
+    private ConfirmScript _confirmScript;
+    private GameObject _p1Text;
+    private GameObject _p2Text;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         if (GameObject.FindObjectOfType<ConfirmScript>())
         {
             _p1Score = GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score;
             _p2Score = GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score;
+            _levelScript = GameObject.FindObjectOfType<Player1LevelScript>();
+            _levelp2Script = GameObject.FindObjectOfType<Player2LevelScript>();
+            _finishScript = GameObject.FindObjectOfType<Finish>();
+            _pauseScript = GameObject.FindObjectOfType<PauseScript>();
+            _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
+            _p1Text = GameObject.Find("P1 Text");
+            _p2Text = GameObject.Find("P2 Text");
         }
 	}
 	
@@ -124,27 +139,27 @@ public class ScoreScript : MonoBehaviour {
 
     private void NormalScoring()
     {
-        if (GameObject.FindObjectOfType<Player1LevelScript>().LevelStarted)
+        if (_levelScript.LevelStarted)
         {
-            if (!GameObject.FindObjectOfType<Finish>().P1Finished && !GameObject.FindObjectOfType<PauseScript>().pauseGame)
+            if (!_finishScript.P1Finished && !_pauseScript.pauseGame)
             {
-                _p1Score += (int)(GameObject.FindObjectOfType<Player1LevelScript>().Speed / 6) * 100;
+                _p1Score += (int)(_levelScript.Speed / 6) * 100;
             }
-            if (!GameObject.FindObjectOfType<Finish>().P2Finished && !GameObject.FindObjectOfType<PauseScript>().pauseGame)
+            if (!_finishScript.P2Finished && !_pauseScript.pauseGame)
             {
-                _p2Score += ((int)GameObject.FindObjectOfType<Player2LevelScript>().Speed / 6) * 100;
+                _p2Score += ((int)_levelp2Script.Speed / 6) * 100;
             }
         }
     }
 
     private void UpdateHUD()
     {
-        GameObject.Find("P1 Text").GetComponent<Text>().text = _p1Score.ToString();
-        GameObject.Find("P2 Text").GetComponent<Text>().text = _p2Score.ToString();
-        if (GameObject.FindObjectOfType<ConfirmScript>())
+        _p1Text.GetComponent<Text>().text = _p1Score.ToString();
+        _p2Text.GetComponent<Text>().text = _p2Score.ToString();
+        if (_confirmScript)
         {
-            GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score = _p1Score;
-            GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = _p2Score; 
+            _confirmScript.SavedP1Score = _p1Score;
+            _confirmScript.SavedP2Score = _p2Score; 
         }
     }
 }

@@ -13,9 +13,14 @@ public class MinimapScript : MonoBehaviour {
     private Texture2D _orange;
     private Texture2D _green;
 
+    private Player1LevelScript _player1LevelScript;
+    private Player2LevelScript _player2LevelScript;
+    private GameObject _player1Minimap;
+    private GameObject _player2Minimap;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         _red = (Texture2D)Resources.Load("MinimapColor/player_red");
         _blue = (Texture2D)Resources.Load("MinimapColor/player_blue");
         _orange = (Texture2D)Resources.Load("MinimapColor/player_orange");
@@ -67,7 +72,12 @@ public class MinimapScript : MonoBehaviour {
             default:
                 break;
         }
-	}
+
+        _player1LevelScript = GameObject.FindObjectOfType<Player1LevelScript>();
+        _player2LevelScript = GameObject.FindObjectOfType<Player2LevelScript>();
+        _player1Minimap = GameObject.Find("Player1MinimapIcon");
+        _player2Minimap = GameObject.Find("Player2MinimapIcon");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -77,17 +87,17 @@ public class MinimapScript : MonoBehaviour {
 
     void MovePlayerMinimap()
     {
-        if (GameObject.FindObjectOfType<Player1LevelScript>().LevelStarted && !GameObject.FindObjectOfType<Player1LevelScript>().Finsihed)
+        if (_player1LevelScript.LevelStarted && !_player1LevelScript.Finsihed)
         {
-            _currentSpeedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed * _scale;
-            GameObject.Find("Player1MinimapIcon").GetComponent<RectTransform>().position = GameObject.Find("Player1MinimapIcon").GetComponent<RectTransform>().position + (transform.right * _currentSpeedP1 * Time.deltaTime);
+            _currentSpeedP1 = _player1LevelScript.Speed * _scale;
+            _player1Minimap.GetComponent<RectTransform>().position = _player1Minimap.GetComponent<RectTransform>().position + (transform.right * _currentSpeedP1 * Time.deltaTime);
             
             
         }
-        if (GameObject.FindObjectOfType<Player2LevelScript>().LevelStarted && !GameObject.FindObjectOfType<Player2LevelScript>().Finsihed)
+        if (_player2LevelScript.LevelStarted && !_player2LevelScript.Finsihed)
         {
-            _currentSpeedP2 = GameObject.FindObjectOfType<Player2LevelScript>().Speed * _scale;
-            GameObject.Find("Player2MinimapIcon").GetComponent<RectTransform>().position = GameObject.Find("Player2MinimapIcon").GetComponent<RectTransform>().position + (transform.right * _currentSpeedP2 * Time.deltaTime);
+            _currentSpeedP2 = _player2LevelScript.Speed * _scale;
+            _player2Minimap.GetComponent<RectTransform>().position = _player2Minimap.GetComponent<RectTransform>().position + (transform.right * _currentSpeedP2 * Time.deltaTime);
 
         }
     }
