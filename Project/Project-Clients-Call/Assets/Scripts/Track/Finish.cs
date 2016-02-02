@@ -64,10 +64,9 @@ public class Finish : MonoBehaviour {
             if (P1Finished && P2Finished)
             {
                 //Application.LoadLevel(3);
-                GameObject.FindObjectOfType<ConfirmScript>().Round++;
-                if (GameObject.FindObjectOfType<ConfirmScript>().Round < 6)
+                if (GameObject.FindObjectOfType<ConfirmScript>().Round < 3)
                 {
-                    GameObject.FindObjectOfType<ConfirmScript>().Round+=2;
+                    GameObject.FindObjectOfType<ConfirmScript>().Round++;
                     Application.LoadLevel(3);
                 }
                 else
