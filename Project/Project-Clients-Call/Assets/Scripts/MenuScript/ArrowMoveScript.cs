@@ -30,7 +30,18 @@ public class ArrowMoveScript : MonoBehaviour {
     private GameObject _startGame;
     private GameObject _musicSlider;
     private GameObject _sfxSlider;
-    
+    private SliderScript1 _slider1;
+    private SliderScript2 _slider2;
+    private ConfirmScript _confirmScript;
+    private ArrowRightScript2 _arrowScript;
+
+    private AudioSource _selectSound;
+    private AudioSource _moveSound;
+
+
+
+
+
 
     private bool _moving = false;
     private bool _moving2 = false;
@@ -60,7 +71,6 @@ public class ArrowMoveScript : MonoBehaviour {
         _controls = GameObject.FindGameObjectWithTag("Controls");
         _sounds = GameObject.FindGameObjectWithTag("Sounds");
         _tutorialText = GameObject.FindGameObjectWithTag("TutorialText");
-        _tutorialButton = GameObject.FindGameObjectWithTag("TutorialButton");
         _cubeOne = GameObject.FindGameObjectWithTag("CubeOne");
         _cubeTwo = GameObject.FindGameObjectWithTag("CubeTwo");
         _cubeThree = GameObject.FindGameObjectWithTag("CubeThree");
@@ -76,7 +86,14 @@ public class ArrowMoveScript : MonoBehaviour {
         _startGame = GameObject.FindGameObjectWithTag("StartGame");
         _musicSlider = GameObject.FindGameObjectWithTag("MusicSlider");
         _sfxSlider = GameObject.FindGameObjectWithTag("SFXSlider");
-       
+
+        _selectSound = GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>();
+        _moveSound = GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>();
+        _slider1 = FindObjectOfType<SliderScript1>();
+        _slider2 = FindObjectOfType<SliderScript2>();
+        _confirmScript = FindObjectOfType<ConfirmScript>();
+        _arrowScript = FindObjectOfType<ArrowRightScript2>();
+
     }
     void Update()
     {
@@ -93,57 +110,50 @@ public class ArrowMoveScript : MonoBehaviour {
 
     void GoToSelectedScene()
     {
-        if (this.gameObject.transform.position == new Vector3(1298, 29, 0) && Input.GetButtonDown("FireP1"))
+        if (gameObject.transform.position == new Vector3(1298, 29, 0) && Input.GetButtonDown("FireP1"))
         {
             _rotationToSelection = true;
             _movingToSelection = true;
-            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
-            GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1 = 0;
-            GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 = 0;
+            _confirmScript.bodyPlayer1 = 0;
+            _confirmScript.bodyPlayer2 = 0;
+            _selectSound.Play();
            
         }
-        if (this.gameObject.transform.position == new Vector3(1298, -25, 0) && Input.GetButtonDown("FireP1"))
+        if (gameObject.transform.position == new Vector3(1298, -25, 0) && Input.GetButtonDown("FireP1"))
         {
             _movingToHowTo = true;
             _rotationHowto = true;
-            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+            _selectSound.Play();
         }
-        if (this.gameObject.transform.position == new Vector3(1298, -79, 0) && Input.GetButtonDown("FireP1"))
+        if (gameObject.transform.position == new Vector3(1298, -79, 0) && Input.GetButtonDown("FireP1"))
         {
             _movingToOptions = true;
             _rotationOptions = true;
-            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
-            
+            _selectSound.Play();
+
         }
-        if (this.gameObject.transform.position == new Vector3(1298, -133, 0) && Input.GetButtonDown("FireP1"))
+        if (gameObject.transform.position == new Vector3(1298, -133, 0) && Input.GetButtonDown("FireP1"))
         {
             _movingToCredits = true;
             _rotationCredits = true;
-            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+            _selectSound.Play();
         }
-        if (this.gameObject.transform.position == new Vector3(1298, -187, 0) && Input.GetButtonDown("FireP1"))
+        if (gameObject.transform.position == new Vector3(1298, -187, 0) && Input.GetButtonDown("FireP1"))
         {
             Application.Quit();
-            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+            _selectSound.Play();
         }
 
-        if ((this.gameObject.transform.position == new Vector3(266, 1294, -457) && Input.GetButtonDown("FireP1")) || (this.gameObject.transform.position == new Vector3(250, 1294, -457) && Input.GetButtonDown("FireP1")) || (_movingToOptions == true && Input.GetButtonDown("FireP1") && this.gameObject.transform.position == new Vector3(112, 1300, 0)) || (this.gameObject.transform.position == new Vector3(220, 1300, 0) && _movingToHowTo == true && Input.GetButtonDown("FireP1")))
+        if ((gameObject.transform.position == new Vector3(266, 1294, -457) && Input.GetButtonDown("FireP1")) || (this.gameObject.transform.position == new Vector3(250, 1294, -457) && Input.GetButtonDown("FireP1")) || (_movingToOptions == true && Input.GetButtonDown("FireP1") && this.gameObject.transform.position == new Vector3(112, 1300, 0)) || (this.gameObject.transform.position == new Vector3(220, 1300, 0) && _movingToHowTo == true && Input.GetButtonDown("FireP1")))
         {
             _rotateBack = true;
-            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
+            _selectSound.Play();
         }
-        if ((this.gameObject.transform.position == new Vector3(150, 1300, 0) && Input.GetButtonDown("FireP1") && _movingToHowTo == true))
+        if (gameObject.transform.position == new Vector3(150,1294,-457) && Input.GetButtonDown ("FireP1"))
         {
             Application.LoadLevel(3);
-            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
-            GameObject.FindObjectOfType<ConfirmScript>().Tutorial = true;
-           
-        }
-        if (this.gameObject.transform.position == new Vector3(150,1294,-457) && Input.GetButtonDown ("FireP1"))
-        {
-            Application.LoadLevel(3);
-            GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>().Play();
-            GameObject.FindObjectOfType<ConfirmScript>().Tutorial = false;
+            _selectSound.Play();
+            _confirmScript.Tutorial = false;
 
         }
     
@@ -189,8 +199,8 @@ public class ArrowMoveScript : MonoBehaviour {
 
             if (_degrees <= -90)
             {
-                this.gameObject.transform.position = new Vector3(150, 1294, -457);
-                GameObject.FindObjectOfType<ArrowRightScript2>().PlaySound = true;
+                gameObject.transform.position = new Vector3(150, 1294, -457);
+                _arrowScript.PlaySound = true;
                 _rotationToSelection = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
                 _degrees = 270;
@@ -218,7 +228,7 @@ public class ArrowMoveScript : MonoBehaviour {
             }
             if (_degrees <= -90)
             {
-                this.gameObject.transform.position = new Vector3(266, 1294, -457);
+                gameObject.transform.position = new Vector3(266, 1294, -457);
                 _creditScreen.transform.position = new Vector3(383, 1868, 225);
                 _rotationCredits = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
@@ -252,13 +262,11 @@ public class ArrowMoveScript : MonoBehaviour {
                 _cubeOne.transform.rotation = Quaternion.Euler(275, 90, 0);
                 _cubeTwo.transform.rotation = Quaternion.Euler(50, 60, 0);
                 _cubeThree.transform.rotation = Quaternion.Euler(90, 90, -180);
-
-
             }
 
             if (_degrees <= -90)
             {
-                this.gameObject.transform.position = new Vector3(-34, 1300, 0);
+                 gameObject.transform.position = new Vector3(-34, 1300, 0);
                 _rotationOptions = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
                 _degrees = 270;
@@ -281,11 +289,9 @@ public class ArrowMoveScript : MonoBehaviour {
             {
                 _backButton.transform.position = new Vector3(220, 1300,0);
                 _backButton.transform.rotation = Quaternion.Euler(274.6854f, 90.00016f, 359.6443f);
-                _tutorialButton.transform.position = new Vector3(150, 1300, 0);
-                _tutorialButton.transform.rotation = Quaternion.Euler(274.6854f, 90.00016f, 359.6443f);
                 _tutorialText.transform.position = new Vector3(-306, 1868, 425);
-                _cubeOne.transform.position = new Vector3(73, 1014, -396);
-                _cubeTwo.transform.position = new Vector3(96, 1256, 279);
+                _cubeOne.transform.position = new Vector3(-80, 1414, -396);
+                _cubeTwo.transform.position = new Vector3(150, 1256, 320);
                 _cubeThree.transform.position = new Vector3(-109, 1072, 369);
                 _cubeOne.transform.rotation = Quaternion.Euler(60, 20, 3);
                 _cubeTwo.transform.rotation = Quaternion.Euler(300, 120, 100);
@@ -294,7 +300,7 @@ public class ArrowMoveScript : MonoBehaviour {
 
             if (_degrees <= -90)
             {
-                this.gameObject.transform.position = new Vector3(150, 1300, 0);
+                 gameObject.transform.position = new Vector3(150, 1300, 0);
                 _rotationHowto = false;
                 _camera.transform.rotation = Quaternion.Euler(270, 90, 0);
                 _degrees = 270;
@@ -309,7 +315,7 @@ public class ArrowMoveScript : MonoBehaviour {
 
         if (_movingToHowTo == false || _movingToCredits == false || _movingToOptions == false || _movingToSelection == false)
         {
-            if (this.gameObject.transform.position == new Vector3(1298, 29, 0))
+            if (gameObject.transform.position == new Vector3(1298, 29, 0))
             {
                 _startButton.transform.position = new Vector3(1183, 0, 243);
                 _howToPlayButton.transform.position = new Vector3(1220, -55, 250);
@@ -318,26 +324,26 @@ public class ArrowMoveScript : MonoBehaviour {
                 _exitButton.transform.position = new Vector3(1220, -220, 250);
 
             }
-            if (this.gameObject.transform.position == new Vector3(1298, -25, 0))
+            if (gameObject.transform.position == new Vector3(1298, -25, 0))
             {
                 _startButton.transform.position = new Vector3(1220, 0, 250);
                 _howToPlayButton.transform.position = new Vector3(1183, -55, 243);
                 _optionsButton.transform.position = new Vector3(1220, -110, 250);
 
             }
-            if (this.gameObject.transform.position == new Vector3(1298, -79, 0))
+            if (gameObject.transform.position == new Vector3(1298, -79, 0))
             {
                 _howToPlayButton.transform.position = new Vector3(1220, -55, 250);
                 _optionsButton.transform.position = new Vector3(1183, -110, 243);
                 _creditsButton.transform.position = new Vector3(1220, -165, 250);
             }
-            if (this.gameObject.transform.position == new Vector3(1298, -133, 0))
+            if (gameObject.transform.position == new Vector3(1298, -133, 0))
             {
                 _optionsButton.transform.position = new Vector3(1220, -110, 250);
                 _creditsButton.transform.position = new Vector3(1183, -160, 243);
                 _exitButton.transform.position = new Vector3(1220, -220, 250);
             }
-            if (this.gameObject.transform.position == new Vector3(1298, -187, 0))
+            if (gameObject.transform.position == new Vector3(1298, -187, 0))
             {
                 _creditsButton.transform.position = new Vector3(1220, -165, 250);
                 _exitButton.transform.position = new Vector3(1183, -217, 243);
@@ -349,12 +355,12 @@ public class ArrowMoveScript : MonoBehaviour {
     {
         if (_movingToSelection == true)
         {
-            if (this.gameObject.transform.position == new Vector3(150, 1294, -457))
+            if (gameObject.transform.position == new Vector3(150, 1294, -457))
             {
                 _startGame.transform.position = new Vector3(190, 1194, 0);
                 _backButton.transform.position = new Vector3(260, 1294, 0);
             }
-            if (this.gameObject.transform.position == new Vector3(250, 1294, -457))
+            if (gameObject.transform.position == new Vector3(250, 1294, -457))
             {
                 _startGame.transform.position = new Vector3(200, 1294, 0);
                 _backButton.transform.position = new Vector3(240, 1194, 0);
@@ -363,44 +369,35 @@ public class ArrowMoveScript : MonoBehaviour {
         }
         if (_movingToOptions == true)
         {
-            if (this.gameObject.transform.position == new Vector3(-34, 1300, 0))
+            if (gameObject.transform.position == new Vector3(-34, 1300, 0))
             {
                 _controls.transform.position = new Vector3(-34, 1300, 180);
                 _sounds.transform.position = new Vector3(39, 1300, 200);
-                GameObject.FindObjectOfType<SliderScript1>().Music = true;
-                GameObject.FindObjectOfType<SliderScript2>().Sound = false;
+                _slider1.Music = true;
+                _slider2.Sound = false;
             }
-            if (this.gameObject.transform.position == new Vector3(39, 1300, 0))
+            if (gameObject.transform.position == new Vector3(39, 1300, 0))
             {
                 _controls.transform.position = new Vector3(-34, 1300, 200);
                 _sounds.transform.position = new Vector3(39, 1300, 180);
                 _backButton.transform.position = new Vector3(107, 1300, 0);
-                GameObject.FindObjectOfType<SliderScript1>().Music = false;
-                GameObject.FindObjectOfType<SliderScript2>().Sound = true;
+                _slider1.Music = false;
+                _slider2.Sound = true;
             }
-            if (this.gameObject.transform.position == new Vector3(112, 1300, 0))
+            if (gameObject.transform.position == new Vector3(112, 1300, 0))
             {
                 
                 _sounds.transform.position = new Vector3(39, 1300, 200);
                 _backButton.transform.position = new Vector3(107, 1200, 0);
-                GameObject.FindObjectOfType<SliderScript1>().Music = false;
-                GameObject.FindObjectOfType<SliderScript2>().Sound = false;
+                _slider1.Music = false;
+                _slider2.Sound = false;
             }
         }
         if (_movingToHowTo == true)
         {
-            if (this.gameObject.transform.position == new Vector3(150, 1300, 0))
+            if (gameObject.transform.position == new Vector3(220, 1300, 0))
             {
-
-                _tutorialButton.transform.position = new Vector3(140, 1200, 0);
-                _backButton.transform.position = new Vector3(220, 1300, 0);
-                
-            }
-            if (this.gameObject.transform.position == new Vector3(220, 1300, 0))
-            {
-                _tutorialButton.transform.position = new Vector3(150, 1300, 0);
                 _backButton.transform.position = new Vector3(200, 1200, 0);
-               
             }
         }
     }
@@ -409,20 +406,20 @@ public class ArrowMoveScript : MonoBehaviour {
     {
         if (_movingToSelection)
         {
-            if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && this.gameObject.transform.position.x < 250)
+            if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && gameObject.transform.position.x < 250)
             {
-                this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(100, 0, 0);
-                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+                gameObject.transform.position = gameObject.transform.position + new Vector3(100, 0, 0);
+                _moveSound.Play();
                
             }
 
-            if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && this.gameObject.transform.position.x > 150)
+            if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && gameObject.transform.position.x > 150)
             {
-                this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(100, 0, 0);
-                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+               gameObject.transform.position = gameObject.transform.position - new Vector3(100, 0, 0);
+                _moveSound.Play();
                 
             }
-            if (this.gameObject.transform.position == new Vector3(150, 1294, -457))
+            if (gameObject.transform.position == new Vector3(150, 1294, -457))
             {
                 _moving = true;
                 _moving2 = true;
@@ -438,7 +435,7 @@ public class ArrowMoveScript : MonoBehaviour {
                 }
 
             }
-            if (this.gameObject.transform.position == new Vector3(250, 1294, -457))
+            if (gameObject.transform.position == new Vector3(250, 1294, -457))
             {
                 _moving = true;
                 _moving2 = true;
@@ -457,19 +454,19 @@ public class ArrowMoveScript : MonoBehaviour {
 
         if (_movingToHowTo == true)
         {
-            if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && this.gameObject.transform.position.x < 220)
+            if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && gameObject.transform.position.x < 220)
             {
-                this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(70, 0, 0);
-                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+                gameObject.transform.position = gameObject.transform.position + new Vector3(70, 0, 0);
+                _moveSound.Play();
             }
 
-            if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && this.gameObject.transform.position.x > 150)
+            if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && gameObject.transform.position.x > 150)
             {
-                this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(70, 0, 0);
-                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+                gameObject.transform.position = gameObject.transform.position - new Vector3(70, 0, 0);
+                _moveSound.Play();
                
             }
-            if (this.gameObject.transform.position == new Vector3(150, 1300, 0))
+            if (gameObject.transform.position == new Vector3(150, 1300, 0))
             {
                 _moving = true;
                 _moving2 = true;
@@ -485,7 +482,7 @@ public class ArrowMoveScript : MonoBehaviour {
                 }
 
             }
-            if (this.gameObject.transform.position == new Vector3(220, 1300, 0))
+            if (gameObject.transform.position == new Vector3(220, 1300, 0))
             {
                 _moving = true;
                 _moving2 = true;
@@ -505,18 +502,18 @@ public class ArrowMoveScript : MonoBehaviour {
 
         if (_movingToOptions == true )
         {
-            if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && this.gameObject.transform.position.x < 112)
+            if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && gameObject.transform.position.x < 112)
             {
-                this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(73, 0, 0);
-                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+                gameObject.transform.position = gameObject.transform.position + new Vector3(73, 0, 0);
+                _moveSound.Play();
             }
 
-            if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && this.gameObject.transform.position.x > -34 )
+            if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && gameObject.transform.position.x > -34 )
             {
-                this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(73, 0, 0);
-                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+                gameObject.transform.position = gameObject.transform.position - new Vector3(73, 0, 0);
+                _moveSound.Play();
             }
-            if (this.gameObject.transform.position == new Vector3(-34, 1300, 0))
+            if (gameObject.transform.position == new Vector3(-34, 1300, 0))
             {
                 _moving = true;
                 _moving2 = true;
@@ -532,7 +529,7 @@ public class ArrowMoveScript : MonoBehaviour {
                 }
 
             }
-            if (this.gameObject.transform.position == new Vector3(39, 1300, 0))
+            if (gameObject.transform.position == new Vector3(39, 1300, 0))
             {
                 _moving = true;
                 _moving2 = true;
@@ -546,7 +543,7 @@ public class ArrowMoveScript : MonoBehaviour {
                     _moving2 = false;
                 }
             }
-            if (this.gameObject.transform.position == new Vector3(112, 1300, 0))
+            if (gameObject.transform.position == new Vector3(112, 1300, 0))
             {
                 _moving = true;
                 _moving2 = true;
@@ -564,34 +561,19 @@ public class ArrowMoveScript : MonoBehaviour {
 
         if (_movingToOptions == false || _movingToHowTo == false || _movingToCredits == false || _movingToSelection == false)
         {
-            if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && this.gameObject.transform.position.y > -187)
+            if (Input.GetAxis("Vertical P1") < -0.5f && _moving == false && gameObject.transform.position.y > -187)
             {
-                this.gameObject.transform.position = this.gameObject.transform.position - new Vector3(0, 54, 0);
-                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+                gameObject.transform.position = gameObject.transform.position - new Vector3(0, 54, 0);
+                _moveSound.Play();
             }
 
-            if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && this.gameObject.transform.position.y < 29)
+            if (Input.GetAxis("Vertical P1") > 0.5f && _moving2 == false && gameObject.transform.position.y < 29)
             {
-                this.gameObject.transform.position = this.gameObject.transform.position + new Vector3(0, 54, 0);
-                GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>().Play();
+               gameObject.transform.position = gameObject.transform.position + new Vector3(0, 54, 0);
+                _moveSound.Play();
             }
 
-            if (this.gameObject.transform.position == new Vector3(1298, -25, 0))
-            {
-                _moving = true;
-                _moving2 = true;
-
-                if (Input.GetAxis("Vertical P1") > -0.5f && _moving == true)
-                {
-                    _moving = false;
-                }
-                if (Input.GetAxis("Vertical P1") < 0.5f && _moving2 == true)
-                {
-                    _moving2 = false;
-                }
-
-            }
-            if (this.gameObject.transform.position == new Vector3(1298, -79, 0))
+            if (gameObject.transform.position == new Vector3(1298, -25, 0))
             {
                 _moving = true;
                 _moving2 = true;
@@ -604,8 +586,9 @@ public class ArrowMoveScript : MonoBehaviour {
                 {
                     _moving2 = false;
                 }
+
             }
-            if (this.gameObject.transform.position == new Vector3(1298, -133, 0))
+            if (gameObject.transform.position == new Vector3(1298, -79, 0))
             {
                 _moving = true;
                 _moving2 = true;
@@ -619,7 +602,21 @@ public class ArrowMoveScript : MonoBehaviour {
                     _moving2 = false;
                 }
             }
-            if (this.gameObject.transform.position == new Vector3(1298, -187, 0))
+            if (gameObject.transform.position == new Vector3(1298, -133, 0))
+            {
+                _moving = true;
+                _moving2 = true;
+
+                if (Input.GetAxis("Vertical P1") > -0.5f && _moving == true)
+                {
+                    _moving = false;
+                }
+                if (Input.GetAxis("Vertical P1") < 0.5f && _moving2 == true)
+                {
+                    _moving2 = false;
+                }
+            }
+            if (gameObject.transform.position == new Vector3(1298, -187, 0))
             {
                 _moving = true;
                 _moving2 = true;
@@ -653,8 +650,7 @@ public class ArrowMoveScript : MonoBehaviour {
                 _sounds.transform.position = new Vector3(81, 2637, 0);
                 _backButton.transform.position = new Vector3(206, 1846, -489);
                 _tutorialText.transform.position = new Vector3(-306, 2568, 417);
-                _tutorialButton.transform.position = new Vector3(206, 2846, -489);
-                this.gameObject.transform.position = new Vector3(1298, 29, 0);
+                 gameObject.transform.position = new Vector3(1298, 29, 0);
                 _cubeOne.transform.position = new Vector3(1679, -315, -475);
                 _cubeTwo.transform.position = new Vector3(1256.42f, 0, 0);
                 _cubeThree.transform.position = new Vector3(1312.2f, -214.1f, 463.7f);
@@ -687,7 +683,7 @@ public class ArrowMoveScript : MonoBehaviour {
                 _movingToOptions = false;
                 _movingToHowTo = false;
                 _movingToSelection = false;
-                GameObject.FindObjectOfType<ArrowRightScript2>().PlaySound = false;
+                _arrowScript.PlaySound = false;
 
             }
             if (_degrees == 360)
