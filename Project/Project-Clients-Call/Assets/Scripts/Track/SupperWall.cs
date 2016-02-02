@@ -3,10 +3,20 @@ using System.Collections;
 
 public class SupperWall : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    Player1LevelScript player1LevelScript;
+    Player2LevelScript player2LevelScript;
+    Player1MoveScript player1MoveScript;
+    Player2MoveScript player2MoveScript;
+    ConfirmScript confirmScript;
+    // Use this for initialization
+    void Start () {
+
+        player1LevelScript = GameObject.FindObjectOfType<Player1LevelScript>();
+        player2LevelScript = GameObject.FindObjectOfType<Player2LevelScript>();
+        player1MoveScript = GameObject.FindObjectOfType<Player1MoveScript>();
+        player2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
+        confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,15 +33,15 @@ public class SupperWall : MonoBehaviour {
         {
             //this.enabled = false;
             //this.GetComponentInChildren<MeshRenderer>().enabled = false;
-            if (this.transform.parent.name == GameObject.FindObjectOfType<Player1LevelScript>().transform.name)
+            if (this.transform.parent.name == player1LevelScript.transform.name)
             {
-                GameObject.FindObjectOfType<Player1LevelScript>().SuperWallHit = false;
-                GameObject.FindObjectOfType<Player1LevelScript>().Speed = 10;
+                player1LevelScript.SuperWallHit = false;
+                player1LevelScript.Speed = 10;
             }
-            if (this.transform.parent.name == GameObject.FindObjectOfType<Player2LevelScript>().transform.name)
+            if (this.transform.parent.name == player2LevelScript.transform.name)
             {
-                GameObject.FindObjectOfType<Player2LevelScript>().SuperWallHit = false;
-                GameObject.FindObjectOfType<Player2LevelScript>().Speed = 10;
+                player2LevelScript.SuperWallHit = false;
+                player2LevelScript.Speed = 10;
             }
             Destroy(this.gameObject);
             Destroy(other.gameObject);
@@ -40,20 +50,21 @@ public class SupperWall : MonoBehaviour {
         //{
         //    Destroy(this);
         //}
-        if (other.transform.name == GameObject.FindObjectOfType<Player1MoveScript>().transform.name)
+        if (other.transform.name == player1MoveScript.transform.name)
         {
-            GameObject.FindObjectOfType<Player1LevelScript>().Speed = 0;
-            GameObject.FindObjectOfType<Player1LevelScript>().SuperWallHit = true;
+            player1LevelScript.Speed = 0;
+            player1LevelScript.SuperWallHit = true;
         }
-        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        if (confirmScript.Tutorial == false)
         {
-            if (other.transform.name == GameObject.FindObjectOfType<Player2MoveScript>().transform.name)
+            if (other.transform.name == player2MoveScript.transform.name)
             {
-                GameObject.FindObjectOfType<Player2LevelScript>().Speed = 0;
-                GameObject.FindObjectOfType<Player2LevelScript>().SuperWallHit = true;
+                player2LevelScript.Speed = 0;
+                player2LevelScript.SuperWallHit = true;
             }
         }
     }
+
 
    
 }
