@@ -24,6 +24,11 @@ public class Jumpscript : MonoBehaviour
     private Quaternion _player1Rotation;
     private Quaternion _player2Rotation;
 
+    private Player1MoveScript _player1MoveScript;
+    private BankingP1Script _bankingP1Script;
+    private Player2MoveScript _player2MoveScript;
+    private BankingP2Script _bankingP2Script;
+
 
     public bool JumpP1 { set { _jumpP1 = value; } get { return _jumpP1; } }
     public bool JumpP2 { set { _jumpP2 = value; } get { return _jumpP2; } }
@@ -43,7 +48,12 @@ public class Jumpscript : MonoBehaviour
             _jumpHeightP2 = _defaultPlayer2Y;
 
             _rotationP2 = _defaultRotationP2;
-	}
+	    }
+
+        _player1MoveScript = GameObject.FindObjectOfType<Player1MoveScript>();
+        _bankingP1Script = GameObject.FindObjectOfType<BankingP1Script>();
+        _player2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
+        _bankingP2Script = GameObject.FindObjectOfType<BankingP2Script>();
     }
 	
 	// Update is called once per frame
@@ -78,17 +88,13 @@ public class Jumpscript : MonoBehaviour
                     _rotationP1 = _defaultRotationP1;
                     _jumpP1 = false;
                     _goingUp1 = true;
-                    //if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == true)
-                    //{
-                    //    GameObject.FindObjectOfType<TutorialScript>().Ramp = true;
-                    //}
 
             }
-            Vector3 PlayerPosition = GameObject.FindObjectOfType<Player1MoveScript>().transform.position;
-          
+            Vector3 PlayerPosition = _player1MoveScript.transform.position;
 
-            GameObject.FindObjectOfType<Player1MoveScript>().transform.position = new Vector3(PlayerPosition.x, _jumpHeightP1, PlayerPosition.z);
-            GameObject.FindObjectOfType<BankingP1Script>().transform.rotation = Quaternion.Euler(_player1Rotation.x, _rotationP1, _player1Rotation.z);
+
+            _player1MoveScript.transform.position = new Vector3(PlayerPosition.x, _jumpHeightP1, PlayerPosition.z);
+            _bankingP1Script.transform.rotation = Quaternion.Euler(_player1Rotation.x, _rotationP1, _player1Rotation.z);
             
         }
         if (_jumpP2)
@@ -118,12 +124,10 @@ public class Jumpscript : MonoBehaviour
                 }
 
             }
-            Vector3 PlayerPosition = GameObject.FindObjectOfType<Player2MoveScript>().transform.position;
-          
+            Vector3 PlayerPosition = _player2MoveScript.transform.position;
 
-            GameObject.FindObjectOfType<Player2MoveScript>().transform.position = new Vector3(PlayerPosition.x, _jumpHeightP2, PlayerPosition.z);
-            //GameObject.FindObjectOfType<BankingP2Script>().transform.rotation = Quaternion.Euler(_player2Rotation.x, _rotationP2, _player2Rotation.z);
-            GameObject.FindObjectOfType<BankingP2Script>().transform.Rotate(_player2Rotation.x, _rotationP2, _player2Rotation.z);
+            _player2MoveScript.transform.position = new Vector3(PlayerPosition.x, _jumpHeightP2, PlayerPosition.z);
+            _bankingP2Script.transform.Rotate(_player2Rotation.x, _rotationP2, _player2Rotation.z);
         }
     
     }
