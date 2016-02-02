@@ -25,6 +25,7 @@ public class Checkpoints : MonoBehaviour
         _checkpointSound = GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>();
         _player1MoveScript = GameObject.FindObjectOfType<Player1MoveScript>();
         _player2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
+        _scoreScript = GameObject.FindObjectOfType<ScoreScript>();
     }
 
     // Update is called once per frame
