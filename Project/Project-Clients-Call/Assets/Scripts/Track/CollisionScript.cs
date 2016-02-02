@@ -23,6 +23,15 @@ public class CollisionScript : MonoBehaviour
     [SerializeField]
     private GameObject _disappearWall;
 
+    private Player1LevelScript _player1LevelScript;
+    private PowerUpScriptP1 _powerupScriptP1;
+    private ScoreScript _scoreScript;
+    private GameObject _hittingWall;
+    private Player2LevelScript _player2LevelScript;
+    private PowerUpScriptP1 _powerUpScriptP1;
+    private TutorialScript _tutorialScript;
+    private ConfirmScript _confirmScript;
+
     public GameObject DisappearWall { get { return _disappearWall; } }
 
     // Use this for initialization
@@ -32,7 +41,14 @@ public class CollisionScript : MonoBehaviour
         {
             round = GameObject.FindObjectOfType<ConfirmScript>().Round;
         }
-        
+        _player1LevelScript = GameObject.FindObjectOfType<Player1LevelScript>();
+        _powerupScriptP1 = GameObject.FindObjectOfType<PowerUpScriptP1>();
+        _scoreScript = GameObject.FindObjectOfType<ScoreScript>();
+        _hittingWall = GameObject.Find("HittingWall");
+        _player2LevelScript = GameObject.FindObjectOfType<Player2LevelScript>();
+        _powerUpScriptP1 = GameObject.FindObjectOfType<PowerUpScriptP1>();
+        _tutorialScript = GameObject.FindObjectOfType<TutorialScript>();
+        _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
     }
 
     // Update is called once per frame
@@ -58,14 +74,14 @@ public class CollisionScript : MonoBehaviour
             }
             //_disappearWall.transform.position = this.transform.position;
         }
-        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        if (_confirmScript.Tutorial == false)
         {
-            if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
+            if (other.gameObject.name == _player1LevelScript.name && _powerupScriptP1.Invulnerable)
             {
-                GameObject.FindObjectOfType<Player1LevelScript>().SlowSpeed = true;
-                
-                GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Wall;
-                GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
+                _player1LevelScript.SlowSpeed = true;
+
+                _scoreScript.P1ScoreType = ScoreScript.ScoreType.Wall;
+                _hittingWall.GetComponent<AudioSource>().Play();
                 Instantiate(_replacedPrefab);
                 _replacedPrefab.gameObject.transform.position = other.gameObject.transform.position;
                 _replacedPrefab.gameObject.transform.rotation = other.gameObject.transform.rotation;
@@ -75,11 +91,11 @@ public class CollisionScript : MonoBehaviour
                     GetComponent<TrackBlockScript>().OnBecameInvisible();
                 }
             }
-            if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
+            if (other.gameObject.name == _player2LevelScript.name && !_powerUpScriptP1.Invulnerable)
             {
-                GameObject.FindObjectOfType<Player2LevelScript>().SlowSpeed = true;
-                GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Wall;
-                GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
+                _player2LevelScript.SlowSpeed = true;
+                _scoreScript.P2ScoreType = ScoreScript.ScoreType.Wall;
+                _hittingWall.GetComponent<AudioSource>().Play();
                 Instantiate(_replacedPrefab);
 
                 _replacedPrefab.gameObject.transform.position = new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y - 0.5f, other.gameObject.transform.rotation.z);
@@ -93,12 +109,12 @@ public class CollisionScript : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name && !GameObject.FindObjectOfType<PowerUpScriptP1>().Invulnerable)
+            if (other.gameObject.name == _player1LevelScript.name && !_powerupScriptP1.Invulnerable)
             {
-                GameObject.FindObjectOfType<Player1LevelScript>().SlowSpeed = true;
-                GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Wall;
-                GameObject.FindObjectOfType<TutorialScript>().Wall = true;
-                GameObject.FindGameObjectWithTag("HittingWall").GetComponent<AudioSource>().Play();
+                _player1LevelScript.SlowSpeed = true;
+                _scoreScript.P1ScoreType = ScoreScript.ScoreType.Wall;
+                _tutorialScript.Wall = true;
+                _hittingWall.GetComponent<AudioSource>().Play();
                 Instantiate(_replacedPrefab);
                 _replacedPrefab.gameObject.transform.position = other.gameObject.transform.position;
                 _replacedPrefab.gameObject.transform.rotation = other.gameObject.transform.rotation;
