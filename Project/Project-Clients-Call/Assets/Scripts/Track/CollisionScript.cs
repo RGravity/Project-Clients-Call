@@ -24,11 +24,13 @@ public class CollisionScript : MonoBehaviour
     private GameObject _disappearWall;
 
     private Player1LevelScript _player1LevelScript;
+    private Player1MoveScript _player1MoveScript;
     private PowerUpScriptP1 _powerupScriptP1;
     private ScoreScript _scoreScript;
     private GameObject _hittingWall;
     private Player2LevelScript _player2LevelScript;
-    private PowerUpScriptP1 _powerUpScriptP1;
+    private Player2MoveScript _player2MoveScript;
+    private PowerUpScriptP2 _powerUpScriptP2;
     private TutorialScript _tutorialScript;
     private ConfirmScript _confirmScript;
 
@@ -41,12 +43,14 @@ public class CollisionScript : MonoBehaviour
         {
             round = GameObject.FindObjectOfType<ConfirmScript>().Round;
         }
+        _player1MoveScript = GameObject.FindObjectOfType<Player1MoveScript>();
         _player1LevelScript = GameObject.FindObjectOfType<Player1LevelScript>();
         _powerupScriptP1 = GameObject.FindObjectOfType<PowerUpScriptP1>();
         _scoreScript = GameObject.FindObjectOfType<ScoreScript>();
         _hittingWall = GameObject.Find("HittingWall");
         _player2LevelScript = GameObject.FindObjectOfType<Player2LevelScript>();
-        _powerUpScriptP1 = GameObject.FindObjectOfType<PowerUpScriptP1>();
+        _player2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
+        _powerUpScriptP2 = GameObject.FindObjectOfType<PowerUpScriptP2>();
         _tutorialScript = GameObject.FindObjectOfType<TutorialScript>();
         _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
     }
@@ -76,7 +80,7 @@ public class CollisionScript : MonoBehaviour
         }
         if (_confirmScript.Tutorial == false)
         {
-            if (other.gameObject.name == _player1LevelScript.name && _powerupScriptP1.Invulnerable)
+            if (other.gameObject.name == _player1MoveScript.name && !_powerupScriptP1.Invulnerable)
             {
                 _player1LevelScript.SlowSpeed = true;
 
@@ -91,7 +95,7 @@ public class CollisionScript : MonoBehaviour
                     GetComponent<TrackBlockScript>().OnBecameInvisible();
                 }
             }
-            if (other.gameObject.name == _player2LevelScript.name && !_powerUpScriptP1.Invulnerable)
+            if (other.gameObject.name == _player2MoveScript.name && !_powerUpScriptP2.Invulnerable)
             {
                 _player2LevelScript.SlowSpeed = true;
                 _scoreScript.P2ScoreType = ScoreScript.ScoreType.Wall;
@@ -109,7 +113,7 @@ public class CollisionScript : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.name == _player1LevelScript.name && !_powerupScriptP1.Invulnerable)
+            if (other.gameObject.name == _player1MoveScript.name && !_powerupScriptP1.Invulnerable)
             {
                 _player1LevelScript.SlowSpeed = true;
                 _scoreScript.P1ScoreType = ScoreScript.ScoreType.Wall;
