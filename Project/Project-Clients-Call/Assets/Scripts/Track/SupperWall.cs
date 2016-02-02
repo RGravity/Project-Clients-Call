@@ -46,15 +46,15 @@ public class SupperWall : MonoBehaviour {
         }
         if (other.transform.name == player1MoveScript.transform.name)
         {
-            player1LevelScript.Speed = 0;
             player1LevelScript.SuperWallHit = true;
+            player1LevelScript.Speed = 0;
         }
         if (confirmScript.Tutorial == false)
         {
             if (other.transform.name == player2MoveScript.transform.name)
             {
-                player2LevelScript.Speed = 0;
                 player2LevelScript.SuperWallHit = true;
+                player2LevelScript.Speed = 0;
             }
         }
     }
