@@ -40,14 +40,14 @@ public class CoinScript : MonoBehaviour {
                 _scoreScript.P1ScoreType = ScoreScript.ScoreType.Coin;
                 _coinSound.Play();
                 respawn = true;
-                Destroy(this.gameObject);
+                falseDestroy(this.gameObject);
             }
             else if (other.gameObject.name == _p2MoveScript.name)
             {
                 _scoreScript.P2ScoreType = ScoreScript.ScoreType.Coin;
                 _coinSound.Play();
                 respawn = true;
-                Destroy(this.gameObject);
+                falseDestroy(this.gameObject);
             }
         }
         else
@@ -56,7 +56,7 @@ public class CoinScript : MonoBehaviour {
             {
                 _coinSound.Play();
                 _tutorialScript.Coin = true;
-                Destroy(this.gameObject);
+                falseDestroy(this.gameObject);
             }
         }
     }
@@ -67,7 +67,7 @@ public class CoinScript : MonoBehaviour {
         {
             Vector3 newPosition = this.transform.position;
             newPosition.z += _zBlocks;
-            _trackBuildScript.SpawnCoin(newPosition, this.gameObject.transform.parent.gameObject);
+            this.transform.position = newPosition;
         }
     }
 
@@ -77,8 +77,18 @@ public class CoinScript : MonoBehaviour {
         {
             respawn = true;
         }
-        Destroy(this.gameObject);
+        falseDestroy(this.gameObject);
         
       
+    }
+
+    private void falseDestroy(GameObject GO)
+    {
+        if (respawn)
+        {
+            Vector3 newPosition = this.transform.position;
+            newPosition.z += _zBlocks;
+            this.transform.position = newPosition;
+        }
     }
 }

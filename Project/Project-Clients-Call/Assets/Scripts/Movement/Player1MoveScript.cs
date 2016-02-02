@@ -12,6 +12,11 @@ public class Player1MoveScript : MonoBehaviour {
     private bool _moveVertical = false;
     private bool _moveHorizontal = false;
 
+    private int _bodyPlayer1;
+    private Player1LevelScript _p1LevelScript;
+    private ConfirmScript _confirmScript;
+    private AudioSource _playerMovementAudio;
+
     private Animator[] _animatorList;
 
 	// Use this for initialization
@@ -19,11 +24,15 @@ public class Player1MoveScript : MonoBehaviour {
         _startPosition = transform.position;
         _animator = GetComponentInChildren<Animator>();
         _animatorList = GetComponentsInChildren<Animator>();
-	}
+        _bodyPlayer1 = GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1;
+        _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
+        _p1LevelScript = GameObject.FindObjectOfType<Player1LevelScript>();
+        _playerMovementAudio = GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameObject.FindObjectOfType<Player1LevelScript>().LevelStarted)
+        if (_p1LevelScript.LevelStarted)
         {
             Vector3 moveDir = Vector3.zero;
             moveDir.x = Input.GetAxis("Horizontal P1") * 12; // get result of AD keys in X
@@ -76,7 +85,7 @@ public class Player1MoveScript : MonoBehaviour {
             {
                 // Call your event function here.
                 _moveVertical = true;
-                GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>().Play();
+                _playerMovementAudio.Play();
             }
         }
         if (Input.GetAxisRaw("Vertical P1") == 0)
@@ -90,7 +99,7 @@ public class Player1MoveScript : MonoBehaviour {
             {
                 // Call your event function here.
                 _moveHorizontal  = true;
-                GameObject.FindGameObjectWithTag("PlayerMovement").GetComponent<AudioSource>().Play();
+                _playerMovementAudio.Play();
             }
         }
         if (Input.GetAxisRaw("Horizontal P1") == 0)
@@ -101,55 +110,11 @@ public class Player1MoveScript : MonoBehaviour {
 
     void AnimationPlayer()
     {
-
-       
-        //if (Input.GetAxis("Vertical P1") > 0)
-        //{
-        //    if (GameObject.FindObjectOfType<Player1LevelScript>().Speed == 0)
-        //    {
-        //        _animator.Play("idle");
-        //    }
-        //    else if (transform.position.z > (_startPosition.z + 3.9f))
-        //    {
-        //        _animator.Play("speed 1 L");
-        //    }
-        //    else
-        //    {
-        //        _animator.Play("speed 1 S");
-        //    }
-        //}
-        //if (GameObject.FindObjectOfType<Player1LevelScript>().Speed == 0)
-        //{
-        //    _animator.Play("idle");
-        //}
-        //else if (Input.GetAxis("Vertical P1") < 0)
-        //{
-        //    //Debug.Log(transform.position.z);
-        //    _animator.Play("stop");
-        //    if (_startPosition.z < -3.9f)
-        //    {
-        //        _animator.Play("stop");
-        //    }
-        //    else if (transform.position.z < (_startPosition.z - 4.0f))
-        //    {
-        //        _animator.Play("speed 1 L");
-        //    }
-        //}
-
-        //if (Input.GetButtonDown("Fire2P1"))
-        //{
-        //    _animator.Play("fire");
-        //    _fireAnimation = Time.time+1.5f;
-        //}
-        //else if (Input.GetAxis("Vertical P1") == 0 && _fireAnimation < Time.time)
-        //{
-        //    _animator.Play("speed 1 L");
-        //}
-        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == true)
+        if (_confirmScript.Tutorial == true)
         {
             if (Input.GetAxis("Vertical P1") > 0)
             {
-                if (GameObject.FindObjectOfType<Player1LevelScript>().Speed == 0)
+                if (_p1LevelScript.Speed == 0)
                 {
                     _animator.Play("idle");
                 }
@@ -162,7 +127,7 @@ public class Player1MoveScript : MonoBehaviour {
                     _animator.Play("speed 1 S");
                 }
             }
-            if (GameObject.FindObjectOfType<Player1LevelScript>().Speed == 0)
+            if (_p1LevelScript.Speed == 0)
             {
                 _animator.Play("idle");
             }
@@ -194,46 +159,45 @@ public class Player1MoveScript : MonoBehaviour {
         {
             if (Input.GetAxis("Vertical P1") > 0)
             {
-                if (GameObject.FindObjectOfType<Player1LevelScript>().Speed == 0)
+                if (_p1LevelScript.Speed == 0)
                 {
-                    _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("idle");
+                    _animatorList[_bodyPlayer1].Play("idle");
                 }
                 else if (transform.position.z > (_startPosition.z + 3.9f))
                 {
-                    _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("speed 1 L");
+                    _animatorList[_bodyPlayer1].Play("speed 1 L");
                 }
                 else
                 {
-                    _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("speed 1 S");
+                    _animatorList[_bodyPlayer1].Play("speed 1 S");
                 }
             }
-            if (GameObject.FindObjectOfType<Player1LevelScript>().Speed == 0)
+            if (_p1LevelScript.Speed == 0)
             {
-                _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("idle");
+                _animatorList[_bodyPlayer1].Play("idle");
             }
             else if (Input.GetAxis("Vertical P1") < 0)
             {
-                //Debug.Log(transform.position.z);
-                _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("stop");
+                _animatorList[_bodyPlayer1].Play("stop");
                 if (_startPosition.z < -3.9f)
                 {
-                    _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("stop");
+                    _animatorList[_bodyPlayer1].Play("stop");
                 }
                 else if (transform.position.z < (_startPosition.z - 4.0f))
                 {
-                    _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("speed 1 L");
+                    _animatorList[_bodyPlayer1].Play("speed 1 L");
                 }
             }
 
             if (Input.GetButtonDown("Fire2P1"))
             {
-                _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("fire");
+                _animatorList[_bodyPlayer1].Play("fire");
                 _fireAnimation = Time.time + 1.5f;
                
             }
             else if (Input.GetAxis("Vertical P1") == 0 && _fireAnimation < Time.time)
             {
-                _animatorList[GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer1].Play("speed 1 L");
+                _animatorList[_bodyPlayer1].Play("speed 1 L");
             }
         }
     }
