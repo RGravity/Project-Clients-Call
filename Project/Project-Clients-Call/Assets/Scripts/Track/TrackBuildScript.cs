@@ -140,7 +140,7 @@ public class TrackBuildScript : MonoBehaviour {
             if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
             {
                 int difficulty;
-                int round = GameObject.FindObjectOfType<ConfirmScript>().Round / 2;
+                int round = GameObject.FindObjectOfType<ConfirmScript>().Round;
                 switch (round)
                 {
                     case 1: // round 1

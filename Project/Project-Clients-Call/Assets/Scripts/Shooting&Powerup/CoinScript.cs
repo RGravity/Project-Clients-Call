@@ -7,10 +7,24 @@ public class CoinScript : MonoBehaviour {
     public int ZBlocks { set { _zBlocks = value; } }
     private bool respawn = false;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    private ConfirmScript _confirmScript;
+    private Player1MoveScript _p1MoveScript;
+    private Player2MoveScript _p2MoveScript;
+    private ScoreScript _scoreScript;
+    private AudioSource _coinSound;
+    private TutorialScript _tutorialScript;
+    private TrackBuildScript _trackBuildScript;
+
+    // Use this for initialization
+    void Start () {
+        _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
+        _p1MoveScript = GameObject.FindObjectOfType<Player1MoveScript>();
+        _p2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
+        _scoreScript = GameObject.FindObjectOfType<ScoreScript>();
+        _coinSound = GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>();
+        _tutorialScript = GameObject.FindObjectOfType<TutorialScript>();
+        _trackBuildScript = GameObject.FindObjectOfType<TrackBuildScript>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,31 +33,29 @@ public class CoinScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        if (_confirmScript.Tutorial == false)
         {
-            if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
+            if (other.gameObject.name == _p1MoveScript.name)
             {
-                GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Coin;
-                GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
+                _scoreScript.P1ScoreType = ScoreScript.ScoreType.Coin;
+                _coinSound.Play();
                 respawn = true;
                 Destroy(this.gameObject);
             }
-            else if (other.gameObject.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
+            else if (other.gameObject.name == _p2MoveScript.name)
             {
-                GameObject.FindObjectOfType<ScoreScript>().P2ScoreType = ScoreScript.ScoreType.Coin;
-                GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
+                _scoreScript.P2ScoreType = ScoreScript.ScoreType.Coin;
+                _coinSound.Play();
                 respawn = true;
                 Destroy(this.gameObject);
             }
         }
         else
         {
-            if (other.gameObject.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
+            if (other.gameObject.name == _p1MoveScript.name)
             {
-                //GameObject.FindObjectOfType<ScoreScript>().P1ScoreType = ScoreScript.ScoreType.Coin;
-                GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>().Play();
-                //respawn = true;
-                GameObject.FindObjectOfType<TutorialScript>().Coin = true;
+                _coinSound.Play();
+                _tutorialScript.Coin = true;
                 Destroy(this.gameObject);
             }
         }
@@ -55,13 +67,13 @@ public class CoinScript : MonoBehaviour {
         {
             Vector3 newPosition = this.transform.position;
             newPosition.z += _zBlocks;
-            GameObject.FindObjectOfType<TrackBuildScript>().SpawnCoin(newPosition, this.gameObject.transform.parent.gameObject);
+            _trackBuildScript.SpawnCoin(newPosition, this.gameObject.transform.parent.gameObject);
         }
     }
 
     void OnBecameInvisible()
     {
-        if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+        if (_confirmScript.Tutorial == false)
         {
             respawn = true;
         }
