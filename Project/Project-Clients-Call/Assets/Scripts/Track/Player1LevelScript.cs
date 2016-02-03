@@ -35,6 +35,8 @@ public class Player1LevelScript : MonoBehaviour {
     public bool SuperWallHit { get { return _superWallHit; } set { _superWallHit = value; } }
     public bool OctagonCollision { get { return _octagonCollision; } set { _octagonCollision = value; } }
 
+    private Image _countDown;
+    private ConfirmScript _confirmScript;
 
     // Update is called once per frame
     void Update()
@@ -45,6 +47,8 @@ public class Player1LevelScript : MonoBehaviour {
     void Start()
     {
         _stopTime = Time.time;
+        _countDown = GameObject.Find("Countdown").GetComponent<Image>();
+        _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
     }
 
     private void MoveWorld()
@@ -60,29 +64,29 @@ public class Player1LevelScript : MonoBehaviour {
             gameObject.transform.position = transform.position - (transform.forward * _speed * Time.deltaTime);
             if (Time.time > (_stopTime + 4))
             {
-                GameObject.Find("Countdown").GetComponent<Image>().enabled = false;
+                _countDown.enabled = false;
             }
         }
         else if (!_levelStarted)
         {
-            if (GameObject.FindObjectOfType<ConfirmScript>().Tutorial == false)
+            if (_confirmScript.Tutorial == false)
             {
                 if (Time.time > (_stopTime + 0))
                 {
-                    GameObject.Find("Countdown").GetComponent<Image>().enabled = true;
-                    GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[0];
+                    _countDown.enabled = true;
+                    _countDown.sprite = _Countdown[0];
                 }
                 if (Time.time > (_stopTime + 1))
                 {
-                    GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[1];
+                    _countDown.sprite = _Countdown[1];
                 }
                 if (Time.time > (_stopTime + 2))
                 {
-                    GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[2];
+                    _countDown.sprite = _Countdown[2];
                 }
                 if (Time.time > (_stopTime + 3))
                 {
-                    GameObject.Find("Countdown").GetComponent<Image>().sprite = _Countdown[3];
+                    _countDown.sprite = _Countdown[3];
                     _levelStarted = true;
                 }
             }
