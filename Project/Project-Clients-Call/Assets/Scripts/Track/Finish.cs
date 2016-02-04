@@ -100,12 +100,13 @@ public class Finish : MonoBehaviour {
                 }
                 else
                 {
+                    _confirmScript.Round++;
                     if ((_winnaarP2.GetComponent<Image>().enabled == true || _winnaarP1.GetComponent<Image>().enabled == true) && endTime == true)
                     {
                         reloadTime = Time.time;
                         endTime = false;
                     }
-                    if (Time.time > (reloadTime + 3))
+                    if (Time.time > (reloadTime + 5))
                     {
                         _musicScript.Play2 = true;
                         _confirmScript.bodyPlayer1 = 0;
