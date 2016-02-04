@@ -4,10 +4,12 @@ using System.Collections;
 public class RampJumpingScript : MonoBehaviour
 {
 
+    private Jumpscript _jumpScript;
+
     // Use this for initialization
     void Start()
     {
-
+        _jumpScript = GameObject.FindObjectOfType<Jumpscript>();
     }
 
     // Update is called once per frame
@@ -21,14 +23,11 @@ public class RampJumpingScript : MonoBehaviour
 
         if (other.name == GameObject.FindObjectOfType<Player1MoveScript>().name)
         {
-
-            GameObject.FindObjectOfType<Jumpscript>().JumpP1 = true;
-
+            _jumpScript.JumpP1 = true;
         }
-
-        else if (other.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
+        if (other.name == GameObject.FindObjectOfType<Player2MoveScript>().name)
         {
-            GameObject.FindObjectOfType<Jumpscript>().JumpP2 = true;
+            _jumpScript.JumpP2 = true;
         }
     }
 }
