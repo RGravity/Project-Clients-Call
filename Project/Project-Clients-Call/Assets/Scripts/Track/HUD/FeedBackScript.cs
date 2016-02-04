@@ -18,6 +18,9 @@ public class FeedBackScript : MonoBehaviour {
     private Image _imageSpeedUpFBP2;
     private Image _imageFireWallFBP2;
     private Image _imageShieldFBP2;
+    private Checkpoints _checkPoints;
+    private PowerUpScriptP1 _powerUpScriptP1;
+    private PowerUpScriptP2 _powerUpScriptP2;
 
     public bool ShowPowerupFbP1 { set { _showPowerupFbP1 = value; } }
     public bool ShowPowerupFbP2 { set { _showPowerupFbP2 = value; } }
@@ -32,6 +35,9 @@ public class FeedBackScript : MonoBehaviour {
         _imageSpeedUpFBP2 = GameObject.Find("SpeedUpFBP2").GetComponent<Image>();
         _imageFireWallFBP2 = GameObject.Find("FireWallFBP2").GetComponent<Image>();
         _imageShieldFBP2 = GameObject.Find("ShieldFBP2").GetComponent<Image>();
+        _checkPoints = GameObject.FindObjectOfType<Checkpoints>();
+        _powerUpScriptP1 = GameObject.FindObjectOfType<PowerUpScriptP1>();
+        _powerUpScriptP2 = GameObject.FindObjectOfType<PowerUpScriptP2>();
     }
 	
 	// Update is called once per frame
@@ -42,7 +48,7 @@ public class FeedBackScript : MonoBehaviour {
 
     void CheckCheckpointFB()
     {
-        if (GameObject.FindObjectOfType<Checkpoints>().CheckPointP1Hit)
+        if (_checkPoints.CheckPointP1Hit)
         {
             _checkpointTimerP1++;
             _imageCheckPointP1.enabled = true;
@@ -50,11 +56,11 @@ public class FeedBackScript : MonoBehaviour {
             if (_checkpointTimerP1 >= Application.targetFrameRate * 2)
             {
                 _checkpointTimerP1 = 0;
-                GameObject.FindObjectOfType<Checkpoints>().CheckPointP1Hit = false;
+                _checkPoints.CheckPointP1Hit = false;
                 _imageCheckPointP1.enabled = false;
             }
         }
-        if (GameObject.FindObjectOfType<Checkpoints>().CheckPointP2Hit)
+        if (_checkPoints.CheckPointP2Hit)
         {
             _checkpointTimerP2++;
             _imageCheckPointP2.enabled = true;
@@ -62,7 +68,7 @@ public class FeedBackScript : MonoBehaviour {
             if (_checkpointTimerP2 >= Application.targetFrameRate * 2)
             {
                 _checkpointTimerP2 = 0;
-                GameObject.FindObjectOfType<Checkpoints>().CheckPointP2Hit = false;
+                _checkPoints.CheckPointP2Hit = false;
                 _imageCheckPointP2.enabled = false;
             }
         }
@@ -72,7 +78,7 @@ public class FeedBackScript : MonoBehaviour {
     {
         if (_showPowerupFbP1)
         {
-            switch (GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp)
+            switch (_powerUpScriptP1.PowerUp)
             {
                 case PowerUpScriptP1.Powerup.Boost:
                     _checkpointTimerP1++;
@@ -110,7 +116,7 @@ public class FeedBackScript : MonoBehaviour {
 
             if (_showPowerupFbP2)
             {
-                switch (GameObject.FindObjectOfType<PowerUpScriptP2>().PowerUp)
+                switch (_powerUpScriptP2.PowerUp)
                 {
                     case PowerUpScriptP2.Powerup.Boost:
                         _checkpointTimerP2++;

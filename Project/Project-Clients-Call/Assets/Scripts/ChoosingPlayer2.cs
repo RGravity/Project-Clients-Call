@@ -3,11 +3,18 @@ using System.Collections;
 
 public class ChoosingPlayer2 : MonoBehaviour {
 
+    private ConfirmScript _confirmScript;
+
+    void Start()
+    {
+        _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
+    }
+
     void Update()
     {
-        if (GameObject.FindObjectOfType<ConfirmScript>() != null)
+        if (_confirmScript != null)
 	    {
-		    if(GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 == 0)
+		    if(_confirmScript.bodyPlayer2 == 0)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActiveRecursively(true);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
@@ -15,7 +22,7 @@ public class ChoosingPlayer2 : MonoBehaviour {
                 this.gameObject.GetComponent<Transform>().GetChild(3).gameObject.SetActive(false);
 
             }
-            else if (GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 == 1)
+            else if (_confirmScript.bodyPlayer2 == 1)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActive(false);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActiveRecursively(true);
@@ -23,7 +30,7 @@ public class ChoosingPlayer2 : MonoBehaviour {
                 this.gameObject.GetComponent<Transform>().GetChild(3).gameObject.SetActive(false);
 
             }
-            else if (GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 == 2)
+            else if (_confirmScript.bodyPlayer2 == 2)
             {
                 this.gameObject.GetComponent<Transform>().GetChild(0).gameObject.SetActive(false);
                 this.gameObject.GetComponent<Transform>().GetChild(1).gameObject.SetActive(false);
