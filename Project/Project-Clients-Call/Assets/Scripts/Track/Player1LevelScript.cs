@@ -53,7 +53,7 @@ public class Player1LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted && _superWallHit == false && !_octagonCollision)
+        if (_finished == false && _levelStarted && _superWallHit == false && !_octagonCollision)
         {
             _speed += _acceleration;
             //Debug.Log(_speed);

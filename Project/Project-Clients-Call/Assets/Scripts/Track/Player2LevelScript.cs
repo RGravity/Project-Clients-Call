@@ -47,7 +47,7 @@ public class Player2LevelScript : MonoBehaviour {
 
     private void MoveWorld()
     {
-        if (!Input.GetKey(KeyCode.Space) && _finished == false && _levelStarted && _superWallHit == false && !_octagonCollision)
+        if (_finished == false && _levelStarted && _superWallHit == false && !_octagonCollision)
         {
             _speed += _acceleration;
             if (_speed >= 35)
