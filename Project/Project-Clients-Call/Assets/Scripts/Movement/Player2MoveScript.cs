@@ -123,7 +123,7 @@ public class Player2MoveScript : MonoBehaviour {
                 _animatorList[_bodyPlayer2].Play("speed 1 S");
             }
         }
-        if (_p2LevelScript.Speed == 0)
+        if (_p2LevelScript.Speed == 0 && _fireAnimation < Time.time)
         {
             _animatorList[_bodyPlayer2].Play("idle");
         }
@@ -146,7 +146,7 @@ public class Player2MoveScript : MonoBehaviour {
             _animatorList[_bodyPlayer2].Play("fire");
             _fireAnimation = Time.time + 1.5f;
         }
-        else if (Input.GetAxis("Vertical P2") == 0 && _fireAnimation < Time.time)
+        else if (Input.GetAxis("Vertical P2") == 0 && _fireAnimation < Time.time && !_p2LevelScript.SuperWallHit)
         {
             _animatorList[_bodyPlayer2].Play("speed 1 L");
         }
