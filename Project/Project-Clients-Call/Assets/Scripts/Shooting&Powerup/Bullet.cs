@@ -19,6 +19,9 @@ public class Bullet : MonoBehaviour {
     private GameObject otherCube;
     private GameObject hitted;
 
+    private GameObject trackblocks1;
+    private GameObject trackblocks2;
+
     public bool IsPlayer1 { get { return _isPlayer1; } }
 
 	// Use this for initialization
@@ -41,7 +44,10 @@ public class Bullet : MonoBehaviour {
        
 
         _pointBlock = GameObject.Find("PointBlock");
-	}
+
+        trackblocks1 = GameObject.Find("TrackBlocks1");
+        trackblocks2 = GameObject.Find("TrackBlocks2");
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -128,7 +134,7 @@ public class Bullet : MonoBehaviour {
                     //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
                     //otherCube.transform.rotation = new Quaternion(other.transform.rotation.x, 180, other.transform.rotation.z, 1);
                     //otherCube.transform.position = new Vector3(100, 100, 100);
-                    otherCube.transform.parent = GameObject.Find("TrackBlocks2").gameObject.transform;
+                    otherCube.transform.parent = trackblocks2.gameObject.transform;
                     otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
                     //                    other.gameObject.GetComponent<Finish>().WallAnimation(true);
 
@@ -170,7 +176,7 @@ public class Bullet : MonoBehaviour {
                 otherCube.transform.position = position;
                 otherCube.transform.rotation = new Quaternion(0.0f, _playerCameraP1.transform.rotation.y, 0.0f, _playerCameraP1.transform.rotation.w);
                 //otherCube.transform.position = new Vector3(other.transform.position.x, -other.transform.position.y, other.transform.position.z);
-                otherCube.transform.parent = GameObject.Find("TrackBlocks1").gameObject.transform;
+                otherCube.transform.parent = trackblocks1.gameObject.transform;
                 otherCube.transform.localEulerAngles = new Vector3(0, 90, 0);
                 //other.gameObject.GetComponent<Finish>().WallAnimation(true);
 
