@@ -127,6 +127,7 @@ public class PowerupPickup : MonoBehaviour {
         {
             respawn = false;
         }
+        respawn = true;
         Destroy(this.gameObject);
 
     }
