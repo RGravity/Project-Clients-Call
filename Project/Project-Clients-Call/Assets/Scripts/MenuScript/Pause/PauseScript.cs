@@ -98,6 +98,7 @@ public class PauseScript : MonoBehaviour {
             GameObject.FindObjectOfType<ConfirmScript>().bodyPlayer2 = 0;
             GameObject.FindObjectOfType<ConfirmScript>().SavedP1Score = 0;
             GameObject.FindObjectOfType<ConfirmScript>().SavedP2Score = 0;
+            GameObject.FindObjectOfType<ConfirmScript>().Round = 1;
             _backToMenu = false;
         }
     }

@@ -112,6 +112,7 @@ public class Finish : MonoBehaviour {
                         _confirmScript.bodyPlayer2 = 0;
                         _confirmScript.SavedP1Score = 0;
                         _confirmScript.SavedP2Score = 0;
+                        _confirmScript.Round = 1;
                         Application.LoadLevel("MenuEliasMichiel");
                     }
                     //reloadTime = Time.time;
@@ -120,12 +121,12 @@ public class Finish : MonoBehaviour {
                     _dnfP1.GetComponent<Image>().enabled = false;
                     _finishP1.GetComponent<Image>().enabled = false;
                     _finishP2.GetComponent<Image>().enabled = false;
-                    if (_scoreScript.P1Score > _scoreScript.P2Score && _confirmScript.Round > 6)
+                    if (_scoreScript.P1Score > _scoreScript.P2Score && _confirmScript.Round > 3)
                     {
                         _winnaarP1.GetComponent<Image>().enabled = true;
                         _winnaarP2.GetComponent<Image>().enabled = false;
                     }
-                    else if (_scoreScript.P1Score > _scoreScript.P2Score && _confirmScript.Round > 6)
+                    else if (_scoreScript.P1Score > _scoreScript.P2Score && _confirmScript.Round > 3)
                     {
                         _winnaarP2.GetComponent<Image>().enabled = true;
                         _winnaarP1.GetComponent<Image>().enabled = false;
@@ -137,18 +138,27 @@ public class Finish : MonoBehaviour {
                 //P1 lost
                 if (showTime == true)
                 {
-                    reloadTime = Time.time;
-                    if (Time.time > (reloadTime + 5))
+                    if ((reloadTime + 4) < Time.time)
+                    {
+                        reloadTime = Time.time;
+                    }
+                    if (Time.time > (reloadTime + 3))
                     {
                         showTime = false;
                     }
                     else
                     {
+                        _player1LevelScript.Speed = 0;
                         _dnfP1.GetComponent<Image>().enabled = true;
-                        _player1LevelScript.Finsihed = true;
-                        P1Finished = true;
+
                     }
                 }
+                else
+                {
+                    _player1LevelScript.Finsihed = true;
+                    P1Finished = true;
+                }
+
 
             }
             if (secondsLeftP2 < 0 && round < 4)
@@ -157,18 +167,27 @@ public class Finish : MonoBehaviour {
 
                 if (showTime == true)
                 {
-                    reloadTime = Time.time;
-                    if (Time.time > (reloadTime + 5))
+                    if ((reloadTime + 4) < Time.time)
+                    {
+                        reloadTime = Time.time;
+                    }
+                    if (Time.time > (reloadTime + 3))
                     {
                         showTime = false;
                     }
                     else
                     {
+                        _player2LevelScript.Speed = 0;
                         _dnfp2.GetComponent<Image>().enabled = true;
-                        _player2LevelScript.Finsihed = true;
-                        P2Finished = true;
+
                     }
                 }
+                else
+                {
+                    _player2LevelScript.Finsihed = true;
+                    P2Finished = true;
+                }
+
             }
         }
 	}
