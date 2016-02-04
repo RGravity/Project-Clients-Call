@@ -108,11 +108,11 @@ public class BankingP2Script : MonoBehaviour {
             }
             if (_camera.GetComponent<Camera>().transform.localEulerAngles.y > 195)
             {
-                _camera.GetComponent<Camera>().transform.localEulerAngles = _camera.GetComponent<Camera>().transform.localEulerAngles = new Vector3(GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles.x, 195, GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles.z); //+ moveRot;
+                _camera.GetComponent<Camera>().transform.localEulerAngles = _camera.GetComponent<Camera>().transform.localEulerAngles = new Vector3(_camera.GetComponent<Camera>().transform.localEulerAngles.x, 195, _camera.GetComponent<Camera>().transform.localEulerAngles.z); //+ moveRot;
             }
             if (_camera.GetComponent<Camera>().transform.localEulerAngles.y < 165)
             {
-                _camera.GetComponent<Camera>().transform.localEulerAngles = _camera.GetComponent<Camera>().transform.localEulerAngles = new Vector3(GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles.x, 165, GameObject.Find("P1 Camera").GetComponent<Camera>().transform.localEulerAngles.z); //+ moveRot;
+                _camera.GetComponent<Camera>().transform.localEulerAngles = _camera.GetComponent<Camera>().transform.localEulerAngles = new Vector3(_camera.GetComponent<Camera>().transform.localEulerAngles.x, 165, _camera.GetComponent<Camera>().transform.localEulerAngles.z); //+ moveRot;
             }
         }
 	}
