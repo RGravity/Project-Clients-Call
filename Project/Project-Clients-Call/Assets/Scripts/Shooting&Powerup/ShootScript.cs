@@ -34,12 +34,12 @@ public class ShootScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (timeStampP1 < Time.time)
+        if (this.name == "Player 1" && timeStampP1 <= Time.time || fireStartedP1)
         {
             _shootAllowIconP1.enabled = true;
             _shootDenyIconP1.enabled = false;
         }
-        else if (timeStampP1 > Time.time)
+        else if (this.name == "Player 1" && timeStampP1 > Time.time || fireStartedP1)
         {
             _shootAllowIconP1.enabled = false;
             _shootDenyIconP1.enabled = true;
