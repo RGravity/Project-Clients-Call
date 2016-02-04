@@ -127,8 +127,9 @@ public class Jumpscript : MonoBehaviour
             Vector3 PlayerPosition = _player2MoveScript.transform.position;
 
             _player2MoveScript.transform.position = new Vector3(PlayerPosition.x, _jumpHeightP2, PlayerPosition.z);
-            _bankingP2Script.transform.Rotate(_player2Rotation.x, _rotationP2, _player2Rotation.z);
-        }
+            //_bankingP2Script.transform.Rotate(_player2Rotation.x, _rotationP2, _player2Rotation.z);
+            _bankingP2Script.transform.rotation = Quaternion.Euler(_player2Rotation.x, _rotationP2, _player2Rotation.z);
+            }
     
     }
     }
