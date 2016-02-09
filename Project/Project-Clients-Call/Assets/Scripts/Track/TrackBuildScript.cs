@@ -189,15 +189,15 @@ public class TrackBuildScript : MonoBehaviour {
                         }
                         if (z % 35 == 0 && x == 3)
                         {
-                            SpawnRamp(new Vector3((x * 2) - 4.25f, 0.5f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                            SpawnRamp(new Vector3((x * 2) - 4.25f, -1.75f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                        //    SpawnRamp(new Vector3((x * 2) - 4.25f, 0.5f, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                        //    SpawnRamp(new Vector3((x * 2) - 4.25f, -1.75f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
                             SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
                             SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
                         }
                         else if (z % 37 == 0 || z % 38 == 0 || z % 39 == 0)
                         {
-                            SpawnTrackBlockRed(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
-                            SpawnTrackBlockRed(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
+                            SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
+                            SpawnTrackBlock(new Vector3((x * 2) - 4.25f, -1.25f, (z * 0.7f)), GameObject.Find("TrackBlocks2"));
                         }
                     }
                     SpawnTrackBlock(new Vector3((x * 2) - 4.25f, 0, (z * 0.7f)), GameObject.Find("TrackBlocks1"));
