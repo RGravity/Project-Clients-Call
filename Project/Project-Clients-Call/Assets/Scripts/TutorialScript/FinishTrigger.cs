@@ -34,8 +34,7 @@ public class FinishTrigger : MonoBehaviour {
             //{
                 if(Input.GetButtonDown("SkipTutorial"))
                 {
-                    _confirmScript.DoTutorial = true;
-                    _confirmScript.Tutorial = true;
+                    _confirmScript.RedoTutorial = true;
                 }
 
             //}
@@ -47,6 +46,7 @@ public class FinishTrigger : MonoBehaviour {
         if (other.name == "Player 1")
         {
             _isFinished = true;
+            GameObject.Find("SkipTut2text").GetComponent<Image>().enabled = true;
             _oldTime = Time.time;
                 _textBox.GetComponent<Image>().enabled = false;
                 _textBox2.GetComponent<Image>().enabled = true;

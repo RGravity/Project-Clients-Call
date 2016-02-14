@@ -22,10 +22,12 @@ public class EndTrigger : MonoBehaviour {
     {
         if (other.name == "Player 1")
         {
-            if (_confirmScript.DoTutorial == true)
+            if (FindObjectOfType<ConfirmScript>().RedoTutorial == true)
             {
-                _confirmScript.Tutorial = true;
-                _confirmScript.SavedP1Score = 0;
+                FindObjectOfType<ConfirmScript>().Tutorial = true;
+                FindObjectOfType<ConfirmScript>().DoTutorial = true;
+                FindObjectOfType<ConfirmScript>().RedoTutorial = false;
+                FindObjectOfType<ConfirmScript>().SavedP1Score = 0;
                 Application.LoadLevel(3);
             }
             else

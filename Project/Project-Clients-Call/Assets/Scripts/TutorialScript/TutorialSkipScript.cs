@@ -13,6 +13,7 @@ public class TutorialSkipScript : MonoBehaviour {
         confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
         oldTime = Time.time;
         skipText = GameObject.Find("SkipText").GetComponent<Image>();
+        GameObject.Find("SkipTut2text").GetComponent<Image>().enabled = false;
 	}
 	
 	// Update is called once per frame
