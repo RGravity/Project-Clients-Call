@@ -22,6 +22,11 @@ public class LoadingScreen : MonoBehaviour {
                 GameObject.FindObjectOfType<SoundsScript>().Play = true;
                 GameObject.FindObjectOfType<ConfirmScript>().Tutorial = false;
             }
+            else if(GameObject.FindObjectOfType<ConfirmScript>().DoTutorial == false)
+            {
+                Application.LoadLevel(5);
+                GameObject.FindObjectOfType<MusicScript>().Play = true;
+            }
             else
             {
                 Application.LoadLevel(5);

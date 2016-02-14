@@ -13,10 +13,14 @@ public class ConfirmScript : MonoBehaviour {
     private static GameObject _instance;
     private bool _tutorial = false;
 
+    private bool _doTutorial = true;
+
     public bool Tutorial { get { return _tutorial; } set { _tutorial = value; } }
     public int SavedP1Score { get { return _p1Score; } set { _p1Score = value; } }
     public int SavedP2Score { get { return _p2Score; } set { _p2Score = value; } }
     public int Round { get { return _round; } set { _round = value; } }
+
+    public bool DoTutorial { get { return _doTutorial; } set { _doTutorial = value; }  }
 
     void Awake()
     {

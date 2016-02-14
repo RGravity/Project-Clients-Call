@@ -22,9 +22,18 @@ public class EndTrigger : MonoBehaviour {
     {
         if (other.name == "Player 1")
         {
-            Application.LoadLevel(3);
-            _confirmScript.Tutorial = false;
-            _confirmScript.SavedP1Score = 0;
+            if (_confirmScript.DoTutorial == true)
+            {
+                _confirmScript.Tutorial = true;
+                _confirmScript.SavedP1Score = 0;
+                Application.LoadLevel(3);
+            }
+            else
+            {
+                Application.LoadLevel(3);
+                _confirmScript.Tutorial = false;
+                _confirmScript.SavedP1Score = 0;
+            }
         }
     }
 }
