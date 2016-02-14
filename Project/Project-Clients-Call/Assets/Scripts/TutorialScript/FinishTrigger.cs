@@ -23,11 +23,22 @@ public class FinishTrigger : MonoBehaviour {
     {
         if (_isFinished)
         {
-            //show text
-            if (Time.time > (_oldTime + 10))
-            {
-                _confirmScript.DoTutorial = true;
-            }
+            //Time.timeScale = 0;
+            ////show text
+            //if (Time.time > (_oldTime + 10))
+            //{
+            //    Time.timeScale = 1;
+            //    _isFinished = false;
+            //}
+            //else
+            //{
+                if(Input.GetButtonDown("SkipTutorial"))
+                {
+                    _confirmScript.DoTutorial = true;
+                    _confirmScript.Tutorial = true;
+                }
+
+            //}
         }
 
     }
