@@ -30,7 +30,6 @@ public class ArrowMoveScript : MonoBehaviour {
     private GameObject _startGame;
     private GameObject _musicSlider;
     private GameObject _sfxSlider;
-    private GameObject _skipTut;
     private SliderScript1 _slider1;
     private SliderScript2 _slider2;
     private ConfirmScript _confirmScript;
@@ -87,7 +86,6 @@ public class ArrowMoveScript : MonoBehaviour {
         _startGame = GameObject.FindGameObjectWithTag("StartGame");
         _musicSlider = GameObject.FindGameObjectWithTag("MusicSlider");
         _sfxSlider = GameObject.FindGameObjectWithTag("SFXSlider");
-        _skipTut = GameObject.FindGameObjectWithTag("SkipTutorial");
 
         _selectSound = GameObject.FindGameObjectWithTag("DrillFire").GetComponent<AudioSource>();
         _moveSound = GameObject.FindGameObjectWithTag("Selection").GetComponent<AudioSource>();
@@ -182,7 +180,6 @@ public class ArrowMoveScript : MonoBehaviour {
                 _leftArrow.transform.position = new Vector3(14, 1322, 309);
                 _rightArrow.transform.position = new Vector3(14, 1322, 69);
                 _selectScreen.transform.position = new Vector3(-141, 1155, 236);
-                _skipTut.transform.position = new Vector3(220, 1155, -300);
                 _platform.transform.position = new Vector3(143, 1400, 189);
                 _platform.transform.rotation = Quaternion.Euler(0,180, 270);
                 _platform2.transform.position = new Vector3(143, 1400, -199);
@@ -669,7 +666,6 @@ public class ArrowMoveScript : MonoBehaviour {
                 _leftArrow2.transform.position = new Vector3(0, 3000, 200);
                 _rightArrow2.transform.position = new Vector3(0, 3000, -200);
                 _selectScreen.transform.position = new Vector3(-141, 3000, 336);
-                _skipTut.transform.position = new Vector3(-141, 3000, 336);
                 _platform.transform.position = new Vector3(200, 3000, 0);
                 _platform.transform.rotation = Quaternion.Euler(0, 180, 270);
                 _platform2.transform.position = new Vector3(200, 3000, 0);
