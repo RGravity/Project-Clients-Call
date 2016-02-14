@@ -40,22 +40,6 @@ public class DrillScript : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
             }
         }
-        else
-        {
-            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
-            {
-                //if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
-                //{
-                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Drill;
-                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
-                //}
-                GameObject.FindObjectOfType<TutorialScript>().Twister = true;
-                //respawn = true;
-                Destroy(this.gameObject);
-                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
-
-            }
-        }
     }
 
     void OnDestroy()

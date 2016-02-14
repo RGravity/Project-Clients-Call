@@ -103,7 +103,30 @@ public class PowerupPickup : MonoBehaviour {
         {
             if (other.gameObject.name == _powerUpScriptP1.name)
             {
-                GameObject.FindObjectOfType<TutorialScript>().PowerUp = true;
+                if (!_powerUpScriptP1.PowerUpAvailable)
+                {
+                    int Powerup = Random.Range(1, 4);
+                    switch (Powerup)
+                    {
+                        //Boost
+                        case 1:
+                            _powerUpScriptP1.PowerUp = PowerUpScriptP1.Powerup.Boost;
+                            break;
+                        //Invulnerable
+                        case 2:
+                            _powerUpScriptP1.PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
+                            break;
+                        //Firewall
+                        case 3:
+                            _powerUpScriptP1.PowerUp = PowerUpScriptP1.Powerup.Drill;
+                            break;
+                        default:
+                            break;
+                    }
+                    _powerUpScriptP1.PowerUpAvailable = true;
+                }
+                _feedBackScript.ShowPowerupFbP1 = true;
+                _powerUp.GetComponent<AudioSource>().Play();
                 Destroy(gameObject);
             }
         
@@ -112,12 +135,15 @@ public class PowerupPickup : MonoBehaviour {
 
     void OnDestroy()
     {
-        if (respawn)
+        if (_confirmScript.Tutorial == false)
         {
-            Vector3 newPosition = this.transform.position;
-            newPosition.z += _zBlocks;
-            newPosition.x = (Random.Range(0, 7) * 2) - 4.25f;
-            _trackbuildScript.SpawnPowerup(newPosition, this.gameObject.transform.parent.gameObject);
+            if (respawn)
+            {
+                Vector3 newPosition = this.transform.position;
+                newPosition.z += _zBlocks;
+                newPosition.x = (Random.Range(0, 7) * 2) - 4.25f;
+                if (_confirmScript.Tutorial == false) _trackbuildScript.SpawnPowerup(newPosition, this.gameObject.transform.parent.gameObject);
+            }
         }
     }
 
@@ -126,9 +152,8 @@ public class PowerupPickup : MonoBehaviour {
         if (_confirmScript.Tutorial == false)
         {
             respawn = false;
+            respawn = true;
+            Destroy(this.gameObject);
         }
-        respawn = true;
-        Destroy(this.gameObject);
-
     }
 }

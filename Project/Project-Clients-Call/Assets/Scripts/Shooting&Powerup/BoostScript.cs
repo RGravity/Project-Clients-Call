@@ -50,22 +50,6 @@ public class BoostScript : MonoBehaviour {
 
             }
         }
-        else
-        {
-            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
-            {
-                //if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
-                //{
-                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Boost;
-                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
-                //}
-                GameObject.FindObjectOfType<TutorialScript>().Speedup = true;
-                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
-                //respawn = true;
-                Destroy(gameObject);
-            }
-        
-        }
     }
 
     void OnDestroy()

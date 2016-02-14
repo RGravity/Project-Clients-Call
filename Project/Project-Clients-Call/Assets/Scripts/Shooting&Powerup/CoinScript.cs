@@ -12,7 +12,6 @@ public class CoinScript : MonoBehaviour {
     private Player2MoveScript _p2MoveScript;
     private ScoreScript _scoreScript;
     private AudioSource _coinSound;
-    private TutorialScript _tutorialScript;
     private TrackBuildScript _trackBuildScript;
 
     // Use this for initialization
@@ -22,7 +21,6 @@ public class CoinScript : MonoBehaviour {
         _p2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
         _scoreScript = GameObject.FindObjectOfType<ScoreScript>();
         _coinSound = GameObject.FindGameObjectWithTag("CoinPickUp").GetComponent<AudioSource>();
-        _tutorialScript = GameObject.FindObjectOfType<TutorialScript>();
         _trackBuildScript = GameObject.FindObjectOfType<TrackBuildScript>();
     }
 	
@@ -55,9 +53,9 @@ public class CoinScript : MonoBehaviour {
             if (other.gameObject.name == _p1MoveScript.name)
             {
                 _coinSound.Play();
-                _tutorialScript.Coin = true;
-                falseDestroy(this.gameObject);
-            }
+                _scoreScript.P1ScoreType = ScoreScript.ScoreType.Coin;
+                Destroy(this.gameObject);
+             }
         }
     }
 

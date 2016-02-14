@@ -153,7 +153,7 @@ public class ArrowMoveScript : MonoBehaviour {
         {
             Application.LoadLevel(3);
             _selectSound.Play();
-            _confirmScript.Tutorial = false;
+            _confirmScript.Tutorial = true;
 
         }
     

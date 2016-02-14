@@ -139,15 +139,18 @@ public class ScoreScript : MonoBehaviour {
 
     private void NormalScoring()
     {
-        if (_levelScript.LevelStarted)
+        if (_confirmScript.Tutorial == false)
         {
-            if (!_finishScript.P1Finished && !_pauseScript.pauseGame)
+            if (_levelScript.LevelStarted)
             {
-                _p1Score += (int)(_levelScript.Speed / 6) * 100;
-            }
-            if (!_finishScript.P2Finished && !_pauseScript.pauseGame)
-            {
-                _p2Score += ((int)_levelp2Script.Speed / 6) * 100;
+                if (!_finishScript.P1Finished && !_pauseScript.pauseGame)
+                {
+                    _p1Score += (int)(_levelScript.Speed / 6) * 100;
+                }
+                if (!_finishScript.P2Finished && !_pauseScript.pauseGame)
+                {
+                    _p2Score += ((int)_levelp2Script.Speed / 6) * 100;
+                }
             }
         }
     }

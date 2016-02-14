@@ -31,7 +31,6 @@ public class CollisionScript : MonoBehaviour
     private Player2LevelScript _player2LevelScript;
     private Player2MoveScript _player2MoveScript;
     private PowerUpScriptP2 _powerUpScriptP2;
-    private TutorialScript _tutorialScript;
     private ConfirmScript _confirmScript;
 
     public GameObject DisappearWall { get { return _disappearWall; } }
@@ -51,7 +50,6 @@ public class CollisionScript : MonoBehaviour
         _player2LevelScript = GameObject.FindObjectOfType<Player2LevelScript>();
         _player2MoveScript = GameObject.FindObjectOfType<Player2MoveScript>();
         _powerUpScriptP2 = GameObject.FindObjectOfType<PowerUpScriptP2>();
-        _tutorialScript = GameObject.FindObjectOfType<TutorialScript>();
         _confirmScript = GameObject.FindObjectOfType<ConfirmScript>();
     }
 
@@ -116,14 +114,12 @@ public class CollisionScript : MonoBehaviour
             if (other.gameObject.name == _player1MoveScript.name && !_powerupScriptP1.Invulnerable)
             {
                 _player1LevelScript.SlowSpeed = true;
-                _scoreScript.P1ScoreType = ScoreScript.ScoreType.Wall;
-                _tutorialScript.Wall = true;
                 _hittingWall.GetComponent<AudioSource>().Play();
                 Instantiate(_replacedPrefab);
                 _replacedPrefab.gameObject.transform.position = other.gameObject.transform.position;
                 _replacedPrefab.gameObject.transform.rotation = other.gameObject.transform.rotation;
 
-                //Destroy(this.gameObject);
+                Destroy(this.gameObject);
                 if (this.gameObject.name != "Finish")
                 {
                     GetComponent<TrackBlockScript>().OnBecameInvisible();

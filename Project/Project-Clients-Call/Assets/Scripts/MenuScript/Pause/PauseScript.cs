@@ -10,8 +10,14 @@ public class PauseScript : MonoBehaviour {
     private float _speedP2 = 0;
 
     private bool _backToMenu = false;
+    private ConfirmScript _confirmScript;
 
     public bool backToMenu { get { return _backToMenu; } set { _backToMenu = value; } }
+
+    void Start()
+    {
+        _confirmScript = FindObjectOfType<ConfirmScript>();
+    }
 	void Update ()
     {
         CheckPause();
@@ -26,7 +32,7 @@ public class PauseScript : MonoBehaviour {
 			if (pauseGame == true)
 			{
                 _speedP1 = GameObject.FindObjectOfType<Player1LevelScript>().Speed;
-                _speedP2 = GameObject.FindObjectOfType<Player2LevelScript>().Speed;
+                if (_confirmScript.Tutorial == false) _speedP2 = GameObject.FindObjectOfType<Player2LevelScript>().Speed;
                 GameObject.Find("Canvas").GetComponent<Image>().enabled = true;
                 GameObject.Find("ResumeArrows").GetComponent<Image>().enabled = true;
                 GameObject.Find("QuitArrows").GetComponent<Image>().enabled = false;
@@ -36,7 +42,8 @@ public class PauseScript : MonoBehaviour {
             if (pauseGame == false)
             {
                 GameObject.FindObjectOfType<Player1LevelScript>().Speed = _speedP1;
-                GameObject.FindObjectOfType<Player2LevelScript>().Speed = _speedP2;
+                if (_confirmScript.Tutorial == false)GameObject.FindObjectOfType<Player2LevelScript>().Speed = _speedP2;
+                
                 NotShowMenu();
                 Time.timeScale = 1;
                 pauseGame = false;

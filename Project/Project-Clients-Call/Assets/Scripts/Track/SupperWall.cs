@@ -39,12 +39,15 @@ public class SupperWall : MonoBehaviour {
                     player1LevelScript.Speed = 10;
                 }
             }
-            if (this.transform.parent.name == player2LevelScript.transform.name)
+            if (confirmScript.Tutorial == false)
             {
-                player2LevelScript.SuperWallHit = false;
-                if (player2LevelScript.Speed == 0)
+                if (this.transform.parent.name == player2LevelScript.transform.name)
                 {
-                    player2LevelScript.Speed = 10;
+                    player2LevelScript.SuperWallHit = false;
+                    if (player2LevelScript.Speed == 0)
+                    {
+                        player2LevelScript.Speed = 10;
+                    }
                 }
             }
             Destroy(this.gameObject);

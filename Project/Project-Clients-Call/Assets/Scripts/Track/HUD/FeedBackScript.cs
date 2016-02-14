@@ -21,6 +21,7 @@ public class FeedBackScript : MonoBehaviour {
     private Checkpoints _checkPoints;
     private PowerUpScriptP1 _powerUpScriptP1;
     private PowerUpScriptP2 _powerUpScriptP2;
+    private ConfirmScript _confirmScript;
 
     public bool ShowPowerupFbP1 { set { _showPowerupFbP1 = value; } }
     public bool ShowPowerupFbP2 { set { _showPowerupFbP2 = value; } }
@@ -38,6 +39,7 @@ public class FeedBackScript : MonoBehaviour {
         _checkPoints = GameObject.FindObjectOfType<Checkpoints>();
         _powerUpScriptP1 = GameObject.FindObjectOfType<PowerUpScriptP1>();
         _powerUpScriptP2 = GameObject.FindObjectOfType<PowerUpScriptP2>();
+        _confirmScript = FindObjectOfType<ConfirmScript>();
     }
 	
 	// Update is called once per frame
@@ -48,28 +50,31 @@ public class FeedBackScript : MonoBehaviour {
 
     void CheckCheckpointFB()
     {
-        if (_checkPoints.CheckPointP1Hit)
+        if (_confirmScript.Tutorial == false)
         {
-            _checkpointTimerP1++;
-            _imageCheckPointP1.enabled = true;
-
-            if (_checkpointTimerP1 >= Application.targetFrameRate * 2)
+            if (_checkPoints.CheckPointP1Hit)
             {
-                _checkpointTimerP1 = 0;
-                _checkPoints.CheckPointP1Hit = false;
-                _imageCheckPointP1.enabled = false;
+                _checkpointTimerP1++;
+                _imageCheckPointP1.enabled = true;
+
+                if (_checkpointTimerP1 >= Application.targetFrameRate * 2)
+                {
+                    _checkpointTimerP1 = 0;
+                    _checkPoints.CheckPointP1Hit = false;
+                    _imageCheckPointP1.enabled = false;
+                }
             }
-        }
-        if (_checkPoints.CheckPointP2Hit)
-        {
-            _checkpointTimerP2++;
-            _imageCheckPointP2.enabled = true;
-
-            if (_checkpointTimerP2 >= Application.targetFrameRate * 2)
+            if (_checkPoints.CheckPointP2Hit)
             {
-                _checkpointTimerP2 = 0;
-                _checkPoints.CheckPointP2Hit = false;
-                _imageCheckPointP2.enabled = false;
+                _checkpointTimerP2++;
+                _imageCheckPointP2.enabled = true;
+
+                if (_checkpointTimerP2 >= Application.targetFrameRate * 2)
+                {
+                    _checkpointTimerP2 = 0;
+                    _checkPoints.CheckPointP2Hit = false;
+                    _imageCheckPointP2.enabled = false;
+                }
             }
         }
     }

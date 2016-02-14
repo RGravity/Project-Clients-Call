@@ -39,21 +39,7 @@ public class InvulnerableScript : MonoBehaviour {
                 GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
             }
         }
-        else
-        {
-            if (other.gameObject.name == GameObject.FindObjectOfType<PowerUpScriptP1>().name)
-            {
-                //if (!GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable)
-                //{
-                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUp = PowerUpScriptP1.Powerup.Invulnerability;
-                //    GameObject.FindObjectOfType<PowerUpScriptP1>().PowerUpAvailable = true;
-                //}
-                GameObject.FindObjectOfType<TutorialScript>().Shield = true;
-                //respawn = true;
-                Destroy(gameObject);
-                GameObject.FindGameObjectWithTag("PowerUp").GetComponent<AudioSource>().Play();
-            } 
-        }
+       
     }
 
     void OnDestroy()

@@ -144,9 +144,12 @@ public class Bullet : MonoBehaviour {
                     other.GetComponent<TrackBlockScript>().OnBecameInvisible();
                     //GameObject.FindObjectOfType<TrackBlockScript>().OnBecameInvisible();
                 }
-                else
+                else 
                 {
-                    Destroy(other.gameObject);
+                    if (other.gameObject.name.Contains("Cube") || other.gameObject.name.Contains("Wall"))
+                    {
+                        Destroy(other.gameObject);
+                    }
                 }
                // WallAnimation();
 

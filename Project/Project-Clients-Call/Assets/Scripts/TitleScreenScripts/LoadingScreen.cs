@@ -20,12 +20,12 @@ public class LoadingScreen : MonoBehaviour {
                 Application.LoadLevel(4);
                 GameObject.FindObjectOfType<MusicScript>().Play = true;
                 GameObject.FindObjectOfType<SoundsScript>().Play = true;
+                GameObject.FindObjectOfType<ConfirmScript>().Tutorial = false;
             }
             else
             {
                 Application.LoadLevel(5);
                 GameObject.FindObjectOfType<MusicScript>().Play = true;
-                GameObject.FindObjectOfType<SoundsScript>().Play = true;
             }
             
         }
